@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>CONFERENCEHUB#1</title>
+    <link rel="stylesheet" href="/img/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container mt-6">
+
+     <div th:insert="~{navbar :: #navb}"></div>
+
+        <br/>
+
+        <!--<div layout:fragment = "replace_fragment">-->
+        <br>
+        <h2 class="mt-4">Edit event</h2>
+        <br>
+     <div class="form-group mt-3">
+          <form  method="post" enctype="multipart/form-data"  th:action="@{/events}" th:object = "${events}">
+
+               <div class="form-group">
+                    <div class="custom-pict">
+                        <img th:src="@{/img/{path}(path=${event.picture})}" width="500" height="312" alt="...">
+                        <input  type="file" class="form-control bg-transparent rounded" name="file" id="customPict" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;">
+                        <label class="custom-file-label" for="customPict">Choose picture</label>
+                    </div>
+               </div>
+
+              <div class="form-group">
+                  <input  type="text" class="form-control bg-transparent" name="name" placeholder="Name" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                          th:field ="${event.name}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+
+              <div class="form-group">
+                  <select type="text" class="form-control bg-transparent" name="place" placeholder="Place" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                          th:field ="${event.place}">
+                      <div th:each ="place:${places}">
+                          <option style="background-image: url(/img/BG_1_LB.png);"
+                                  th:value="${{place}}" th:text="${place.getHall()}">Lector</option>
+                      </div>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input type="date" class="form-control bg-transparent" name="date" placeholder="Date" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                         th:value="${#temporals.format(event.getDate())}" th:field ="${event.date}"/>
+              </div>
+
+              <div class="form-group">
+                  <input type="time" class="form-control bg-transparent" name="time" placeholder="Time" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                         th:value="${#temporals.format(event.getTime())}" th:field ="${event.time}"/>
+              </div>
+
+              <div class="form-group">
+                  <input type="datetime-local" class="form-control bg-transparent" name="time" placeholder="Date_Time"  style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                         th:value="${#temporals.format(event.getLocalDateTime())}" th:field ="${event.localDateTime}"/>
+
+              </div>
+
+              <div class="form-group">
+                  <select type="text" class="form-control bg-transparent" name="language" placeholder="Language" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                          th:field ="${event.language}">
+                      <div th:each ="language:${languages}" >
+                          <option  style="background-image: url(/img/BG_1_LB.png);"
+                                  th:value="${{language}}" th:text="${language.getLanguage()}">Lector</option>
+                      </div>
+
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input type="number" class="form-control bg-transparent" name="price" placeholder="Price" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                         th:field ="${event.price}"/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control bg-transparent" name="description" placeholder="Description" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;"
+                         th:field ="${event.description}"/>
+              </div>
+
+
+                <a class="btn btn-transparent btn-outline-primary" data-toggle="collapse" href="#collapseLectureTable" role="button" aria-expanded="false" aria-controls="collapseLectureTable" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;">
+                    Choose new lecturers
+                </a>
+
+                <div id="collapseLectureTable" class="collapse table-responsive-sm  table-hover mt-3" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;">
+                    <table class="table">
+                        <thead>
+                        <tr>
+
+                            <th scope="col">Name</th>
+                            <th scope="col">Theme</th>
+                            <th scope="col">Lector</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Assigned</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="lecture : ${lectures}">
+
+                            <th th:text = "${lecture.name}" >${lecture.name}</th>
+                            <th th:text = "${lecture.theme}">${lecture.theme}</th>
+                            <th th:text = "${lecture.lector}">${lecture.lector}</th>
+                            <th th:text = "${lecture.duration}">${lecture.duration}</th>
+                            <th>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="check">
+                                </div>
+                            </th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <input type="hidden" value="${event.id}" name="id" th:field="${event.id}">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-transparent btn-outline-primary" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;">Save</button>
+                </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
