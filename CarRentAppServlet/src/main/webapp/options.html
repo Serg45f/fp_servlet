@@ -20,7 +20,7 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>CarRentApp</title>
+    <title>ConferenceHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="resources/style.css" type="text/css">
@@ -36,61 +36,87 @@ return sdf.format(new Date());
 </head>
 <body>
 <c:import url="navbar.jsp"/>
+<br/>
+<br/>
+<br/>
+
+<c:if class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
+flex-direction: column;
+height:100vh;">
 <!--    <div class="bg-gradient-info" layout:fragment = "replace_fragment_main">-->
     <br/>
-        <div th:if="${session.currentOrder != null}">
-            <p th:text="${session.currentOrder.id}">id</p>
-            <p th:text="${session.currentOrder.start}">start</p>
-            <p th:text="${session.currentOrder.end}">end</p>
-            <p th:text="${session.currentOrder.vehicle}">end</p>
-        </div>
-        <div th:if="${session.orderStage != null}">
-            <p th:text="${session.orderStage}">stage</p>
-        </div>
+        <c:if test="${session.currentOrder != null}">
+            <p>${session.currentOrder.id}</p>
+            <p>${session.currentOrder.start}</p>
+            <p>${session.currentOrder.end}</p>
+            <p>${session.currentOrder.vehicle}</p>
+        </c:if>
+        <c:if test="${session.orderStage != null}">
+            <p>${session.orderStage}</p>
+        </c:if>
     <br/>
     <br/>
-        <div id="optionsTable" class="table-responsive-sm  table-hover mt-3">
+        <c:if id="optionsTable" class="table-responsive-sm  table-hover mt-3">
             <table class="table table-responsive-sm  table-hover mt-3 round">
                 <thead>
                 <tr>
-                    <th scope="col">Cheque</th>
-                    <th scope="col">Picture</th>
-                    <th scope="col">Option</th>
-                    <th scope="col">Price</th>
-                <div sec:authorize="hasAuthority('ADMIN')">
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </div>
+                    <th scope="col">
+                        <fmt:message key="options.th.cheque" bundle="${rb}"/>
+                    </th>
+                    <th scope="col">
+                        <fmt:message key="options.th.picture" bundle="${rb}"/>
+                    </th>
+                    <th scope="col">
+                        <fmt:message key="options.th.option" bundle="${rb}"/>
+                    </th>
+                    <th scope="col">
+                        <fmt:message key="options.th.price" bundle="${rb}"/>
+                    </th>
+                    <c:if test = "${userRoles.contains(roles[\"ADMIN\"])}">
+                        <th scope="col">
+                            <fmt:message key="options.th.edit" bundle="${rb}"/>
+                        </th>
+                        <th scope="col">
+                            <fmt:message key="options.th.delete" bundle="${rb}"/>
+                        </th>
+                    </c:if>
                 </tr>
                 </thead>
                 <tbody>
-                    <form th:action="@{/order/order}" th:object="${order}" method="post">
-                        <tr th:each="option : ${options}">
-                            <td>
-                            <td>
-<!--                                <form th:action="@{/order/} + ${option.id}">-->
-<!--                                    <input type="checkbox" name="my-checkbox" onclick="submit();" th:checked="${option.isChosen} ? 'checked'">-->
-<!--                                </form>-->
-                            </td>
-                            </td>
-                            <td>
-                                <img th:src="@{/pic/{path}(path=${option.picture})}" class="card-img-top" alt="...">
-                            </td>
-                            <td>
-                                <p th:text = "${option.name}"></p>
-                                <p th:text = "${option.description}"></p>
-                            </td>
-                            <td th:text = "${option.price}"></td>
+                    <form action="/order/order" method="post">
+                        <c:forEach var="option" items="${options}">
+                            <tr>
+                                <td>
+    <!--                                <form th:action="@{/order/} + ${option.id}">-->
+    <!--                                    <input type="checkbox" name="my-checkbox" onclick="submit();" th:checked="${option.isChosen} ? 'checked'">-->
+    <!--                                </form>-->
+                                </td>
+                                </td>
+                                <td>
+                                    <img src="resources/pic/${option.picture}" class="card-img-top" alt="...">
+                                </td>
+                                <td>
+                                    <p>${option.name}</p>
+                                    <p>${option.description}</p>
+                                </td>
+                                <td>${option.price}</td>
+                                <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                                    <td>
+                                        <a class="text-success" href="${pageContext.request.contextPath}/options/edit/${option.id}">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a class="text-danger" href="${pageContext.request.contextPath}/options/delete/${option.id}">Delete</a>
+                                    </td>
+                                </c:if>
+                            </tr>
+                        </c:forEach>
+                        <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                                                <a class="text-success" to="4" href="${pageContext.request.contextPath}/options/add">
+                                                    Add
+                                                </a>
+                        </c:if>
 
-                            <td>
-                                <a sec:authorize="hasAuthority('ADMIN')" class="text-success" th:href="@{/options/edit/{id}(id=${option.id})}">Edit</a>
-                                <a>   </a>
-                            </td>
-                            <td><a sec:authorize="hasAuthority('ADMIN')" class="text-danger" th:href="@{/options/delete/{id}(id=${option.id})}">Delete</a></td>
-                        </tr>
-                        <a sec:authorize="hasAuthority('ADMIN')" class="text-success" to="4" th:href="@{/options/add}">Add</a>
-
-                        <input type="hidden" th:value="${order}" name="order">
+                        <input type="hidden" value="${order}" name="order">
                         <button type="submit" class="text-success" to="4">Submit</button>
                     </form>
                 </tbody>

@@ -1,0 +1,172 @@
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: rgb(255,200,150);
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+body{
+    background: #262626 url(img/1Jwut3.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: top;
+    flex-direction: column;
+    color: rgb(100,20,0);
+}
+.btn,btn-outline-primary{
+    background-image: url(img/BG_ROB_GRAD_LB.png);
+     color: rgb(255,200,150);
+}
+
+.card{
+    background-image: url(img/FONE_PB_GRAD.png);
+     color: rgb(255,200,150);
+}
+select.form-control{
+    background-image: url(img/BG_ROB_GRAD_LB.png);
+    color: #ffffff;
+}
+select.form-control{
+    color: #ffffff;
+}
+option {
+   background-image: url(img/BG_ROB_GRAD_LB.png);
+   background-color: transparent;
+       color: gray;
+}
+
+/* Edit selected option */
+/* element  attr    attr value */
+option[selected="selected"] {
+  color: red;
+}
+
+
+input.form-control[placeholder]{
+    background-image: url(img/BG_ROB_GRAD_LB.png);
+    color: #ffffff;
+}
+
+input.form-control[placeholder]{
+
+    color: #ffffff;
+}
+
+h1,h2,h3,h4,label{
+       color: rgb(100,20,0);
+       opacity: 1;
+}
+
+h3.carousel-item-header,label{
+       color: rgb(255,200,150);
+       opacity: 1;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  left: 20px;
+  z-index: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+  text-align: right;
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  color: #ffffff;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+
+table{
+    background-image: url(img/FONE_PB_GRAD.png);
+    color: #ffffff;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+
+  border-top: 1px solid #dee2e6;
+  color: #ffffff;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  horizontal-align: center;
+  border-bottom: 2px solid #dee2e6;
+  color: rgb(255,200,150);
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+  vertical-align: center;
+  horizontal-align: right;
+   color: #ffffff;
+}
+
+.table .table {
+  background-color: transparent;
+   color: #ffffff;
+}
+
+
+.table-bordered {
+  border: 2px solid #dee2e6;
+   color: #ffffff;
+}
+
+
+.table-bordered tbody td {
+  vertical-align: center;
+  horizontal-align: right;
+  border: 1px solid #dee2e6;
+  color: #ffffff;
+}
+
+.table-bordered thead th {
+  vertical-align: top;
+  horizontal-align: center;
+  border-bottom-width: 2px;
+  color: rgb(255,200,150);
+}
