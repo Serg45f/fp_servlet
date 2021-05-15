@@ -24,7 +24,7 @@
                 </a>
             </li>
 
-            <c:if test = "${userRoles.contains(roles[\"USER\"])}">
+            <c:if test = "${loggedUserRoles.contains(roles[\"USER\"])}">
                 <li class="nav-item">
 
                     <a class="nav-link" href="${pageContext.request.contextPath}/ticketsTableAggregate">
@@ -32,7 +32,7 @@
                     </a>
                 </li>
             </c:if>
-            <c:if test = "${userRoles.contains(roles[\"USER\"]) && !userRoles.contains(roles[\"SPEAKER\"])}">
+            <c:if test = "${loggedUserRoles.contains(roles[\"USER\"]) && !loggedUserRoles.contains(roles[\"SPEAKER\"])}">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/lectures/lectors_reg">
                         <fmt:message key="nav.8" bundle="${rb}" />
@@ -41,14 +41,14 @@
                 </li>
             </c:if>
 
-            <c:if test = "${!userRoles.contains(roles[\"USER\"]) && !userRoles.contains(roles[\"SPEAKER\"]) && !userRoles.contains(roles[\"USER\"])}">
+            <c:if test = "${!loggedUserRoles.contains(roles[\"USER\"]) && !userRoles.contains(roles[\"SPEAKER\"]) && !userRoles.contains(roles[\"ADMIN\"])}">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">
                         <fmt:message key="nav.2" bundle="${rb}" />
                     </a>
                 </li>
             </c:if>
-            <c:if test = "${userRoles.contains(roles[\"SPEAKER\"])}">
+            <c:if test = "${loggedUserRoles.contains(roles[\"SPEAKER\"])}">
                 <li class="nav-item">
                      <a class="nav-link" href="${pageContext.request.contextPath}/lectures">
                          <fmt:message key="nav.3" bundle="${rb}" />
@@ -56,7 +56,7 @@
                 </li>
             </c:if>
 
-            <c:if test = "${userRoles.contains(roles[\"ADMIN\"])}">
+            <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/" >
                         <fmt:message key="nav.4" bundle="${rb}" />

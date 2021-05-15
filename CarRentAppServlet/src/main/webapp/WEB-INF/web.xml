@@ -1,6 +1,6 @@
 
 <web-app version="3.0">
-  <display-name>ConferenceHub</display-name>
+  <display-name>CarRentApp</display-name>
   <servlet>
     <servlet-name>Servl</servlet-name>
     <servlet-class>com.sgsavch.controller.Servlet</servlet-class>

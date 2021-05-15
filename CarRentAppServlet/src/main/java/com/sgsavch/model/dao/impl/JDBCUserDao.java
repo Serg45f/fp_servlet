@@ -3,7 +3,6 @@ package com.sgsavch.model.dao.impl;
 import com.sgsavch.model.dao.SQLConstant;
 import com.sgsavch.model.dao.UserDao;
 import com.sgsavch.model.dao.mapper.UserMapper;
-import com.sgsavch.model.entity.Lecture;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusUser;
@@ -56,6 +55,29 @@ public class JDBCUserDao implements UserDao {
             return res;
 
     }
+
+    @Override
+    public User findById(long id) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ID)) {
+
+            int k = 1;
+            prst.setLong(k++,id);
+            ResultSet rs = prst.executeQuery();
+
+            User user = new User();
+            UserMapper userMapper = new UserMapper();
+            if (rs.next()) {
+                user = userMapper
+                        .extractFromResultSet(rs);
+            }
+            return user;
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+
     @Override
     public User getUserByUsername(String username) throws SQLException {
         User user = new User();
@@ -148,10 +170,7 @@ public class JDBCUserDao implements UserDao {
         }
     }
 
-    @Override
-    public User findById(long id) {
-        return null;
-    }
+
 
     @Override
     public List<User> findAll() {
@@ -325,10 +344,6 @@ public class JDBCUserDao implements UserDao {
         }
     }
 
-    @Override
-    public User getUserById(String id) {
-        return null;
-    }
 
     private void close(AutoCloseable ac) {
         if (ac != null) {

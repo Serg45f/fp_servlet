@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}">
+
+<body>
+<div layout:fragment = "replace_fragment_main">
+        <br>
+        <h2 class="mt-4">Edit car model</h2>
+        <br>
+     <div class="form-group mt-3">
+          <form accept-charset="UTF-8" method="post" enctype="multipart/form-data"  th:action="@{/carmodels}" th:object = "${carmodel}">
+
+               <div class="form-group">
+                    <div class="custom-pict">
+                        <img th:src="@{/pic/{path}(path=${carmodel.picture})}" width="500" height="312" alt="...">
+                        <input  type="file" class="form-control  rounded" name="file" id="customPict">
+<!--                        <label class="custom-file-label" for="customPict">Choose picture</label>-->
+                    </div>
+               </div>
+
+              <div class="form-group">
+                  <input  type="text" class="form-control bg-transparent" placeholder="Name"
+                          th:field ="*{name}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+              <div class="form-group">
+                  <input  type="text" class="form-control bg-transparent"  placeholder="Seats"
+                          th:field ="*{seatsNumb}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+              <div class="form-group">
+                  <input  type="text" class="form-control bg-transparent"  placeholder="Doors"
+                          th:field ="*{doorsNumb}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+              <div class="form-group">
+                  <select type="text" class="form-control bg-transparent" placeholder="Type"
+                          th:field ="*{type}"/>
+                      <div th:each ="type:${cartypes}">
+                          <option class="form-control bg-transparent"
+                                  th:selected="${carmodel.type == type ? true : false}"
+                                  th:value="${{type}}" th:text="${type.getType()}">Type</option>
+                      </div>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                  <select type="text" class="form-control bg-transparent" placeholder="Status"
+                          th:field ="*{status}"/>
+                      <div th:each ="status:${carstatuses}">
+                          <option class="form-control bg-transparent"
+                                  th:selected="${carmodel.status == status ? true : false}"
+                                  th:value="${{status}}" th:text="${status.getStatus()}">Status</option>
+                      </div>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input  type="number" class="form-control bg-transparent"  placeholder="Price"
+                          th:field ="*{price}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+              <div class="form-group">
+                  <input  type="number" class="form-control bg-transparent"  placeholder="Price"
+                          th:field ="*{deposit}" />
+                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
+                  </th:block>-->
+              </div>
+
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <div th:if="${carmodel.id!=null}">
+                    <input type="hidden" value="${carmodel.id}"  th:field="*{id}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-transparent btn-outline-primary" >Save</button>
+                </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

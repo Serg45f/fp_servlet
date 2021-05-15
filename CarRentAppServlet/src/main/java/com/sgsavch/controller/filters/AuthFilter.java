@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Set;
+import java.util.function.IntPredicate;
 
 public class AuthFilter implements Filter {
     @Override
@@ -28,6 +29,19 @@ public class AuthFilter implements Filter {
         ServletContext context = request.getServletContext();
 
        while(req.getAttributeNames().hasMoreElements()){ System.out.println(req.getAttributeNames().nextElement());}
+
+//        if(req.getRequestURL().toString().matches(".*/admin/.*")
+//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.ADMIN)){
+//            System.out.println("ADMIN-1");
+//        }
+//        if(req.getRequestURL().toString().matches(".*/user/.*")
+//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.USER)){
+//            System.out.println("USER-1");
+//        }
+//        if(req.getRequestURL().toString().matches(".*/manager/.*")
+//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.SPEAKER)){
+//            System.out.println("MANAGER-1");
+//        }
         System.out.println();
         System.out.println("(AuthFilter)req.Method: " + req.getMethod());
         System.out.println("(AuthFilter)req.AuthType: " + req.getAuthType());

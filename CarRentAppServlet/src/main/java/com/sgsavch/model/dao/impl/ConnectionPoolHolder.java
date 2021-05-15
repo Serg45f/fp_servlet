@@ -12,7 +12,7 @@ public class ConnectionPoolHolder {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
                     BasicDataSource ds = new BasicDataSource();
-                    ds.setUrl("jdbc:mysql://localhost:3306/db_conference");
+                    ds.setUrl("jdbc:mysql://localhost:3306/db_conference");        //car_rent_db");
                     ds.setUsername("root");
                     ds.setPassword("root");
                     ds.setMinIdle(5);

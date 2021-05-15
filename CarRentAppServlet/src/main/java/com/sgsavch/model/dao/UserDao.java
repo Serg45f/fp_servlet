@@ -19,13 +19,11 @@ public interface UserDao extends GenericDao<User> {
     Set<Role> getUserRoles(Long id);
 
     boolean setUserRoles(User user, Set<Role> roles) throws SQLException;
-//    void addUserRole(Connection con, long id, Role role) throws SQLException;
-
 
     User getUserByUsername(String username) throws SQLException;
 
     boolean activateUser(String code);
 
-    User getUserById(String id);
+
 }
 

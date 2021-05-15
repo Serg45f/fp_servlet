@@ -42,7 +42,7 @@ public class Servlet extends HttpServlet {
         commands.put("tickets", new TicketListCommand(new TicketService()));
         commands.put("ticketsTableAggregate", new TicketTableAggregateCommand(new TicketService()));
         commands.put("users", new UserListCommand(new UserService()));
-        commands.put("users/edit", new UserEditCommand(new UserService()));
+        commands.put("users_edit", new UserEditCommand(new UserService()));
 //        commands.put("users/delete", new UserDeleteCommand(new UserService()));
         commands.put("event", new EventCommand(new EventService(),new TicketService(),new LectureService()));
     }
@@ -64,15 +64,14 @@ public class Servlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/conf/" , "");
+        path = path.replaceAll(".*/carrent/" , "");
         Command command = commands.getOrDefault(path ,
                 (r)->"/index.jsp");
         System.out.println("(Servlet)command.name: " + command.getClass().getName());
         String page = command.execute(request);
         System.out.println("(Servlet)page: " + page);
-        //request.getRequestDispatcher(page).forward(request,response);
         if(page.contains("redirect:")){
-            response.sendRedirect(page.replace("redirect:", "/conf"));
+            response.sendRedirect(page.replace("redirect:", "/carrent"));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }

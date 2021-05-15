@@ -25,9 +25,9 @@ public class CommandUtility {
         HttpSession session = request.getSession();
         ServletContext context = request.getServletContext();
 
-        context.setAttribute("userName", userName);
-        context.setAttribute("userId", userId);
-        session.setAttribute("userRoles", userRoles);
+        context.setAttribute("loggedUserName", userName);
+        context.setAttribute("loggedUserId", userId);
+        session.setAttribute("loggedUserRoles", userRoles);
         session.setAttribute("roles", roles);
     }
 

@@ -5,10 +5,12 @@ com\sgsavch\controller\Command\UserCommands\UserEditCommand.class
 com\sgsavch\controller\Command\UserCommands\RegisterCommand.class
 com\sgsavch\controller\config\MailSessionCreator.class
 com\sgsavch\model\dao\impl\JDBCDaoFactory.class
+com\sgsavch\model\entity\CarModel.class
 com\sgsavch\controller\filters\EncodingFilter.class
 com\sgsavch\model\dao\impl\ConnectionPoolHolder.class
 com\sgsavch\model\entity\enums\Role.class
 com\sgsavch\model\entity\Ticket.class
+com\sgsavch\model\entity\Invoice.class
 com\sgsavch\model\entity\EventLecture.class
 com\sgsavch\model\dao\impl\JDBCEventDao.class
 com\sgsavch\model\entity\Lecture.class
@@ -25,7 +27,6 @@ com\sgsavch\model\dao\mapper\LectureMapper.class
 com\sgsavch\controller\Command\UserCommands\LogOutCommand.class
 com\sgsavch\model\dao\mapper\EventMapper.class
 com\sgsavch\model\entity\enums\StatusLecture.class
-com\sgsavch\model\entity\User$UserBuilder.class
 com\sgsavch\controller\Command\Command.class
 com\sgsavch\model\dao\impl\JDBCLectureDao.class
 com\sgsavch\model\entity\enums\StatusTicket.class
@@ -43,7 +44,11 @@ com\sgsavch\model\dao\TicketDao.class
 com\sgsavch\model\service\LectureService.class
 com\sgsavch\model\service\UserService.class
 com\sgsavch\utils\BCrypt.class
+com\sgsavch\model\entity\enums\Color.class
+com\sgsavch\model\entity\Location.class
+com\sgsavch\model\entity\Option.class
 com\sgsavch\model\entity\User.class
+com\sgsavch\model\entity\Vehicle.class
 com\sgsavch\utils\Hash.class
 com\sgsavch\controller\listener\SessionListener.class
 com\sgsavch\controller\Command\CommandUtility.class
@@ -52,9 +57,12 @@ com\sgsavch\model\dao\impl\JDBCTicketDao.class
 com\sgsavch\controller\Command\UserCommands\UserListCommand.class
 com\sgsavch\model\dao\GenericDao.class
 com\sgsavch\model\dao\DaoFactory.class
+com\sgsavch\model\entity\StatusOrder.class
 com\sgsavch\model\service\EventService.class
 com\sgsavch\utils\MailSender.class
 com\sgsavch\controller\Command\ExceptionCommand.class
+com\sgsavch\model\entity\enums\StatusCar.class
+com\sgsavch\model\entity\TypeCar.class
 com\sgsavch\model\entity\enums\StatusEvent.class
 com\sgsavch\utils\MailSender$1.class
 com\sgsavch\model\dao\mapper\TicketMapper.class
@@ -62,3 +70,4 @@ com\sgsavch\controller\config\MailSessionCreator$1.class
 com\sgsavch\controller\Command\TicketCommands\TicketListCommand.class
 com\sgsavch\controller\filters\SessionLocaleFilter.class
 com\sgsavch\model\entity\Event.class
+com\sgsavch\model\entity\Order.class

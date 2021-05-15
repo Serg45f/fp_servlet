@@ -19,6 +19,9 @@ public interface SQLConstant {
 	String SQL_FIND_USER_BY_LOGIN =
 			"SELECT * FROM " + TABLE_USERS + " WHERE " + USER_EMAIL + " LIKE ?  ESCAPE '!';";
 
+	String SQL_FIND_USER_BY_ID =
+			"SELECT * FROM " + TABLE_USERS + " WHERE " + USER_ID + " LIKE ?  ESCAPE '!';";
+
 	String SQL_FIND_ALL_USERS =
 			"SELECT * FROM " + TABLE_USERS + ";";
 

@@ -65,6 +65,50 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Phone: </label>
+                    <div class="col-sm-6">
+                        <input type="tel" class="form-control "  placeholder="Digits"
+                               name="phone" >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Country: </label>
+                    <div class="col-sm-6">
+                        <input  type="text" class="form-control "  placeholder="Country"
+                                name="country">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Passport ¹: </label>
+                    <div class="col-sm-6">
+                        <input  type="text" class="form-control "  placeholder="Passport #"
+                                name="passportNumb">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Date of expire: </label>
+                    <div class="col-sm-6">
+                        <input  type="date" class="form-control "  placeholder="Date of expire"
+                                value="${user.getPassDateExp()}"    name="passDateExp">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Driver license: </label>
+                    <div class="col-sm-6">
+                        <input  type="text" class="form-control "  placeholder="Driver license #"
+                                name="licenseNumb">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Bank card #: </label>
+                    <div class="col-sm-6">
+                        <input  type="text" class="form-control "  placeholder="________________"
+                                name="cardNumb">
+                    </div>
+                </div>
+
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label"></label>

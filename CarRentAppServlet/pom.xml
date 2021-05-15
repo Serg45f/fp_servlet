@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sgsavch</groupId>
-    <artifactId>conferencehub</artifactId>
+    <artifactId>carrentappservlet</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>ConferenceHub Maven Webapp</name>
+    <name>CurRentAppServlet Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
 
@@ -96,7 +96,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>ConferenceHub</finalName>
+        <finalName>CarRentApp</finalName>
         <plugins>
 
             <plugin>
@@ -105,7 +105,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8888</port>
-                    <path>/conf</path>
+                    <path>/carrent</path>
                 </configuration>
             </plugin>
             <plugin>

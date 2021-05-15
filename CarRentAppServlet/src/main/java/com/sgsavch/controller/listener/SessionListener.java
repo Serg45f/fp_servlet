@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-        System.out.println("Session created" + httpSessionEvent.getSession());
+        System.out.println("(SessionListener)Session created: " + httpSessionEvent.getSession());
     }
 
     @Override
@@ -17,7 +17,7 @@ public class SessionListener implements HttpSessionListener {
                 .getSession().getServletContext()
                 .getAttribute("loggedUsers");
         String userName = (String) httpSessionEvent.getSession()
-                .getAttribute("userName");
+                .getAttribute("loggedUserName");
         loggedUsers.remove(userName);
         httpSessionEvent.getSession().setAttribute("loggedUsers", loggedUsers);
     }

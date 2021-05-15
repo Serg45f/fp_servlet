@@ -73,9 +73,10 @@ public class UserService {
         }
     }
 
-    public User getUserById(String id) {
+    public User getUser(Long id) {
         try (UserDao dao = daoFactory.createUserDao()) {
-            return dao.getUserById(id);
+            return dao.findById(id);
         }
     }
+
 }

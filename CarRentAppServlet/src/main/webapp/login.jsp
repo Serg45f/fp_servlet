@@ -37,6 +37,9 @@
         <fmt:message key="login.head" bundle="${rb}"/>
     </h2>
     <br>
+    <c:if test="${session.chequeEmail==1}">
+        <a  href="mailto:${session.user.email}">Go to [[${session.user.email}]] to confirm your email</a>
+    </c:if>
     <h3 class="form-signing-hiding" >${message}</h3>
     <br>
     <br>
@@ -44,7 +47,7 @@
         <label class="col-sm-2  col-form-label">
             <fmt:message key="login.name" bundle="${rb}"/>
         </label>
-        <div class="col-sm-6">
+        <div class="col-sm-6 px-0">
             <input type="text" name="name" class="form-control bg-transparent text-white" placeholder="some@some.com"/>
         </div>
     </div>
@@ -52,17 +55,17 @@
         <label class="col-sm-2  col-form-label">
             <fmt:message key="login.pass" bundle="${rb}"/>
         </label>
-        <div class="col-sm-6">
+        <div class="col-sm-6 px-0">
             <input type="password" name="pass" class="form-control bg-transparent text-white" placeholder="Password"/>
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2  col-form-label"></label>
-        <a class="col-sm-3">
+        <a class="col-sm-3 px-0">
             <button class="btn btn-lg btn-transparent btn-block btn-outline-primary" type="submit">
                 <fmt:message key="btn.login" bundle="${rb}"/>
             </button>
-            <a class="btn btn-lg btn-transparent btn-outline-primary col-sm-3"  href="${pageContext.request.contextPath}/registration.jsp">
+            <a class="btn btn-lg btn-transparent btn-outline-primary col-sm-3 px-0"  href="${pageContext.request.contextPath}/registration.jsp">
                 <fmt:message key="btn.registration" bundle="${rb}"/>
             </a>
 

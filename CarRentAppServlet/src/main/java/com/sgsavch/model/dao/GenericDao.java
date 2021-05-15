@@ -1,6 +1,6 @@
 package com.sgsavch.model.dao;
 
-import com.sgsavch.model.entity.Lecture;
+
 
 import java.util.List;
 
