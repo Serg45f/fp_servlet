@@ -1,4 +1,4 @@
-package com.sgsavch.model.entity;
+package com.sgsavch.model.entity.enums;
 
 public enum TypeCar {
     ANY, CABRIOLET, ELECTRIC, OFFROAD, WAGON, SEDAN, MINIBUS;

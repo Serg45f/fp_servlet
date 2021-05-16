@@ -12,11 +12,15 @@
 <!-- Hardcoding the default page-size as 3. User can create a dropdown to select the different page-sizes. -->
 <c:set var="currentPageURL" value="${pageContext.request.requestURL}"/>
 <c:set var="eventsURL" value="events.jsp"/>
+<c:set var="carmodelsURL" value="carmodels.jsp"/>
 <c:set var="userListURL" value="userList.jsp"/>
 <c:set var="ticketsURL" value="tickets.jsp"/>
 
 <c:if test="${fn:endsWith(currentPageURL,eventsURL)}">
     <c:set var="endPoint" value="events"/>
+</c:if>
+<c:if test="${fn:endsWith(currentPageURL,carmodelsURL)}">
+    <c:set var="endPoint" value="carmodels"/>
 </c:if>
 <c:if test="${fn:endsWith(currentPageURL,userListURL)}">
     <c:set var="endPoint" value="users"/>
@@ -29,11 +33,10 @@
 <div  class="container-fluid   translate-middle-x">
     <div class="row">
         <div class="col order-1">
-            <nav aria-label="Navigation for events" >
+            <nav aria-label="Navigation for pageable" >
                 <ul class="pagination">
                     <c:if test="${currentPage != 1}">
                         <li class="page-item"><a class="page-link bg-transparent"
-                               style="background-image: url(resources/img/BG_ROB_GRAD_LB.png);color:#ffffff;"
                                   href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${currentPage-1}">Previous</a>
                         </li>
                     </c:if>
@@ -42,13 +45,11 @@
                         <c:choose>
                             <c:when test="${currentPage eq i}">
                                 <li class="page-item active"><a class="page-link bg-transparent"
-                                         style="background-image: url(resources/img/BG_ROB_GRAD_LB.png);color:#ffffff;">
                                             ${i} <span class="sr-only">(current)</span></a>
                                 </li>
                             </c:when>
                             <c:otherwise>
                                 <li class="page-item"><a class="page-link bg-transparent"
-                                        style="background-image: url(resources/img/BG_ROB_GRAD_LB.png);color:#ffffff;"
                                              href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${i}">${i}</a>
                                 </li>
                             </c:otherwise>
@@ -57,7 +58,6 @@
 
                     <c:if test="${currentPage lt noOfPages}">
                         <li class="page-item"><a class="page-link bg-transparent"
-                                style="background-image: url(resources/img/BG_ROB_GRAD_LB.png);color:#ffffff;"
                                        href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${currentPage+1}">Next</a>
                         </li>
                     </c:if>
@@ -76,7 +76,7 @@
 
                             </div>
                             <div class="col-4">
-                                <label for="records" style="color:#ffffff;">Records per page:</label>
+                                <label for="records" >Records per page:</label>
                             </div>
                             <div class="col">
                                 <select class="form-control bg-transparent" id="records" name="recordsPerPage">

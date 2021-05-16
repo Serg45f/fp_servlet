@@ -3,18 +3,11 @@ package com.sgsavch.controller.Command.EventCommands;
 import com.sgsavch.controller.Command.Command;
 import com.sgsavch.model.entity.Event;
 import com.sgsavch.model.entity.Lecture;
-import com.sgsavch.model.entity.enums.Hall;
-import com.sgsavch.model.entity.enums.Language;
-import com.sgsavch.model.entity.enums.StatusEvent;
-import com.sgsavch.model.entity.enums.Theme;
 import com.sgsavch.model.service.EventService;
 import com.sgsavch.model.service.LectureService;
 import com.sgsavch.model.service.TicketService;
-import com.sgsavch.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class EventCommand implements Command {
@@ -35,10 +28,10 @@ public class EventCommand implements Command {
         Event event = eventService.getEvent(eventId);
         Long ticketsSold = ticketService.getTicketsQuantityByEventId(eventId);
         List<Lecture> lectures = lectureService.getLecturesByEventId(eventId);
-        Integer ticketsLeft = event.getPlace().placesLeft(Math.toIntExact(ticketsSold));
+       // Integer ticketsLeft = event.getPlace().placesLeft(Math.toIntExact(ticketsSold));
 
         request.setAttribute("event", event);
-        request.setAttribute("ticketsLeft", ticketsLeft);
+       // request.setAttribute("ticketsLeft", ticketsLeft);
 
 
         return "/event.jsp";

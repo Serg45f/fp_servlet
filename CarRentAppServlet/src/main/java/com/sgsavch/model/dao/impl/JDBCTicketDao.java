@@ -1,10 +1,9 @@
 package com.sgsavch.model.dao.impl;
 
-import com.sgsavch.model.dao.SQLConstant;
+import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.TicketDao;
 import com.sgsavch.model.dao.mapper.TicketMapper;
 import com.sgsavch.model.dao.mapper.TicketsCountMapper;
-import com.sgsavch.model.entity.Lecture;
 import com.sgsavch.model.entity.Ticket;
 import com.sgsavch.model.entity.agregates.TicketsCountAndTotalSum;
 

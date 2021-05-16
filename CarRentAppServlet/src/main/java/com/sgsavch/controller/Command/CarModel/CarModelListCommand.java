@@ -1,11 +1,10 @@
 package com.sgsavch.controller.Command.CarModel;
 
 import com.sgsavch.controller.Command.Command;
+import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.entity.Event;
-import com.sgsavch.model.entity.enums.Hall;
-import com.sgsavch.model.entity.enums.Language;
-import com.sgsavch.model.entity.enums.StatusEvent;
-import com.sgsavch.model.entity.enums.Theme;
+import com.sgsavch.model.entity.enums.*;
+import com.sgsavch.model.service.CarModelService;
 import com.sgsavch.model.service.EventService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,17 +12,17 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class CarmodelListCommand implements Command {
+public class CarModelListCommand implements Command {
     private static final Integer DEFAULT_CURRENT_PAGE = 1;
     private static final Integer DEFAULT_RECORDS_PER_PAGE = 3;
 
-    public CarmodelListCommand(EventService eventService) {
-        this.eventService = eventService;
+    public CarModelListCommand(CarModelService carModelService) {
+        this.carModelService = carModelService;
     }
 
-    EventService eventService;
+    CarModelService carModelService;
 
-    public CarmodelListCommand() {
+    public CarModelListCommand() {
     }
 
     @Override
@@ -39,32 +38,22 @@ public class CarmodelListCommand implements Command {
             recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         }
 
-        List<Event> events = eventService.getEvents(currentPage, recordsPerPage);
-        Event event = new Event();
+        List<CarModel> carModels = carModelService.getCarModelsPaginated(currentPage, recordsPerPage);
 
-        int rows = eventService.getNumberOfCards();
+        int rows = carModelService.getNumberOfCards();
 
         int nOfPages = rows / recordsPerPage;
 
         if (nOfPages % recordsPerPage > 0) {
-
             nOfPages++;
         }
 
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
-
-        event.setStatusEvent(StatusEvent.NEW);
-        event.setThemes(new HashSet<>());
-        request.setAttribute("event", event);
-        request.setAttribute("events" , events);
-        request.setAttribute("themes", Arrays.asList(Theme.values()));
-        request.setAttribute("languages", Arrays.asList(Language.values()));
-        request.setAttribute("places", Arrays.asList(Hall.values()));
-//        request.setAttribute("roleAdmin", Role.ADMIN);
+        request.setAttribute("carmodels" , carModels);
 
 
-        return "/events.jsp";
+        return "/carmodels.jsp";
     }
 }

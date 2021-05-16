@@ -16,6 +16,8 @@ public class JDBCDaoFactory extends DaoFactory {
         return new JDBCEventDao(getConnection());
     }
 
+    public CarModelDao createCarModelDao() { return new JDBCCarModelDao(getConnection());}
+
     @Override
     public UserDao createUserDao() { return new JDBCUserDao(getConnection());}
 

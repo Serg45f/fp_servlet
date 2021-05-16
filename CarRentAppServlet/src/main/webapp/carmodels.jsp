@@ -7,12 +7,6 @@
 <%@ page isELIgnored="false"%>
 <%@ page session="true" %>
 
-<%!
-String getFormattedDate(){
-SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-return sdf.format(new Date());
-}
-%>
 
 <fmt:setLocale value = "${sessionScope.lang}"  scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
@@ -20,7 +14,7 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>ConferenceHub</title>
+    <title>CarRentApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="resources/style.css" type="text/css">
@@ -76,14 +70,14 @@ height:100vh;">
                                         <b>${carmodel.price}</b>
                                     </h4>
                                     <p>
-                                        <a href="${pageContext.request.contextPath}/carmodels/${carmodel.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Open</a>
+                                        <a href="${pageContext.request.contextPath}/carmodels?carmodelId=${carmodel.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Open</a>
                                     </p>
                                     <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/carmodels/edit/${carmodel.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
+                                            <a href="${pageContext.request.contextPath}/carmodels_edit?carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
                                         </p>
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/carmodels/delete/${carmodel.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
+                                            <a href="${pageContext.request.contextPath}/carmodels_delete?carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
                                         </p>
                                     </c:if>
                                 </div>
@@ -93,8 +87,7 @@ height:100vh;">
                 </div>
             </c:forEach>
             </div>
-<!--            <div th:insert="~{pagination :: #pagination}"></div>-->
-
+            <c:import url="pagination.jsp"/>
         </div>
 
     </div>

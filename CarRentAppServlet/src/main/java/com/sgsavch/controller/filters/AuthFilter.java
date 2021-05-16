@@ -48,8 +48,8 @@ public class AuthFilter implements Filter {
         System.out.println("(AuthFilter)req.URl: " + req.getRequestURL().toString());
         System.out.println("(AuthFilter)session: " + session);
         System.out.print("(AuthFilter)session ROLES: ");
-        if(session.getAttribute("userRoles")!=null) {
-            for (Role role : (Set<Role>) session.getAttribute("userRoles")) {
+        if(session.getAttribute("loggedUserRoles")!=null) {
+            for (Role role : (Set<Role>) session.getAttribute("loggedUserRoles")) {
                 System.out.print(", " + role);
             }
         }

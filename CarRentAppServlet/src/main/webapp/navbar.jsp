@@ -61,7 +61,7 @@
 
             <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/carModels" >
                         <fmt:message key="nav.4" bundle="${rb}" />
                     </a>
                 </li>
@@ -81,7 +81,7 @@
 
 
         <a class="navbar-text mr-3">
-            ${userName}
+            ${loggedUserName}
 
         </a>
 

@@ -1,15 +1,13 @@
 package com.sgsavch.controller;
 
 import com.sgsavch.controller.Command.*;
+import com.sgsavch.controller.Command.CarModel.CarModelListCommand;
 import com.sgsavch.controller.Command.EventCommands.EventCommand;
 import com.sgsavch.controller.Command.EventCommands.EventListCommand;
 import com.sgsavch.controller.Command.TicketCommands.TicketTableAggregateCommand;
 import com.sgsavch.controller.Command.TicketCommands.TicketListCommand;
 import com.sgsavch.controller.Command.UserCommands.*;
-import com.sgsavch.model.service.EventService;
-import com.sgsavch.model.service.LectureService;
-import com.sgsavch.model.service.TicketService;
-import com.sgsavch.model.service.UserService;
+import com.sgsavch.model.service.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -35,16 +33,46 @@ public class Servlet extends HttpServlet {
         commands.put("registration", new RegisterCommand(new UserService()));
         commands.put("exception" , new ExceptionCommand());
         commands.put("events", new EventListCommand(new EventService()));
-//        commands.put("events/edit", new EventEditCommand(new EventService()));
-//        commands.put("events/delete", new EventDeleteCommand(new EventService()));
-//        commands.put("tickets/edit", new TicketEditCommand(new TicketService()));
-//        commands.put("tickets/delete", new TicketDeleteCommand(new TicketService()));
-        commands.put("tickets", new TicketListCommand(new TicketService()));
-        commands.put("ticketsTableAggregate", new TicketTableAggregateCommand(new TicketService()));
-        commands.put("users", new UserListCommand(new UserService()));
-        commands.put("users_edit", new UserEditCommand(new UserService()));
-//        commands.put("users/delete", new UserDeleteCommand(new UserService()));
         commands.put("event", new EventCommand(new EventService(),new TicketService(),new LectureService()));
+        commands.put("users", new UserListCommand(new UserService()));
+        //TODO: ERROR formatexception "USER"
+        commands.put("user_edit", new UserEditCommand(new UserService()));
+        //TODO user_delet
+        //commands.put("user_delete", new UserDeleteCommand(new UserService()));
+        //TODO setPeriod
+        //commands.put("setPeriod", new SetPeriodCommand());
+        //TODO setVehicles
+        //commands.put("setVehicles", new SetVehiclesCommand());
+        //TODO setsetOptions
+        //commands.put("setOptions", new SetOptionsCommand());
+        //TODO options
+        //commands.put("options", new OptionListCommand(new OptionService()));
+        //TODO option_edit
+        //commands.put("option_edit", new OptionCommand(new OptionService()));
+        //TODO order
+        //commands.put("order", new OrderCommand(new OrderService()));
+        //TODO order_edit
+        //commands.put("order_edit", new OrderEditCommand(new OrderService()));
+        //TODO order_delete
+        //commands.put("order_delete", new OrderDeleteCommand(new OrderService()));
+        //TODO orders
+        //commands.put("orders", new OrderListCommand(new OrderService()));
+        //TODO invoice
+        //commands.put("invoice", new InvoiceCommand(new InvoiceService()));
+        //TODO invoiceDamage
+        //commands.put("invoiceDamage", new InvoiceDamageCommand(new InvoiceService()));
+        //TODO carModels
+        commands.put("carModels", new CarModelListCommand(new CarModelService()));
+        //TODO carModel_edit
+        //commands.put("carModel_edit", new CarModelEditCommand(new CarmodelService()));
+        //TODO carModel_delete
+        //commands.put("carModel_delete", new CarModelDeleteCommand(new UserService()));
+        //TODO vehicles
+        //commands.put("vehicles", new VehicleListCommand(new CarmodelService()));
+        //TODO vehicle_edit
+        //commands.put("vehicle_edit", new VehicleEditCommand(new CarmodelService()));
+        //TODO vehicle_delete
+        //commands.put("vehicle_delete", new VehiclelDeleteCommand(new UserService()));
     }
 
     public void doGet(HttpServletRequest request,

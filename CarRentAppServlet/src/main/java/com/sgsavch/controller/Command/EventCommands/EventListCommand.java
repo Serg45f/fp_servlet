@@ -58,7 +58,7 @@ public class EventListCommand implements Command {
         request.setAttribute("events" , events);
         request.setAttribute("themes", Arrays.asList(Theme.values()));
         request.setAttribute("languages", Arrays.asList(Language.values()));
-        request.setAttribute("places", Arrays.asList(Hall.values()));
+       // request.setAttribute("places", Arrays.asList(Hall.values()));
 //        request.setAttribute("roleAdmin", Role.ADMIN);
 
 

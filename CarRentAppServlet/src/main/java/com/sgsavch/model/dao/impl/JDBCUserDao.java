@@ -1,6 +1,6 @@
 package com.sgsavch.model.dao.impl;
 
-import com.sgsavch.model.dao.SQLConstant;
+import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.UserDao;
 import com.sgsavch.model.dao.mapper.UserMapper;
 import com.sgsavch.model.entity.User;

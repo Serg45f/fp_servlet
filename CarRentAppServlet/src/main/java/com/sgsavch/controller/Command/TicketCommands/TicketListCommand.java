@@ -3,16 +3,9 @@ package com.sgsavch.controller.Command.TicketCommands;
 import com.sgsavch.controller.Command.Command;
 import com.sgsavch.model.entity.Event;
 import com.sgsavch.model.entity.Ticket;
-import com.sgsavch.model.entity.enums.Hall;
-import com.sgsavch.model.entity.enums.Language;
-import com.sgsavch.model.entity.enums.StatusEvent;
-import com.sgsavch.model.entity.enums.Theme;
-import com.sgsavch.model.service.EventService;
 import com.sgsavch.model.service.TicketService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class TicketListCommand implements Command {

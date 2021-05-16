@@ -16,7 +16,7 @@ public class LectureMapper {
 
     public Lecture extractFromResultSet(ResultSet rs) throws SQLException {
         Lecture lecture = new Lecture();
-        Hall[] halls = Hall.values();
+        //Hall[] halls = Hall.values();
         Theme[] themes = Theme.values();
         StatusLecture[] statusLecture = StatusLecture.values();
         Language[] languages = Language.values();

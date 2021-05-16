@@ -1,7 +1,6 @@
 package com.sgsavch.model.dao.mapper;
 
 import com.sgsavch.model.entity.Event;
-import com.sgsavch.model.entity.enums.Hall;
 import com.sgsavch.model.entity.enums.Language;
 import com.sgsavch.model.entity.enums.StatusEvent;
 
@@ -13,7 +12,7 @@ public class EventMapper {
 
     public Event extractFromResultSet(ResultSet rs) throws SQLException {
         Event event = new Event();
-        Hall[] halls = Hall.values();
+        //Hall[] halls = Hall.values();
         StatusEvent[] statusEvents = StatusEvent.values();
         Language[] languages = Language.values();
 
@@ -26,7 +25,7 @@ public class EventMapper {
         event.setPrice(rs.getDouble("price"));
         event.setPicture(rs.getString("picture"));
         event.setLanguage(languages[rs.getInt("language")]);
-        event.setPlace(halls[rs.getInt("place")]);
+       // event.setPlace(halls[rs.getInt("place")]);
 
         return event;
     }

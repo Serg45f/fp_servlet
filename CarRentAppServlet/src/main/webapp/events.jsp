@@ -151,10 +151,7 @@ height:100vh;">
                                     <fmt:message key="card.descr.name" bundle="${rb}"/>
                                     ${event.name}
                                 </h5>
-                                <p class="card-text">
-                                    <fmt:message key="card.descr.place" bundle="${rb}"/>
-                                    <small>${event.place}</small>
-                                </p>
+
                                 <p class="card-text"  type="date">
                                     <fmt:message key="card.descr.date" bundle="${rb}"/>
                                     <small>${event.date}</small>

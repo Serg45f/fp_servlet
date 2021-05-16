@@ -52,7 +52,7 @@ height:100vh;">
             <fmt:message key="login.name" bundle="${rb}"/>
         </label>
         <div class="col-sm-6 px-0">
-            <input type="text" name="name" class="form-control bg-transparent text-white" placeholder="some@some.com"/>
+            <input type="text" name="name" class="form-control bg-transparent" placeholder="some@some.com"/>
         </div>
     </div>
     <div class="form-group row">
@@ -60,7 +60,7 @@ height:100vh;">
             <fmt:message key="login.pass" bundle="${rb}"/>
         </label>
         <div class="col-sm-6 px-0">
-            <input type="password" name="pass" class="form-control bg-transparent text-white" placeholder="Password"/>
+            <input type="password" name="pass" class="form-control bg-transparent" placeholder="Password"/>
         </div>
     </div>
     <div class="form-group row">

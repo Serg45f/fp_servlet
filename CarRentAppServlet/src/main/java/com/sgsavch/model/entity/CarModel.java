@@ -1,8 +1,8 @@
 package com.sgsavch.model.entity;
 
 import com.sgsavch.model.entity.enums.StatusCar;
+import com.sgsavch.model.entity.enums.TypeCar;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class CarModel {

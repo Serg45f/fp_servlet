@@ -1,6 +1,8 @@
 package com.sgsavch.model.entity;
 
-import javax.persistence.*;
+import com.sgsavch.model.entity.enums.Location;
+import com.sgsavch.model.entity.enums.StatusOrder;
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Order {
     private Vehicle vehicle;
     private User user;
     private StatusOrder status;
-    private  Location location;
+    private Location location;
     private File qrcode;
     private Double pricePeriod;
     private Double totalPrice;

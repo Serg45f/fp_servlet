@@ -1,12 +1,9 @@
 package com.sgsavch.model.entity;
 
-import com.sgsavch.model.entity.enums.Hall;
 import com.sgsavch.model.entity.enums.Language;
 import com.sgsavch.model.entity.enums.StatusEvent;
 import com.sgsavch.model.entity.enums.Theme;
-import lombok.*;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -18,7 +15,7 @@ public class Event {
     private Long id;
 
     private String name;
-    private Hall place;
+    //rivate Hall place;
     private LocalDate date;
     private LocalTime time;
     private Language language;
@@ -36,7 +33,7 @@ public class Event {
 
     public Event(Long id,
                  String name,
-                 Hall place,
+                // Hall place,
                  LocalDate date,
                  LocalTime time,
                  Language language,
@@ -50,7 +47,7 @@ public class Event {
                  StatusEvent statusEvent) {
         this.id = id;
         this.name = name;
-        this.place = place;
+       // this.place = place;
         this.date = date;
         this.time = time;
         this.language = language;
@@ -80,13 +77,13 @@ public class Event {
         this.name = name;
     }
 
-    public Hall getPlace() {
-        return place;
-    }
-
-    public void setPlace(Hall place) {
-        this.place = place;
-    }
+//    public Hall getPlace() {
+//        return place;
+//    }
+//
+//    public void setPlace(Hall place) {
+//        this.place = place;
+//    }
 
     public LocalDate getDate() {
         return date;

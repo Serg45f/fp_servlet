@@ -7,6 +7,7 @@ public abstract class DaoFactory {
     private static DaoFactory daoFactory;
 
     public abstract EventDao createEventDao();
+    public abstract CarModelDao createCarModelDao();
     public abstract UserDao createUserDao();
     public abstract TicketDao createTicketDao();
     public abstract LectureDao createLectureDao();

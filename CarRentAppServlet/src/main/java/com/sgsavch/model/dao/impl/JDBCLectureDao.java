@@ -1,7 +1,7 @@
 package com.sgsavch.model.dao.impl;
 
 import com.sgsavch.model.dao.LectureDao;
-import com.sgsavch.model.dao.SQLConstant;
+import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.mapper.LectureMapper;
 import com.sgsavch.model.entity.Lecture;
 

@@ -1,4 +1,4 @@
-package com.sgsavch.model.dao;
+package com.sgsavch.model.dao.SQLConstants;
 
 import com.sgsavch.model.entity.agregates.TicketsCountAndTotalSum;
 
@@ -72,6 +72,29 @@ public interface SQLConstant {
 
 	String SQL_GET_EVENT_BY_ID =
 			"SELECT * FROM "+TABLE_EVENT+" WHERE "+EVENT_ID+"=?";
+	///////////////////////////////////////////////////////////////////////////////////
+	String TABLE_CARMODELS = "carmodels";
+
+	String CARMODEL_ID = "carmodels.id";
+	String CARMODEL_NAME = "carmodels.name";
+	String CARMODEL_NUMBER_OF_DOORS = "carmodels.numb_of_doors";
+	String CARMODEL_NUMBER_OF_SEATS = "carmodels.numb_of_seats";
+	String CARMODEL_PICTURE = "carmodels.picture";
+	String CARMODEL_STATUS = "carmodels.status";
+	String CARMODEL_TYPE = "carmodels.type";
+	String CARMODEL_PRICE = "carmodels.price";
+	String CARMODEL_DEPOSIT = "carmodels.deposit";
+
+	String SQL_GET_CARMODEL_BY_ID =
+			"SELECT * FROM " + TABLE_CARMODELS + " WHERE " + CARMODEL_ID + "=?";
+
+	String SQL_GET_ALL_CARMODELS =
+			"SELECT * FROM "+TABLE_CARMODELS;
+
+	String SQL_GET_CARMODELS_PAGINATED =
+			"SELECT * FROM " + TABLE_CARMODELS + " LIMIT ?, ?";
+
+	String SQL_GET_NUMBER_OF_CARDS_CARMODELS = "SELECT COUNT(id) as count FROM "+TABLE_CARMODELS;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	String TABLE_TICKET = "ticket";

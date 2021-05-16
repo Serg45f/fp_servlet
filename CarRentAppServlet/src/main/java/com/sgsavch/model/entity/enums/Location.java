@@ -1,4 +1,4 @@
-package com.sgsavch.model.entity;
+package com.sgsavch.model.entity.enums;
 
 public enum Location {
     ODESSA("Odessa, International airport 'Odessa'"),

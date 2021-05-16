@@ -1,7 +1,6 @@
 package com.sgsavch.model.entity.agregates;
 
 
-import com.sgsavch.model.entity.enums.Hall;
 import com.sgsavch.model.entity.enums.Language;
 
 import java.time.LocalDate;
@@ -13,7 +12,7 @@ public class TicketsCountAndTotalSum {
     private LocalTime eventTime;
     private Language eventLanguage;
     private Double eventPrice;
-    private Hall eventPlace;
+    //private Hall eventPlace;
     private Long eventId;
     private String eventName;
     private String ticketCode;
@@ -60,13 +59,13 @@ public class TicketsCountAndTotalSum {
         this.eventPrice = eventPrice;
     }
 
-    public Hall getEventPlace() {
-        return eventPlace;
-    }
-
-    public void setEventPlace(Hall eventPlace) {
-        this.eventPlace = eventPlace;
-    }
+//    public Hall getEventPlace() {
+//        return eventPlace;
+//    }
+//
+//    public void setEventPlace(Hall eventPlace) {
+//        this.eventPlace = eventPlace;
+//    }
 
     public Long getEventId() {
         return eventId;
