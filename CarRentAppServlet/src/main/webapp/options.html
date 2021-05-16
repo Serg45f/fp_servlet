@@ -100,7 +100,7 @@ height:100vh;">
                                     <p>${option.description}</p>
                                 </td>
                                 <td>${option.price}</td>
-                                <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                                <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                     <td>
                                         <a class="text-success" href="${pageContext.request.contextPath}/options/edit/${option.id}">Edit</a>
                                     </td>
@@ -110,7 +110,7 @@ height:100vh;">
                                 </c:if>
                             </tr>
                         </c:forEach>
-                        <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                        <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                                 <a class="text-success" to="4" href="${pageContext.request.contextPath}/options/add">
                                                     Add
                                                 </a>

@@ -78,7 +78,7 @@ height:100vh;">
                                     <p>
                                         <a href="${pageContext.request.contextPath}/carmodels/${carmodel.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Open</a>
                                     </p>
-                                    <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                                    <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                         <p>
                                             <a href="${pageContext.request.contextPath}/carmodels/edit/${carmodel.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
                                         </p>

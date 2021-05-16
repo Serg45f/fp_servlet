@@ -5,6 +5,8 @@ import com.sgsavch.model.entity.enums.StatusUser;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +19,7 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
     private StatusUser status;
     private String passportNumb;
     private LocalDate passDateExp;
@@ -25,9 +27,9 @@ public class User {
     private String licenseNumb;
     private String cardNumb;
     private String resume;
-    private List<Order> orders;
-    private List<Lecture> lectures;
-    private List<Vehicle> vehicles;
+    private List<Order> orders = new ArrayList<>();
+    private List<Lecture> lectures = new ArrayList<>();
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public Boolean isAdmin(){
         return roles.contains(Role.ADMIN);

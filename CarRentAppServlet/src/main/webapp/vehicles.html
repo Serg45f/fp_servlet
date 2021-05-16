@@ -114,7 +114,7 @@ return sdf.format(new Date());
                                         <p>
                                             <a href="${pageContext.request.contextPath}/order/options/${vehicle.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Choose</a>
                                         </p>
-                                        <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+                                        <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                             <p>
                                                 <a href="${pageContext.request.contextPath}/vehicles/edit/${vehicle.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
                                             </p>

@@ -28,17 +28,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container col-sm-8 mx-auto my-auto">
-    <c:import url="navbar.jsp"/>
-<br>
-<br>
+<c:import url="navbar.jsp"/>
+<div class="container col-sm-8 mx-auto my-auto" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
+flex-direction: column;
+height:100vh;">
+    <br>
+    <br>
+    <br>
+    <br>
 <form class = "mt-2"   method="post" action="${pageContext.request.contextPath}/login">
     <h2 class="form-signing-hiding">
         <fmt:message key="login.head" bundle="${rb}"/>
     </h2>
     <br>
     <c:if test="${session.chequeEmail==1}">
-        <a  href="mailto:${session.user.email}">Go to [[${session.user.email}]] to confirm your email</a>
+        <a  href="mailto:${session.user.email}">Go to ${session.user.email} to confirm your email</a>
     </c:if>
     <h3 class="form-signing-hiding" >${message}</h3>
     <br>

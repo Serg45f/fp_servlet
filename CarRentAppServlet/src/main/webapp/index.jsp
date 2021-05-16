@@ -37,12 +37,12 @@ return sdf.format(new Date());
 <body>
 <c:import url="navbar.jsp"/>
 <br/>
-<br/>
-<br/>
 
  <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
+     <br/>
+     <br/>
     <h1 class="text-color mt-2"  >
         <fmt:message key="greeting1" bundle="${rb}"/>
     </h1>

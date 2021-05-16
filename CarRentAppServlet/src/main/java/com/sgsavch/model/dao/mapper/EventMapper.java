@@ -20,7 +20,7 @@ public class EventMapper {
         event.setId(rs.getLong("id"));
         event.setName(rs.getString("name"));
         event.setDescription(rs.getString("description"));
-        event.setStatusEvent(statusEvents[rs.getInt("status")]);
+        event.setStatusEvent(StatusEvent.valueOf(rs.getString("status")));
         event.setDate(rs.getDate("date").toLocalDate());
         event.setTime(rs.getTime("time").toLocalTime());
         event.setPrice(rs.getDouble("price"));

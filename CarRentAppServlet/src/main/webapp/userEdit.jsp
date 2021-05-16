@@ -8,12 +8,13 @@
 <%@ page isELIgnored="false"%>
 <%@ page session="true" %>
 
-<%!
+<%--
 String getFormattedDate(){
 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
 return sdf.format(new Date());
 }
-%>
+--%>
+
 
 <fmt:setLocale value = "${sessionScope.lang}"  scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
@@ -53,10 +54,10 @@ return sdf.format(new Date());
         <div>
             <label>
                 <c:if test="${!user.roles.contains(role)}">
-                    <input type="checkbox" name="role" >
+                    <input type="checkbox"  name="role"%/>
                 </c:if>
                 <c:if test="${user.roles.contains(role)}">
-                    <input type="checkbox" name="role" checked/>
+                    <input type="checkbox"  checked="checked"  name="role"/>
                 </c:if>
 
                 ${role.getRole()}  Role</label>
@@ -75,4 +76,3 @@ return sdf.format(new Date());
 
 
 
-<
