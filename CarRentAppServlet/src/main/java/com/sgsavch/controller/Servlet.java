@@ -1,11 +1,12 @@
 package com.sgsavch.controller;
 
 import com.sgsavch.controller.Command.*;
-import com.sgsavch.controller.Command.CarModel.CarModelListCommand;
+import com.sgsavch.controller.Command.CarModelCommands.CarModelAddCommand;
+import com.sgsavch.controller.Command.CarModelCommands.CarModelDeleteCommand;
+import com.sgsavch.controller.Command.CarModelCommands.CarModelEditCommand;
+import com.sgsavch.controller.Command.CarModelCommands.CarModelListCommand;
 import com.sgsavch.controller.Command.EventCommands.EventCommand;
 import com.sgsavch.controller.Command.EventCommands.EventListCommand;
-import com.sgsavch.controller.Command.TicketCommands.TicketTableAggregateCommand;
-import com.sgsavch.controller.Command.TicketCommands.TicketListCommand;
 import com.sgsavch.controller.Command.UserCommands.*;
 import com.sgsavch.model.service.*;
 
@@ -63,10 +64,12 @@ public class Servlet extends HttpServlet {
         //commands.put("invoiceDamage", new InvoiceDamageCommand(new InvoiceService()));
         //TODO carModels
         commands.put("carModels", new CarModelListCommand(new CarModelService()));
+        //TODO carModel_add
+        commands.put("carModel_add", new CarModelAddCommand(new CarModelService()));
         //TODO carModel_edit
-        //commands.put("carModel_edit", new CarModelEditCommand(new CarmodelService()));
+        commands.put("carModel_edit", new CarModelEditCommand(new CarModelService()));
         //TODO carModel_delete
-        //commands.put("carModel_delete", new CarModelDeleteCommand(new UserService()));
+        commands.put("carModel_delete", new CarModelDeleteCommand(new CarModelService()));
         //TODO vehicles
         //commands.put("vehicles", new VehicleListCommand(new CarmodelService()));
         //TODO vehicle_edit

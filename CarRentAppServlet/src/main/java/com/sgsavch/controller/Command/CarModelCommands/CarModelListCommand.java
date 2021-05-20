@@ -1,15 +1,10 @@
-package com.sgsavch.controller.Command.CarModel;
+package com.sgsavch.controller.Command.CarModelCommands;
 
 import com.sgsavch.controller.Command.Command;
 import com.sgsavch.model.entity.CarModel;
-import com.sgsavch.model.entity.Event;
-import com.sgsavch.model.entity.enums.*;
 import com.sgsavch.model.service.CarModelService;
-import com.sgsavch.model.service.EventService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class CarModelListCommand implements Command {

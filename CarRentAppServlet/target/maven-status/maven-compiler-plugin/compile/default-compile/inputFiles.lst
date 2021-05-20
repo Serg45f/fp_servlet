@@ -3,8 +3,8 @@ C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\enti
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\impl\JDBCCarModelDao.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\mapper\UserMapper.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\mapper\EventMapper.java
-C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModel\CarModelCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\UserCommands\ActivatedCommand.java
+C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModelCommands\CarModelSaveCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\CarModelDao.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\Lecture.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\enums\Language.java
@@ -35,12 +35,15 @@ C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\UserCommands\RegisterCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\UserCommands\UserListCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\enums\StatusOrder.java
+C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModelCommands\CarModelDeleteCommand.java
+C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModelCommands\CarModelListCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\Command.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\service\CarModelService.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\UserCommands\UserEditCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\impl\JDBCTicketDao.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\User.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\service\LectureService.java
+C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModelCommands\CarModelEditCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\mapper\LectureMapper.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\mapper\ObjectMapper.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\TicketDao.java
@@ -48,6 +51,7 @@ C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\enti
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\TicketCommands\TicketListCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\filters\EncodingFilter.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\CarModel.java
+C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModelCommands\CarModelAddCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\enums\Color.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CommandUtility.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\filters\SessionLocaleFilter.java
@@ -65,7 +69,6 @@ C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\entity\enums\StatusCar.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\EventCommands\EventCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\UserCommands\LoginCommand.java
-C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\CarModel\CarModelListCommand.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\model\dao\SQLConstants\SQLConstant.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Servlet.java
 C:\EP_Projects\fp_servlet\CarRentAppServlet\src\main\java\com\sgsavch\controller\Command\EventCommands\EventListCommand.java

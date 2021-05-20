@@ -96,6 +96,23 @@ public interface SQLConstant {
 
 	String SQL_GET_NUMBER_OF_CARDS_CARMODELS = "SELECT COUNT(id) as count FROM "+TABLE_CARMODELS;
 
+	String SQL_ADD_NEW_CARMODEL = "INSERT INTO " + TABLE_CARMODELS + " (" +
+			CARMODEL_NAME + ", " + CARMODEL_NUMBER_OF_DOORS + ", " + CARMODEL_NUMBER_OF_SEATS + ", " +
+			CARMODEL_PICTURE + ", " + CARMODEL_STATUS + ", " + CARMODEL_TYPE + ", " +
+			CARMODEL_PRICE+ ", " + CARMODEL_DEPOSIT + ") VALUES (?,?,?,?,?,?,?,?);";
+
+	String SQL_UPDATE_CARMODEL =
+			"UPDATE " + TABLE_CARMODELS + " SET " +
+					CARMODEL_NAME + " = ?, "+ CARMODEL_NUMBER_OF_DOORS + " = ?, "+
+					CARMODEL_NUMBER_OF_SEATS + " = ?, "+ CARMODEL_PICTURE + " = ?, "+
+					CARMODEL_STATUS + " = ?, "+ CARMODEL_TYPE + " = ?, "+
+					CARMODEL_PRICE + " = ?, "+ CARMODEL_DEPOSIT + " = ?, "+
+					" = ? WHERE "+CARMODEL_ID+" = ?";
+
+	String SQL_DELETE_CARMODEL_BY_ID =
+			"DELETE FROM " + TABLE_CARMODELS + " WHERE "+CARMODEL_ID+"=?";
+
+
 	//////////////////////////////////////////////////////////////////////////////////
 	String TABLE_TICKET = "ticket";
 

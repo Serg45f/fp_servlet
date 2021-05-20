@@ -72,7 +72,7 @@ return sdf.format(new Date());
                     <div class="card  mb-3 " style="background-color: rgba(255,255,255,0.6);max-width: 1200px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="${pageContext.request.contextPath}/pic/${vehicle.carModel.picture}" class="card-img-top" alt="...">  <!--class="card-img-top"  width="200" height="150"-->
+                                <img src="resources/img/${vehicle.carModel.picture}" class="card-img-top" alt="...">  <!--class="card-img-top"  width="200" height="150"-->
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body row">

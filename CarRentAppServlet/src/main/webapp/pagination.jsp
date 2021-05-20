@@ -45,7 +45,7 @@
                         <c:choose>
                             <c:when test="${currentPage eq i}">
                                 <li class="page-item active"><a class="page-link bg-transparent"
-                                            ${i} <span class="sr-only">(current)</span></a>
+                                            ${i} <span class="sr-only">${currentPage}</span></a>
                                 </li>
                             </c:when>
                             <c:otherwise>

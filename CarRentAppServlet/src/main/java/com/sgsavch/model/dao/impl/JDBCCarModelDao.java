@@ -4,6 +4,7 @@ import com.sgsavch.model.dao.CarModelDao;
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.mapper.CarModelMapper;
 import com.sgsavch.model.entity.CarModel;
+import com.sgsavch.model.entity.enums.StatusCar;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,8 +21,38 @@ public class JDBCCarModelDao implements CarModelDao {
 
     @Override
     public Long create(CarModel entity) {
+        Long res = 0L;
 
-        return null;
+        ResultSet rs = null;
+
+        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_CARMODEL, Statement.RETURN_GENERATED_KEYS)) {
+
+            int k = 1;
+            pstmt.setString(k++, entity.getName());
+            pstmt.setInt(k++, entity.getDoorsNumb());
+            pstmt.setInt(k++, entity.getSeatsNumb());
+            pstmt.setString(k++, entity.getPicture());
+            pstmt.setString(k++, entity.getStatus().name());
+            pstmt.setString(k++, entity.getType().name());
+            pstmt.setDouble(k++, entity.getPrice());
+            pstmt.setDouble(k++, entity.getDeposit());
+
+            if (pstmt.executeUpdate() > 0) {
+                rs = pstmt.getGeneratedKeys();
+                if (rs.next()) {
+                    entity.setId(rs.getLong(1));
+                }
+                res = rs.getLong(1);
+            }
+        } catch (SQLException e) {
+//                logger.log(Level.WARNING,e.toString(),e);
+//                logger.log(Level.INFO,"Cannot insert user ",e);
+        } finally {
+            //close(rs);
+            close();
+        }
+        return res;
+
     }
 
     @Override
@@ -67,10 +98,38 @@ public class JDBCCarModelDao implements CarModelDao {
 
     @Override
     public void update(CarModel entity) {
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_CARMODEL)) {
+
+            int k = 1;
+            pstmt.setString(k++, entity.getName());
+            pstmt.setInt(k++, entity.getDoorsNumb());
+            pstmt.setInt(k++, entity.getSeatsNumb());
+            pstmt.setString(k++, entity.getPicture());
+            pstmt.setString(k++, entity.getStatus().name());
+            pstmt.setString(k++, entity.getType().name());
+            pstmt.setDouble(k++, entity.getPrice());
+            pstmt.setDouble(k++, entity.getDeposit());
+            pstmt.setLong(k++,entity.getId());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+//            logger.log(Level.WARNING,e.toString(),e);
+//            logger.log(Level.INFO,"Cannot update team ",e);
+        }
+
     }
 
     @Override
     public boolean delete(Long id) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_CARMODEL_BY_ID);) {
+
+            int k = 1;
+            prst.setLong(k++,id);
+            prst.executeUpdate();
+
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
 
@@ -123,5 +182,13 @@ public class JDBCCarModelDao implements CarModelDao {
         }
 
 
+    }
+
+    static String escapeForLike(String param) {
+        return param
+                .replace("!", "!!")
+                .replace("%", "!%")
+                .replace("_", "!_")
+                .replace("[", "![");
     }
 }

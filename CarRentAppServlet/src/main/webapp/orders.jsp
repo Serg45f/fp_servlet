@@ -97,7 +97,7 @@ height:100vh;">
                                     <tr>
                                         <td>${order.id}</td>
                                         <td>
-                                            <img src="/pic/${order.vehicle.carModel.picture}" width="80" hight="50"  alt="...">
+                                            <img src="resources/img/${order.vehicle.carModel.picture}" width="80" hight="50"  alt="...">
                                         </td>
                                         <td>${order.vehicle.carModel.name}</td>
                                         <td>${order.vehicle.id}</td>

@@ -28,9 +28,27 @@ public class CarModelService {
         }
     }
 
-    public CarModel getCarmodel(Long carModelId) {
+    public CarModel getCarModel(Long carModelId) {
         try (CarModelDao dao = daoFactory.createCarModelDao()) {
             return dao.findById(carModelId);
+        }
+    }
+
+    public Long addCarModel(CarModel carModelId) {
+        try (CarModelDao dao = daoFactory.createCarModelDao()) {
+            return dao.create(carModelId);
+        }
+    }
+
+    public void editCarModel(CarModel carModelId) {
+        try (CarModelDao dao = daoFactory.createCarModelDao()) {
+            dao.update(carModelId);
+        }
+    }
+
+    public boolean deleteCarModel(Long carModelId) {
+        try (CarModelDao dao = daoFactory.createCarModelDao()) {
+            return dao.delete(carModelId);
         }
     }
 }

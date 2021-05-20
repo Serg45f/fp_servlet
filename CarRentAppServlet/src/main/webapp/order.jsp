@@ -52,7 +52,7 @@ height:100vh;">
         <div class="row">
             <div class="col">
                 <div class="row" width="800" height="500">
-                    <img src="${pageContext.request.contextPath}/pic/${session.currentOrder.vehicle.carModel.picture}"  alt="...">
+                    <img src="resources/img/${session.currentOrder.vehicle.carModel.picture}"  alt="...">
                 </div>
 <!--                ////////////////////////////////////USER//////////////////////////////////////////-->
                 <div class="order-group col-bg-12 col-form-label row">

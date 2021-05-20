@@ -46,97 +46,77 @@ height:100vh;">
         <br>
         <h2 class="mt-4">Edit car model</h2>
         <br>
-     <c:if class="form-group mt-3">
-          <form accept-charset="UTF-8" method="post" enctype="multipart/form-data"  action="/carmodels" >
+     <div class="form-group mt-3">
+          <form accept-charset="UTF-8" method="post" enctype="multipart/form-data"  action="${pageContext.request.contextPath}/carModel_save" >
 
                <div class="form-group">
                     <div class="custom-pict">
-                        <img src="resources/pic/${carmodel.picture}" width="500" height="312" alt="...">
+                        <img src="resources/pic/${carModel.picture}" width="500" height="312" alt="...">
                         <input  type="file" class="form-control  rounded" name="file" id="customPict">
-<!--                        <label class="custom-file-label" for="customPict">Choose picture</label>-->
+<%--                        <label class="custom-file-label" for="customPict">Choose picture</label>--%>
                     </div>
                </div>
 
               <div class="form-group">
                   <input  type="text" class="form-control bg-transparent" placeholder="Name"
-                          value ="${carmodel.name}"  name ="name" />
-                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                          value ="${carModel.name}"  name ="name" />
+                  <%--<th:block th:if="${#fields.hasErrors('name')}">
                       <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>-->
+                  </th:block>--%>
               </div>
 
               <div class="form-group">
                   <input  type="text" class="form-control bg-transparent"  placeholder="Seats"
-                          value ="${carmodel.seatsNumb}"  name ="seatsNumb" />
-                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                          value ="${carModel.seatsNumb}"  name ="seatsNumb" />
+                  <%--<th:block th:if="${#fields.hasErrors('name')}">
                       <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>-->
+                  </th:block>--%>
               </div>
 
               <div class="form-group">
                   <input  type="text" class="form-control bg-transparent"  placeholder="Doors"
-                          value ="${carmodel.doorsNumb}"  name ="doorsNumb" />
-                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                          value ="${carModel.doorsNumb}"  name ="doorsNumb" />
+                  <%--<th:block th:if="${#fields.hasErrors('name')}">
                       <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>-->
+                  </th:block>--%>
               </div>
 
               <div class="form-group">
                   <select type="text" class="form-control bg-transparent" placeholder="Type"
-                          value ="${carmodel.type}"  name ="type" />
-                      <c:forEach var="type" items="${cartypes}">
-                          <c:if test="${carmodel.type == type}">
-                              <option class="form-control bg-transparent"
-                                      selected
-                                      value="${{type}}">${type.getType()}
-                              </option>
-                          </c:if>
-                          <c:if test="${carmodel.type != type}">
-                              <option class="form-control bg-transparent"
-                                      value="${{type}}">${type.getType()}
-                              </option>
-                          </c:if>
+                          name ="type" />
+                      <c:forEach var="type" items="${carTypes}">
+                              <option value="${type}" ${carModel.type == type ? 'selected="selected"' : ''}>${type.getType()}</option>
                       </c:forEach>
                   </select>
               </div>
 
               <div class="form-group">
                   <select type="text" class="form-control bg-transparent" placeholder="Status"
-                          value ="${carmodel.status}"  name ="status" />
-                  <c:forEach var="status" items="${carstatuses}">
-                      <c:if test="${carmodel.status == status}">
-                          <option class="form-control bg-transparent"
-                                  selected
-                                  value="${{status}}">${status.getStatus()}
-                          </option>
-                      </c:if>
-                      <c:if test="${carmodel.status != status}">
-                          <option class="form-control bg-transparent"
-                                  value="${{status}}">${status.getStatus()}
-                          </option>
-                      </c:if>
+                         name ="status" />
+                  <c:forEach var="status" items="${carStatuses}">
+                          <option value="${status}"   ${carModel.status == status ? 'selected="selected"' : ''}>${status.getStatus()}</option>
                   </c:forEach>
                   </select>
               </div>
               <div class="form-group">
                   <input  type="number" class="form-control bg-transparent"  placeholder="Price"
-                          value ="${carmodel.price}"  name ="price" />
-                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                          value ="${carModel.price}"  name ="price" />
+                  <%--<th:block th:if="${#fields.hasErrors('name')}">
                       <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>-->
+                  </th:block>--%>
               </div>
 
               <div class="form-group">
-                  <input  type="number" class="form-control bg-transparent"  placeholder="Price"
-                          value ="${carmodel.deposit}"  name ="deposit" />
-                  <!--<th:block th:if="${#fields.hasErrors('name')}">
+                  <input  type="number" class="form-control bg-transparent"  placeholder="Deposit"
+                          value ="${carModel.deposit}"  name ="deposit" />
+                  <%--<th:block th:if="${#fields.hasErrors('name')}">
                       <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>-->
+                  </th:block>--%>
               </div>
 
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                <c:if test="${carmodel.id!=null}">
-                    <input type="hidden" value="${carmodel.id}"  named="id">
+                <c:if test="${carModel.id!=null}">
+                    <input type="hidden" value="${carModel.id}"  named="id">
                 </c:if>
                 <div class="form-group">
                     <button type="submit" class="btn btn-transparent btn-outline-primary" >Save</button>

@@ -38,7 +38,7 @@ public class LoginCommand implements Command {
             CommandUtility.setUserRole(request, userAuth.getRoles(), userAuth.getEmail(),userAuth.getId());
             message = "Welcome, " + userAuth.getFirstName() + "! You have successfully logged in!";
         }else{
-            message = userAuth.getFirstName() + "! Your password incorrect! Try again.";
+            message = userAuth.getFirstName() + "! Your password incorrect! Try again or register yourself.";
         }
         request.setAttribute("message", message);
 
