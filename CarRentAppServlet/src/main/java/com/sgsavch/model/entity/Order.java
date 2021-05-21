@@ -19,13 +19,13 @@ public class Order {
     private User user;
     private StatusOrder status;
     private Location location;
-    private File qrcode;
+    private String qrcode;
     private Double pricePeriod;
     private Double totalPrice;
     private Double priceOptions;
     private List<Option> options;
     private String damageDescript;
-    private String damagePrice;
+    private Double damagePrice;
     private Boolean damageIsPayed;
 
     public Order(Long id,
@@ -38,13 +38,13 @@ public class Order {
                  User user,
                  StatusOrder status,
                  Location location,
-                 File qrcode,
+                 String qrcode,
                  Double pricePeriod,
                  Double totalPrice,
                  Double priceOptions,
                  List<Option> options,
                  String damageDescript,
-                 String damagePrice,
+                 Double damagePrice,
                  Boolean damageIsPayed) {
 
         this.id = id;
@@ -150,11 +150,11 @@ public class Order {
         this.location = location;
     }
 
-    public File getQrcode() {
+    public String getQrcode() {
         return qrcode;
     }
 
-    public void setQrcode(File qrcode) {
+    public void setQrcode(String qrcode) {
         this.qrcode = qrcode;
     }
 
@@ -198,11 +198,11 @@ public class Order {
         this.damageDescript = damageDescript;
     }
 
-    public String getDamagePrice() {
+    public Double getDamagePrice() {
         return damagePrice;
     }
 
-    public void setDamagePrice(String damagePrice) {
+    public void setDamagePrice(Double damagePrice) {
         this.damagePrice = damagePrice;
     }
 

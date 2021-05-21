@@ -15,15 +15,18 @@ public class JDBCDaoFactory extends DaoFactory {
     public EventDao createEventDao() {
         return new JDBCEventDao(getConnection());
     }
-
+    @Override
+    public OrderDao createOrderDao() { return new JDBCOrderDao(getConnection());}
+    @Override
     public CarModelDao createCarModelDao() { return new JDBCCarModelDao(getConnection());}
-
+    @Override
+    public VehicleDao createVehicleDao() { return new JDBCVehicleDao(getConnection());}
+    @Override
+    public OptionDao createOptionDao() { return new JDBCOptionDao(getConnection());}
     @Override
     public UserDao createUserDao() { return new JDBCUserDao(getConnection());}
-
     @Override
     public TicketDao createTicketDao() {return new JDBCTicketDao(getConnection());}
-
     @Override
     public LectureDao createLectureDao() {return new JDBCLectureDao(getConnection());}
 

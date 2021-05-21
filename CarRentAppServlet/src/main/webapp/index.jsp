@@ -56,6 +56,9 @@ height:100vh;">
             <fmt:message key="btn.startHere" bundle="${rb}"/>START HERE</a>
     </c:if>
     <br>
+
+     <i>${pageContext.request.contextPath}</i>
+
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

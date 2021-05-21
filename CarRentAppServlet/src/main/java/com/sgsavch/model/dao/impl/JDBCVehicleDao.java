@@ -1,10 +1,10 @@
 package com.sgsavch.model.dao.impl;
 
-import com.sgsavch.model.dao.CarModelDao;
+
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
-import com.sgsavch.model.dao.mapper.CarModelMapper;
-import com.sgsavch.model.entity.CarModel;
-import com.sgsavch.model.entity.enums.StatusCar;
+import com.sgsavch.model.dao.VehicleDao;
+import com.sgsavch.model.dao.mapper.VehicleMapper;
+import com.sgsavch.model.entity.Vehicle;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,30 +12,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JDBCCarModelDao implements CarModelDao {
+public class JDBCVehicleDao implements VehicleDao {
     private Connection connection;
 
-    public JDBCCarModelDao(Connection connection) {
+    public JDBCVehicleDao(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public Long create(CarModel entity) {
+    public Long create(Vehicle entity) {
         Long res = 0L;
 
         ResultSet rs = null;
 
-        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_CARMODEL, Statement.RETURN_GENERATED_KEYS)) {
+        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_VEHICLE, Statement.RETURN_GENERATED_KEYS)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getName());
-            pstmt.setInt(k++, entity.getDoorsNumb());
-            pstmt.setInt(k++, entity.getSeatsNumb());
-            pstmt.setString(k++, entity.getPicture());
-            pstmt.setInt(k++, entity.getStatus().ordinal());
-            pstmt.setString(k++, entity.getType().name());
-            pstmt.setDouble(k++, entity.getPrice());
-            pstmt.setDouble(k++, entity.getDeposit());
+            pstmt.setString(k++, entity.getColor().name());
+            pstmt.setString(k++, entity.getRegNumber());
+            pstmt.setString(k++, entity.getTransmission());
+            pstmt.setLong(k++, entity.getCarModel().getId());
+            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue()));
+            pstmt.setDouble(k++, entity.getDiscount());
+            pstmt.setLong(k++, entity.getManager().getId());
+
 
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
@@ -52,24 +52,23 @@ public class JDBCCarModelDao implements CarModelDao {
             close();
         }
         return res;
-
     }
 
     @Override
-    public CarModel findById(long id) {
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_CARMODEL_BY_ID)) {
+    public Vehicle findById(long id) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_VEHICLE_BY_ID)) {
 
             int k = 1;
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            CarModel carModel = new CarModel();
-            CarModelMapper carmodelMapper = new CarModelMapper();
+            Vehicle vehicle = new Vehicle();
+            VehicleMapper vehicleMapper = new VehicleMapper();
             if (rs.next()) {
-                carModel = carmodelMapper
+                vehicle = vehicleMapper
                         .extractFromResultSet(rs);
             }
-            return carModel;
+            return vehicle;
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -77,19 +76,19 @@ public class JDBCCarModelDao implements CarModelDao {
     }
 
     @Override
-    public List<CarModel> findAll() {
-        Map<Long, CarModel> carModels = new HashMap<>();
+    public List<Vehicle> findAll() {
+        Map<Long, Vehicle> vehicles = new HashMap<>();
 
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_ALL_CARMODELS);
-            CarModelMapper carModelMapper = new CarModelMapper();
+            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_ALL_VEHICLES);
+            VehicleMapper vehicleMapper = new VehicleMapper();
             while (rs.next()) {
-                CarModel carModel = carModelMapper
+                Vehicle vehicle = vehicleMapper
                         .extractFromResultSet(rs);
-                carModel = carModelMapper
-                        .makeUnique(carModels, carModel);
+                vehicle = vehicleMapper
+                        .makeUnique(vehicles, vehicle);
             }
-            return new ArrayList<>(carModels.values());
+            return new ArrayList<>(vehicles.values());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -97,18 +96,17 @@ public class JDBCCarModelDao implements CarModelDao {
     }
 
     @Override
-    public void update(CarModel entity) {
-        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_CARMODEL)) {
+    public void update(Vehicle entity) {
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_VEHICLE)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getName());
-            pstmt.setInt(k++, entity.getDoorsNumb());
-            pstmt.setInt(k++, entity.getSeatsNumb());
-            pstmt.setString(k++, entity.getPicture());
-            pstmt.setString(k++, entity.getStatus().name());
-            pstmt.setString(k++, entity.getType().name());
-            pstmt.setDouble(k++, entity.getPrice());
-            pstmt.setDouble(k++, entity.getDeposit());
+            pstmt.setString(k++, entity.getColor().name());
+            pstmt.setString(k++, entity.getRegNumber());
+            pstmt.setString(k++, entity.getTransmission());
+            pstmt.setLong(k++, entity.getCarModel().getId());
+            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue()));
+            pstmt.setDouble(k++, entity.getDiscount());
+            pstmt.setLong(k++, entity.getManager().getId());
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -121,7 +119,7 @@ public class JDBCCarModelDao implements CarModelDao {
 
     @Override
     public boolean delete(Long id) {
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_CARMODEL_BY_ID);) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_VEHICLE_BY_ID);) {
 
             int k = 1;
             prst.setLong(k++,id);
@@ -143,23 +141,23 @@ public class JDBCCarModelDao implements CarModelDao {
     }
 
     @Override
-    public List<CarModel> getCarModels(int currentPage, int recordsPerPage) {
-        Map<Long, CarModel> carModels = new HashMap<>();
+    public List<Vehicle> getVehicles(int currentPage, int recordsPerPage) {
+        Map<Long, Vehicle> vehicles = new HashMap<>();
 
         int start = currentPage * recordsPerPage - recordsPerPage;
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_CARMODELS_PAGINATED)) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_VEHICLES_PAGINATED)) {
             int k = 1;
             prst.setInt(k++,start);
             prst.setInt(k++,recordsPerPage);
             ResultSet rs = prst.executeQuery();
-            CarModelMapper carModelMapper = new CarModelMapper();
+            VehicleMapper vehicleMapper = new VehicleMapper();
             while (rs.next()) {
-                CarModel carModel = carModelMapper
+                Vehicle vehicle = vehicleMapper
                         .extractFromResultSet(rs);
-                carModel = carModelMapper
-                        .makeUnique(carModels, carModel);
+                vehicle = vehicleMapper
+                        .makeUnique(vehicles, vehicle);
             }
-            return new ArrayList<>(carModels.values());
+            return new ArrayList<>(vehicles.values());
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -170,7 +168,7 @@ public class JDBCCarModelDao implements CarModelDao {
     public Integer getNumberOfCards() {
         Integer numOfCards = 0;
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_CARMODELS);
+            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_VEHICLES);
             while (rs.next()) {
                 numOfCards = rs.getInt("count");
             }

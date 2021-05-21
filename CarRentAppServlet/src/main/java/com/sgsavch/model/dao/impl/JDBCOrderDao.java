@@ -1,10 +1,11 @@
 package com.sgsavch.model.dao.impl;
 
-import com.sgsavch.model.dao.CarModelDao;
+
+import com.sgsavch.model.dao.OrderDao;
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
-import com.sgsavch.model.dao.mapper.CarModelMapper;
-import com.sgsavch.model.entity.CarModel;
-import com.sgsavch.model.entity.enums.StatusCar;
+import com.sgsavch.model.dao.mapper.OrderMapper;
+import com.sgsavch.model.entity.Order;
+import com.sgsavch.model.entity.enums.Location;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,15 +13,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JDBCCarModelDao implements CarModelDao {
+public class JDBCOrderDao implements OrderDao {
     private Connection connection;
 
-    public JDBCCarModelDao(Connection connection) {
+
+    public JDBCOrderDao(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public Long create(CarModel entity) {
+    public Long create(Order entity) {
         Long res = 0L;
 
         ResultSet rs = null;
@@ -28,14 +30,14 @@ public class JDBCCarModelDao implements CarModelDao {
         try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_CARMODEL, Statement.RETURN_GENERATED_KEYS)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getName());
-            pstmt.setInt(k++, entity.getDoorsNumb());
-            pstmt.setInt(k++, entity.getSeatsNumb());
-            pstmt.setString(k++, entity.getPicture());
+            pstmt.setString(k++, entity.getCode());
+            pstmt.setString(k++, entity.getQrcode());
+            pstmt.setDate(k++,Date.valueOf(entity.getStart().toLocalDate()));
+            pstmt.setDate(k++, Date.valueOf(entity.getEnd().toLocalDate()));
+            pstmt.setLong(k++, entity.getUser().getId());
+            pstmt.setInt(k++, entity.getLocation().ordinal());
+            pstmt.setLong(k++, entity.getVehicle().getId());
             pstmt.setInt(k++, entity.getStatus().ordinal());
-            pstmt.setString(k++, entity.getType().name());
-            pstmt.setDouble(k++, entity.getPrice());
-            pstmt.setDouble(k++, entity.getDeposit());
 
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
@@ -55,41 +57,50 @@ public class JDBCCarModelDao implements CarModelDao {
 
     }
 
+
     @Override
-    public CarModel findById(long id) {
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_CARMODEL_BY_ID)) {
+    public Order findById(long id) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_ORDER_BY_ID)) {
 
             int k = 1;
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            CarModel carModel = new CarModel();
-            CarModelMapper carmodelMapper = new CarModelMapper();
+            Order order = new Order();
+            OrderMapper orderMapper = new OrderMapper();
             if (rs.next()) {
-                carModel = carmodelMapper
+                order = orderMapper
                         .extractFromResultSet(rs);
             }
-            return carModel;
+            return order;
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+
     }
 
     @Override
-    public List<CarModel> findAll() {
-        Map<Long, CarModel> carModels = new HashMap<>();
+    public List<Order> findAll() {
+        Map<Long, Order> orders = new HashMap<>();
 
+
+        final String GET_ALL_ORDERS = "select * from event";
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_ALL_CARMODELS);
-            CarModelMapper carModelMapper = new CarModelMapper();
+            ResultSet rs = st.executeQuery(GET_ALL_ORDERS);
+
+            OrderMapper orderMapper = new OrderMapper();
+
+
             while (rs.next()) {
-                CarModel carModel = carModelMapper
+                Order order = orderMapper
                         .extractFromResultSet(rs);
-                carModel = carModelMapper
-                        .makeUnique(carModels, carModel);
+
+                order = orderMapper
+                        .makeUnique(orders, order);
+
             }
-            return new ArrayList<>(carModels.values());
+            return new ArrayList<>(orders.values());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -97,18 +108,15 @@ public class JDBCCarModelDao implements CarModelDao {
     }
 
     @Override
-    public void update(CarModel entity) {
-        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_CARMODEL)) {
+    public void update(Order entity) {
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_ORDER)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getName());
-            pstmt.setInt(k++, entity.getDoorsNumb());
-            pstmt.setInt(k++, entity.getSeatsNumb());
-            pstmt.setString(k++, entity.getPicture());
-            pstmt.setString(k++, entity.getStatus().name());
-            pstmt.setString(k++, entity.getType().name());
-            pstmt.setDouble(k++, entity.getPrice());
-            pstmt.setDouble(k++, entity.getDeposit());
+            pstmt.setDate(k++, Date.valueOf(entity.getRealEnd().toLocalDate()));
+            pstmt.setString(k++, entity.getDamageDescript());
+            pstmt.setDouble(k++, entity.getDamagePrice());
+            pstmt.setBoolean(k++, entity.getDamageIsPayed());
+            pstmt.setInt(k++, entity.getStatus().ordinal());
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -117,19 +125,21 @@ public class JDBCCarModelDao implements CarModelDao {
 //            logger.log(Level.INFO,"Cannot update team ",e);
         }
 
+
     }
+
 
     @Override
     public boolean delete(Long id) {
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_CARMODEL_BY_ID);) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_ORDER_BY_ID);) {
 
-            int k = 1;
-            prst.setLong(k++,id);
-            prst.executeUpdate();
+        int k = 1;
+        prst.setLong(k++,id);
+        prst.executeUpdate();
 
-        } catch (SQLException ex) {
+    } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    }
         return false;
     }
 
@@ -143,23 +153,23 @@ public class JDBCCarModelDao implements CarModelDao {
     }
 
     @Override
-    public List<CarModel> getCarModels(int currentPage, int recordsPerPage) {
-        Map<Long, CarModel> carModels = new HashMap<>();
+    public List<Order> getOrders(int currentPage, int recordsPerPage) {
+        Map<Long, Order> orders = new HashMap<>();
 
         int start = currentPage * recordsPerPage - recordsPerPage;
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_CARMODELS_PAGINATED)) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_ORDERS_PAGINATED)) {
             int k = 1;
             prst.setInt(k++,start);
             prst.setInt(k++,recordsPerPage);
             ResultSet rs = prst.executeQuery();
-            CarModelMapper carModelMapper = new CarModelMapper();
+            OrderMapper orderMapper = new OrderMapper();
             while (rs.next()) {
-                CarModel carModel = carModelMapper
+                Order order = orderMapper
                         .extractFromResultSet(rs);
-                carModel = carModelMapper
-                        .makeUnique(carModels, carModel);
+                order = orderMapper
+                        .makeUnique(orders, order);
             }
-            return new ArrayList<>(carModels.values());
+            return new ArrayList<>(orders.values());
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -170,7 +180,7 @@ public class JDBCCarModelDao implements CarModelDao {
     public Integer getNumberOfCards() {
         Integer numOfCards = 0;
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_CARMODELS);
+            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_ORDERS);
             while (rs.next()) {
                 numOfCards = rs.getInt("count");
             }
@@ -181,14 +191,5 @@ public class JDBCCarModelDao implements CarModelDao {
             return null;
         }
 
-
-    }
-
-    static String escapeForLike(String param) {
-        return param
-                .replace("!", "!!")
-                .replace("%", "!%")
-                .replace("_", "!_")
-                .replace("[", "![");
     }
 }
