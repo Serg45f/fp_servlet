@@ -20,20 +20,46 @@
 
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/events" >
-                    <fmt:message key="nav.1" bundle="${rb}" />
-                </a>
-            </li>
-
-            <c:if test = "${loggedUserRoles.contains(roles['USER'])}">
+            <c:if test="${sessionScope.orderStage >= 1}">
                 <li class="nav-item">
-
-                    <a class="nav-link" href="${pageContext.request.contextPath}/ticketsTableAggregate">
-                        <fmt:message key="nav.7" bundle="${rb}" />
+                    <a class="nav-link" href="${pageContext.request.contextPath}/period" >
+                        <fmt:message key="nav.step.1" bundle="${rb}" />
                     </a>
                 </li>
+            </c:if>
+
+            <c:if test="${sessionScope.orderStage >= 2}">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/vehicles" >
+                        <fmt:message key="nav.step.2" bundle="${rb}" />
+                    </a>
+                </li>
+            </c:if>
+
+            <c:if test="${sessionScope.orderStage >= 3}">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/options" >
+                        <fmt:message key="nav.step.3" bundle="${rb}" />
+                    </a>
+                </li>
+            </c:if>
+
+
+            <c:if test = "${loggedUserRoles.contains(roles['USER'])}">
+                <c:if test="${sessionScope.orderStage >= 4}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/order" >
+                            <fmt:message key="nav.step.4" bundle="${rb}" />
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${session.orderStage == -1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/invoice">
+                            <fmt:message key="nav.step.5" bundle="${rb}" />
+                        </a>
+                    </li>
+                </c:if>
             </c:if>
             <c:if test = "${loggedUserRoles.contains(roles['USER']) && !loggedUserRoles.contains(roles['SPEAKER'])}">
                 <li class="nav-item">

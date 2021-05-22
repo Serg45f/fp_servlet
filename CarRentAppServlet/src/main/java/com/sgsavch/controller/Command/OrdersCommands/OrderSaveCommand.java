@@ -1,23 +1,15 @@
-package com.sgsavch.controller.Command.CarModelCommands;
+package com.sgsavch.controller.Command.OrdersCommands;
 
 import com.sgsavch.controller.Command.Command;
 import com.sgsavch.model.entity.CarModel;
-import com.sgsavch.model.entity.User;
-import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusCar;
-import com.sgsavch.model.entity.enums.StatusUser;
 import com.sgsavch.model.entity.enums.TypeCar;
 import com.sgsavch.model.service.CarModelService;
-import com.sgsavch.utils.BCrypt;
-import com.sgsavch.utils.MailSender;
-import org.springframework.util.StringUtils;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
-public class CarModelSaveCommand implements Command {
-    public CarModelSaveCommand(CarModelService carModelService)
+public class OrderSaveCommand implements Command {
+    public OrderSaveCommand(CarModelService carModelService)
     {
         this.carModelService = carModelService;
     }
@@ -38,9 +30,9 @@ public class CarModelSaveCommand implements Command {
          carModel.setPrice(Double.valueOf(request.getParameter("price")));
          carModel.setDeposit(Double.valueOf(request.getParameter("deposit")));
 
-         Long res = carModelService.addCarModel(carModel);
-         carModel.setId(res);
+//         Long res = carModelService.create(carModel);
+//         carModel.setId(res);
 
-        return "redirect:/carmodels.jsp";
+        return "/carmodels";
     }
 }

@@ -1,19 +1,11 @@
 package com.sgsavch.model.dao.mapper;
 
-import com.sgsavch.model.entity.Lecture;
-import com.sgsavch.model.entity.Order;
 import com.sgsavch.model.entity.User;
-import com.sgsavch.model.entity.Vehicle;
-import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusUser;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.temporal.TemporalAccessor;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class UserMapper implements ObjectMapper<User> {
 

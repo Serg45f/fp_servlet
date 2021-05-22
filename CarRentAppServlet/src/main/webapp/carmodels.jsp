@@ -42,7 +42,7 @@ height:100vh;">
         </h2>
 
     <p>
-        <a href="${pageContext.request.contextPath}/carModel_add" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Open</a>
+        <a href="${pageContext.request.contextPath}/carModel_add" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Add</a>
     </p>
           <div class="card-rows" id="each">
             <c:forEach var="carmodel"  items="${carmodels}">

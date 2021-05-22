@@ -16,6 +16,9 @@ public class UserService {
     public List<User> getAllUsers(){
         try (UserDao dao = daoFactory.createUserDao()) {
             return dao.findAll();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
         }
     }
 
@@ -76,7 +79,18 @@ public class UserService {
     public User getUser(Long id) {
         try (UserDao dao = daoFactory.createUserDao()) {
             return dao.findById(id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
         }
     }
 
+    public List<User> getAllManagers() {
+        try (UserDao dao = daoFactory.createUserDao()) {
+            return dao.getUsersByRole("MANAGER");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -53,10 +53,8 @@ public class EventListCommand implements Command {
         request.setAttribute("recordsPerPage", recordsPerPage);
 
         event.setStatusEvent(StatusEvent.NEW);
-        event.setThemes(new HashSet<>());
         request.setAttribute("event", event);
         request.setAttribute("events" , events);
-        request.setAttribute("themes", Arrays.asList(Theme.values()));
         request.setAttribute("languages", Arrays.asList(Language.values()));
        // request.setAttribute("places", Arrays.asList(Hall.values()));
 //        request.setAttribute("roleAdmin", Role.ADMIN);

@@ -25,10 +25,6 @@ public class JDBCDaoFactory extends DaoFactory {
     public OptionDao createOptionDao() { return new JDBCOptionDao(getConnection());}
     @Override
     public UserDao createUserDao() { return new JDBCUserDao(getConnection());}
-    @Override
-    public TicketDao createTicketDao() {return new JDBCTicketDao(getConnection());}
-    @Override
-    public LectureDao createLectureDao() {return new JDBCLectureDao(getConnection());}
 
     private Connection getConnection(){
         try {

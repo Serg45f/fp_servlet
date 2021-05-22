@@ -57,12 +57,13 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public User findById(long id) {
+    public User findById(long id) throws SQLException {
+        ResultSet rs = null;
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ID)) {
 
             int k = 1;
             prst.setLong(k++,id);
-            ResultSet rs = prst.executeQuery();
+            rs = prst.executeQuery();
 
             User user = new User();
             UserMapper userMapper = new UserMapper();
@@ -74,6 +75,9 @@ public class JDBCUserDao implements UserDao {
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }finally {
+            rs.close();
+            close();
         }
     }
 
@@ -94,6 +98,35 @@ public class JDBCUserDao implements UserDao {
                         .extractFromResultSet(rs);
             }
             return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            rs.close();
+            close();
+        }
+    }
+
+    @Override
+    public List<User> getUsersByRole(String role) throws SQLException {
+        Map<Long, User> users = new HashMap<>();
+
+        ResultSet rs = null;
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ROLE)) {
+
+            int k = 1;
+            pstmt.setString(k++, role);
+            rs = pstmt.executeQuery();
+
+            UserMapper userMapper = new UserMapper();
+       while (rs.next()) {
+                User user = userMapper
+                        .extractFromResultSet(rs);
+
+                user = userMapper
+                        .makeUnique(users, user);
+            }
+            return new ArrayList<>(users.values());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -151,6 +184,7 @@ public class JDBCUserDao implements UserDao {
             return null;
         }finally {
             rs.close();
+            close();
         }
     }
 
@@ -173,31 +207,30 @@ public class JDBCUserDao implements UserDao {
 
 
     @Override
-    public List<User> findAll() {
+    public List<User> findAll() throws SQLException {
         Map<Long, User> users = new HashMap<>();
 
-
+        ResultSet rs = null;
         final String query = "select * from users";
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(query);
+            rs = st.executeQuery(query);
 
             UserMapper userMapper = new UserMapper();
-
-
             while (rs.next()) {
                 User user = userMapper
                         .extractFromResultSet(rs);
 
                 user = userMapper
                         .makeUnique(users, user);
-
             }
             return new ArrayList<>(users.values());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }finally {
+            rs.close();
+            close();
         }
-
     }
 
     @Override
@@ -213,8 +246,9 @@ public class JDBCUserDao implements UserDao {
         } catch (SQLException e) {
 //            logger.log(Level.WARNING,e.toString(),e);
 //            logger.log(Level.INFO,"Cannot update team ",e);
+        }finally {
+            close();
         }
-
     }
 
     public void deleteUserRoles(Long id){
@@ -317,6 +351,7 @@ public class JDBCUserDao implements UserDao {
             return null;
         }
     }
+
     public boolean activateUser(String code) {
         User user = new User();
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ACTIVATION_CODE)) {

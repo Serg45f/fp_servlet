@@ -1,31 +1,29 @@
-package com.sgsavch.controller.Command.CarModelCommands;
+package com.sgsavch.controller.Command.OrdersCommands;
 
 import com.sgsavch.controller.Command.Command;
-import com.sgsavch.model.entity.enums.Role;
+import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.entity.enums.StatusCar;
 import com.sgsavch.model.entity.enums.TypeCar;
 import com.sgsavch.model.service.CarModelService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.Arrays;
 
-public class CarModelEditCommand implements Command {
+public class OrderAddCommand implements Command {
 
-    public CarModelEditCommand(CarModelService carModelService) {
+    public OrderAddCommand(CarModelService carModelService) {
         this.carModelService = carModelService;
     }
 
     CarModelService carModelService;
 
-    public CarModelEditCommand() {
+    public OrderAddCommand() {
     }
 
     @Override
-    public String execute(HttpServletRequest request) throws SQLException {
-        Long id = Long.valueOf(request.getParameter("carmodelId"));
+    public String execute(HttpServletRequest request) {
 
-        request.setAttribute("carModel", carModelService.getCarModel(id));
+        request.setAttribute("carModel", new CarModel());
         request.setAttribute("carTypes" , Arrays.asList(TypeCar.values()));
         request.setAttribute("carStatuses" , Arrays.asList(StatusCar.values()));
         return "/carmodelEdit.jsp";

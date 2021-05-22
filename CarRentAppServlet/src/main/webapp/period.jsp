@@ -37,27 +37,26 @@ return sdf.format(new Date());
 </head>
 <body>
 <c:import url="navbar.jsp"/>
-<!--    <div class="bg-gradient-info" layout:fragment = "replace_fragment_main">-->
-    <br>
-    <br>
+    <br/>
+    <br/>
+    <br/>
 <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
 
-            <form class = "mt-2"   action="/order/vehicles" method="post">
+            <form class = "mt-2"   action="${pageContext.request.contextPath}/setVehicles" method="post">
                 <h2 class="form-signing-hiding">Period and Location</h2>
-                <c:if test="${session.currentOrder != null}">
-<!--                    <p th:text="${session.currentOrder.id}">id</p>-->
+                <c:if test="${sessionScope.currentOrder != null}">
                     <p>
-                        ${session.currentOrder.start}
+                        ${sessionScope.currentOrder.start}
                     </p>
                     <p>
-                        ${session.currentOrder.end}
+                        ${sessionScope.currentOrder.end}
                     </p>
                 </c:if>
-                <c:if test="${session.orderStage != null}">
+                <c:if test="${sessionScope.orderStage != null}">
                     <p>
-                        ${session.orderStage}
+                        ${sessionScope.orderStage}
                     </p>
                 </c:if>
                 <br>
@@ -68,7 +67,7 @@ height:100vh;">
                         <select type="text" class="form-control bg-transparent"  placeholder="Location"
                                 value="${order.location}" name ="location">
                             <c:forEach var="location" items="${locations}" >
-                                <c:if test="order.location == location">
+                                <c:if test="${order.location == location}">
                                     <option class="form-control bg-transparent" selected
                                             value="${{location}}">
                                         ${location.getAddress()}
@@ -83,7 +82,6 @@ height:100vh;">
                     <div class="col-sm-6 px-0">
                         <input type="datetime-local" name="start" class="form-control" placeholder="Start date"
                                value="${order.start}"/>
-                        <!--                               th:value="${session.currentOrder==null?null:#temporals.format(session.currentOrder.start)}"/>-->
                     </div>
                 </div>
                 <div class="form-group row">
@@ -91,7 +89,6 @@ height:100vh;">
                     <div class="col-sm-6 px-0">
                         <input type="datetime-local" name="end" class="form-control" placeholder="End date"
                                value = "${order.end}"/>
-                        <!--                               th:value="${session.currentOrder==null?null:#temporals.format(session.currentOrder.end)}"/>-->
                     </div>
                 </div>
                 <div class="form-group row">
@@ -100,11 +97,6 @@ height:100vh;">
                         <button id="btn_order" to="2" class="btn btn-lg  btn-block btn-outline-primary" type="submit">Sign in</button>
                     </div>
                 </div>
-                <c:if test="${order.id != null}">
-                    <a>${order.id}</a>
-                    <input type="hidden" value="${order.id}" name="id">
-                </c:if>
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
             </form>
        </div>
 

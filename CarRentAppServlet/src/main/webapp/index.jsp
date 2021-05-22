@@ -51,13 +51,14 @@ height:100vh;">
     </h1>
         <br>
         <br>
-    <c:if test="${session.orderStage!=null && session.orderStage!=-1}">
-        <a class="btn btn-lg btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/order/period">
+    <c:if test="${sessionScope.orderStage!=null && sessionScope.orderStage!=-1}">
+        <a class="btn  btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/setPeriod">
             <fmt:message key="btn.startHere" bundle="${rb}"/>START HERE</a>
     </c:if>
     <br>
 
      <i>${pageContext.request.contextPath}</i>
+     <i>${session.orderStage}</i>
 
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

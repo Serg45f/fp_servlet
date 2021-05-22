@@ -10,27 +10,28 @@ import com.sgsavch.model.service.UserService;
 import com.sgsavch.model.service.VehicleService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 public class VehicleAddCommand implements Command {
 
-    public VehicleAddCommand(CarModelService carModelService) {
+    public VehicleAddCommand(CarModelService carModelService, UserService userService) {
         this.carModelService = carModelService;
+        this.userService = userService;
     }
 
     CarModelService carModelService;
-    VehicleService vehicleService;
     UserService userService;
 
     public VehicleAddCommand() {
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws SQLException {
 
-        request.setAttribute("carModel", new CarModel());
-        request.setAttribute("carTypes" , Arrays.asList(TypeCar.values()));
-        request.setAttribute("carStatuses" , Arrays.asList(StatusCar.values()));
+        request.setAttribute("vehicle", new Vehicle());
+        request.setAttribute("carModels" , carModelService.getAllCarModels());
+        request.setAttribute("managers" , userService.getAllManagers());
         return "/carmodelEdit.jsp";
     }
 }

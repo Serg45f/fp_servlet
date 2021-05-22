@@ -4,13 +4,14 @@ import com.sgsavch.model.dao.DaoFactory;
 import com.sgsavch.model.dao.OrderDao;
 import com.sgsavch.model.entity.Order;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class OrderService {
 
     DaoFactory daoFactory = DaoFactory.getInstance();
 
-    public List<Order> getAllOrders(){
+    public List<Order> getAllOrders() throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.findAll();
         }
@@ -28,7 +29,7 @@ public class OrderService {
         }
     }
 
-    public Order getOrder(Long orderId) {
+    public Order getOrder(Long orderId) throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.findById(orderId);
         }

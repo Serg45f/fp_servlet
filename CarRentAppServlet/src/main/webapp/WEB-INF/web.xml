@@ -38,6 +38,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <filter>
+    <filter-name>SessionStartFilter</filter-name>
+    <filter-class>com.sgsavch.controller.filters.SessionStartFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionStartFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/resources/*</url-pattern>

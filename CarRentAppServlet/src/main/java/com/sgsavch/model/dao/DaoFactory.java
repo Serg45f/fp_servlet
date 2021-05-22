@@ -12,8 +12,7 @@ public abstract class DaoFactory {
     public abstract CarModelDao createCarModelDao();
     public abstract VehicleDao createVehicleDao();
     public abstract UserDao createUserDao();
-    public abstract TicketDao createTicketDao();
-    public abstract LectureDao createLectureDao();
+
 
     public static DaoFactory getInstance(){
         if( daoFactory == null ){

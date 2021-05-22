@@ -37,7 +37,7 @@ return sdf.format(new Date());
 <c:import url="navbar.jsp"/>
 <!--<div class="bg-gradient-info" layout:fragment = "replace_fragment_main">-->
 <br/>
-
+<%--
     <div class="form-row">
         <div class="form-group mt-2 col-md-6">
             <form method="get" action="${pageContext.request.contextPath}/vehicles" class="form-inline">
@@ -46,8 +46,9 @@ return sdf.format(new Date());
             </form>
         </div>
     </div>
+--%>
         <br/>
-            <c:if test = "${loggedUserRoles.contains(roles[\"ADMIN\"])}">
+            <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                 <p>
                     <a href="${pageContext.request.contextPath}/vehicles/new" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >New</a>
                 </p>
@@ -64,9 +65,8 @@ return sdf.format(new Date());
         <div class="container">
             <h2 class="mt-3 " >
                 <fmt:message key="vehicles.header" bundle="${rb}"/>
-<!--                ${event.name} -->
             </h2>
-            <c:if class="card-rows" id="each">
+            <div class="card-rows" id="each">
                 <c:forEach var="vehicle" items="${vehicles}">
 
                     <div class="card  mb-3 " style="background-color: rgba(255,255,255,0.6);max-width: 1200px;">
@@ -106,7 +106,7 @@ return sdf.format(new Date());
                                             <small>${vehicle.transmission}</small>
                                         </p>
                                     </div>
-                                    <c:if class="col-md-4">
+                                    <div class="col-md-4">
                                         <h4 class="card-title" style="color: rgba(51,51,51,0.9);">
                                             <fmt:message key="card.descr.price" bundle="${rb}"/>
                                             <b>${vehicle.carModel.price * (100 - vehicle.discount)/100}</b>
@@ -126,13 +126,14 @@ return sdf.format(new Date());
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                 </c:forEach>
 
-<!--                    <c:if test="${vehicles != null}" >-->
+                    <c:if test="${vehicles != null}" >
                         <c:import url="pagination.jsp"/>
-<!--                    </c:if>-->
-            </c:if>
+                    </c:if>
+            </div>
             </div>
         </div>
 </body>

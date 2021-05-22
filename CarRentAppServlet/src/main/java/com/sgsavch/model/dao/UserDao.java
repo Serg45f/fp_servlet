@@ -14,6 +14,7 @@ public interface UserDao extends GenericDao<User> {
     User getUserByActivationCode(String code) throws SQLException;
 
     List<User> getUsersPaginated(int currentPage, int numOfRecords);
+
     Integer getNumberOfRaws();
 
     Set<Role> getUserRoles(Long id);
@@ -24,6 +25,6 @@ public interface UserDao extends GenericDao<User> {
 
     boolean activateUser(String code);
 
-
+    List<User> getUsersByRole(String Role) throws SQLException;
 }
 

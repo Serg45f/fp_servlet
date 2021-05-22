@@ -1,24 +1,23 @@
-package com.sgsavch.controller.Command.TicketCommands;
+package com.sgsavch.controller.Command.OrdersCommands;
 
 import com.sgsavch.controller.Command.Command;
-import com.sgsavch.model.entity.Event;
-import com.sgsavch.model.entity.Ticket;
-import com.sgsavch.model.service.TicketService;
+import com.sgsavch.model.entity.CarModel;
+import com.sgsavch.model.service.CarModelService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class TicketListCommand implements Command {
+public class OrderListCommand implements Command {
     private static final Integer DEFAULT_CURRENT_PAGE = 1;
     private static final Integer DEFAULT_RECORDS_PER_PAGE = 3;
 
-    public TicketListCommand(TicketService ticketService) {
-        this.ticketService = ticketService;
+    public OrderListCommand(CarModelService carModelService) {
+        this.carModelService = carModelService;
     }
 
-    TicketService ticketService;
+    CarModelService carModelService;
 
-    public TicketListCommand() {
+    public OrderListCommand() {
     }
 
     @Override
@@ -34,29 +33,22 @@ public class TicketListCommand implements Command {
             recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         }
 
-        List<Ticket> tickets = ticketService.getTicketPaginated(currentPage, recordsPerPage);
-        Event event = new Event();
+        List<CarModel> carModels = carModelService.getCarModelsPaginated(currentPage, recordsPerPage);
 
-        int rows = ticketService.getNumberOfRaws();
+        int rows = carModelService.getNumberOfCards();
 
         int nOfPages = rows / recordsPerPage;
 
         if (nOfPages % recordsPerPage > 0) {
-
             nOfPages++;
         }
 
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
+        request.setAttribute("carmodels" , carModels);
 
 
-        request.setAttribute("ticket", event);
-        request.setAttribute("tickets" , tickets);
-
-
-
-
-        return "/tickets.jsp";
+        return "/carmodels.jsp";
     }
 }

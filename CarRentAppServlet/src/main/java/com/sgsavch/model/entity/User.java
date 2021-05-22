@@ -28,7 +28,6 @@ public class User {
     private String cardNumb;
     private String resume;
     private List<Order> orders = new ArrayList<>();
-    private List<Lecture> lectures = new ArrayList<>();
     private List<Vehicle> vehicles = new ArrayList<>();
 
     public Boolean isAdmin(){
@@ -61,7 +60,6 @@ public class User {
                 String cardNumb,
                 String resume,
                 List<Order> orders,
-                List<Lecture> lectures,
                 List<Vehicle> vehicles) {
         this.id = id;
         this.email = email;
@@ -79,7 +77,6 @@ public class User {
         this.cardNumb = cardNumb;
         this.resume = resume;
         this.orders = orders;
-        this.lectures = lectures;
         this.vehicles = vehicles;
     }
 
@@ -211,14 +208,6 @@ public class User {
         this.orders = orders;
     }
 
-    public List<Lecture> getLectures() {
-        return lectures;
-    }
-
-    public void setLectures(List<Lecture> lectures) {
-        this.lectures = lectures;
-    }
-
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
@@ -246,7 +235,6 @@ public class User {
                 ", cardNumb='" + cardNumb + '\'' +
                 ", resume='" + resume + '\'' +
                 ", orders=" + orders +
-                ", lectures=" + lectures +
                 ", vehicles=" + vehicles +
                 '}';
     }

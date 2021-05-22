@@ -7,6 +7,7 @@ import com.sgsavch.model.dao.mapper.VehicleMapper;
 import com.sgsavch.model.entity.Vehicle;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -147,6 +148,32 @@ public class JDBCVehicleDao implements VehicleDao {
         int start = currentPage * recordsPerPage - recordsPerPage;
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_VEHICLES_PAGINATED)) {
             int k = 1;
+            prst.setInt(k++,start);
+            prst.setInt(k++,recordsPerPage);
+            ResultSet rs = prst.executeQuery();
+            VehicleMapper vehicleMapper = new VehicleMapper();
+            while (rs.next()) {
+                Vehicle vehicle = vehicleMapper
+                        .extractFromResultSet(rs);
+                vehicle = vehicleMapper
+                        .makeUnique(vehicles, vehicle);
+            }
+            return new ArrayList<>(vehicles.values());
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Vehicle> getVehiclesByPeriod(LocalDateTime startPeriod, LocalDateTime endPeriod, int currentPage, int recordsPerPage) {
+        Map<Long, Vehicle> vehicles = new HashMap<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_VEHICLES_PAGINATED_BY_PERIOD)) {
+            int k = 1;
+            prst.setDate(k++,Date.valueOf(startPeriod.toLocalDate()));
+            prst.setDate(k++,Date.valueOf(endPeriod.toLocalDate()));
             prst.setInt(k++,start);
             prst.setInt(k++,recordsPerPage);
             ResultSet rs = prst.executeQuery();

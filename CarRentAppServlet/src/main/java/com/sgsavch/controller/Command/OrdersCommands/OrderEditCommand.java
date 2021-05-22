@@ -1,7 +1,6 @@
-package com.sgsavch.controller.Command.CarModelCommands;
+package com.sgsavch.controller.Command.OrdersCommands;
 
 import com.sgsavch.controller.Command.Command;
-import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusCar;
 import com.sgsavch.model.entity.enums.TypeCar;
 import com.sgsavch.model.service.CarModelService;
@@ -10,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-public class CarModelEditCommand implements Command {
+public class OrderEditCommand implements Command {
 
-    public CarModelEditCommand(CarModelService carModelService) {
+    public OrderEditCommand(CarModelService carModelService) {
         this.carModelService = carModelService;
     }
 
     CarModelService carModelService;
 
-    public CarModelEditCommand() {
+    public OrderEditCommand() {
     }
 
     @Override

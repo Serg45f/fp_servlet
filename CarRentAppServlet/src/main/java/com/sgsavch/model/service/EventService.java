@@ -6,13 +6,14 @@ import com.sgsavch.model.dao.EventDao;
 import com.sgsavch.model.entity.Event;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class EventService {
 
     DaoFactory daoFactory = DaoFactory.getInstance();
 
-    public List<Event> getAllEvents(){
+    public List<Event> getAllEvents() throws SQLException {
         try (EventDao dao = daoFactory.createEventDao()) {
             return dao.findAll();
         }
@@ -30,7 +31,7 @@ public class EventService {
         }
     }
 
-    public Event getEvent(Long eventId) {
+    public Event getEvent(Long eventId) throws SQLException {
         try (EventDao dao = daoFactory.createEventDao()) {
             return dao.findById(eventId);
         }

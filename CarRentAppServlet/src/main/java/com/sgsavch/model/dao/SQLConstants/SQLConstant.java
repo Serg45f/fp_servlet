@@ -27,9 +27,13 @@ public interface SQLConstant {
 			"SELECT * FROM " + TABLE_USERS + ";";
 
 	String SQL_ADD_NEW_USER =
-			"INSERT INTO users (" + USER_EMAIL + ", " + USER_PASSWORD + ", " +
-					USER_FIRSTNAME + ", " + USER_LASTNAME + ", " + USER_STATUS + ", " + USER_ACTIVATION_CODE +
-					") VALUES (?,?,?,?,?,?);";
+			"INSERT INTO users (" +
+					USER_EMAIL + ", " +
+					USER_PASSWORD + ", " +
+					USER_FIRSTNAME + ", " +
+					USER_LASTNAME + ", " +
+					USER_STATUS + ", " +
+					USER_ACTIVATION_CODE + ") VALUES (?,?,?,?,?,?);";
 
 	String SQL_FIND_USER_BY_ACTIVATION_CODE =
 			"SELECT * FROM " + TABLE_USERS + " WHERE " + USER_ACTIVATION_CODE +	" LIKE ? ESCAPE '!'";
@@ -39,6 +43,7 @@ public interface SQLConstant {
 
 	String SQL_DELETE_USER_BY_USER_ID =
 			"DELETE FROM " + TABLE_USERS + " WHERE "+USER_ID+"=?";
+
 
 	/////////////////////////////////////////ROLES/////////////////////////////////////////
 
@@ -58,6 +63,9 @@ public interface SQLConstant {
 
 	String SQL_DELETE_USER_ROLES_BY_USER_ID =
 			"DELETE FROM " + TABLE_USER_ROLE + " WHERE "+USER_ROLE_USER_ID+"=?";
+
+	String SQL_FIND_USER_BY_ROLE =
+			"SELECT * FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_ROLES + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
 
 	///////////////////////////////////////////////////////////////////////////////////
 	String TABLE_EVENT = "event";
@@ -126,53 +134,6 @@ public interface SQLConstant {
 	String SQL_DELETE_CARMODEL_BY_ID =
 			"DELETE FROM " + TABLE_CARMODELS + " WHERE "+CARMODEL_ID+"=?";
 
-
-	/////////////////////////////////////VEHICLES/////////////////////////////////////////////
-
-	String TABLE_VEHICLES = "vehicles";
-
-	String VEHICLE_ID = "vehicles.id";
-	String VEHICLE_COLOR = "vehicles.color";
-	String VEHICLE_REG_NUMBER = "vehicles.reg_number";
-	String VEHICLE_TRANSMISSION = "vehicles.transmission";
-	String VEHICLE_YEAR_ISSUE = "vehicles.year_issue";
-	String VEHICLE_ORDER_ID = "vehicles.order_id";
-	String VEHICLE_DISCOUNT = "vehicles.discount";
-	String VEHICLE_CARMODEL_ID = "vehicles.carmodel_id";
-	String VEHICLE_USER_ID = "vehicles.user_id";
-
-	String SQL_GET_VEHICLE_BY_ID =
-			"SELECT * FROM " + TABLE_VEHICLES + " WHERE " + VEHICLE_ID + "=?";
-
-	String SQL_GET_ALL_VEHICLES =
-			"SELECT * FROM " + TABLE_VEHICLES;
-
-	String SQL_GET_VEHICLES_PAGINATED =
-			"SELECT * FROM " + TABLE_VEHICLES + " LIMIT ?, ?";
-
-	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
-
-	String SQL_ADD_NEW_VEHICLE = "INSERT INTO " + TABLE_VEHICLES + " (" +
-			VEHICLE_COLOR + ", " +
-			VEHICLE_REG_NUMBER + ", " +
-			VEHICLE_TRANSMISSION + ", " +
-			VEHICLE_CARMODEL_ID + ", " +
-			VEHICLE_YEAR_ISSUE + ", " +
-			VEHICLE_DISCOUNT + ", " +
-			VEHICLE_USER_ID + ") VALUES (?,?,?,?,?,?,?);";
-
-	String SQL_UPDATE_VEHICLE =
-			"UPDATE " + TABLE_VEHICLES + " SET " +
-					VEHICLE_COLOR + " = ?, " +
-					VEHICLE_REG_NUMBER + " = ?, " +
-					VEHICLE_TRANSMISSION + " = ?, " +
-					VEHICLE_CARMODEL_ID + " = ?, "+
-					VEHICLE_YEAR_ISSUE + " = ?, " +
-					VEHICLE_DISCOUNT + " = ?, "+
-					VEHICLE_USER_ID + " = ?" + " = ? WHERE "+VEHICLE_ID+" = ?";
-
-	String SQL_DELETE_VEHICLE_BY_ID =
-			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";
 
 
 	////////////////////////////////ORDERS//////////////////////////////////////////////////
@@ -271,6 +232,59 @@ public interface SQLConstant {
 	String SQL_DELETE_OPTION_BY_ID =
 			"DELETE FROM " + TABLE_OPTIONS + " WHERE "+OPTION_ID+"=?";
 
+/////////////////////////////////////VEHICLES/////////////////////////////////////////////
+
+	String TABLE_VEHICLES = "vehicles";
+
+	String VEHICLE_ID = "vehicles.id";
+	String VEHICLE_COLOR = "vehicles.color";
+	String VEHICLE_REG_NUMBER = "vehicles.reg_number";
+	String VEHICLE_TRANSMISSION = "vehicles.transmission";
+	String VEHICLE_YEAR_ISSUE = "vehicles.year_issue";
+	String VEHICLE_ORDER_ID = "vehicles.order_id";
+	String VEHICLE_DISCOUNT = "vehicles.discount";
+	String VEHICLE_CARMODEL_ID = "vehicles.carmodel_id";
+	String VEHICLE_USER_ID = "vehicles.user_id";
+
+	String SQL_GET_VEHICLE_BY_ID =
+			"SELECT * FROM " + TABLE_VEHICLES + " WHERE " + VEHICLE_ID + "=?";
+
+	String SQL_GET_ALL_VEHICLES =
+			"SELECT * FROM " + TABLE_VEHICLES;
+
+	String SQL_GET_VEHICLES_PAGINATED =
+			"SELECT * FROM " + TABLE_VEHICLES + " LIMIT ?, ?";
+/**
+ * @params start, end, current page, records per page
+ */
+	String SQL_GET_VEHICLES_PAGINATED_BY_PERIOD =
+			"SELECT " + TABLE_VEHICLES + ".* FROM " + TABLE_VEHICLES + ", " + TABLE_ORDERS +
+					" WHERE " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +" AND (DATEDIFF(?," +ORDER_END +") > 0  OR DATEDIFF(" +ORDER_START +",?) > 0)  LIMIT ?, ?";
+
+	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
+
+	String SQL_ADD_NEW_VEHICLE = "INSERT INTO " + TABLE_VEHICLES + " (" +
+			VEHICLE_COLOR + ", " +
+			VEHICLE_REG_NUMBER + ", " +
+			VEHICLE_TRANSMISSION + ", " +
+			VEHICLE_CARMODEL_ID + ", " +
+			VEHICLE_YEAR_ISSUE + ", " +
+			VEHICLE_DISCOUNT + ", " +
+			VEHICLE_USER_ID + ") VALUES (?,?,?,?,?,?,?);";
+
+	String SQL_UPDATE_VEHICLE =
+			"UPDATE " + TABLE_VEHICLES + " SET " +
+					VEHICLE_COLOR + " = ?, " +
+					VEHICLE_REG_NUMBER + " = ?, " +
+					VEHICLE_TRANSMISSION + " = ?, " +
+					VEHICLE_CARMODEL_ID + " = ?, "+
+					VEHICLE_YEAR_ISSUE + " = ?, " +
+					VEHICLE_DISCOUNT + " = ?, "+
+					VEHICLE_USER_ID + " = ?" + " = ? WHERE "+VEHICLE_ID+" = ?";
+
+	String SQL_DELETE_VEHICLE_BY_ID =
+			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";
+
 
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -339,6 +353,7 @@ public interface SQLConstant {
 	String SQL_FIND_ALL_TEAMS = "SELECT * FROM teams";
 
 	String SQL_DELETE_TEAM = "DELETE FROM teams WHERE id=?";
+
 
 
 }
