@@ -75,10 +75,10 @@ return sdf.format(new Date());
                 </c:forEach>
             </td>
             <td>
-                <a class="text-success" href="${pageContext.request.contextPath}/users_edit?id=${user.id}">Edit</a>
+                <a class="text-success" href="${pageContext.request.contextPath}/user_edit?id=${user.id}">Edit</a>
             </td>
             <td>
-                <a class="text-danger" href="${pageContext.request.contextPath}/users_delete?id=${user.id}">Delete</a>
+                <a class="text-danger" href="${pageContext.request.contextPath}/user    _delete?id=${user.id}">Delete</a>
             </td>
 
 

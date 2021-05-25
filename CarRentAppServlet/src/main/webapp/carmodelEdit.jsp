@@ -51,7 +51,7 @@ height:100vh;">
 
                <div class="form-group">
                     <div class="custom-pict">
-                        <img src="resources/pic/${carModel.picture}" width="500" height="312" alt="...">
+                        <img src="resources/img/${carModel.picture}" width="500" height="312" alt="...">
                         <input  type="file" class="form-control  rounded" name="file" id="customPict">
 <%--                        <label class="custom-file-label" for="customPict">Choose picture</label>--%>
                     </div>
@@ -59,26 +59,20 @@ height:100vh;">
 
               <div class="form-group">
                   <input  type="text" class="form-control bg-transparent" placeholder="Name"
-                          value ="${carModel.name}"  name ="name" />
-                  <%--<th:block th:if="${#fields.hasErrors('name')}">
-                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>--%>
+                  value="${carModel.name}" name="name" />
+
               </div>
 
               <div class="form-group">
-                  <input  type="text" class="form-control bg-transparent"  placeholder="Seats"
-                          value ="${carModel.seatsNumb}"  name ="seatsNumb" />
-                  <%--<th:block th:if="${#fields.hasErrors('name')}">
-                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>--%>
+                  <input  type="number" class="form-control bg-transparent"  placeholder="Seats"
+                  value="${carModel.seatsNumb}" name="seatsNumb" />
+
               </div>
 
               <div class="form-group">
-                  <input  type="text" class="form-control bg-transparent"  placeholder="Doors"
-                          value ="${carModel.doorsNumb}"  name ="doorsNumb" />
-                  <%--<th:block th:if="${#fields.hasErrors('name')}">
-                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>--%>
+                  <input  type="number" class="form-control bg-transparent"  placeholder="Doors"
+                          value ="${carModel.doorsNumb}"  name="doorsNumb" />
+
               </div>
 
               <div class="form-group">
@@ -101,22 +95,18 @@ height:100vh;">
               <div class="form-group">
                   <input  type="number" class="form-control bg-transparent"  placeholder="Price"
                           value ="${carModel.price}"  name ="price" />
-                  <%--<th:block th:if="${#fields.hasErrors('name')}">
-                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>--%>
+
               </div>
 
               <div class="form-group">
                   <input  type="number" class="form-control bg-transparent"  placeholder="Deposit"
                           value ="${carModel.deposit}"  name ="deposit" />
-                  <%--<th:block th:if="${#fields.hasErrors('name')}">
-                      <div th:errorclass="invalid-input" th:errors="*{name}"></div>
-                  </th:block>--%>
+
               </div>
 
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <c:if test="${carModel.id!=null}">
-                    <input type="hidden" value="${carModel.id}"  named="id">
+                    <input type="hidden" value="${carModel.id}"  name="carModelId">
                 </c:if>
                 <div class="form-group">
                     <button type="submit" class="btn btn-transparent btn-outline-primary" >Save</button>

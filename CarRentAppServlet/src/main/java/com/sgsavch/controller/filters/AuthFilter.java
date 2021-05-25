@@ -47,6 +47,7 @@ public class AuthFilter implements Filter {
         System.out.println("(AuthFilter)req.AuthType: " + req.getAuthType());
         System.out.println("(AuthFilter)req.URl: " + req.getRequestURL().toString());
         System.out.println("(AuthFilter)session: " + session);
+        System.out.println("(AuthFilter)session.loggedUsers: " + context.getAttribute("loggedUsers"));
         System.out.print("(AuthFilter)session ROLES: ");
         if(session.getAttribute("loggedUserRoles")!=null) {
             for (Role role : (Set<Role>) session.getAttribute("loggedUserRoles")) {

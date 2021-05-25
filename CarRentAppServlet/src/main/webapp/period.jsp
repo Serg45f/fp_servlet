@@ -65,14 +65,12 @@ height:100vh;">
                     <label class="col-sm-2  col-form-label">Location :</label>
                     <div class="col-sm-6 px-0">
                         <select type="text" class="form-control bg-transparent"  placeholder="Location"
-                                value="${order.location}" name ="location">
+                                 name ="location">
                             <c:forEach var="location" items="${locations}" >
-                                <c:if test="${order.location == location}">
-                                    <option class="form-control bg-transparent" selected
-                                            value="${{location}}">
-                                        ${location.getAddress()}
-                                    </option>
-                                </c:if>
+                                <option class="form-control bg-transparent"
+                                        value="${location}" ${item.key == selectedlocation ? 'selected="selected"' : ''}>
+                                    ${location.getAddress()}
+                                </option>
                             </c:forEach>
                         </select>
                     </div>

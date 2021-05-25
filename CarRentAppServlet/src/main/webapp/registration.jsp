@@ -94,7 +94,7 @@ height:100vh;">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Passport ¹: </label>
                     <div class="col-sm-6">
-                        <input  type="text" class="form-control "  placeholder="Passport #"
+                        <input  type="text" class="form-control "  placeholder="Passport ¹"
                                 name="passportNumb">
                     </div>
                 </div>
@@ -102,7 +102,7 @@ height:100vh;">
                     <label class="col-sm-2 col-form-label">Date of expire: </label>
                     <div class="col-sm-6">
                         <input  type="date" class="form-control "  placeholder="Date of expire"
-                                value="${user.getPassDateExp()}"    name="passDateExp">
+                                name="passDateExp">
                     </div>
                 </div>
                 <div class="form-group row">

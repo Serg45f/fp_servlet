@@ -15,7 +15,7 @@ return sdf.format(new Date());
 }
 %>
 
-<fmt:setLocale value="${sessionScope.lang}" scope="session" xmlns="http://www.w3.org/1999/html"/>
+<fmt:setLocale value="${sessionScope.lang}" scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
 
 <html lang="${sessionScope.lang}">
@@ -146,7 +146,7 @@ height:100vh;">
                        href="${pageContext.request.contextPath}/order/create">
                         <fmt:message key="btn.order.invoice" bundle="${rb}"/>
                     </a>
-                    <!--                       th:href="@{/order/invoice}" th:text="#{btn.order.invoice}">Confirm</a>-->
+   <%--                 <!--                       th:href="@{/order/invoice}" th:text="#{btn.order.invoice}">Confirm</a>--> --%>
                 </div>
 
             </div>

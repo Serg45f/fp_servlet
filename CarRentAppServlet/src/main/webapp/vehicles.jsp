@@ -53,13 +53,13 @@ return sdf.format(new Date());
                     <a href="${pageContext.request.contextPath}/vehicles/new" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >New</a>
                 </p>
             </c:if>
-            <c:if test="${session.currentOrder != null}">
-                <p>${session.currentOrder.id}</p>
-                <p>${session.currentOrder.start}</p>
-                <p>${session.currentOrder.end}</p>
+            <c:if test="${sessionScope.currentOrder != null}">
+                <p>${sessionScope.currentOrder.id}</p>
+                <p>${sessionScope.currentOrder.start}</p>
+                <p>${sessionScope.currentOrder.end}</p>
             </c:if>
-            <c:if test="${session.orderStage != null}">
-                <p>${session.orderStage}</p>
+            <c:if test="${sessionsessionScope.orderStage != null}">
+                <p>${sessionScope.orderStage}</p>
             </c:if>
         <br/>
         <div class="container">
@@ -112,7 +112,7 @@ return sdf.format(new Date());
                                             <b>${vehicle.carModel.price * (100 - vehicle.discount)/100}</b>
                                         </h4>
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/order/options/${vehicle.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Choose</a>
+                                            <a href="${pageContext.request.contextPath}/setOptions?vehicleId=${vehicle.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Choose</a>
                                         </p>
                                         <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                             <p>

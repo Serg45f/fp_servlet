@@ -40,23 +40,23 @@ return sdf.format(new Date());
 <br/>
 <br/>
 
-<c:if class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
+<div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
 <!--    <div class="bg-gradient-info" layout:fragment = "replace_fragment_main">-->
     <br/>
-        <c:if test="${session.currentOrder != null}">
-            <p>${session.currentOrder.id}</p>
-            <p>${session.currentOrder.start}</p>
-            <p>${session.currentOrder.end}</p>
-            <p>${session.currentOrder.vehicle}</p>
+        <c:if test="${sessionScope.currentOrder != null}">
+            <p>${sessionScope.currentOrder.id}</p>
+            <p>${sessionScope.currentOrder.start}</p>
+            <p>${sessionScope.currentOrder.end}</p>
+            <p>${sessionScope.currentOrder.vehicle}</p>
         </c:if>
-        <c:if test="${session.orderStage != null}">
-            <p>${session.orderStage}</p>
+        <c:if test="${sessionScope.orderStage != null}">
+            <p>${sessionScope.orderStage}</p>
         </c:if>
     <br/>
     <br/>
-        <c:if id="optionsTable" class="table-responsive-sm  table-hover mt-3">
+        <div id="optionsTable" class="table-responsive-sm  table-hover mt-3">
             <table class="table table-responsive-sm  table-hover mt-3 round">
                 <thead>
                 <tr>
@@ -72,7 +72,7 @@ height:100vh;">
                     <th scope="col">
                         <fmt:message key="options.th.price" bundle="${rb}"/>
                     </th>
-                    <c:if test = "${userRoles.contains(roles[\"ADMIN\"])}">
+                    <c:if test = "${userRoles.contains(roles['ADMIN'])}">
                         <th scope="col">
                             <fmt:message key="options.th.edit" bundle="${rb}"/>
                         </th>
@@ -83,17 +83,21 @@ height:100vh;">
                 </tr>
                 </thead>
                 <tbody>
-                    <form action="/order/order" method="post">
+                    <form action="${pageContext.request.contextPath}/setOrder" method="post">
                         <c:forEach var="option" items="${options}">
                             <tr>
                                 <td>
+
+                                    <input type="checkbox" name="checkedOptions" value="${option.id}"/>
+   <%--
     <!--                                <form th:action="@{/order/} + ${option.id}">-->
     <!--                                    <input type="checkbox" name="my-checkbox" onclick="submit();" th:checked="${option.isChosen} ? 'checked'">-->
     <!--                                </form>-->
+     --%>
                                 </td>
                                 </td>
                                 <td>
-                                    <img src="resources/pic/${option.picture}" class="card-img-top" alt="...">
+                                    <img src="resources/img/${option.picture}" class="card-img-top" alt="...">
                                 </td>
                                 <td>
                                     <p>${option.name}</p>
@@ -102,21 +106,21 @@ height:100vh;">
                                 <td>${option.price}</td>
                                 <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                     <td>
-                                        <a class="text-success" href="${pageContext.request.contextPath}/options/edit/${option.id}">Edit</a>
+                                        <a class="text-success" href="${pageContext.request.contextPath}/options_edit/optionId=${option.id}">Edit</a>
                                     </td>
                                     <td>
-                                        <a class="text-danger" href="${pageContext.request.contextPath}/options/delete/${option.id}">Delete</a>
+                                        <a class="text-danger" href="${pageContext.request.contextPath}/options_delete/optionId=${option.id}">Delete</a>
                                     </td>
                                 </c:if>
                             </tr>
                         </c:forEach>
                         <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
-                                                <a class="text-success" to="4" href="${pageContext.request.contextPath}/options/add">
+                                                <a class="text-success" to="4" href="${pageContext.request.contextPath}/options_add">
                                                     Add
                                                 </a>
                         </c:if>
 
-                        <input type="hidden" value="${order}" name="order">
+                      <%-- <input type="hidden" value="${order}" name="order"> --%>
                         <button type="submit" class="text-success" to="4">Submit</button>
                     </form>
                 </tbody>

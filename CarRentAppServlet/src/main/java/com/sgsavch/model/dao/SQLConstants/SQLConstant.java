@@ -111,8 +111,8 @@ public interface SQLConstant {
 
 	String SQL_ADD_NEW_CARMODEL = "INSERT INTO " + TABLE_CARMODELS + " (" +
 			CARMODEL_NAME + ", " +
-			CARMODEL_NUMBER_OF_DOORS + ", " +
 			CARMODEL_NUMBER_OF_SEATS + ", " +
+			CARMODEL_NUMBER_OF_DOORS + ", " +
 			CARMODEL_PICTURE + ", " +
 			CARMODEL_STATUS + ", " +
 			CARMODEL_TYPE + ", " +
@@ -122,8 +122,8 @@ public interface SQLConstant {
 	String SQL_UPDATE_CARMODEL =
 			"UPDATE " + TABLE_CARMODELS + " SET " +
 					CARMODEL_NAME + " = ?, "+
-					CARMODEL_NUMBER_OF_DOORS + " = ?, "+
 					CARMODEL_NUMBER_OF_SEATS + " = ?, "+
+					CARMODEL_NUMBER_OF_DOORS + " = ?, "+
 					CARMODEL_PICTURE + " = ?, "+
 					CARMODEL_STATUS + " = ?, "+
 					CARMODEL_TYPE + " = ?, "+
@@ -200,11 +200,11 @@ public interface SQLConstant {
 
 	String TABLE_OPTIONS = "options";
 
-	String OPTION_ID = "option.id";
-	String OPTION_DESCRIPTION = "option.description";
-	String OPTION_NAME = "option.name";
-	String OPTION_PICTURE = "option.picture";
-	String OPTION_PRICE = "option.price";
+	String OPTION_ID = "options.id";
+	String OPTION_DESCRIPTION = "options.description";
+	String OPTION_NAME = "options.name";
+	String OPTION_PICTURE = "options.picture";
+	String OPTION_PRICE = "options.price";
 
 	String SQL_GET_OPTION_BY_ID =
 			"SELECT * FROM " + TABLE_OPTIONS + " WHERE " + OPTION_ID + "=?";
@@ -259,7 +259,8 @@ public interface SQLConstant {
  */
 	String SQL_GET_VEHICLES_PAGINATED_BY_PERIOD =
 			"SELECT " + TABLE_VEHICLES + ".* FROM " + TABLE_VEHICLES + ", " + TABLE_ORDERS +
-					" WHERE " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +" AND (DATEDIFF(?," +ORDER_END +") > 0  OR DATEDIFF(" +ORDER_START +",?) > 0)  LIMIT ?, ?";
+					" WHERE " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
+					" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0  LIMIT ?, ?";
 
 	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
 

@@ -77,13 +77,7 @@
                     </a>
                 </li>
             </c:if>
-            <c:if test = "${loggedUserRoles.contains(roles['SPEAKER'])}">
-                <li class="nav-item">
-                     <a class="nav-link" href="${pageContext.request.contextPath}/lectures">
-                         <fmt:message key="nav.3" bundle="${rb}" />
-                     </a>
-                </li>
-            </c:if>
+
 
             <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                 <li class="nav-item">
@@ -111,10 +105,12 @@
 
         </a>
 
-        <form action="${pageContext.request.contextPath}/logout" method="post">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button class="btn btn-sm mt-1 btn-transparent" type="submit">LogOut</button>
-        </form>
+        <c:if test = "${loggedUserName != null}">
+            <form action="${pageContext.request.contextPath}/logout" method="post">
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <button class="btn btn-sm mt-1 btn-transparent" type="submit">LogOut</button>
+            </form>
+        </c:if>
 
 
              <span>
