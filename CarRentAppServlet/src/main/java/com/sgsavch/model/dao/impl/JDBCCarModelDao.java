@@ -29,11 +29,11 @@ public class JDBCCarModelDao implements CarModelDao {
 
             int k = 1;
             pstmt.setString(k++, entity.getName());
-            pstmt.setInt(k++, entity.getDoorsNumb());
             pstmt.setInt(k++, entity.getSeatsNumb());
+            pstmt.setInt(k++, entity.getDoorsNumb());
             pstmt.setString(k++, entity.getPicture());
             pstmt.setInt(k++, entity.getStatus().ordinal());
-            pstmt.setString(k++, entity.getType().name());
+            pstmt.setInt(k++, entity.getType().ordinal());
             pstmt.setDouble(k++, entity.getPrice());
             pstmt.setDouble(k++, entity.getDeposit());
 

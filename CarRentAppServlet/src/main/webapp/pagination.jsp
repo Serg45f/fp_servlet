@@ -14,19 +14,19 @@
 <c:set var="eventsURL" value="events.jsp"/>
 <c:set var="carmodelsURL" value="carmodels.jsp"/>
 <c:set var="userListURL" value="userList.jsp"/>
-<c:set var="ticketsURL" value="tickets.jsp"/>
+<c:set var="vehiclesURL" value="vehicles.jsp"/>
 
 <c:if test="${fn:endsWith(currentPageURL,eventsURL)}">
     <c:set var="endPoint" value="events"/>
 </c:if>
 <c:if test="${fn:endsWith(currentPageURL,carmodelsURL)}">
-    <c:set var="endPoint" value="carmodels"/>
+    <c:set var="endPoint" value="carModels"/>
 </c:if>
 <c:if test="${fn:endsWith(currentPageURL,userListURL)}">
     <c:set var="endPoint" value="users"/>
 </c:if>
-<c:if test="${fn:endsWith(currentPageURL,ticketsURL)}">
-    <c:set var="endPoint" value="tickets"/>
+<c:if test="${fn:endsWith(currentPageURL,vehiclesURL)}">
+    <c:set var="endPoint" value="vehicles"/>
 </c:if>
 
 

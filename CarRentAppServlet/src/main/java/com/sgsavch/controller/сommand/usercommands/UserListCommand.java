@@ -49,7 +49,7 @@ public class UserListCommand implements Command {
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
 
-        request.setAttribute("user", user);
+       // request.setAttribute("user", user);
         request.setAttribute("users" , users);
 
 //        request.setAttribute("roleAdmin", Role.ADMIN);

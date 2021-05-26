@@ -46,7 +46,7 @@ public class CarModelSaveCommand implements Command {
          carModel.setDoorsNumb(Integer.valueOf(request.getParameter("doorsNumb")));
          carModel.setPicture(Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
          InputStream fileContent = filePart.getInputStream();
-         File targetFile = new File("src/main/resources/"+carModel.getPicture());
+         File targetFile = new File("src/main/webapp/resources/img/"+carModel.getPicture());
          FileUtils.copyInputStreamToFile(fileContent, targetFile);
          carModel.setType(TypeCar.valueOf(request.getParameter("type")));
          carModel.setStatus(StatusCar.valueOf(request.getParameter("status")));

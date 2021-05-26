@@ -10,12 +10,15 @@ com\sgsavch\model\dao\mapper\OrderMapper.class
 com\sgsavch\controller\сommand\orderscommands\OrderEditCommand.class
 com\sgsavch\controller\сommand\orderscommands\PeriodCommand.class
 com\sgsavch\model\entity\Invoice.class
+com\sgsavch\controller\сommand\carmodelcommands\CarModelListCommand.class
 com\sgsavch\controller\сommand\CommandUtility.class
+com\sgsavch\controller\сommand\carmodelcommands\CarModelAddCommand.class
+com\sgsavch\controller\сommand\carmodelcommands\CarModelDeleteCommand.class
 com\sgsavch\controller\filters\SessionStartFilter.class
 com\sgsavch\controller\сommand\EventCommands\EventCommand.class
 com\sgsavch\model\dao\EventDao.class
-com\sgsavch\controller\сommand\carmodelcomans\CarModelDeleteCommand.class
 com\sgsavch\controller\сommand\usercommands\RegisterCommand.class
+com\sgsavch\controller\сommand\carmodelcommands\CarModelSaveCommand.class
 com\sgsavch\model\dao\CarModelDao.class
 com\sgsavch\model\dao\mapper\EventMapper.class
 com\sgsavch\model\entity\agregates\TicketsCountAndTotalSum.class
@@ -28,7 +31,6 @@ com\sgsavch\model\dao\mapper\OptionMapper.class
 com\sgsavch\controller\сommand\EventCommands\EventListCommand.class
 com\sgsavch\model\service\UserService.class
 com\sgsavch\utils\BCrypt.class
-com\sgsavch\controller\сommand\carmodelcomans\CarModelEditCommand.class
 com\sgsavch\model\dao\impl\JDBCCarModelDao.class
 com\sgsavch\controller\сommand\optionscommands\OptionSaveCommand.class
 com\sgsavch\model\entity\enums\Color.class
@@ -63,10 +65,8 @@ com\sgsavch\controller\сommand\CommandContainer.class
 com\sgsavch\controller\сommand\vehiclescommands\VehicleEditCommand.class
 com\sgsavch\model\entity\enums\Role.class
 com\sgsavch\model\dao\impl\JDBCEventDao.class
-com\sgsavch\controller\сommand\carmodelcomans\CarModelListCommand.class
 com\sgsavch\controller\сommand\orderscommands\OrderAddCommand.class
 com\sgsavch\controller\сommand\optionscommands\OptionEditCommand.class
-com\sgsavch\controller\сommand\carmodelcomans\CarModelSaveCommand.class
 com\sgsavch\controller\сommand\usercommands\UserEditCommand.class
 com\sgsavch\model\dao\impl\JDBCUserDao.class
 com\sgsavch\model\service\CarModelService.class
@@ -82,6 +82,7 @@ com\sgsavch\controller\сommand\orderscommands\SetOptionsCommand.class
 com\sgsavch\model\entity\Vehicle.class
 com\sgsavch\model\service\OptionService.class
 com\sgsavch\utils\Hash.class
+com\sgsavch\controller\сommand\carmodelcommands\CarModelEditCommand.class
 com\sgsavch\controller\сommand\Command.class
 com\sgsavch\controller\сommand\orderscommands\SetPeriodCommand.class
 com\sgsavch\model\dao\OrderDao.class
@@ -92,7 +93,6 @@ com\sgsavch\model\entity\enums\StatusCar.class
 com\sgsavch\model\dao\impl\JDBCOptionDao.class
 com\sgsavch\model\entity\enums\StatusOrder.class
 com\sgsavch\controller\сommand\vehiclescommands\VehicleSaveCommand.class
-com\sgsavch\controller\сommand\carmodelcomans\CarModelAddCommand.class
 com\sgsavch\controller\сommand\usercommands\ActivatedCommand.class
 com\sgsavch\model\service\VehicleService.class
 com\sgsavch\controller\filters\SessionLocaleFilter.class
