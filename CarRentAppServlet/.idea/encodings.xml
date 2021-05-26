@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/carsToUpload" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/Pick-Up-in-city.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/Return-car-in-city.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/SsangYoung-Korando-Exterior.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/Tesla-Model-S-hire-odessa-vrc.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/audi-a3-cabriolet-black.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/audi-a8.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/bmw-428-cabrio.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/bmw-i3.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/chevrolet-aveo.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/ford-focus-II.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/ford-mustang-cabrio.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/ford-mustang-sport-coupe.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/gsp-for-car-rent-odessa-vrc.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/holiday-car-rental.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/hyundai-accent.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/hyundai_elantra.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/hyundai_tucson.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/in-car-wifi.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/kia-rio.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/lexus-LX570.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/logo-1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mercedes-CLS-63AMG.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mercedes-GL350-AMG.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mercedes-brabus-s63.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mercedes-gle-amg-63-coupe.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mercedes-s350.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/mitsubishi-lancer-X.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/nissan-leaf.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/prokat-GPS.jpg.crdownload.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/prokat_auto_1_1_.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/range-rover-sport.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/range-rover.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/rental-car-return-in-other-city.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/rental-cars-e1523882962237.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/skoda-fabia.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/stock_rental_car_keys.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/tesla-model-3-long-range.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/volkswagen-beetle-cabriolet.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/volkswagen-beetle-car-rental-odessa.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/volkswagen-polo-sedan.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carsToUpload/zaz-lanos.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/1Jwut3.jpg" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/resources/css/style1.css" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/resources/img/12-11-19-10.jpg" charset="windows-1251" />
@@ -17,13 +59,6 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/lectors_reg.jsp" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/registration.jsp" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/userEdit.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userEdit.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userEdit.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userEdit.jsp" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/userList.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userList.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userList.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/userList.jsp" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/uploads" charset="windows-1251" />
   </component>
 </project>
