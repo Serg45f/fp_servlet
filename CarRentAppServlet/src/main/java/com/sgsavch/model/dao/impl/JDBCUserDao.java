@@ -34,13 +34,13 @@ public class JDBCUserDao implements UserDao {
                 pstmt.setString(k++, entity.getPassword());
                 pstmt.setString(k++, entity.getFirstName());
                 pstmt.setString(k++, entity.getLastName());
-                pstmt.setString(k++, entity.getStatus().toString());
+                pstmt.setString(k++, entity.getStatusUser().toString());
                 pstmt.setString(k++, entity.getActivationCode());
 
                 if (pstmt.executeUpdate() > 0) {
                     rs = pstmt.getGeneratedKeys();
                     if (rs.next()) {
-                        entity.setId(rs.getLong(1));
+                        entity = new User.Builder().setId(rs.getLong(1)).build();
 
                     }
                     res = rs.getLong(1);
@@ -65,7 +65,7 @@ public class JDBCUserDao implements UserDao {
             prst.setLong(k++,id);
             rs = prst.executeQuery();
 
-            User user = new User();
+            User user = new User.Builder().build();
             UserMapper userMapper = new UserMapper();
             if (rs.next()) {
                 user = userMapper
@@ -84,7 +84,7 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public User getUserByUsername(String username) throws SQLException {
-        User user = new User();
+        User user = new User.Builder().build();
         ResultSet rs = null;
         try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_LOGIN)) {
 
@@ -122,7 +122,6 @@ public class JDBCUserDao implements UserDao {
        while (rs.next()) {
                 User user = userMapper
                         .extractFromResultSet(rs);
-
                 user = userMapper
                         .makeUnique(users, user);
             }
@@ -163,7 +162,7 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public User getUserByActivationCode(String code) throws SQLException {
-        User user = new User();
+        User user = new User.Builder().build();
 
         ResultSet rs = null;
         try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ACTIVATION_CODE)) {
@@ -239,7 +238,7 @@ public class JDBCUserDao implements UserDao {
 
             int k = 1;
             pstmt.setString(k++, entity.getActivationCode());
-            pstmt.setString(k++, entity.getStatus().name());
+            pstmt.setString(k++, entity.getStatusUser().name());
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -297,13 +296,14 @@ public class JDBCUserDao implements UserDao {
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(sql_users);
 
+            User.Builder builder = new User.Builder();
             UserMapper userMapper = new UserMapper();
             while (rs.next()) {
                 User user = userMapper
                         .extractFromResultSet(rs);
                 user = userMapper
                         .makeUnique(users, user);
-                user.setRoles(getUserRoles(user.getId()));
+//                user = builder.setRoles(getUserRoles(user.getId())).build();
             }
             return new ArrayList<>(users.values());
         } catch (SQLException ex) {
@@ -353,21 +353,22 @@ public class JDBCUserDao implements UserDao {
     }
 
     public boolean activateUser(String code) {
-        User user = new User();
+        User user = new User.Builder().build();
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ACTIVATION_CODE)) {
 
             int k = 1;
             prst.setString(k++,code);
             ResultSet rs = prst.executeQuery();
+
             UserMapper userMapper = new UserMapper();
             if (rs.next()) {
                 user = userMapper
                         .extractFromResultSet(rs);
             }
-            user.setActivationCode(null);
+            user = new User.Builder().setActivationCode(null).build();
             user.getRoles().clear();
             user.getRoles().add(Role.USER);
-            user.setStatus(StatusUser.ACTIVE);
+            user = new User.Builder().setUserStatus(StatusUser.ACTIVE).build();
 
             deleteUserRoles(user.getId());
             update(user);

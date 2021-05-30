@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.service.UserService;
@@ -34,7 +35,7 @@ public class UserListCommand implements Command {
         }
 
         List<User> users = userService.getUsersPaginated(currentPage, recordsPerPage);
-        User user = new User();
+        User user = new User.Builder().build();
 
         int rows = userService.getNumberOfRaws();
 
@@ -49,12 +50,9 @@ public class UserListCommand implements Command {
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
 
-       // request.setAttribute("user", user);
         request.setAttribute("users" , users);
 
-//        request.setAttribute("roleAdmin", Role.ADMIN);
 
-
-        return "/userList.jsp";
+        return Path.PAGE__USERS_LIST;
     }
 }

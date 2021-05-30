@@ -1,9 +1,5 @@
 package com.sgsavch.model.dao.SQLConstants;
 
-import com.sgsavch.model.entity.agregates.TicketsCountAndTotalSum;
-
-import java.util.List;
-
 public interface SQLConstant {
 	/////////////////////////////////USERS///////////////////////////////////////////////
 
@@ -65,7 +61,7 @@ public interface SQLConstant {
 			"DELETE FROM " + TABLE_USER_ROLE + " WHERE "+USER_ROLE_USER_ID+"=?";
 
 	String SQL_FIND_USER_BY_ROLE =
-			"SELECT * FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_ROLES + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
+			"SELECT "+TABLE_USERS+".* FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_USER_ID + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
 
 	///////////////////////////////////////////////////////////////////////////////////
 	String TABLE_EVENT = "event";

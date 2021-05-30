@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.UserService;
 
@@ -21,7 +22,7 @@ public class ActivatedCommand implements Command {
         } else {
             request.setAttribute("message", "Sorry, but activation code has not found");
         }
-        return "/login";
+        return Path.PAGE__LOGIN;
     }
 }
 

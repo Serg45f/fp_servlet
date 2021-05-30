@@ -1,10 +1,8 @@
 package com.sgsavch.model.dao;
 
-import com.sgsavch.model.entity.Event;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Role;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;

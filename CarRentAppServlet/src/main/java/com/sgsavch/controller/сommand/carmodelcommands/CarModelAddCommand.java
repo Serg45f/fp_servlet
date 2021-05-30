@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.carmodelcommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.entity.enums.StatusCar;
@@ -23,9 +24,9 @@ public class CarModelAddCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
 
-        request.setAttribute("carModel", new CarModel());
+        request.setAttribute("carModel", new CarModel.Builder().build());
         request.setAttribute("carTypes" , Arrays.asList(TypeCar.values()));
         request.setAttribute("carStatuses" , Arrays.asList(StatusCar.values()));
-        return "/carmodelEdit.jsp";
+        return Path.PAGE__CARMODEL_EDIT;
     }
 }

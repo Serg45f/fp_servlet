@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.optionscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.OptionService;
 
@@ -22,6 +23,6 @@ public class OptionEditCommand implements Command {
         Long id = Long.valueOf(request.getParameter("optionId"));
         request.setAttribute("option", optionService.getOption(id));
 
-        return "/optionEdit.jsp";
+        return Path.PAGE__OPTION_EDIT;
     }
 }

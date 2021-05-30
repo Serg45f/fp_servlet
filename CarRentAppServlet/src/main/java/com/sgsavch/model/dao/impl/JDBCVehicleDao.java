@@ -41,7 +41,7 @@ public class JDBCVehicleDao implements VehicleDao {
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
                 if (rs.next()) {
-                    entity.setId(rs.getLong(1));
+                    entity = new Vehicle.Builder().setId(rs.getLong(1)).build();
                 }
                 res = rs.getLong(1);
             }
@@ -63,7 +63,7 @@ public class JDBCVehicleDao implements VehicleDao {
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            Vehicle vehicle = new Vehicle();
+            Vehicle vehicle = new Vehicle.Builder().build();
             VehicleMapper vehicleMapper = new VehicleMapper();
             if (rs.next()) {
                 vehicle = vehicleMapper

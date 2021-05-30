@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.orderscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandContainer;
 import com.sgsavch.model.entity.Option;
@@ -20,6 +21,7 @@ public class SetOrderCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws SQLException {
         HttpSession session = request.getSession();
+        Order.Builder builder = new Order.Builder();
         Order newOrder = (Order) session.getAttribute("currentOrder");
         User user = (User) session.getAttribute("currentUser");
 //        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -36,14 +38,16 @@ public class SetOrderCommand implements Command {
 //                optionsTotalPrice+=option.getPrice();
 //            }
 //        }
-        newOrder.setUser(user);
-        newOrder.setDays(Period.between(newOrder.getStart().toLocalDate(),newOrder.getEnd().toLocalDate()).getDays());
-        newOrder.setPricePeriod(newOrder.getDays()*newOrder.getVehicle().getCarModel().getPrice());
+        newOrder = builder
+                .setUser(user)
+                .setDays(Period.between(newOrder.getStart().toLocalDate(),newOrder.getEnd().toLocalDate()).getDays())
+                .setPricePeriod(newOrder.getDays()*newOrder.getVehicle().getCarModel().getPrice())
+                .build();
         //newOrder.setPriceOptions(optionsTotalPrice);
         //newOrder.setTotalPrice(newOrder.getPricePeriod()+optionsTotalPrice);
         //newOrder.setStatus(StatusOrder.RESERVED);
         session.setAttribute("currentOrder",newOrder);
         session.setAttribute("orderStage",4);
-        return "/order.jsp";
+        return Path.PAGE__ORDER;
     }
 }

@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.optionscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.OptionService;
 
@@ -21,6 +22,6 @@ public class OptionDeleteCommand implements Command {
         Long id = Long.valueOf(request.getParameter("optionId"));
         optionService.deleteOption(id);
 
-        return "/options";
+        return Path.PAGE__OPTIONS;
     }
 }

@@ -20,37 +20,37 @@ import java.util.Map;
 public class OrderMapper {
 
     public Order extractFromResultSet(ResultSet rs) throws SQLException {
-        Order order = new Order();
         TypeCar[] types = TypeCar.values();
         StatusCar[] statuses = StatusCar.values();
-
-
 
         String ORDER_TOTAL_PRICE = "orders.total_price";
         String ORDER_DAMAGE_DESCRIPTION = "orders.damage_description";
         String ORDER_DAMAGE_PRICE = "orders.damage_price";
         String ORDER_DAMAGE_PAYED= "orders.damage_is_payed";
 
-        order.setId(rs.getLong(SQLConstant.ORDER_ID));
-        order.setCode(rs.getString(SQLConstant.ORDER_CODE));
-        order.setQrcode(rs.getString(SQLConstant.ORDER_CODE));
-        order.setStart(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()));
-        order.setEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()));
-        order.setRealEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_REAL_END).toString()));
-        order.setUser(new UserService().getUser(rs.getLong(SQLConstant.ORDER_USER_ID)));
-        order.setLocation(Location.values()[rs.getInt(SQLConstant.ORDER_CODE)]);
-        order.setVehicle(new VehicleService().getVehicleById(rs.getLong(SQLConstant.ORDER_VEHICLE_ID)));
-        order.setDays(Period.between(order.getStart().toLocalDate(),order.getEnd().toLocalDate()).getDays());
-        order.setStatus(StatusOrder.values()[rs.getInt(SQLConstant.ORDER_STATUS_ORDER)]);
-        order.setPricePeriod(order.getDays()*order.getVehicle().getCarModel().getPrice());
-        order.setOptions(new OptionService().getOptionsByOrderId(order.getId()));
-        order.setPriceOptions(rs.getDouble(SQLConstant.ORDER_PRICE_OPTIONS));
-        order.setTotalPrice(rs.getDouble(SQLConstant.ORDER_TOTAL_PRICE));
-        order.setDamageDescript(rs.getString(SQLConstant.ORDER_DAMAGE_DESCRIPTION));
-        order.setDamagePrice(rs.getDouble(SQLConstant.ORDER_DAMAGE_PRICE));
-        order.setDamageIsPayed(rs.getBoolean(SQLConstant.ORDER_DAMAGE_PAYED));
+        Order order = new Order.Builder()
+            .setId(rs.getLong(SQLConstant.ORDER_ID))
+            .setCode(rs.getString(SQLConstant.ORDER_CODE))
+            .setQRCode(rs.getString(SQLConstant.ORDER_CODE))
+            .setStart(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()))
+            .setEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()))
+            .setRealEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_REAL_END).toString()))
+            .setUser(new UserService().getUser(rs.getLong(SQLConstant.ORDER_USER_ID)))
+            .setLocation(Location.values()[rs.getInt(SQLConstant.ORDER_CODE)])
+            .setVehicle(new VehicleService().getVehicleById(rs.getLong(SQLConstant.ORDER_VEHICLE_ID)))
+            .setStatusOrder(StatusOrder.values()[rs.getInt(SQLConstant.ORDER_STATUS_ORDER)])
+            .setPriceOptions(rs.getDouble(SQLConstant.ORDER_PRICE_OPTIONS))
+            .setTotalPrice(rs.getDouble(SQLConstant.ORDER_TOTAL_PRICE))
+            .setDamageDescript(rs.getString(SQLConstant.ORDER_DAMAGE_DESCRIPTION))
+            .setDamagePrice(rs.getDouble(SQLConstant.ORDER_DAMAGE_PRICE))
+            .setDamageIsPayed(rs.getBoolean(SQLConstant.ORDER_DAMAGE_PAYED))
+            .build();
 
-
+        order = new Order.Builder()
+            .setOptions(new OptionService().getOptionsByOrderId(order.getId()))
+            .setDays(Period.between(order.getStart().toLocalDate(),order.getEnd().toLocalDate()).getDays())
+            .setPricePeriod(order.getDays()*order.getVehicle().getCarModel().getPrice())
+            .build();
         return order;
     }
 

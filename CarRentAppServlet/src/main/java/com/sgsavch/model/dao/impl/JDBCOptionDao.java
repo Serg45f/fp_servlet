@@ -40,7 +40,7 @@ public class JDBCOptionDao implements OptionDao {
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
                 if (rs.next()) {
-                    entity.setId(rs.getLong(1));
+                    entity = new Option.Builder().setId(rs.getLong(1)).build();
                 }
                 res = rs.getLong(1);
             }
@@ -63,7 +63,7 @@ public class JDBCOptionDao implements OptionDao {
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            Option option = new Option();
+            Option option = new Option.Builder().build();
             OptionMapper optionMapper = new OptionMapper();
             if (rs.next()) {
                 option = optionMapper

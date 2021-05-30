@@ -1,5 +1,6 @@
 package com.sgsavch.model.dao;
 
+import com.sgsavch.model.dto.VehicleDTO;
 import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.entity.Vehicle;
 

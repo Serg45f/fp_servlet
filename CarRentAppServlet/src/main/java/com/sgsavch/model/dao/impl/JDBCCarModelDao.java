@@ -4,6 +4,7 @@ import com.sgsavch.model.dao.CarModelDao;
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.mapper.CarModelMapper;
 import com.sgsavch.model.entity.CarModel;
+import com.sgsavch.model.entity.CarModel.Builder;
 import com.sgsavch.model.entity.enums.StatusCar;
 
 import java.sql.*;
@@ -40,7 +41,7 @@ public class JDBCCarModelDao implements CarModelDao {
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
                 if (rs.next()) {
-                    entity.setId(rs.getLong(1));
+                    entity = new Builder().setId(rs.getLong(1)).build();
                 }
                 res = rs.getLong(1);
             }
@@ -63,7 +64,7 @@ public class JDBCCarModelDao implements CarModelDao {
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            CarModel carModel = new CarModel();
+            CarModel carModel = new CarModel.Builder().build();
             CarModelMapper carmodelMapper = new CarModelMapper();
             if (rs.next()) {
                 carModel = carmodelMapper

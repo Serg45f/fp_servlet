@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Role;
@@ -25,7 +26,6 @@ public class RegisterCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         System.out.println("(RegisterCommand.execute");
-        User user = new User();
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String userName = request.getParameter("email");
@@ -41,18 +41,18 @@ public class RegisterCommand implements Command {
 //            return "/WEB-INF/error.jsp";
 //        }
 
-
-
-        user.setEmail(userName);
-        user.setPassword(BCrypt.hashpw(pass,BCrypt.gensalt()));
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setStatus(StatusUser.CANDIDATE);
+        User user = new User.Builder()
+        .setEmail(userName)
+        .setPassword(BCrypt.hashpw(pass,BCrypt.gensalt()))
+        .setFirstName(firstName)
+        .setLastName(lastName)
+        .setUserStatus(StatusUser.CANDIDATE)
+        .setActivationCode(UUID.randomUUID().toString())
+        .build();
         user.getRoles().add(Role.UNCONFIRMED);
-        user.setActivationCode(UUID.randomUUID().toString());
 
         Long res = userService.create(user);
-        user.setId(res);
+        user = new User.Builder().setId(res).build();
         userService.setUserRoles(user,user.getRoles());
 
         if(!StringUtils.isEmpty(user.getEmail())){
@@ -84,7 +84,7 @@ public class RegisterCommand implements Command {
 
         request.setAttribute("message", message);
 
-        return "/login.jsp";
+        return Path.PAGE__LOGIN;
     }
 
 }

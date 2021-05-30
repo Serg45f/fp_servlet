@@ -2,6 +2,7 @@ package com.sgsavch.model.service;
 
 import com.sgsavch.model.dao.DaoFactory;
 import com.sgsavch.model.dao.VehicleDao;
+import com.sgsavch.model.dto.VehicleDTO;
 import com.sgsavch.model.entity.Vehicle;
 
 import java.sql.SQLException;
@@ -36,15 +37,15 @@ public class VehicleService {
         }
     }
 
-    public Long addVehicle(Vehicle vehicleId) {
+    public Long addVehicle(Vehicle vehicle) {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
-            return dao.create(vehicleId);
+            return dao.create(vehicle);
         }
     }
 
-    public void editVehicle(Vehicle vehicleId) {
+    public void editVehicle(Vehicle vehicle) {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
-            dao.update(vehicleId);
+            dao.update(vehicle);
         }
     }
 

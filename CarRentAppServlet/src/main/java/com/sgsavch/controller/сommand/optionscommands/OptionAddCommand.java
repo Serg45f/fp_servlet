@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.optionscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.Option;
 import com.sgsavch.model.service.OptionService;
@@ -19,7 +20,7 @@ public class OptionAddCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        request.setAttribute("option", new Option());
-        return "/optionEdit.jsp";
+        request.setAttribute("option", new Option.Builder().build());
+        return Path.PAGE__OPTION_EDIT;
     }
 }

@@ -12,10 +12,6 @@ public class JDBCDaoFactory extends DaoFactory {
 
 
     @Override
-    public EventDao createEventDao() {
-        return new JDBCEventDao(getConnection());
-    }
-    @Override
     public OrderDao createOrderDao() { return new JDBCOrderDao(getConnection());}
     @Override
     public CarModelDao createCarModelDao() { return new JDBCCarModelDao(getConnection());}

@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.orderscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.service.CarModelService;
@@ -48,7 +49,6 @@ public class OrderListCommand implements Command {
         request.setAttribute("recordsPerPage", recordsPerPage);
         request.setAttribute("carmodels" , carModels);
 
-
-        return "/carmodels.jsp";
+        return Path.PAGE__CARMODELS;
     }
 }

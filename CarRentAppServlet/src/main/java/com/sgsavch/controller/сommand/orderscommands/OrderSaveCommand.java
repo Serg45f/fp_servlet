@@ -19,19 +19,20 @@ public class OrderSaveCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         System.out.println("(CarModelSaveCommand.execute");
-        CarModel carModel = new CarModel();
-         //Long id;
-         carModel.setName(request.getParameter("name"));
-         carModel.setSeatsNumb(Integer.valueOf(request.getParameter("seatsNumb")));
-         carModel.setDoorsNumb(Integer.valueOf(request.getParameter("doorsNumb")));
-         carModel.setPicture(request.getParameter("picture"));
-         carModel.setType(TypeCar.valueOf(request.getParameter("type")));
-         carModel.setStatus(StatusCar.valueOf(request.getParameter("status")));
-         carModel.setPrice(Double.valueOf(request.getParameter("price")));
-         carModel.setDeposit(Double.valueOf(request.getParameter("deposit")));
+        CarModel.Builder carModelBuilder = new CarModel.Builder();
+        CarModel carModel = carModelBuilder
+         .setName(request.getParameter("name"))
+         .setSeatsNumb(Integer.valueOf(request.getParameter("seatsNumb")))
+         .setDoorsNumb(Integer.valueOf(request.getParameter("doorsNumb")))
+         .setPicture(request.getParameter("picture"))
+         .setType(TypeCar.valueOf(request.getParameter("type")))
+         .setStatus(StatusCar.valueOf(request.getParameter("status")))
+         .setPrice(Double.valueOf(request.getParameter("price")))
+         .setDeposit(Double.valueOf(request.getParameter("deposit")))
+                .build();
 
-//         Long res = carModelService.create(carModel);
-//         carModel.setId(res);
+         Long res = carModelService.addCarModel(carModel);
+         carModel = carModelBuilder.setId(res).build();
 
         return "/carmodels";
     }

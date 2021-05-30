@@ -15,13 +15,13 @@ import java.util.Map;
 public class OptionMapper {
 
     public Option extractFromResultSet(ResultSet rs) throws SQLException {
-        Option option = new Option();
-
-        option.setId(rs.getLong(SQLConstant.OPTION_ID));
-        option.setDescription(rs.getString(SQLConstant.OPTION_DESCRIPTION));
-        option.setName(rs.getString(SQLConstant.OPTION_NAME));
-        option.setPicture(rs.getString(SQLConstant.OPTION_PICTURE));
-        option.setPrice(rs.getDouble(SQLConstant.OPTION_PRICE));
+        Option option = new Option.Builder()
+            .setId(rs.getLong(SQLConstant.OPTION_ID))
+            .setDescription(rs.getString(SQLConstant.OPTION_DESCRIPTION))
+            .setName(rs.getString(SQLConstant.OPTION_NAME))
+            .setPicture(rs.getString(SQLConstant.OPTION_PICTURE))
+            .setPrice(rs.getDouble(SQLConstant.OPTION_PRICE))
+            .build();
 
         return option;
     }
@@ -33,13 +33,12 @@ public class OptionMapper {
     }
 
     public Option extractFromRequest(HttpServletRequest request) throws SQLException {
-        Option option = new Option();
-
-        option.setId(Long.valueOf(request.getParameter("id")));
-        option.setDescription(request.getParameter("description"));
-        option.setName(request.getParameter("name"));
-        //option.setPicture(request.getString(SQLConstant.OPTION_PICTURE));
-        option.setPrice(Double.valueOf(request.getParameter("price")));
+        Option option = new Option.Builder()
+        .setId(Long.valueOf(request.getParameter("id")))
+        .setDescription(request.getParameter("description"))
+        .setName(request.getParameter("name"))
+        .setPrice(Double.valueOf(request.getParameter("price")))
+        .build();
 
         return option;
     }

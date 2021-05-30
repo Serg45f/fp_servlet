@@ -1,6 +1,5 @@
 package com.sgsavch.model.dao;
 
-import com.sgsavch.model.entity.Event;
 import com.sgsavch.model.entity.Order;
 
 import java.util.List;

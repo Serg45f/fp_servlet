@@ -42,7 +42,7 @@ public class JDBCOrderDao implements OrderDao {
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
                 if (rs.next()) {
-                    entity.setId(rs.getLong(1));
+                    entity = new Order.Builder().setId(rs.getLong(1)).build();
                 }
                 res = rs.getLong(1);
             }
@@ -66,7 +66,7 @@ public class JDBCOrderDao implements OrderDao {
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            Order order = new Order();
+            Order order = new Order.Builder().build();
             OrderMapper orderMapper = new OrderMapper();
             if (rs.next()) {
                 order = orderMapper

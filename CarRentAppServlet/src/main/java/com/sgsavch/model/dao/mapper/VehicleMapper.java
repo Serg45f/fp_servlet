@@ -13,16 +13,16 @@ import java.util.Map;
 public class VehicleMapper {
 
     public Vehicle extractFromResultSet(ResultSet rs) throws SQLException {
-        Vehicle vehicle = new Vehicle();
-
-        vehicle.setId(rs.getLong(SQLConstant.VEHICLE_ID));
-        vehicle.setColor(Color.values()[rs.getInt(SQLConstant.VEHICLE_COLOR)]);
-        vehicle.setRegNumber(rs.getString(SQLConstant.VEHICLE_REG_NUMBER));
-        vehicle.setTransmission(rs.getString(SQLConstant.VEHICLE_TRANSMISSION));
-        vehicle.setCarModel(new CarModelService().getCarModel(rs.getLong(SQLConstant.VEHICLE_CARMODEL_ID)));
-        vehicle.setYearIssue(rs.getDate(SQLConstant.VEHICLE_YEAR_ISSUE).toLocalDate());
-        vehicle.setDiscount(rs.getDouble(SQLConstant.VEHICLE_DISCOUNT));
-        vehicle.setManager(new UserService().getUser(rs.getLong(SQLConstant.VEHICLE_USER_ID)));
+        Vehicle vehicle = new Vehicle.Builder()
+                .setId(rs.getLong(SQLConstant.VEHICLE_ID))
+                .setCarModel(new CarModelService().getCarModel(rs.getLong(SQLConstant.VEHICLE_CARMODEL_ID)))
+                .setColor(Color.values()[rs.getInt(SQLConstant.VEHICLE_COLOR)])
+                .setRegNumber(rs.getString(SQLConstant.VEHICLE_REG_NUMBER))
+                .setTransmission(rs.getString(SQLConstant.VEHICLE_TRANSMISSION))
+                .setYearIssue(rs.getDate(SQLConstant.VEHICLE_YEAR_ISSUE).toLocalDate())
+                .setDiscount(rs.getDouble(SQLConstant.VEHICLE_DISCOUNT))
+                .setManager(new UserService().getUser(rs.getLong(SQLConstant.VEHICLE_USER_ID)))
+                .build();
 
         return vehicle;
     }

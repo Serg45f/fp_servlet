@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Role;
@@ -10,23 +11,19 @@ import java.util.Arrays;
 
 public class UserEditCommand implements Command {
 
+    UserService userService;
 
     public UserEditCommand(UserService userService) {
         this.userService = userService;
     }
 
-    UserService userService;
-
-    public UserEditCommand() {
-    }
-
     @Override
     public String execute(HttpServletRequest request) {
-        Long id = Long.valueOf(request.getParameter("id"));
-        User user = userService.getUser(id);
-        user.setRoles(userService.getUserRoles(user.getId()));
+        User user = userService.getUser(Long.valueOf(request.getParameter("id")));
+        user = new User.Builder().setRoles(userService.getUserRoles(user.getId())).build();
         request.setAttribute("user", user);
         request.setAttribute("roles" , Arrays.asList(Role.values()));
-        return "/userEdit.jsp";
+
+        return Path.PAGE__USER_EDIT;
     }
 }

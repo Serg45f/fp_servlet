@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandUtility;
 import com.sgsavch.model.entity.enums.Role;
@@ -18,6 +19,6 @@ public class LogOutCommand implements Command {
         CommandUtility.deleteLoggedUser(request, (String) request.getSession().getServletContext().getAttribute("userName"));
 
         CommandUtility.setUserRole(request, Collections.singleton(Role.UNKNOWN), "Guest",0L);
-        return "redirect:/index.jsp";
+        return "redirect:" + Path.PAGE__LOGIN;
     }
 }

@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.carmodelcommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.CarModel;
 import com.sgsavch.model.service.CarModelService;
@@ -49,6 +50,6 @@ public class CarModelListCommand implements Command {
         request.setAttribute("carmodels" , carModels);
 
 
-        return "/carmodels.jsp";
+        return Path.PAGE__CARMODELS;
     }
 }

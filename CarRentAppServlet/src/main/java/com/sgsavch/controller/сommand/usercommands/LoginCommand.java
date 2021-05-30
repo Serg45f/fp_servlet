@@ -1,7 +1,9 @@
 package com.sgsavch.controller.сommand.usercommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandUtility;
+import com.sgsavch.controller.сommand.orderscommands.PeriodCommand;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.utils.BCrypt;
 import com.sgsavch.model.service.UserService;
@@ -23,7 +25,7 @@ public class LoginCommand implements Command {
         String pass = request.getParameter("pass");
 
         if( name == null || name.equals("") || pass == null || pass.equals("")  ){
-            return "/login.jsp";
+            return "/WEB-INF/login.jsp";
         }
         if(CommandUtility.checkUserIsLogged(request, name)){
             return "/WEB-INF/error.jsp";
@@ -33,7 +35,7 @@ public class LoginCommand implements Command {
         User userAuth = null;
         String message;
         if(BCrypt.checkpw(pass,user.getPassword())) {
-            user.setRoles(userService.getUserRoles(user.getId()));
+            user = new User.Builder().setRoles(userService.getUserRoles(user.getId())).build();
             userAuth = user;
             CommandUtility.setUserRole(request, userAuth.getRoles(), userAuth.getEmail(),userAuth.getId());
             message = "Welcome, " + userAuth.getFirstName() + "! You have successfully logged in!";
@@ -42,7 +44,7 @@ public class LoginCommand implements Command {
         }
         request.setAttribute("message", message);
 
-        return "/login.jsp";
+        return Path.PAGE__LOGIN;
     }
 
 }

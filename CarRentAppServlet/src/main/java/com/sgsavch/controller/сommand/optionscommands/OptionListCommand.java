@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.optionscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.OptionService;
 
@@ -21,6 +22,6 @@ public class OptionListCommand implements Command {
     public String execute(HttpServletRequest request) throws SQLException {
         request.setAttribute("options" , optionService.getAllOptions());
 
-        return "/options.jsp";
+        return Path.PAGE__OPTIONS;
     }
 }

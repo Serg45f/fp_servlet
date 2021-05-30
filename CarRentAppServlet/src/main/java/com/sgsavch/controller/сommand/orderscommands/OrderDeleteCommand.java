@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.orderscommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.CarModelService;
 
@@ -21,6 +22,6 @@ public class OrderDeleteCommand implements Command {
         Long id = Long.valueOf(request.getParameter("carmodelId"));
         carModelService.deleteCarModel(id);
 
-        return "/carmodels";
+        return Path.PAGE__CARMODELS;
     }
 }

@@ -1,5 +1,6 @@
 package com.sgsavch.controller.сommand.vehiclescommands;
 
+import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.Vehicle;
 import com.sgsavch.model.service.VehicleService;
@@ -68,6 +69,6 @@ public class VehicleListCommand implements Command {
         request.setAttribute("vehicles" , vehicles);
 
 
-        return "/vehicles.jsp";
+        return Path.PAGE__VEHICLES;
     }
 }

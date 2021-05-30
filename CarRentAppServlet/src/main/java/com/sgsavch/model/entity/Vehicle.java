@@ -8,29 +8,25 @@ import java.util.List;
 
 
 public class Vehicle {
-    private Long id;
-    private CarModel carModel;
-    private String regNumber;
-    private LocalDate yearIssue;
-    private List<Order> orders;
-    private Color color;
-    private String transmission;
-    private Double discount = 0D;
-    private User manager;
+    private final Long id;
+    private final CarModel carModel;
+    private final String regNumber;
+    private final LocalDate yearIssue;
+    private final List<Order> orders;
+    private final Color color;
+    private final String transmission;
+    private final Double discount;
+    private final User manager;
 
-    public Vehicle() {
-    }
-
-    public Vehicle(Long id,
-                   CarModel carModel,
-                   String regNumber,
-                   LocalDate yearIssue,
-                   List<Order> orders,
-                   Color color,
-                   String transmission,
-                   Double discount,
-                   User manager) {
-
+    public Vehicle(final Long id,
+                   final CarModel carModel,
+                   final String regNumber,
+                   final LocalDate yearIssue,
+                   final List<Order> orders,
+                   final Color color,
+                   final String transmission,
+                   final Double discount,
+                   final User manager) {
         this.id = id;
         this.carModel = carModel;
         this.regNumber = regNumber;
@@ -42,76 +38,125 @@ public class Vehicle {
         this.manager = manager;
     }
 
+
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public CarModel getCarModel() {
         return carModel;
     }
 
-    public void setCarModel(CarModel carModel) {
-        this.carModel = carModel;
-    }
-
     public String getRegNumber() {
         return regNumber;
-    }
-
-    public void setRegNumber(String regNumber) {
-        this.regNumber = regNumber;
     }
 
     public LocalDate getYearIssue() {
         return yearIssue;
     }
 
-    public void setYearIssue(LocalDate yearIssue) {
-        this.yearIssue = yearIssue;
-    }
-
     public List<Order> getOrders() {
         return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
     }
 
     public Color getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     public String getTransmission() {
         return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
     }
 
     public Double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
     public User getManager() {
         return manager;
     }
 
-    public void setManager(User manager) {
-        this.manager = manager;
+    public static class Builder {
+
+        private Long id;
+        private CarModel carModel;
+        private String regNumber;
+        private LocalDate yearIssue;
+        private List<Order> orders;
+        private Color color;
+        private String transmission;
+        private Double discount = 0D;
+        private User manager;
+
+        public Builder() {
+        }
+
+        public Builder setId(Long id) {
+            this.id = id;
+
+            return this;
+        }
+
+        public Builder setCarModel(CarModel carModel) {
+            this.carModel = carModel;
+
+            return this;
+        }
+
+        public Builder setRegNumber(String regNumber) {
+            this.regNumber = regNumber;
+
+            return this;
+        }
+
+        public Builder setYearIssue(LocalDate yearIssue) {
+            this.yearIssue = yearIssue;
+
+            return this;
+        }
+
+        public Builder setOrders(List<Order> orders) {
+            this.orders = orders;
+
+            return this;
+        }
+
+        public Builder setColor(Color color) {
+            this.color = color;
+
+            return this;
+        }
+
+        public Builder setTransmission(String transmission) {
+            this.transmission = transmission;
+
+            return this;
+        }
+
+        public Builder setDiscount(Double discount) {
+            this.discount = discount;
+
+            return this;
+        }
+
+        public Builder setManager(User manager) {
+            this.manager = manager;
+
+            return this;
+        }
+
+        public Vehicle build() {
+            return new Vehicle(
+                    id,
+                    carModel,
+                    regNumber,
+                    yearIssue,
+                    orders,
+                    color,
+                    transmission,
+                    discount,
+                    manager);
+        }
+
     }
 
     public String toString(){

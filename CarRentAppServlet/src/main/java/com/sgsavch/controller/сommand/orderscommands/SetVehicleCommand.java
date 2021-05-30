@@ -17,15 +17,18 @@ public class SetVehicleCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws SQLException, IOException, ServletException {
-        Order order = new Order();
-        order.setLocation(Location.valueOf(request.getParameter("location")));
-        order.setStart(LocalDateTime.parse(request.getParameter("start")));
-        order.setEnd(LocalDateTime.parse(request.getParameter("end")));
+        Order order = new Order.Builder()
+            .setLocation(Location.valueOf(request.getParameter("location")))
+            .setStart(LocalDateTime.parse(request.getParameter("start")))
+            .setEnd(LocalDateTime.parse(request.getParameter("end")))
+            .build();
         HttpSession session = request.getSession();
         session.setAttribute("currentOrder", order);
         session.setAttribute("orderStage",2);
+
         Command command = CommandContainer.get("vehicles");
         String page = command.execute(request);
+
         return page;
     }
 }
