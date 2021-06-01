@@ -27,8 +27,7 @@ public class User {
     private final String country;
     private final String licenseNumb;
     private final String cardNumb;
-    private final List<Order> orders;
-    private final List<Vehicle> vehicles;
+
 
     public Boolean isAdmin(){
         return roles.contains(Role.ADMIN);
@@ -54,9 +53,7 @@ public class User {
                 final LocalDate passDateExp,
                 final String country,
                 final String licenseNumb,
-                final String cardNumb,
-                final List<Order> orders,
-                final List<Vehicle> vehicles) {
+                final String cardNumb) {
         this.id = id;
         this.email = email;
         this.phone = phone;
@@ -71,8 +68,6 @@ public class User {
         this.country = country;
         this.licenseNumb = licenseNumb;
         this.cardNumb = cardNumb;
-        this.orders = orders;
-        this.vehicles = vehicles;
     }
 
     public Long getId() {
@@ -131,14 +126,6 @@ public class User {
         return cardNumb;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
-
     public static class Builder {
         private Long id;
         private String email;
@@ -154,10 +141,23 @@ public class User {
         private String country;
         private String licenseNumb;
         private String cardNumb;
-        private List<Order> orders;
-        private List<Vehicle> vehicles;
-
         public Builder() {
+        }
+        public Builder(User user) {
+            this.id = user.id;
+            this.email = user.email;
+            this.phone = user.phone;
+            this.activationCode = user.activationCode;
+            this.password = user.password;
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.roles = user.roles;
+            this.statusUser = user.statusUser;
+            this.passportNumb = user.passportNumb;
+            this.passDateExp = user.passDateExp;
+            this.country = user.country;
+            this.licenseNumb = user.licenseNumb;
+            this.cardNumb = user.cardNumb;
         }
 
         public Builder setId(Long id) {
@@ -244,18 +244,6 @@ public class User {
             return this;
         }
 
-        public Builder setOrders(List<Order> orders) {
-            this.orders = orders;
-
-            return this;
-        }
-
-        public Builder setVehicles(List<Vehicle> vehicles) {
-            this.vehicles = vehicles;
-
-            return this;
-        }
-
         public User build() {
             return new User(
                     id,
@@ -271,9 +259,7 @@ public class User {
                     passDateExp,
                     country,
                     licenseNumb,
-                    cardNumb,
-                    orders,
-                    vehicles);
+                    cardNumb);
         }
 
     }
@@ -284,33 +270,40 @@ public class User {
         User.Builder builder = new User.Builder();
         for(String s:lexems) {
             if (s.contains("id"))
-                newUser = builder.setId(Long.valueOf(s.replaceAll(".*=|\\)", ""))).build();
+                newUser = builder.setId(Long.valueOf(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
             if (s.contains("email"))
-                newUser = builder.setEmail(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setEmail(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("phone"))
-                newUser = builder.setPhone(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setPhone(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("activationCode"))
-                newUser = builder.setActivationCode(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setActivationCode(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("password"))
-                newUser = builder.setPassword(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setPassword(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("firstName"))
-                newUser = builder.setFirstName(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setFirstName(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("lastName"))
-                newUser = builder.setLastName(s.replaceAll(".*=|\\)", "")).build();
-//                if (s.contains("roles"))
-//                    newUser = builder.setRoles(Set<Role>.valueOf(s.replaceAll(".*=", ""))).build();
+                newUser = builder.setLastName(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
+            if (s.contains("roles")){
+                Set<Role> userRoles = new HashSet<>();
+                for(Role role:Role.values()) {
+                    for(String str:lexems){
+                        if(str.contains(role.name()))userRoles.add(role);
+                    }
+                }
+                newUser = builder.setRoles(userRoles).build();
+            }
             if (s.contains("status"))
-                newUser = builder.setUserStatus(StatusUser.valueOf(s.replaceAll(".*=|\\)", ""))).build();
+                newUser = builder.setUserStatus(StatusUser.valueOf(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
             if (s.contains("passportNumb"))
-                newUser = builder.setPassportNumb(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setPassportNumb(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("passDateExp"))
-                newUser = builder.setPassDateExp(LocalDate.parse(s.replaceAll(".*=|\\)", ""))).build();
+                newUser = builder.setPassDateExp(LocalDate.parse(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
             if (s.contains("country"))
-                newUser = builder.setCountry(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setCountry(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("licenseNumb"))
-                newUser = builder.setLicenseNumb(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setLicenseNumb(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
             if (s.contains("cardNumb"))
-                newUser = builder.setCardNumber(s.replaceAll(".*=|\\)", "")).build();
+                newUser = builder.setCardNumber(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
         }
 
         return newUser;
@@ -326,15 +319,13 @@ public class User {
                 ", password=" + password +
                 ", firstName=" + firstName +
                 ", lastName=" + lastName +
-                ", roles=" + roles +
+                ", roles=" + roles.toString() +
                 ", status=" + statusUser +
                 ", passportNumb=" + passportNumb +
                 ", passDateExp=" + passDateExp +
                 ", country=" + country +
                 ", licenseNumb=" + licenseNumb +
                 ", cardNumb=" + cardNumb +
-                ", orders=" + orders +
-
                 '}';
     }
 }

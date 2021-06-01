@@ -11,14 +11,14 @@ import java.util.Map;
 public class OptionDTO {
 
     public Option extractFromRequest(HttpServletRequest request) throws SQLException {
-//        Option option = new Option();
-//
-//        option.setId(Long.valueOf(request.getParameter("id")));
-//        option.setDescription(request.getParameter("description"));
-//        option.setName(request.getParameter("name"));
-//        //option.setPicture(request.getString(SQLConstant.OPTION_PICTURE));
-//        option.setPrice(Double.valueOf(request.getParameter("price")));
+        Option option = new Option.Builder()
+                .setDescription(request.getParameter("description"))
+                .setName(request.getParameter("name"))
+                .setPrice(Double.valueOf(request.getParameter("price")))
+                .build();
+        if(request.getParameter("id")!=null)
+            option = new Option.Builder(option).setId(Long.valueOf(request.getParameter("id"))).build();
 
-        return null;
+        return option;
     }
 }

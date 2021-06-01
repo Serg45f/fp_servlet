@@ -162,6 +162,28 @@ public class Order {
         public Builder() {
         }
 
+        public Builder(Order order) {
+
+            this.id = order.id;
+            this.code = order.code;
+            this.start = order.start;
+            this.end = order.end;
+            this.realEnd = order.realEnd;
+            this.days = order.days;
+            this.vehicle = order.vehicle;
+            this.user = order.user;
+            this.status = order.status;
+            this.location = order.location;
+            this.qrcode = order.qrcode;
+            this.pricePeriod = order.pricePeriod;
+            this.totalPrice = order.totalPrice;
+            this.priceOptions = order.priceOptions;
+            this.options = order.options;
+            this.damageDescript = order.damageDescript;
+            this.damagePrice = order.damagePrice;
+            this.damageIsPayed = order.damageIsPayed;
+        }
+
         public Builder setId(Long id) {
             this.id = id;
 

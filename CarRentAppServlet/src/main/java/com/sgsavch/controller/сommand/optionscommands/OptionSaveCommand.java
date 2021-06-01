@@ -23,9 +23,8 @@ public class OptionSaveCommand implements Command {
     public String execute(HttpServletRequest request) throws SQLException, IOException, ServletException {
         Option.Builder optionBuilder = new Option.Builder();
         System.out.println("(OptionSaveCommand.execute");
-        Option option = optionBuilder.build();
+
         Long res = optionService.addOption(new OptionMapper().extractFromRequest(request));
-        option= optionBuilder.setId(res).build();
 
         Command command = CommandContainer.get("options");
         String page = command.execute(request);

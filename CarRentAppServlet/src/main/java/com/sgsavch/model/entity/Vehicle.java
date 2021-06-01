@@ -90,6 +90,19 @@ public class Vehicle {
         public Builder() {
         }
 
+        public Builder(Vehicle vehicle) {
+            this.id = vehicle.id;
+            this.carModel = vehicle.carModel;
+            this.regNumber = vehicle.regNumber;
+            this.yearIssue = vehicle.yearIssue;
+            this.orders = vehicle.orders;
+            this.color = vehicle.color;
+            this.transmission = vehicle.transmission;
+            this.discount = vehicle.discount;
+            this.manager = vehicle.manager;
+        }
+
+
         public Builder setId(Long id) {
             this.id = id;
 

@@ -35,7 +35,6 @@ public class LoginCommand implements Command {
         User userAuth = null;
         String message;
         if(BCrypt.checkpw(pass,user.getPassword())) {
-            user = new User.Builder().setRoles(userService.getUserRoles(user.getId())).build();
             userAuth = user;
             CommandUtility.setUserRole(request, userAuth.getRoles(), userAuth.getEmail(),userAuth.getId());
             message = "Welcome, " + userAuth.getFirstName() + "! You have successfully logged in!";

@@ -96,6 +96,19 @@ public class CarModel {
             // private constructor
         }
 
+        public Builder(CarModel carModel) {
+            this.id = carModel.id;
+            this.name = carModel.name;
+            this.seatsNumb = carModel.seatsNumb;
+            this.doorsNumb = carModel.doorsNumb;
+            this.picture = carModel.picture;
+            this.type = carModel.type;
+            this.status = carModel.status;
+            this.price = carModel.price;
+            this.deposit = carModel.deposit;
+            this.vehicles = carModel.vehicles;
+        }
+
         public Builder setId(Long id) {
             this.id = id;
 

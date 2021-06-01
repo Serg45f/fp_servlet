@@ -40,12 +40,14 @@ public class CarModelSaveCommand implements Command {
                 .setPrice(Double.valueOf(request.getParameter("price")))
                 .setDeposit(Double.valueOf(request.getParameter("deposit")))
                 .build();
+
         InputStream fileContent = filePart.getInputStream();
         File targetFile = new File(bundle.getString("upload.path")+carModel.getPicture());
         FileUtils.copyInputStreamToFile(fileContent, targetFile);
 
-         Long res = carModelService.addCarModel(carModel);
-         carModel = new CarModel.Builder().setId(res).build();
+        if(request.getParameter("id")!=null)
+            carModel = new CarModel.Builder(carModel).setId(Long.valueOf(request.getParameter("id"))).build();
+        Long res = carModelService.addCarModel(carModel);
 
         Command command = CommandContainer.get("carModels");
         String page = command.execute(request);

@@ -29,7 +29,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:import url="parts/navbar.jsp"/>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="parts/navbar.jsp"/>--%>
 <br/>
 <br/>
 <br/>
@@ -89,7 +90,8 @@ height:100vh;">
                 </div>
             </c:forEach>
             </div>
-            <c:import url="pagination.jsp"/>
+    <%@ include file="/WEB-INF/parts/pagination.jsp" %>
+    <%--<c:import url="pagination.jsp"/>--%>
         </div>
 
     </div>

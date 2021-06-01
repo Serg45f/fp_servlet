@@ -29,18 +29,34 @@ public class Servlet extends HttpServlet {
                 .setAttribute("loggedUsers", new HashSet<String>());
     }
 
-    @SneakyThrows
+    //@SneakyThrows
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
-            throws IOException, ServletException {
-        processRequest(request, response);
-    }
+           {
+               try {
+                   processRequest(request, response);
+               } catch (ServletException e) {
+                   e.printStackTrace();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               } catch (SQLException throwables) {
+                   throwables.printStackTrace();
+               }
+           }
 
-    @SneakyThrows
+    //@SneakyThrows
     public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        processRequest(request, response);
-    }
+            {
+                try {
+                    processRequest(request, response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {

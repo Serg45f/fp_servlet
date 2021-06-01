@@ -37,7 +37,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:import url="parts/navbar.jsp"/>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="parts/navbar.jsp"/>--%>
 
 <div class="container mt-6">
     <br/>
@@ -46,25 +47,21 @@ return sdf.format(new Date());
     <br>
     <H3>User editor</H3>
 
-<form action="/user_edit" method = "post">
-    <input type="text" value="${user.getEmail()}" name="email"/>
-    <input type="text" value="${user.getFirstName()}" name="firstName"/>
-    <input type="text" value="${user.getLastName()}" name="lastName"/>
-    <c:forEach var="role" items="${roles}">
+<form action="${pageContext.request.contextPath}/user_save" method = "post">
+    <input type="text" value="${editedUser.email}" name="email"/>
+    <input type="text" value="${editedUser.firstName}" name="firstName"/>
+    <input type="text" value="${editedUser.lastName}" name="lastName"/>
+    <c:forEach var="role" items="${allRoles}">
         <div>
             <label>
-                <c:if test="${!user.roles.contains(role)}">
-                    <input type="checkbox"  name="role"%/>
-                </c:if>
-                <c:if test="${user.roles.contains(role)}">
-                    <input type="checkbox"  checked="checked"  name="role"/>
-                </c:if>
-
-                ${role.getRole()}  Role</label>
+                <input type="checkbox" value="${role.ordinal()}" name="checkedRoles"
+                     ${editedUser.roles.contains(role) ? 'checked="checked"' : ''}/>
+                ${role.name()}  Role
+             </label>
         </div>
     </c:forEach>
 
-    <input type="hidden" value="${user.getId()}" name="id">
+    <input type="hidden" value="${editedUser.getId()}" name="userId">
     <input type="hidden" value="${_csrf.token}" name="_csrf">
     <button type = "submit">Save</button>
 </form>

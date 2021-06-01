@@ -23,7 +23,7 @@ return sdf.format(new Date());
     <title>ConferenceHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -35,7 +35,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:import url="parts/navbar.jsp"/>
+<%@ include file="WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="parts/navbar.jsp"/>--%>
 <br/>
 
  <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
@@ -53,12 +54,9 @@ height:100vh;">
         <br>
     <c:if test="${sessionScope.orderStage!=null && sessionScope.orderStage!=-1}">
         <a class="btn  btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/setPeriod">
-            <fmt:message key="btn.startHere" bundle="${rb}"/>START HERE</a>
+            <fmt:message key="btn.startHere" bundle="${rb}"/></a>
     </c:if>
     <br>
-
-     <i>${pageContext.request.contextPath}</i>
-     <i>${session.orderStage}</i>
 
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

@@ -16,7 +16,7 @@ public class LogOutCommand implements Command {
         // уничтожение сессии
         //request.getSession().invalidate();
         // ToDo delete current user (context & session)
-        CommandUtility.deleteLoggedUser(request, (String) request.getSession().getServletContext().getAttribute("userName"));
+        CommandUtility.deleteLoggedUser(request, (String) request.getSession().getServletContext().getAttribute("loggedUserName"));
 
         CommandUtility.setUserRole(request, Collections.singleton(Role.UNKNOWN), "Guest",0L);
         return "redirect:" + Path.PAGE__LOGIN;

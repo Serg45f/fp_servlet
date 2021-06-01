@@ -19,10 +19,10 @@ public class UserEditCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        User user = userService.getUser(Long.valueOf(request.getParameter("id")));
-        user = new User.Builder().setRoles(userService.getUserRoles(user.getId())).build();
-        request.setAttribute("user", user);
-        request.setAttribute("roles" , Arrays.asList(Role.values()));
+        User user = userService.getUser(Long.valueOf(request.getParameter("userId")));
+       // user = new User.Builder().setRoles(userService.getUserRoles(user.getId())).build();
+        request.setAttribute("editedUser", user);
+        request.setAttribute("allRoles" , Arrays.asList(Role.values()));
 
         return Path.PAGE__USER_EDIT;
     }

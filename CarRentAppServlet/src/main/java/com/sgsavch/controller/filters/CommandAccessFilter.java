@@ -81,7 +81,7 @@ public class CommandAccessFilter implements Filter {
 		// roles
 		accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
 		accessMap.put(Role.USER, asList(fConfig.getInitParameter("user")));
-		accessMap.put(Role.USER, asList(fConfig.getInitParameter("manager")));
+		accessMap.put(Role.MANAGER, asList(fConfig.getInitParameter("manager")));
 		log.trace("Access map --> " + accessMap);
 
 		// commons

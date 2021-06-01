@@ -34,7 +34,7 @@ public class CommandContainer {
 		commands.put("setPeriod", new SetPeriodCommand());
 		commands.put("setVehicle", new SetVehicleCommand());
 		commands.put("setOptions", new SetOptionsCommand());
-		commands.put("setOrder", new SetOrderCommand());
+		commands.put("setOrder", new SetOrderCommand( new OptionService(), new UserService()));
 		commands.put("options", new OptionListCommand(new OptionService()));
 		commands.put("vehicles", new VehicleListCommand(new VehicleService()));
 
@@ -59,8 +59,8 @@ public class CommandContainer {
 		// ADMIN commands
 
 		commands.put("users", new UserListCommand(new UserService()));
-		//TODO: ERROR formatexception "USER"
 		commands.put("user_edit", new UserEditCommand(new UserService()));
+		commands.put("user_save", new UserSaveCommand(new UserService()));
 		//TODO user_delet
 		//commands.put("user_delete", new UserDeleteCommand(new UserService()));
 		//TODO option_delete

@@ -36,9 +36,12 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:import url="parts/navbar.jsp"/>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="parts/navbar.jsp"/>--%>
 <div class="container mt-6">
-
+    <br/>
+    <br/>
+    <br/>
     <h2 class="mt-3" >
         <fmt:message key="users.header" bundle="${rb}" />
     </h2>
@@ -75,10 +78,10 @@ return sdf.format(new Date());
                 </c:forEach>
             </td>
             <td>
-                <a class="text-success" href="${pageContext.request.contextPath}/user_edit?id=${user.id}">Edit</a>
+                <a class="text-success" href="${pageContext.request.contextPath}/user_edit?userId=${user.id}">Edit</a>
             </td>
             <td>
-                <a class="text-danger" href="${pageContext.request.contextPath}/user_delete?id=${user.id}">Delete</a>
+                <a class="text-danger" href="${pageContext.request.contextPath}/user_delete?userId=${user.id}">Delete</a>
             </td>
 
 
@@ -86,7 +89,8 @@ return sdf.format(new Date());
 </table>
 <br>
 <br/>
-<c:import url="pagination.jsp"/>
+    <%@ include file="/WEB-INF/parts/pagination.jsp" %>
+    <%--<c:import url="pagination.jsp"/>--%>
 </div>
 </body>
 </html>

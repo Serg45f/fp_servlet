@@ -52,6 +52,14 @@ public class Invoice {
         public Builder() {
         }
 
+        public Builder(Invoice invoice) {
+            this.id = invoice.id;
+            this.number = invoice.number;
+            this.order = invoice.order;
+            this.isPayed = invoice.isPayed;
+            this.paymentDate = invoice.paymentDate;
+        }
+
         public Builder setId(Long id) {
             this.id = id;
 

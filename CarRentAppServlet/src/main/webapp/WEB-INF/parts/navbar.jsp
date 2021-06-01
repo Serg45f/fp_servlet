@@ -53,6 +53,7 @@
                         </a>
                     </li>
                 </c:if>
+
                 <c:if test="${session.orderStage == -1}">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/invoice">
@@ -62,7 +63,7 @@
                 </c:if>
             </c:if>
 
-            <c:if test = "${!loggedUserRoles.contains(roles['USER']) && !userRoles.contains(roles['MANAGER']) && !userRoles.contains(roles['ADMIN'])}">
+           <c:if test = "${!loggedUserRoles.contains(roles['USER']) && !userRoles.contains(roles['MANAGER']) && !userRoles.contains(roles['ADMIN'])}">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">
                         <fmt:message key="nav.2" bundle="${rb}" />

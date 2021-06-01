@@ -63,6 +63,15 @@ public class Option {
         public Builder() {
         }
 
+        public Builder(Option option) {
+            this.id = option.id;
+            this.name = option.name;
+            this.picture = option.picture;
+            this.description = option.description;
+            this.price = option.price;
+            this.currentOrder = option.currentOrder;
+        }
+
         public Builder setId(Long id) {
             this.id = id;
 

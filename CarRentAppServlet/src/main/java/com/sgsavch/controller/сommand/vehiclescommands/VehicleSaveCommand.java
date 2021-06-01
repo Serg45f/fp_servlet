@@ -31,25 +31,40 @@ public class VehicleSaveCommand implements Command {
 
 
     @Override
-    public String execute(HttpServletRequest request) throws SQLException, IOException, ServletException {
+    public String execute(HttpServletRequest request)  {
         System.out.println("(VehicleSaveCommand).execute");
-        Vehicle vehicle = new Vehicle.Builder()
 
-            .setRegNumber(request.getParameter("regNumber"))
-            .setCarModel(new CarModel.Builder().build().valueOf(request.getParameter("carModel")))
-            .setYearIssue(LocalDate.parse(request.getParameter("yearIssue")))
-            .setColor(Color.valueOf(request.getParameter("color")))
-            .setTransmission(request.getParameter("transmission"))
-            .setDiscount(Double.valueOf(request.getParameter("discount")))
-            .setManager(new User.Builder().build().valueOf(request.getParameter("manager")))
-            .build();
-       if(request.getParameter("id")!=null)
-        vehicle= new Vehicle.Builder().setId(Long.valueOf(request.getParameter("id"))).build();
-        Long res = vehicleService.addVehicle(vehicle);
+        try {
+            Vehicle vehicle = new Vehicle.Builder()
+                    .setRegNumber(request.getParameter("regNumber"))
+                    .setCarModel(new CarModel.Builder().build().valueOf(request.getParameter("carModel")))
+                    .setYearIssue(LocalDate.parse(request.getParameter("yearIssue")))
+                    .setColor(Color.valueOf(request.getParameter("color")))
+                    .setTransmission(request.getParameter("transmission"))
+                    .setDiscount(Double.valueOf(request.getParameter("discount")))
+                    .setManager(new User.Builder().build().valueOf(request.getParameter("manager")))
+                    .build();
+
+            if(request.getParameter("id")!=null)
+            vehicle = new Vehicle.Builder(vehicle).setId(Long.valueOf(request.getParameter("id"))).build();
+            Long res = vehicleService.addVehicle(vehicle);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
         //vehicleDTO.setId(res);
         Command command = CommandContainer.get("vehicles");
-        String page = command.execute(request);
+        String page = null;
+        try {
+            page = command.execute(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
 
-        return "redirect:" + page;
+        return page;
     }
 }
