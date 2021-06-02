@@ -48,7 +48,7 @@ height:100vh;">
         <h2 class="mt-4">Edit vehicle</h2>
         <br>
      <div class="form-group mt-3">
-          <form accept-charset="UTF-8" method="post" enctype="application/x-www-form-urlencoded" action="${pageContext.request.contextPath}/vehicle_save">
+          <form accept-charset="UTF-8" method="post" enctype="application/x-www-form-urlencoded" action="${pageContext.request.contextPath}/controller?command=vehicle_save">
 
                <div class="form-group">
                     <div class="custom-pict">

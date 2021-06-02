@@ -8,7 +8,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Servl</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/controller</url-pattern>
   </servlet-mapping>
 
   <filter>
@@ -57,40 +57,40 @@
 	Delimiter - space/tab
 =============================================================-->
 
-<!--      <filter>-->
-<!--          <filter-name>CommandAccessFilter</filter-name>-->
-<!--          <filter-class>com.sgsavch.controller.filters.CommandAccessFilter</filter-class>-->
-<!--          <init-param>-->
-<!--              <param-name>admin</param-name>-->
-<!--              <param-value>users user_edit user_delete option_delete-->
-<!--              option_edit option_add option_save vehicle_delete vehicle_edit-->
-<!--              vehicle_add vehicle_save carModel_delete carModel_edit-->
-<!--                carModel_add carModel_save carModels</param-value>-->
-<!--          </init-param>-->
-<!--          <init-param>-->
-<!--              <param-name>user</param-name>-->
-<!--              <param-value>invoice order invoiceDamage</param-value>-->
-<!--          </init-param>-->
-<!--          <init-param>-->
-<!--              <param-name>manager</param-name>-->
-<!--              <param-value>order_edit order_delete orders</param-value>-->
-<!--          </init-param>-->
-<!--          <init-param>-->
-<!--              <param-name>common</param-name>-->
-<!--              <param-value>logout noCommand viewSettings updateSettings</param-value>-->
-<!--          </init-param>-->
-<!--          <init-param>-->
-<!--              <param-name>out-of-control</param-name>-->
-<!--              <param-value>login activate registration exception-->
-<!--              setPeriod setVehicle setOptions setOrder options vehicles</param-value>-->
-<!--          </init-param>-->
-<!--      </filter>-->
+      <filter>
+          <filter-name>CommandAccessFilter</filter-name>
+          <filter-class>com.sgsavch.controller.filters.CommandAccessFilter</filter-class>
+          <init-param>
+              <param-name>admin</param-name>
+              <param-value>users user_edit user_delete option_delete
+              option_edit option_add option_save vehicle_delete vehicle_edit
+              vehicle_add vehicle_save carModel_delete carModel_edit
+                carModel_add carModel_save carModels</param-value>
+          </init-param>
+          <init-param>
+              <param-name>user</param-name>
+              <param-value>invoice order invoiceDamage</param-value>
+          </init-param>
+          <init-param>
+              <param-name>manager</param-name>
+              <param-value>order_edit order_delete orders</param-value>
+          </init-param>
+          <init-param>
+              <param-name>common</param-name>
+              <param-value>logout noCommand viewSettings updateSettings</param-value>
+          </init-param>
+          <init-param>
+              <param-name>out-of-control</param-name>
+              <param-value>login activate registration exception
+              setPeriod setVehicle setOptions setOrder options vehicles</param-value>
+          </init-param>
+      </filter>
 
-<!--      <filter-mapping>-->
-<!--          <filter-name>CommandAccessFilter</filter-name>-->
+      <filter-mapping>
+          <filter-name>CommandAccessFilter</filter-name>
 <!--          <url-pattern>/*</url-pattern>-->
-<!--&lt;!&ndash;        <servlet-name>Servl</servlet-name>&ndash;&gt;-->
-<!--      </filter-mapping>-->
+        <servlet-name>Servl</servlet-name>
+      </filter-mapping>
 
 
 

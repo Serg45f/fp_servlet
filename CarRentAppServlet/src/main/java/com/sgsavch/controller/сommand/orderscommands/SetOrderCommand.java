@@ -34,33 +34,33 @@ public class SetOrderCommand implements Command {
     public String execute(HttpServletRequest request) throws SQLException {
         HttpSession session = request.getSession();
         ServletContext context = request.getServletContext();
-        Set<String> loggedUsers = (HashSet<String>) request.getSession().getServletContext()
-                .getAttribute("loggedUsers");
-        loggedUsers.stream().forEach(e-> System.out.println("loggedUsers: " + e));
-        System.out.println(context.getAttribute("loggedUsers"));
+//        Set<String> loggedUsers = (HashSet<String>) request.getSession().getServletContext()
+//                .getAttribute("loggedUsers");
+//        loggedUsers.stream().forEach(e-> System.out.println("loggedUsers: " + e));
+//        System.out.println(context.getAttribute("loggedUsers"));
         //loggedUsers.stream().map(userName::equals).anyMatch(userName::equals);
         //User user =  userService.getUserByUsername(loggedUsers.stream().anyMatch("userName"))
 
         Order newOrder = (Order) session.getAttribute("currentOrder");
-        List<Option> options = optionService.getAllOptions();
-        System.out.println(request.getParameterValues("checkedOptions"));
-        String [] checkedOptionsStr = request.getParameterValues("checkedOptions");
-        Double optionsTotalPrice=0D;
-        if(checkedOptionsStr != null) {
-            List<Long> checkedOptions = Arrays.stream(checkedOptionsStr).map(e->Long.valueOf(e)).collect(Collectors.toList());
-            newOrder.getOptions().clear();
-            for (int i = 0; i < checkedOptions.size(); i++) {
-                Option option=options.get(i);
-                newOrder.getOptions().add(option);
-                optionsTotalPrice+=option.getPrice();
-            }
-        }
+//        List<Option> options = optionService.getAllOptions();
+//        System.out.println(request.getParameterValues("checkedOptions"));
+//        String [] checkedOptionsStr = request.getParameterValues("checkedOptions");
+//        Double optionsTotalPrice=0D;
+//        if(checkedOptionsStr != null) {
+//            List<Long> checkedOptions = Arrays.stream(checkedOptionsStr).map(e->Long.valueOf(e)).collect(Collectors.toList());
+//            newOrder.getOptions().clear();
+//            for (int i = 0; i < checkedOptions.size(); i++) {
+//                Option option=options.get(i);
+//                newOrder.getOptions().add(option);
+//                optionsTotalPrice+=option.getPrice();
+//            }
+//        }
          newOrder = new Order.Builder(newOrder)
                 //.setUser(user)
                 .setDays(Period.between(newOrder.getStart().toLocalDate(),newOrder.getEnd().toLocalDate()).getDays())
                 .setPricePeriod(newOrder.getDays()*newOrder.getVehicle().getCarModel().getPrice())
-                .setPriceOptions(optionsTotalPrice)
-                .setTotalPrice(newOrder.getPricePeriod()+optionsTotalPrice)
+               // .setPriceOptions(optionsTotalPrice)
+                //.setTotalPrice(newOrder.getPricePeriod()+optionsTotalPrice)
                 .setStatusOrder(StatusOrder.RESERVED)
                 .build();
         session.setAttribute("currentOrder",newOrder);

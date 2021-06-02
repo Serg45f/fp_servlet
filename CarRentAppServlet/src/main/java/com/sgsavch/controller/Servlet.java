@@ -61,41 +61,41 @@ public class Servlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
-//        log.debug("Controller starts");
-//
-//        // extract command name from the request
-//        String commandName = request.getParameter("command");
-//        log.trace("Request parameter: command --> " + commandName);
-//
-//        // obtain command object by its name
-//        Command command = CommandContainer.get(commandName);
-//        log.trace("Obtained command --> " + command);
-//
-//        // execute command and get forward address
-//        String forward = command.execute(request);
-//        log.trace("Forward address --> " + forward);
-//
-//        log.debug("Controller finished, now go to forward address --> " + forward);
-//
-//        // if the forward address is not null go to the address
-//        if (forward != null) {
-//            RequestDispatcher disp = request.getRequestDispatcher(forward);
-//            disp.forward(request, response);
-//        }
+        log.debug("Controller starts");
 
-        String path = request.getRequestURI();
-        path = path.replaceAll(".*/carrent/" , "");
-        Command command = CommandContainer.get(path);
-//        Command command = commands.getOrDefault(path ,
-//                (r)->"/index.jsp");
-        System.out.println("(Servlet)command.name: " + command.getClass().getName());
-        String page = command.execute(request);
-        System.out.println("(Servlet)page: " + page);
-        if(page.contains("redirect:")){
-            response.sendRedirect(page.replace("redirect:", "/carrent"));
-        }else {
-            request.getRequestDispatcher(page).forward(request, response);
+        // extract command name from the request
+        String commandName = request.getParameter("command");
+        log.trace("Request parameter: command --> " + commandName);
+
+        // obtain command object by its name
+        Command command = CommandContainer.get(commandName);
+        log.trace("Obtained command --> " + command);
+
+        // execute command and get forward address
+        String forward = command.execute(request);
+        log.trace("Forward address --> " + forward);
+
+        log.debug("Controller finished, now go to forward address --> " + forward);
+
+        // if the forward address is not null go to the address
+        if (forward != null) {
+            RequestDispatcher disp = request.getRequestDispatcher(forward);
+            disp.forward(request, response);
         }
+
+//        String path = request.getRequestURI();
+//        path = path.replaceAll(".*/carrent/controller" , "");
+//        Command command = CommandContainer.get(path);
+////        Command command = commands.getOrDefault(path ,
+////                (r)->"/index.jsp");
+//        System.out.println("(Servlet)command.name: " + command.getClass().getName());
+//        String page = command.execute(request);
+//        System.out.println("(Servlet)page: " + page);
+//        if(page.contains("redirect:")){
+//            response.sendRedirect(page.replace("redirect:", "/carrent"));
+//        }else {
+//            request.getRequestDispatcher(page).forward(request, response);
+//        }
     }
 
 }

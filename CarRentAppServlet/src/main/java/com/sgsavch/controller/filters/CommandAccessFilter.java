@@ -47,9 +47,12 @@ public class CommandAccessFilter implements Filter {
 			
 			request.setAttribute("errorMessage", errorMessasge);
 			log.trace("Set the request attribute: errorMessage --> " + errorMessasge);
-			
-			request.getRequestDispatcher(Path.PAGE__ERROR_PAGE)
+
+			request.getRequestDispatcher(Path.PAGE__LOGIN)
 					.forward(request, response);
+
+//			request.getRequestDispatcher(Path.PAGE__ERROR_PAGE)
+//					.forward(request, response);
 		}
 	}
 	
@@ -66,13 +69,23 @@ public class CommandAccessFilter implements Filter {
 		HttpSession session = httpRequest.getSession(false);
 		if (session == null) 
 			return false;
-		
-		Role userRole = (Role)session.getAttribute("userRole");
-		if (userRole == null)
+
+		if ((Set<Role>) session.getAttribute("loggedUserRoles") == null) {
 			return false;
-		
-		return accessMap.get(userRole).contains(commandName)
-				|| commons.contains(commandName);
+		}
+
+		if(session.getAttribute("loggedUserRoles")!=null) {
+			for (Role role : (Set<Role>) session.getAttribute("loggedUserRoles")) {
+
+				if (accessMap.get(role).contains(commandName)
+						|| commons.contains(commandName)) {
+					return true;
+				}
+				break;
+			}
+		}
+
+		return false;
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

@@ -22,7 +22,7 @@
         <ul class="navbar-nav mr-auto">
             <c:if test="${sessionScope.orderStage >= 1}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/period" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=period" >
                         <fmt:message key="nav.step.1" bundle="${rb}" />
                     </a>
                 </li>
@@ -30,7 +30,7 @@
 
             <c:if test="${sessionScope.orderStage >= 2}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/vehicles" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=vehicles" >
                         <fmt:message key="nav.step.2" bundle="${rb}" />
                     </a>
                 </li>
@@ -38,7 +38,7 @@
 
             <c:if test="${sessionScope.orderStage >= 3}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/options" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=options" >
                         <fmt:message key="nav.step.3" bundle="${rb}" />
                     </a>
                 </li>
@@ -48,7 +48,7 @@
             <c:if test = "${loggedUserRoles.contains(roles['USER'])}">
                 <c:if test="${sessionScope.orderStage >= 4}">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/order" >
+                        <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=order" >
                             <fmt:message key="nav.step.4" bundle="${rb}" />
                         </a>
                     </li>
@@ -56,7 +56,7 @@
 
                 <c:if test="${session.orderStage == -1}">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/invoice">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=invoice">
                             <fmt:message key="nav.step.5" bundle="${rb}" />
                         </a>
                     </li>
@@ -74,17 +74,17 @@
 
             <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/carModels" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=carModels" >
                         <fmt:message key="nav.4" bundle="${rb}" />
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/vehicles">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=vehicles">
                         <fmt:message key="nav.1" bundle="${rb}" />
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/users">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=users">
                         <fmt:message key="nav.6" bundle="${rb}" />
                     </a>
                 </li>
@@ -99,7 +99,7 @@
         </a>
 
         <c:if test = "${loggedUserName != null}">
-            <form action="${pageContext.request.contextPath}/logout" method="post">
+            <form action="${pageContext.request.contextPath}/controller?command=logout" method="post">
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <button class="btn btn-sm mt-1 btn-transparent" type="submit">LogOut</button>
             </form>

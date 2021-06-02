@@ -37,7 +37,7 @@
                 <ul class="pagination">
                     <c:if test="${currentPage != 1}">
                         <li class="page-item"><a class="page-link bg-transparent"
-                                  href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${currentPage-1}">Previous</a>
+                                  href="controller?command=${endPoint}&recordsPerPage=${recordsPerPage}&tPage=${currentPage-1}">Previous</a>
                         </li>
                     </c:if>
 
@@ -50,7 +50,7 @@
                             </c:when>
                             <c:otherwise>
                                 <li class="page-item"><a class="page-link bg-transparent"
-                                             href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${i}">${i}</a>
+                                             href="controller?command=${endPoint}&recordsPerPage=${recordsPerPage}&tPage=${i}">${i}</a>
                                 </li>
                             </c:otherwise>
                         </c:choose>
@@ -58,7 +58,7 @@
 
                     <c:if test="${currentPage lt noOfPages}">
                         <li class="page-item"><a class="page-link bg-transparent"
-                                       href="${endPoint}?recordsPerPage=${recordsPerPage}&tPage=${currentPage+1}">Next</a>
+                                       href="controller?command=${endPoint}&recordsPerPage=${recordsPerPage}&tPage=${currentPage+1}">Next</a>
                         </li>
                     </c:if>
                 </ul>
@@ -66,7 +66,7 @@
         </div>
         <div class="col order-2">
 
-                <form  action="${endPoint}">
+                <form  action="controller?command=${endPoint}">
 
                     <input type="hidden" name="currentPage" value="${currentPage}">
 

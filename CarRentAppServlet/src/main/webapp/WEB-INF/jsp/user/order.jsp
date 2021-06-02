@@ -59,7 +59,7 @@ height:100vh;">
                     <h3 class="order-group ml-3">
                         <fmt:message key="user.order.head" bundle="${rb}"/>
                     </h3>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/userEdit">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=userEdit">
                         <fmt:message key="btn.edit" bundle="${rb}"/>
                     </a>
                 </div>
@@ -143,7 +143,7 @@ height:100vh;">
                         <fmt:message key="order.confirm" bundle="${rb}"/>
                     </h3>
                     <a class="btn  btn-outline-primary btn-lg btn-block"
-                       href="${pageContext.request.contextPath}/order/create">
+                       href="${pageContext.request.contextPath}/controller?command=order_create">
                         <fmt:message key="btn.order.invoice" bundle="${rb}"/>
                     </a>
    <%--                 <!--                       th:href="@{/order/invoice}" th:text="#{btn.order.invoice}">Confirm</a>--> --%>
@@ -160,7 +160,7 @@ height:100vh;">
                     <h3 class="order-group ml-3">
                         <fmt:message key="order.head.car" bundle="${rb}"/>
                     </h3>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/vehicles">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=vehicles">
                         <fmt:message key="btn.edit" bundle="${rb}"/>
                     </a>
                 </div>
@@ -199,7 +199,7 @@ height:100vh;">
                     <h3 class="order-group ml-4">
                         <fmt:message key="order.head.dates" bundle="${rb}"/>
                     </h3>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/period">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=period">
                         <fmt:message key="btn.edit" bundle="${rb}"/>
                     </a>
                 </div>
@@ -256,7 +256,7 @@ height:100vh;">
                     <h3 class="order-group ml-3">
                         <fmt:message key="order.head.options" bundle="${rb}"/>
                     </h3>
-                    <a class="nav-link" href="${pageContext.request.contextPath}/btn.edit">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=options">
                         <fmt:message key="btn.edit" bundle="${rb}"/>
                     </a>
                 </div>

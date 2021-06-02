@@ -84,7 +84,7 @@ height:100vh;">
                 </tr>
                 </thead>
                 <tbody>
-                    <form action="${pageContext.request.contextPath}/setOrder" method="post">
+                    <form action="${pageContext.request.contextPath}/controller?command=setOrder" method="post">
                         <c:forEach var="option" items="${options}">
                             <tr>
                                 <td>
@@ -116,7 +116,7 @@ height:100vh;">
                             </tr>
                         </c:forEach>
                         <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
-                                                <a class="text-success" to="4" href="${pageContext.request.contextPath}/options_add">
+                                                <a class="text-success" to="4" href="${pageContext.request.contextPath}/controller?command=options_add">
                                                     Add
                                                 </a>
                         </c:if>

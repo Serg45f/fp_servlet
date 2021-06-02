@@ -47,7 +47,7 @@ return sdf.format(new Date());
     <br>
     <H3>User editor</H3>
 
-<form action="${pageContext.request.contextPath}/user_save" method = "post">
+<form action="${pageContext.request.contextPath}/controller?command=user_save" method = "post">
     <input type="text" value="${editedUser.email}" name="email"/>
     <input type="text" value="${editedUser.firstName}" name="firstName"/>
     <input type="text" value="${editedUser.lastName}" name="lastName"/>

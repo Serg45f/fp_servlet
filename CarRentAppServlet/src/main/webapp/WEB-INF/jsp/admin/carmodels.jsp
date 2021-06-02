@@ -43,7 +43,7 @@ height:100vh;">
         </h2>
 
     <p>
-        <a href="${pageContext.request.contextPath}/carModel_add" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Add</a>
+        <a href="${pageContext.request.contextPath}/controller?command=carModel_add" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Add</a>
     </p>
           <div class="card-rows" id="each">
             <c:forEach var="carmodel"  items="${carmodels}">
@@ -77,10 +77,10 @@ height:100vh;">
 
                                     <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/carModel_edit?carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
+                                            <a href="${pageContext.request.contextPath}/controller?command=carModel_edit&carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
                                         </p>
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/carModel_delete?carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
+                                            <a href="${pageContext.request.contextPath}/controller?command=carModel_delete&carmodelId=${carmodel.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
                                         </p>
                                     </c:if>
                                 </div>

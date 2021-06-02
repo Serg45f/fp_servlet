@@ -36,7 +36,7 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="parts/navbar.jsp" %>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
 <%--<c:import url="parts/navbar.jsp"/>--%>
     <br>
     <br>
@@ -111,10 +111,10 @@ height:100vh;">
                                         <td>${order.damagePrice}</td>
                                         <td>${order.damageIsPayed}</td>
                                         <td>
-                                            <a class="btn btn btn-transparent btn-outline-primary" href="/order/orders/edit/${order.id}">Process</a>
+                                            <a class="btn btn btn-transparent btn-outline-primary" href="${pageContext.request.contextPath}/controller?command=order_edit&orderId=${order.id}">Process</a>
                                             <a>   </a>
                                         </td>
-                                        <td><a class="btn btn-transparent btn-outline-danger" href="/order/orders/delete/${order.id}">Delete</a></td>
+                                        <td><a class="btn btn-transparent btn-outline-danger" href="${pageContext.request.contextPath}/controller?command=order_delete&orderId=${order.id}">Delete</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

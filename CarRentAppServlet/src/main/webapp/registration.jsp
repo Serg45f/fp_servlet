@@ -46,7 +46,7 @@ height:100vh;">
         <div class= "mx-auto my-auto">
             <h2 class="mt-6 form-signing-hiding" >Registration</h2>
 
-            <form accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/registration" >
+            <form accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/controller?command=registration" >
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">First Name: </label>
                     <div class="col-sm-6">

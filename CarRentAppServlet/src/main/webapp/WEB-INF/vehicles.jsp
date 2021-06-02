@@ -114,14 +114,14 @@ return sdf.format(new Date());
                                             <b>${vehicle.carModel.price * (100 - vehicle.discount)/100}</b>
                                         </h4>
                                         <p>
-                                            <a href="${pageContext.request.contextPath}/setOptions?vehicleId=${vehicle.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Choose</a>
+                                            <a href="${pageContext.request.contextPath}/controller?command=setOptions&vehicleId=${vehicle.id}" to="3" class="btn btn-transparent btn-outline-primary col-sm-12 px-0" >Choose</a>
                                         </p>
                                         <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                                             <p>
-                                                <a href="${pageContext.request.contextPath}/vehicle_edit/${vehicle.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
+                                                <a href="${pageContext.request.contextPath}/controller?command=vehicle_edit&vehicleId=${vehicle.id}" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >Edit</a>
                                             </p>
                                             <p>
-                                                <a  href="${pageContext.request.contextPath}/vehicle_delete/${vehicle.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
+                                                <a  href="${pageContext.request.contextPath}/controller?command=vehicle_delete&vehicleId=${vehicle.id}" class="btn btn-transparent btn-outline-danger col-sm-12 px-0" >Delete</a>
                                             </p>
                                         </c:if>
                                     </div>

@@ -48,7 +48,7 @@ height:100vh;">
         <h2 class="mt-4">Edit car model</h2>
         <br>
      <div class="form-group mt-3">
-          <form accept-charset="UTF-8" method="post" enctype="multipart/form-data"  action="${pageContext.request.contextPath}/carModel_save" >
+          <form accept-charset="UTF-8" method="post" enctype="multipart/form-data"  action="${pageContext.request.contextPath}/controller?command=carModel_save" >
 
                <div class="form-group">
                     <div class="custom-pict">

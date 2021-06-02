@@ -36,7 +36,7 @@ height:100vh;">
     <br>
     <br>
     <br>
-<form class = "mt-2"   method="post" action="${pageContext.request.contextPath}/login">
+<form class = "mt-2"   method="post" action="${pageContext.request.contextPath}/controller?command=login">
     <h2 class="form-signing-hiding">
         <fmt:message key="login.head" bundle="${rb}"/>
     </h2>

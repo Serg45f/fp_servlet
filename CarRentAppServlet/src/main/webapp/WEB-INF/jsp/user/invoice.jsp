@@ -96,7 +96,7 @@ return sdf.format(new Date());
                 <div class="order-group col-bg-12 col-form-label">
 <!--                    <h3 class="order-group ml-3" type="text" name="description" th:text="#{invoice.pay}"/>-->
                     <a class="btn  btn-outline-primary btn-lg btn-block"
-                       th:href="@{/order/invoice/pay}" th:text="#{btn.order.invoice.pay}">Pay</a>
+                       th:href="${pageContext.request.contextPath}/controller?command=invoice_pay" th:text="#{btn.order.invoice.pay}">Pay</a>
                     <!--                       th:href="@{/order/invoice}" th:text="#{btn.order.invoice}">Confirm</a>-->
                 </div>
 

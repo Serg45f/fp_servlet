@@ -45,7 +45,7 @@ return sdf.format(new Date());
 flex-direction: column;
 height:100vh;">
 
-            <form class = "mt-2"   action="${pageContext.request.contextPath}/setVehicle" method="post">
+            <form class = "mt-2"   action="${pageContext.request.contextPath}/controller?command=setVehicle" method="post">
                 <h2 class="form-signing-hiding">Period and Location</h2>
                 <c:if test="${sessionScope.currentOrder != null}">
                     <p>

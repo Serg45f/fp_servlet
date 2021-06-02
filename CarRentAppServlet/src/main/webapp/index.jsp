@@ -53,7 +53,7 @@ height:100vh;">
         <br>
         <br>
     <c:if test="${sessionScope.orderStage!=null && sessionScope.orderStage!=-1}">
-        <a class="btn  btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/setPeriod">
+        <a class="btn  btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/controller?command=setPeriod">
             <fmt:message key="btn.startHere" bundle="${rb}"/></a>
     </c:if>
     <br>
