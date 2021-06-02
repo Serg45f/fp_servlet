@@ -42,6 +42,8 @@ public class OptionService {
     public void editOption(Option option) {
         try (OptionDao dao = daoFactory.createOptionDao()) {
             dao.update(option);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 

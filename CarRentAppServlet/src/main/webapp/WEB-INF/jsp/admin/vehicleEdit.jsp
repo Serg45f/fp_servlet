@@ -21,10 +21,10 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>ConferenceHub</title>
+    <title>CarModelApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -48,7 +48,7 @@ height:100vh;">
         <h2 class="mt-4">Edit vehicle</h2>
         <br>
      <div class="form-group mt-3">
-          <form accept-charset="UTF-8" method="post"  action="${pageContext.request.contextPath}/vehicle_save">
+          <form accept-charset="UTF-8" method="post" enctype="application/x-www-form-urlencoded" action="${pageContext.request.contextPath}/vehicle_save">
 
                <div class="form-group">
                     <div class="custom-pict">
@@ -73,7 +73,7 @@ height:100vh;">
               </div>
 
               <div class="form-group">
-                  <input  type="date" class="form-control bg-transparent"  placeholder="Year of issue"
+                  <input  type="datetime-local" class="form-control bg-transparent"  placeholder="Year of issue"
                           value="${vehicle.yearIssue}" name ="yearIssue" />
               </div>
 
@@ -98,7 +98,7 @@ height:100vh;">
               </div>
 
               <div class="form-group">
-                  <select type="text" class="form-control bg-transparent" name="themes" placeholder="Themes"
+                  <select type="text" class="form-control bg-transparent"  placeholder="Manager"
                           name="manager">
                       <c:forEach var="manager" items="${managers}" >
                           <option value="${manager}" ${vehicle.manager == manager ? 'selected="selected"' : ''}>${manager.lastName}</option>
@@ -107,9 +107,8 @@ height:100vh;">
               </div>
 
 
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
               <c:if test="${vehicle.id!=null}">
-                <input type="hidden" value="${vehicle.id}" name="id" >
+                    <input type="hidden" value="${vehicle.id}" name="id" >
               </c:if>
                 <div class="form-group">
                     <button type="submit" class="btn btn-transparent btn-outline-primary" >Save</button>

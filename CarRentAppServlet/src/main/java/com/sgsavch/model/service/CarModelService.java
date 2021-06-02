@@ -44,6 +44,8 @@ public class CarModelService {
     public void editCarModel(CarModel carModelId) {
         try (CarModelDao dao = daoFactory.createCarModelDao()) {
             dao.update(carModelId);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 

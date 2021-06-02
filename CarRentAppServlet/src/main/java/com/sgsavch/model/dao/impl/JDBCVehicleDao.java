@@ -29,12 +29,12 @@ public class JDBCVehicleDao implements VehicleDao {
         try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_VEHICLE, Statement.RETURN_GENERATED_KEYS)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getColor().name());
+            pstmt.setInt(k++, entity.getColor().ordinal());
             pstmt.setString(k++, entity.getRegNumber());
             pstmt.setString(k++, entity.getTransmission());
-            pstmt.setLong(k++, entity.getCarModel().getId());
-            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue()));
+            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue().toLocalDate()));
             pstmt.setDouble(k++, entity.getDiscount());
+            pstmt.setLong(k++, entity.getCarModel().getId());
             pstmt.setLong(k++, entity.getManager().getId());
 
 
@@ -105,7 +105,7 @@ public class JDBCVehicleDao implements VehicleDao {
             pstmt.setString(k++, entity.getRegNumber());
             pstmt.setString(k++, entity.getTransmission());
             pstmt.setLong(k++, entity.getCarModel().getId());
-            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue()));
+            pstmt.setDate(k++, Date.valueOf(entity.getYearIssue().toLocalDate()));
             pstmt.setDouble(k++, entity.getDiscount());
             pstmt.setLong(k++, entity.getManager().getId());
             pstmt.setLong(k++,entity.getId());

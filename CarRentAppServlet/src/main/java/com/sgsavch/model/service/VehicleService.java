@@ -46,6 +46,8 @@ public class VehicleService {
     public void editVehicle(Vehicle vehicle) {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
             dao.update(vehicle);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 

@@ -4,6 +4,7 @@ import com.sgsavch.model.entity.enums.Color;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -11,7 +12,7 @@ public class Vehicle {
     private final Long id;
     private final CarModel carModel;
     private final String regNumber;
-    private final LocalDate yearIssue;
+    private final LocalDateTime yearIssue;
     private final List<Order> orders;
     private final Color color;
     private final String transmission;
@@ -21,7 +22,7 @@ public class Vehicle {
     public Vehicle(final Long id,
                    final CarModel carModel,
                    final String regNumber,
-                   final LocalDate yearIssue,
+                   final LocalDateTime yearIssue,
                    final List<Order> orders,
                    final Color color,
                    final String transmission,
@@ -51,7 +52,7 @@ public class Vehicle {
         return regNumber;
     }
 
-    public LocalDate getYearIssue() {
+    public LocalDateTime getYearIssue() {
         return yearIssue;
     }
 
@@ -80,7 +81,7 @@ public class Vehicle {
         private Long id;
         private CarModel carModel;
         private String regNumber;
-        private LocalDate yearIssue;
+        private LocalDateTime yearIssue;
         private List<Order> orders;
         private Color color;
         private String transmission;
@@ -121,7 +122,7 @@ public class Vehicle {
             return this;
         }
 
-        public Builder setYearIssue(LocalDate yearIssue) {
+        public Builder setYearIssue(LocalDateTime yearIssue) {
             this.yearIssue = yearIssue;
 
             return this;
@@ -194,6 +195,7 @@ public class Vehicle {
                 .append(", ")
                 .append("discount=")
                 .append(discount)
+                .append(", ")
                 .append("manager=")
                 .append(manager)
                 .append(")").toString();

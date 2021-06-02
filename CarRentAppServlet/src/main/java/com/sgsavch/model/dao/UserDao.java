@@ -11,6 +11,8 @@ import java.util.Set;
 public interface UserDao extends GenericDao<User> {
     User getUserByActivationCode(String code) throws SQLException;
 
+    void update(User user) throws SQLException;
+
     List<User> getUsersPaginated(int currentPage, int numOfRecords);
 
     Integer getNumberOfRaws();

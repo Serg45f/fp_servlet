@@ -54,7 +54,7 @@ return sdf.format(new Date());
     <c:forEach var="role" items="${allRoles}">
         <div>
             <label>
-                <input type="checkbox" value="${role.ordinal()}" name="checkedRoles"
+                <input type="checkbox" value="${role.name()}" name="checkedRoles"
                      ${editedUser.roles.contains(role) ? 'checked="checked"' : ''}/>
                 ${role.name()}  Role
              </label>

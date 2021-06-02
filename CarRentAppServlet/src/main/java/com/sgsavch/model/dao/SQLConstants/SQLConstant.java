@@ -40,6 +40,12 @@ public interface SQLConstant {
 	String SQL_DELETE_USER_BY_USER_ID =
 			"DELETE FROM " + TABLE_USERS + " WHERE "+USER_ID+"=?";
 
+	String SQL_UPDATE_USER =
+			"UPDATE " + TABLE_USERS + " SET " +
+					USER_EMAIL + " = ?, "+
+					USER_FIRSTNAME + " = ?, "+
+					USER_LASTNAME +" = ? WHERE "+USER_ID+" = ?";
+
 
 	/////////////////////////////////////////ROLES/////////////////////////////////////////
 
@@ -62,6 +68,7 @@ public interface SQLConstant {
 
 	String SQL_FIND_USER_BY_ROLE =
 			"SELECT "+TABLE_USERS+".* FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_USER_ID + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
+
 
 	///////////////////////////////////////////////////////////////////////////////////
 	String TABLE_EVENT = "event";
@@ -264,9 +271,9 @@ public interface SQLConstant {
 			VEHICLE_COLOR + ", " +
 			VEHICLE_REG_NUMBER + ", " +
 			VEHICLE_TRANSMISSION + ", " +
-			VEHICLE_CARMODEL_ID + ", " +
 			VEHICLE_YEAR_ISSUE + ", " +
 			VEHICLE_DISCOUNT + ", " +
+			VEHICLE_CARMODEL_ID + ", " +
 			VEHICLE_USER_ID + ") VALUES (?,?,?,?,?,?,?);";
 
 	String SQL_UPDATE_VEHICLE =

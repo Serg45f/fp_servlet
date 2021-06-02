@@ -141,8 +141,10 @@ public class User {
         private String country;
         private String licenseNumb;
         private String cardNumb;
+
         public Builder() {
         }
+
         public Builder(User user) {
             this.id = user.id;
             this.email = user.email;
@@ -267,43 +269,73 @@ public class User {
     public User valueOf(String user){
         String lexems[] = user.split(",");
         User newUser = new User.Builder().build();
-        User.Builder builder = new User.Builder();
+        User.Builder builder = new User.Builder(newUser);
         for(String s:lexems) {
-            if (s.contains("id"))
+            if (s.contains("id")) {
                 newUser = builder.setId(Long.valueOf(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
-            if (s.contains("email"))
+                continue;
+            }
+            if (s.contains("email")) {
                 newUser = builder.setEmail(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("phone"))
+                continue;
+            }
+            if (s.contains("phone")) {
                 newUser = builder.setPhone(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("activationCode"))
+                continue;
+            }
+            if (s.contains("activationCode")) {
                 newUser = builder.setActivationCode(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("password"))
+                continue;
+            }
+            if (s.contains("password")) {
                 newUser = builder.setPassword(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("firstName"))
+                continue;
+            }
+            if (s.contains("firstName")) {
                 newUser = builder.setFirstName(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("lastName"))
+                continue;
+            }
+            if (s.contains("lastName")) {
                 newUser = builder.setLastName(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
+                continue;
+            }
             if (s.contains("roles")){
                 Set<Role> userRoles = new HashSet<>();
                 for(Role role:Role.values()) {
                     for(String str:lexems){
-                        if(str.contains(role.name()))userRoles.add(role);
+                        if(str.contains(role.name())) {
+                            userRoles.add(role);
+                            continue;
+                        }
                     }
                 }
                 newUser = builder.setRoles(userRoles).build();
+                continue;
             }
-            if (s.contains("status"))
+            if (s.contains("status")) {
                 newUser = builder.setUserStatus(StatusUser.valueOf(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
-            if (s.contains("passportNumb"))
+                continue;
+            }
+            if (s.contains("passportNumb")) {
                 newUser = builder.setPassportNumb(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("passDateExp"))
+                continue;
+            }
+            if (s.contains("passDateExp") && !s.contains("null")) {
                 newUser = builder.setPassDateExp(LocalDate.parse(s.replaceAll(".*=|\\)|\\]|\\}", ""))).build();
-            if (s.contains("country"))
+                continue;
+            }
+            if (s.contains("country")) {
                 newUser = builder.setCountry(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("licenseNumb"))
+                continue;
+            }
+            if (s.contains("licenseNumb")) {
                 newUser = builder.setLicenseNumb(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
-            if (s.contains("cardNumb"))
+                continue;
+            }
+            if (s.contains("cardNumb")) {
                 newUser = builder.setCardNumber(s.replaceAll(".*=|\\)|\\]|\\}", "")).build();
+                continue;
+            }
         }
 
         return newUser;
@@ -311,21 +343,50 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email=" + email +
-                ", phone=" + phone +
-                ", activationCode=" + activationCode +
-                ", password=" + password +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", roles=" + roles.toString() +
-                ", status=" + statusUser +
-                ", passportNumb=" + passportNumb +
-                ", passDateExp=" + passDateExp +
-                ", country=" + country +
-                ", licenseNumb=" + licenseNumb +
-                ", cardNumb=" + cardNumb +
-                '}';
+        return new StringBuilder("User(")
+                .append("id=")
+                .append(id)
+                .append(", ")
+                .append("email=")
+                .append(email)
+                .append(", ")
+                .append("phone=")
+                .append(phone)
+                .append(", ")
+                .append("activationCode=")
+                .append(activationCode)
+                .append(", ")
+                .append("password=")
+                .append(password)
+                .append(", ")
+                .append("firstName=")
+                .append(firstName)
+                .append(", ")
+                .append("lastName=")
+                .append(lastName)
+                .append(", ")
+                .append("roles=")
+                .append(roles!=null ? roles.toString():null)
+                .append(", ")
+                .append("status=")
+                .append(statusUser)
+                .append(", ")
+                .append("passportNumb=")
+                .append(passportNumb)
+                .append(", ")
+                .append("passDateExp=")
+                .append(passDateExp)
+                .append(", ")
+                .append("country=")
+                .append(country)
+                .append(", ")
+                .append("licenseNumb=")
+                .append(licenseNumb)
+                .append(", ")
+                .append("cardNumb=")
+                .append(cardNumb)
+                .append(")")
+                .toString();
+
     }
 }

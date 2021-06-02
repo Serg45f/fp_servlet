@@ -93,4 +93,13 @@ public class UserService {
             return null;
         }
     }
+
+    public void update(User user) {
+        try (UserDao dao = daoFactory.createUserDao()) {
+            dao.update(user);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+
+        }
+    }
 }

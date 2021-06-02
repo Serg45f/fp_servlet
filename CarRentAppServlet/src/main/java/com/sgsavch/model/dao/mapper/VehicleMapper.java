@@ -8,6 +8,9 @@ import com.sgsavch.model.service.UserService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAccessor;
 import java.util.Map;
 
 public class VehicleMapper {
@@ -19,10 +22,13 @@ public class VehicleMapper {
                 .setColor(Color.values()[rs.getInt(SQLConstant.VEHICLE_COLOR)])
                 .setRegNumber(rs.getString(SQLConstant.VEHICLE_REG_NUMBER))
                 .setTransmission(rs.getString(SQLConstant.VEHICLE_TRANSMISSION))
-                .setYearIssue(rs.getDate(SQLConstant.VEHICLE_YEAR_ISSUE).toLocalDate())
+                .setYearIssue(rs.getDate(SQLConstant.VEHICLE_YEAR_ISSUE).toLocalDate().atTime(LocalTime.ofSecondOfDay(00)))
                 .setDiscount(rs.getDouble(SQLConstant.VEHICLE_DISCOUNT))
                 .setManager(new UserService().getUser(rs.getLong(SQLConstant.VEHICLE_USER_ID)))
                 .build();
+        if(rs.getDate(SQLConstant.VEHICLE_YEAR_ISSUE)!=null)
+                 vehicle = new Vehicle.Builder(vehicle).build();
+
 
         return vehicle;
     }

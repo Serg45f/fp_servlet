@@ -52,7 +52,7 @@ public class RegisterCommand implements Command {
         user.getRoles().add(Role.UNCONFIRMED);
 
         Long res = userService.create(user);
-        user = new User.Builder().setId(res).build();
+        user = new User.Builder(user).setId(res).build();
         userService.setUserRoles(user,user.getRoles());
 
         if(!StringUtils.isEmpty(user.getEmail())){

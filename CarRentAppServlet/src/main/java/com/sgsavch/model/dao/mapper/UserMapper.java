@@ -21,20 +21,16 @@ public class UserMapper implements ObjectMapper<User> {
                 .setFirstName(rs.getString("first_name"))
                 .setLastName(rs.getString("last_name"))
                 .setRoles(new UserService().getUserRoles(rs.getLong("id")))
-                .setUserStatus(rs.getString("status")!=null?StatusUser.valueOf(rs.getString("status")):null)
                 .setPassportNumb(rs.getString("passport_numb"))
-                .setPassDateExp(rs.getDate("passport_date_exp")!=null?(rs.getDate("passport_date_exp")).toLocalDate():null)
                 .setCountry(rs.getString("country"))
                 .setLicenseNumb(rs.getString("license"))
                 .setCardNumber(rs.getString("card"))
                 .build();
-
-
-//        private Set<Role> roles;
-//        private List<Order> orders;
-//        private List<Lecture> lectures;
-//        private List<Vehicle> vehicles;
-
+        if(rs.getDate("passport_date_exp") != null)
+            user = new User.Builder(user).setPassDateExp(rs.getDate("passport_date_exp").toLocalDate()).build();
+        if(rs.getString("status") != null)
+            user = new User.Builder(user).setUserStatus(StatusUser.valueOf(rs.getString("status"))).build();
+        System.out.println(user);
         return user;
     }
 

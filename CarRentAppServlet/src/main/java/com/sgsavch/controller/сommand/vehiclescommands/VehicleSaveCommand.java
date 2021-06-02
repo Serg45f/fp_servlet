@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class VehicleSaveCommand implements Command {
 
@@ -30,27 +34,33 @@ public class VehicleSaveCommand implements Command {
     CarModelService carModelService;
 
 
+
     @Override
     public String execute(HttpServletRequest request)  {
         System.out.println("(VehicleSaveCommand).execute");
+        System.out.println(request.getParameter("regNumber"));
+        System.out.println(request.getParameter("carModel"));
+        System.out.println(request.getParameter("yearIssue"));
+        System.out.println(request.getParameter("color"));
+        System.out.println(request.getParameter("transmission"));
+        System.out.println(request.getParameter("discount"));
+        System.out.println(request.getParameter("manager"));
 
-        try {
             Vehicle vehicle = new Vehicle.Builder()
                     .setRegNumber(request.getParameter("regNumber"))
                     .setCarModel(new CarModel.Builder().build().valueOf(request.getParameter("carModel")))
-                    .setYearIssue(LocalDate.parse(request.getParameter("yearIssue")))
+                    .setYearIssue(LocalDateTime.parse(request.getParameter("yearIssue"),DateTimeFormatter.ofPattern("yyyy'-'MM'-'dd'T'kk':'mm", Locale.getDefault())))
                     .setColor(Color.valueOf(request.getParameter("color")))
                     .setTransmission(request.getParameter("transmission"))
                     .setDiscount(Double.valueOf(request.getParameter("discount")))
                     .setManager(new User.Builder().build().valueOf(request.getParameter("manager")))
                     .build();
+            if(request.getParameter("id")!=null) {
+                vehicle = new Vehicle.Builder(vehicle).setId(Long.valueOf(request.getParameter("id"))).build();
+            }
+        System.out.println(vehicle);
+                    Long res = vehicleService.addVehicle(vehicle);
 
-            if(request.getParameter("id")!=null)
-            vehicle = new Vehicle.Builder(vehicle).setId(Long.valueOf(request.getParameter("id"))).build();
-            Long res = vehicleService.addVehicle(vehicle);
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
 
         //vehicleDTO.setId(res);
         Command command = CommandContainer.get("vehicles");

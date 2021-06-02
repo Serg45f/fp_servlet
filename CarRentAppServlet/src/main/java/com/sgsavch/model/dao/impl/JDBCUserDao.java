@@ -41,7 +41,6 @@ public class JDBCUserDao implements UserDao {
                     rs = pstmt.getGeneratedKeys();
                     if (rs.next()) {
                         entity = new User.Builder().setId(rs.getLong(1)).build();
-
                     }
                     res = rs.getLong(1);
                 }
@@ -64,8 +63,7 @@ public class JDBCUserDao implements UserDao {
             int k = 1;
             prst.setLong(k++,id);
             rs = prst.executeQuery();
-
-            User user = new User.Builder().build();
+            User user = null;
             UserMapper userMapper = new UserMapper();
             if (rs.next()) {
                 user = userMapper
@@ -234,6 +232,28 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public void update(User entity) {
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_USER)) {
+
+            int k = 1;
+            pstmt.setString(k++, entity.getEmail());
+            pstmt.setString(k++, entity.getFirstName());
+            pstmt.setString(k++, entity.getLastName());
+            pstmt.setLong(k++,entity.getId());
+
+            pstmt.executeUpdate();
+
+            deleteUserRoles(entity.getId());
+            setUserRoles(entity,entity.getRoles());
+        } catch (SQLException e) {
+//            logger.log(Level.WARNING,e.toString(),e);
+//            logger.log(Level.INFO,"Cannot update team ",e);
+        }finally {
+            close();
+        }
+    }
+
+
+    public void updateActivationCode(User entity) {
         try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ACTIVATION_UPDATE_USER)) {
 
             int k = 1;
@@ -303,7 +323,6 @@ public class JDBCUserDao implements UserDao {
                         .extractFromResultSet(rs);
                 user = userMapper
                         .makeUnique(users, user);
-//                user = builder.setRoles(getUserRoles(user.getId())).build();
             }
             return new ArrayList<>(users.values());
         } catch (SQLException ex) {
@@ -365,13 +384,14 @@ public class JDBCUserDao implements UserDao {
                 user = userMapper
                         .extractFromResultSet(rs);
             }
-            user = new User.Builder().setActivationCode(null).build();
+            user = new User.Builder(user)
+                    .setActivationCode(null)
+                    .setUserStatus(StatusUser.ACTIVE).build();
             user.getRoles().clear();
             user.getRoles().add(Role.USER);
-            user = new User.Builder().setUserStatus(StatusUser.ACTIVE).build();
 
             deleteUserRoles(user.getId());
-            update(user);
+            updateActivationCode(user);
             setUserRoles(user,user.getRoles());
             return true;
         } catch (SQLException ex) {
