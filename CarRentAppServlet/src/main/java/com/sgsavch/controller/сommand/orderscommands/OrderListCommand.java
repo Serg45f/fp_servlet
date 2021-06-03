@@ -3,23 +3,23 @@ package com.sgsavch.controller.сommand.orderscommands;
 import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.CarModel;
+import com.sgsavch.model.entity.Order;
 import com.sgsavch.model.service.CarModelService;
+import com.sgsavch.model.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class OrderListCommand implements Command {
     private static final Integer DEFAULT_CURRENT_PAGE = 1;
-    private static final Integer DEFAULT_RECORDS_PER_PAGE = 3;
+    private static final Integer DEFAULT_RECORDS_PER_PAGE = 9;
 
-    public OrderListCommand(CarModelService carModelService) {
-        this.carModelService = carModelService;
+    OrderService orderService;
+
+    public OrderListCommand(OrderService orderService) {
+        this.orderService = orderService;
     }
 
-    CarModelService carModelService;
-
-    public OrderListCommand() {
-    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -34,9 +34,9 @@ public class OrderListCommand implements Command {
             recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         }
 
-        List<CarModel> carModels = carModelService.getCarModelsPaginated(currentPage, recordsPerPage);
+        List<Order> orders = orderService.getOrders(currentPage, recordsPerPage);
 
-        int rows = carModelService.getNumberOfCards();
+        int rows = orderService.getNumberOfCards();
 
         int nOfPages = rows / recordsPerPage;
 
@@ -47,8 +47,8 @@ public class OrderListCommand implements Command {
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
-        request.setAttribute("carmodels" , carModels);
+        request.setAttribute("orders" , orders);
 
-        return Path.PAGE__CARMODELS;
+        return Path.PAGE__ORDERS;
     }
 }

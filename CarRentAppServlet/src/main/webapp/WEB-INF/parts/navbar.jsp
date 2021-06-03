@@ -22,7 +22,7 @@
         <ul class="navbar-nav mr-auto">
             <c:if test="${sessionScope.orderStage >= 1}">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=period" >
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=setPeriod" >
                         <fmt:message key="nav.step.1" bundle="${rb}" />
                     </a>
                 </li>
@@ -61,6 +61,14 @@
                         </a>
                     </li>
                 </c:if>
+            </c:if>
+
+            <c:if test = "${loggedUserRoles.contains(roles['MANAGER'])}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=orders" >
+                            <fmt:message key="nav.7" bundle="${rb}" />
+                        </a>
+                    </li>
             </c:if>
 
            <c:if test = "${!loggedUserRoles.contains(roles['USER']) && !userRoles.contains(roles['MANAGER']) && !userRoles.contains(roles['ADMIN'])}">
@@ -132,11 +140,40 @@
         </script>
 
         <script type="text/javascript">
+
+        function insertParam(key, value) {
+            key = encodeURIComponent(key);
+            value = encodeURIComponent(value);
+
+                // kvp looks like ['key1=value1', 'key2=value2', ...]
+                var kvp = document.location.search.substr(1).split('&');
+                let i=0;
+
+                for(; i<kvp.length; i++){
+                    if (kvp[i].startsWith(key + '=')) {
+                        let pair = kvp[i].split('=');
+                        pair[1] = value;
+                        kvp[i] = pair.join('=');
+                        break;
+                    }
+                }
+
+                if(i >= kvp.length){
+                    kvp[kvp.length] = [key,value].join('=');
+                }
+
+                // can return this or...
+                let params = kvp.join('&');
+
+                // reload page with new params
+                document.location.search = params;
+            }
             $(document).ready(function() {
                 $("#locales").change(function () {
                     var selectedOption = $('#locales').val();
                     if (selectedOption != ''){
-                        window.location.replace('?sessionLocale=' + selectedOption);
+                 //   insertParam(sessionLocale, selectedOption);
+                    window.location.replace('?sessionLocale=' + selectedOption);
                     }
                 });
             });

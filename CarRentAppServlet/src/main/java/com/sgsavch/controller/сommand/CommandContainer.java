@@ -2,10 +2,7 @@ package com.sgsavch.controller.сommand;
 
 import com.sgsavch.controller.сommand.carmodelcommands.*;
 import com.sgsavch.controller.сommand.optionscommands.OptionListCommand;
-import com.sgsavch.controller.сommand.orderscommands.SetOptionsCommand;
-import com.sgsavch.controller.сommand.orderscommands.SetOrderCommand;
-import com.sgsavch.controller.сommand.orderscommands.SetPeriodCommand;
-import com.sgsavch.controller.сommand.orderscommands.SetVehicleCommand;
+import com.sgsavch.controller.сommand.orderscommands.*;
 import com.sgsavch.controller.сommand.usercommands.*;
 import com.sgsavch.controller.сommand.vehiclescommands.*;
 import com.sgsavch.model.service.*;
@@ -54,7 +51,7 @@ public class CommandContainer {
 		//TODO order_delete
 		//commands.put("order_delete", new OrderDeleteCommand(new OrderService()));
 		//TODO orders
-		//commands.put("orders", new OrderListCommand(new OrderService()));
+		commands.put("orders", new OrderListCommand(new OrderService()));
 
 		// ADMIN commands
 

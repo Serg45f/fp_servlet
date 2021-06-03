@@ -13,6 +13,7 @@ import com.sgsavch.model.service.VehicleService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Period;
 import java.util.Date;
 import java.util.Map;
@@ -20,8 +21,6 @@ import java.util.Map;
 public class OrderMapper {
 
     public Order extractFromResultSet(ResultSet rs) throws SQLException {
-        TypeCar[] types = TypeCar.values();
-        StatusCar[] statuses = StatusCar.values();
 
         String ORDER_TOTAL_PRICE = "orders.total_price";
         String ORDER_DAMAGE_DESCRIPTION = "orders.damage_description";
@@ -30,11 +29,11 @@ public class OrderMapper {
 
         Order order = new Order.Builder()
             .setId(rs.getLong(SQLConstant.ORDER_ID))
-            .setCode(rs.getString(SQLConstant.ORDER_CODE))
-            .setQRCode(rs.getString(SQLConstant.ORDER_CODE))
-            .setStart(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()))
-            .setEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_START).toString()))
-            .setRealEnd(LocalDateTime.parse(rs.getDate(SQLConstant.ORDER_REAL_END).toString()))
+//            .setCode(rs.getString(SQLConstant.ORDER_CODE))
+//            .setQRCode(rs.getString(SQLConstant.ORDER_QR))
+//            .setStart(rs.getDate(SQLConstant.ORDER_START).toLocalDate().atTime(LocalTime.now()))
+//            .setEnd(rs.getDate(SQLConstant.ORDER_START).toLocalDate().atTime(LocalTime.now()))
+//            .setRealEnd(rs.getDate(SQLConstant.ORDER_REAL_END).toLocalDate().atTime(LocalTime.now()))
             .setUser(new UserService().getUser(rs.getLong(SQLConstant.ORDER_USER_ID)))
             .setLocation(Location.values()[rs.getInt(SQLConstant.ORDER_CODE)])
             .setVehicle(new VehicleService().getVehicleById(rs.getLong(SQLConstant.ORDER_VEHICLE_ID)))
@@ -46,10 +45,10 @@ public class OrderMapper {
             .setDamageIsPayed(rs.getBoolean(SQLConstant.ORDER_DAMAGE_PAYED))
             .build();
 
-        order = new Order.Builder()
+        order = new Order.Builder(order)
             .setOptions(new OptionService().getOptionsByOrderId(order.getId()))
-            .setDays(Period.between(order.getStart().toLocalDate(),order.getEnd().toLocalDate()).getDays())
-            .setPricePeriod(order.getDays()*order.getVehicle().getCarModel().getPrice())
+            //.setDays(Period.between(order.getStart().toLocalDate(),order.getEnd().toLocalDate()).getDays())
+            //.setPricePeriod(order.getDays()*order.getVehicle().getCarModel().getPrice())
             .build();
         return order;
     }

@@ -66,7 +66,7 @@
         </div>
         <div class="col order-2">
 
-                <form  action="controller?command=${endPoint}">
+               <form  action="controller?command=${endPoint}">
 
                     <input type="hidden" name="currentPage" value="${currentPage}">
 
@@ -79,7 +79,7 @@
                                 <label for="records" >Records per page:</label>
                             </div>
                             <div class="col">
-                                <select class="form-control bg-transparent" id="records" name="recordsPerPage">
+                                <select class="form-control bg-transparent" id="records" name="recordsPerPage1">
                                     <option type="hidden" value="" selected>${recordsPerPage}</option>
                                     <option value="3" >3</option>
                                     <option value="6" >6</option>
@@ -88,10 +88,11 @@
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-transparent btn-outline-primary">Submit</button>
+
                             </div>
                         </div>
                    </div>
-                </form>
+            </form>
 
         </div>
     </div>

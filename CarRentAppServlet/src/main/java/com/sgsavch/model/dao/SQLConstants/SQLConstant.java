@@ -147,7 +147,7 @@ public interface SQLConstant {
 	String ORDER_ID = "orders.id";
 	String ORDER_CODE = "orders.code";
 	String ORDER_QR = "orders.qrcode";
-	String ORDER_START = "orders.start_day_time";
+	String ORDER_START = "orders.start_date_time";
 	String ORDER_END = "orders.end_date_time";
 	String ORDER_REAL_END = "orders.real_date_time";
 	String ORDER_USER_ID = "orders.user_id";
@@ -209,11 +209,17 @@ public interface SQLConstant {
 	String OPTION_PICTURE = "options.picture";
 	String OPTION_PRICE = "options.price";
 
+	String TABLE_ORDERS_OPTIONS = "orders_options";
+	String ORDERS_OPTIONS_ORDER_ID = "orders_options.order_id";
+	String ORDERS_OPTIONS_OPTIONS_ID = "orders_options.options_id";
+
+
 	String SQL_GET_OPTION_BY_ID =
 			"SELECT * FROM " + TABLE_OPTIONS + " WHERE " + OPTION_ID + "=?";
 
 	String SQL_GET_OPTIONS_BY_ORDER_ID =
-			"SELECT * FROM " + TABLE_OPTIONS + " WHERE " + ORDER_ID + "=?";
+			"SELECT "+TABLE_OPTIONS+".* FROM " + TABLE_OPTIONS + ", " + TABLE_ORDERS_OPTIONS +
+					" WHERE " + OPTION_ID +" = "+ORDERS_OPTIONS_OPTIONS_ID+" AND "+ORDERS_OPTIONS_ORDER_ID+ "=?";
 
 	String SQL_GET_ALL_OPTIONS =
 			"SELECT * FROM "+TABLE_OPTIONS;
@@ -257,13 +263,16 @@ public interface SQLConstant {
 
 	String SQL_GET_VEHICLES_PAGINATED =
 			"SELECT * FROM " + TABLE_VEHICLES + " LIMIT ?, ?";
-/**
- * @params start, end, current page, records per page
- */
+
+	/**
+	 * @params start, end, current page, records per page
+	 * Returns vacant and new cars
+	 */
 	String SQL_GET_VEHICLES_PAGINATED_BY_PERIOD =
-			"SELECT " + TABLE_VEHICLES + ".* FROM " + TABLE_VEHICLES + ", " + TABLE_ORDERS +
-					" WHERE " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
-					" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0  LIMIT ?, ?";
+			"SELECT DISTINCTROW " + TABLE_VEHICLES + ".* FROM " + TABLE_VEHICLES + ", " + TABLE_ORDERS +
+					" WHERE ( " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
+					" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0 )" +
+					" OR " + VEHICLE_ID + " != " + ORDER_VEHICLE_ID + " LIMIT ?, ?";
 
 	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
 
@@ -289,55 +298,6 @@ public interface SQLConstant {
 	String SQL_DELETE_VEHICLE_BY_ID =
 			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";
 
-
-	//////////////////////////////////////////////////////////////////////////////////
-
-	String TABLE_TICKET = "ticket";
-
-	String TICKET_ID = "ticket.id";
-	String TICKET_PRICE = "ticket.price";
-	String TICKET_EVENT_ID = "ticket.event_id";
-	String TICKET_USER_ID = "ticket.user_id";
-	String TICKET_STATUS_TICKET = "ticket.status_ticket";
-	String TICKET_CODE = "ticket.code";
-	String TICKET_DISCOUNT = "ticket.discount";
-	String TICKET_QRCODE = "ticket.qrcode";
-
-	String SQL_COUNT_TICKETS_BY_USER_GROUP_BY_EVENT =
-			"SELECT "+EVENT_DATE+", "+EVENT_TIME+", "+EVENT_PLACE+", "+EVENT_LANGUAGE+", "+EVENT_ID+", "+EVENT_PRICE+", "+EVENT_NAME+", "+TICKET_CODE+", "+USER_ID+", "+USER_EMAIL+", " +
- 			" "+USER_FIRSTNAME+", "+USER_LASTNAME+", COUNT("+TICKET_EVENT_ID+") AS tcount, SUM("+EVENT_PRICE+") AS esum "+
-			"FROM "+TABLE_TICKET+", "+TABLE_EVENT+", "+TABLE_USERS+" "+
-			"WHERE "+EVENT_ID+" = "+TICKET_EVENT_ID+" AND "+USER_ID+"="+TICKET_USER_ID+" AND "+TICKET_USER_ID+" = ? "+
-			"GROUP BY "+TICKET_EVENT_ID+
-			" ORDER BY "+EVENT_DATE+" asc;";
-
-	String SQL_COUNT_TICKETS_BY_EVENT_GROUP_BY_USER =
-			"SELECT "+EVENT_DATE+", "+EVENT_TIME+", "+EVENT_PLACE+", "+EVENT_LANGUAGE+", "+EVENT_ID+", "+EVENT_PRICE+", "+EVENT_NAME+", "+TICKET_CODE+", "+USER_ID+", "+USER_EMAIL+", " +
-					" "+USER_FIRSTNAME+", "+USER_LASTNAME+" as user, COUNT("+TICKET_EVENT_ID+") AS tcount, SUM("+EVENT_PRICE+") AS esum "+
-					"FROM "+TABLE_TICKET+", "+TABLE_EVENT+", "+TABLE_USERS+" "+
-					"WHERE "+EVENT_ID+" = "+TICKET_EVENT_ID+" AND "+USER_ID+"="+TICKET_USER_ID+" AND "+TICKET_EVENT_ID+" = ? "+
-					"GROUP BY "+TICKET_USER_ID+
-					" ORDER BY "+EVENT_DATE+" asc;";
-
-
-	String SQL_FIND_ALL_TICKETS_GROUP_BY_USER =
-			"SELECT "+EVENT_DATE+", "+EVENT_TIME+", "+EVENT_PLACE+", "+EVENT_LANGUAGE+", "+EVENT_ID+", "+EVENT_PRICE+", "+EVENT_NAME+", "+TICKET_CODE+", "+USER_ID+", "+USER_EMAIL+", " +
-					" "+USER_FIRSTNAME+", "+USER_LASTNAME+" as user, COUNT("+TICKET_EVENT_ID+") AS tcount, SUM("+EVENT_PRICE+") AS esum "+
-					" FROM "+TABLE_TICKET+", "+TABLE_EVENT+", "+TABLE_USERS+
-					" WHERE "+EVENT_ID+" = "+TICKET_EVENT_ID+" AND "+USER_ID+"="+TICKET_USER_ID+
-					" GROUP BY "+TICKET_USER_ID+
-					" ORDER BY "+EVENT_DATE+" asc;";
-
-	String SQL_FIND_ALL_TICKETS_GROUP_BY_EVENT =
-			"SELECT "+EVENT_DATE+", "+EVENT_TIME+", "+EVENT_PLACE+", "+EVENT_LANGUAGE+", "+EVENT_ID+", "+EVENT_PRICE+", "+EVENT_NAME+", "+TICKET_CODE+", "+USER_ID+", "+USER_EMAIL+", " +
-					" "+USER_FIRSTNAME+", "+USER_LASTNAME+" as user, COUNT("+TICKET_EVENT_ID+") AS tcount, SUM("+EVENT_PRICE+") AS esum "+
-					" FROM "+TABLE_TICKET+", "+TABLE_EVENT+", "+TABLE_USERS+
-					" WHERE "+EVENT_ID+" = "+TICKET_EVENT_ID+" AND "+USER_ID+"="+TICKET_USER_ID+
-					" GROUP BY "+TICKET_EVENT_ID+
-					" ORDER BY "+EVENT_DATE+" asc;";
-
-	String SQL_QUANTITY_TICKETS_BY_EVENT_ID =
-					"SELECT  COUNT(*) as quantity  FROM " +TABLE_TICKET+ " WHERE "+TICKET_EVENT_ID+" = ?;";
 
 
 	///////////////////////////////////////////////////////////////////////////////////

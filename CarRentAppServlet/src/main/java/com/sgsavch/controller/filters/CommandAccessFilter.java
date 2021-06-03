@@ -76,12 +76,11 @@ public class CommandAccessFilter implements Filter {
 
 		if(session.getAttribute("loggedUserRoles")!=null) {
 			for (Role role : (Set<Role>) session.getAttribute("loggedUserRoles")) {
-
 				if (accessMap.get(role).contains(commandName)
 						|| commons.contains(commandName)) {
 					return true;
 				}
-				break;
+
 			}
 		}
 

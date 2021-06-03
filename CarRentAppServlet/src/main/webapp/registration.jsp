@@ -40,11 +40,11 @@ return sdf.format(new Date());
 <br/>
 <br/>
 
-<div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
-flex-direction: column;
+<div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7);
+
 height:100vh;">
         <div class= "mx-auto my-auto">
-            <h2 class="mt-6 form-signing-hiding" >Registration</h2>
+            <h2 class="form-signing-hiding" >Registration</h2>
 
             <form accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/controller?command=registration" >
                 <div class="form-group row">
@@ -92,9 +92,9 @@ height:100vh;">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Passport ¹: </label>
+                    <label class="col-sm-2 col-form-label">Passport #: </label>
                     <div class="col-sm-6">
-                        <input  type="text" class="form-control "  placeholder="Passport ¹"
+                        <input  type="text" class="form-control "  placeholder="Passport #"
                                 name="passportNumb">
                     </div>
                 </div>

@@ -19,6 +19,6 @@ public class LogOutCommand implements Command {
         CommandUtility.deleteLoggedUser(request, (String) request.getSession().getServletContext().getAttribute("loggedUserName"));
 
         CommandUtility.setUserRole(request, Collections.singleton(Role.UNKNOWN), "Guest",0L);
-        return "redirect:" + Path.PAGE__LOGIN;
+        return Path.PAGE__LOGIN;
     }
 }

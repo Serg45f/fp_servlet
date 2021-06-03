@@ -32,8 +32,8 @@ public class User {
     public Boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
-    public Boolean isSpeaker(){
-        return roles.contains(Role.SPEAKER);
+    public Boolean isManager(){
+        return roles.contains(Role.MANAGER);
     }
     public Boolean isUser(){
         return roles.contains(Role.USER);

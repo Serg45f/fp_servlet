@@ -6,6 +6,7 @@ import com.sgsavch.model.entity.Vehicle;
 import com.sgsavch.model.service.VehicleService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class VehicleListCommand implements Command {
         LocalDateTime start  = null;
         LocalDateTime end = null;
 
+
+
         if(request.getParameter("start")!=null){
             start = LocalDateTime.parse(request.getParameter("start"));
         }
@@ -45,13 +48,13 @@ public class VehicleListCommand implements Command {
 
 
 
-//        if (start!=null && end!=null) {
-//            vehicles = vehicleService.getVehiclesPaginatedFilteredByPeriod(start, end, currentPage, recordsPerPage);
-//        } else {
-//            vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
-//        }
+        if (start!=null && end!=null) {
+            vehicles = vehicleService.getVehiclesPaginatedFilteredByPeriod(start, end, currentPage, recordsPerPage);
+        } else {
+            vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
+        }
 
-        vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
+//        vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
 
         int rows = vehicleService.getNumberOfCards();
 

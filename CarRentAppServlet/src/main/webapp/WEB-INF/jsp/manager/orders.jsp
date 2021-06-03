@@ -41,55 +41,55 @@ return sdf.format(new Date());
     <br>
     <br>
     <br>
-<div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
+<div class="container-flex" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
 
                         <div id="ordersTable" class="table-responsive-sm  table-hover mt-3">
-                            <table class="table table-responsive-sm  table-hover mt-3 round" style="background-image: url(/img/BG_1_LB.png); color: #FFEACE;">
+                            <table class="table table-responsive-sm  table-hover mt-3 round" >
                                 <thead>
                                 <tr>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.id" bundle="${rb}" />Order Id
+                                        <fmt:message key="orders.th.id" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.picture" bundle="${rb}" />Picture
+                                        <fmt:message key="orders.th.picture" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.carName" bundle="${rb}" />Car Name
+                                        <fmt:message key="orders.th.carName" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.carId" bundle="${rb}" />Car Id
+                                        <fmt:message key="orders.th.carId" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.regNumb" bundle="${rb}" />Reg Number
+                                        <fmt:message key="orders.th.regNumb" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.start" bundle="${rb}" />Start
+                                        <fmt:message key="orders.th.start" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.finish" bundle="${rb}" />Finish
+                                        <fmt:message key="orders.th.finish" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.realFinish" bundle="${rb}" />Real Finish
+                                        <fmt:message key="orders.th.realFinish" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.status" bundle="${rb}" />Status
+                                        <fmt:message key="orders.th.status" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.damage" bundle="${rb}" />Damage
+                                        <fmt:message key="orders.th.damage" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.damagePrice" bundle="${rb}" />Damage price
+                                        <fmt:message key="orders.th.damagePrice" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.damagePayed" bundle="${rb}" />Damage payed
+                                        <fmt:message key="orders.th.damagePayed" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.edit" bundle="${rb}" />Edit
+                                        <fmt:message key="orders.th.edit" bundle="${rb}" />
                                     </th>
                                     <th scope="col">
-                                        <fmt:message key="orders.th.delete" bundle="${rb}" />Delete
+                                        <fmt:message key="orders.th.delete" bundle="${rb}" />
                                     </th>
                                 </tr>
                                 </thead>
