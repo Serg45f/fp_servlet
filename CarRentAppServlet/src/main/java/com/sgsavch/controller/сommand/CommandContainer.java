@@ -31,23 +31,24 @@ public class CommandContainer {
 		commands.put("setPeriod", new SetPeriodCommand());
 		commands.put("setVehicle", new SetVehicleCommand());
 		commands.put("setOptions", new SetOptionsCommand());
-		commands.put("setOrder", new SetOrderCommand( new OptionService(), new UserService()));
+		commands.put("saveOrderOptions", new SaveOrderOptionsCommand(new OptionService()));
 		commands.put("options", new OptionListCommand(new OptionService()));
 		commands.put("vehicles", new VehicleListCommand(new VehicleService()));
 
 		// USER commands
 
-		//TODO invoice
-		//commands.put("invoice", new InvoiceCommand(new InvoiceService()));
-		//TODO order
-		//commands.put("order", new OrderCommand(new OrderService()));
+		commands.put("setOrder", new SetOrderCommand( new UserService()));
+		commands.put("order_create", new OrderSaveCommand(new OrderService()));
+		commands.put("invoice", new InvoiceCommand());
+		commands.put("saveInvoice", new InvoiceSaveCommand());
+		//commands.put("invoice_payed", new InvoicePayedCommand(new InvoiceService()));
+
 		//TODO invoiceDamage
 		//commands.put("invoiceDamage", new InvoiceDamageCommand(new InvoiceService()));
 
 		// MANGER commands
 
-		//TODO order_edit
-		//commands.put("order_edit", new OrderEditCommand(new OrderService()));
+		commands.put("order_edit", new OrderEditCommand(new OrderService()));
 		//TODO order_delete
 		//commands.put("order_delete", new OrderDeleteCommand(new OrderService()));
 		//TODO orders

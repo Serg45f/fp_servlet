@@ -3,8 +3,10 @@ package com.sgsavch.controller.сommand.orderscommands;
 import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.entity.enums.StatusCar;
+import com.sgsavch.model.entity.enums.StatusOrder;
 import com.sgsavch.model.entity.enums.TypeCar;
 import com.sgsavch.model.service.CarModelService;
+import com.sgsavch.model.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
@@ -12,23 +14,20 @@ import java.util.Arrays;
 
 public class OrderEditCommand implements Command {
 
-    public OrderEditCommand(CarModelService carModelService) {
-        this.carModelService = carModelService;
+    OrderService orderService;
+
+    public OrderEditCommand(OrderService orderService) {
+        this.orderService = orderService;
     }
 
-    CarModelService carModelService;
-
-    public OrderEditCommand() {
-    }
 
     @Override
     public String execute(HttpServletRequest request) throws SQLException {
-        Long id = Long.valueOf(request.getParameter("carmodelId"));
+        Long id = Long.valueOf(request.getParameter("orderId"));
 
-        request.setAttribute("carModel", carModelService.getCarModel(id));
-        request.setAttribute("carTypes" , Arrays.asList(TypeCar.values()));
-        request.setAttribute("carStatuses" , Arrays.asList(StatusCar.values()));
+        request.setAttribute("order", orderService.getOrder(id));
+        request.setAttribute("orderStatuses" , Arrays.asList(StatusOrder.values()));
 
-        return Path.PAGE__CARMODEL_EDIT;
+        return Path.PAGE__ORDER_EDIT;
     }
 }

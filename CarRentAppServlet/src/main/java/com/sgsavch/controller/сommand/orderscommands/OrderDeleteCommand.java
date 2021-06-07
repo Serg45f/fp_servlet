@@ -5,6 +5,7 @@ import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.CarModelService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 public class OrderDeleteCommand implements Command {
 
@@ -18,7 +19,7 @@ public class OrderDeleteCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws SQLException {
         Long id = Long.valueOf(request.getParameter("carmodelId"));
         carModelService.deleteCarModel(id);
 

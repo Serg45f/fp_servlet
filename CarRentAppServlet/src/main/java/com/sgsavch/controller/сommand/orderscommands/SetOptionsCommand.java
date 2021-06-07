@@ -21,6 +21,7 @@ public class SetOptionsCommand implements Command {
         HttpSession session = request.getSession();
         Order order = (Order) session.getAttribute("currentOrder");
         order= new Order.Builder(order).setVehicle(new VehicleService().getVehicleById(Long.valueOf(request.getParameter("vehicleId")))).build();
+
         session.setAttribute("currentOrder", order);
         session.setAttribute("orderStage",3);
 

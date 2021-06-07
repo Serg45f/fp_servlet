@@ -69,7 +69,7 @@
           </init-param>
           <init-param>
               <param-name>user</param-name>
-              <param-value>invoice order invoiceDamage</param-value>
+              <param-value>invoice order_create invoiceDamage setOrder</param-value>
           </init-param>
           <init-param>
               <param-name>manager</param-name>
@@ -82,7 +82,7 @@
           <init-param>
               <param-name>out-of-control</param-name>
               <param-value>login activate registration exception
-              setPeriod setVehicle setOptions setOrder options period vehicles</param-value>
+              setPeriod setVehicle setOptions saveOrderOptions options period vehicles</param-value>
           </init-param>
       </filter>
 
@@ -110,8 +110,13 @@
   </welcome-file-list>
 
   <error-page>
-    <exception-type>java.lang.Exception</exception-type>
+    <exception-type>java.lang.Throwable</exception-type>
     <location>/WEB-INF/error.jsp</location>
   </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
 
 </web-app>

@@ -30,7 +30,7 @@ public class UserMapper implements ObjectMapper<User> {
             user = new User.Builder(user).setPassDateExp(rs.getDate("passport_date_exp").toLocalDate()).build();
         if(rs.getString("status") != null)
             user = new User.Builder(user).setUserStatus(StatusUser.valueOf(rs.getString("status"))).build();
-        System.out.println(user);
+
         return user;
     }
 

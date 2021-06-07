@@ -5,6 +5,7 @@ import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.model.service.OptionService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 public class OptionDeleteCommand implements Command {
 
@@ -18,7 +19,7 @@ public class OptionDeleteCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws SQLException {
         Long id = Long.valueOf(request.getParameter("optionId"));
         optionService.deleteOption(id);
 

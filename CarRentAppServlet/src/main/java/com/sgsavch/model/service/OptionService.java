@@ -47,7 +47,7 @@ public class OptionService {
         }
     }
 
-    public boolean deleteOption(Long id) {
+    public boolean deleteOption(Long id) throws SQLException {
         try (OptionDao dao = daoFactory.createOptionDao()) {
             return dao.delete(id);
         }

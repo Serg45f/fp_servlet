@@ -12,6 +12,8 @@ public class JDBCDaoFactory extends DaoFactory {
 
 
     @Override
+    public OrderDao createInvoiceDao() { return new JDBCInvoiceDao(getConnection());}
+    @Override
     public OrderDao createOrderDao() { return new JDBCOrderDao(getConnection());}
     @Override
     public CarModelDao createCarModelDao() { return new JDBCCarModelDao(getConnection());}

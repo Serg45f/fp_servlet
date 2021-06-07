@@ -6,14 +6,15 @@ import com.sgsavch.model.entity.enums.StatusUser;
 import com.sgsavch.model.entity.enums.TypeCar;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
-public class User {
-    private final Long id;
+public class User extends AbstractEntity{
+   // private final Long id;
     private final String email;
     private final String phone;
     private final String activationCode;
@@ -54,7 +55,8 @@ public class User {
                 final String country,
                 final String licenseNumb,
                 final String cardNumb) {
-        this.id = id;
+        super(id,LocalDateTime.now(),LocalDateTime.now());
+        //this.id = id;
         this.email = email;
         this.phone = phone;
         this.activationCode = activationCode;

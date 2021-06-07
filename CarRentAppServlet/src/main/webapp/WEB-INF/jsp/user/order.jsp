@@ -24,7 +24,7 @@ return sdf.format(new Date());
     <title>CarRentApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -36,8 +36,10 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<c:import url="/WEB-INF/parts/navbar.jsp"/>
+<br/>
+<br/>
+<br/>
 <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
@@ -52,7 +54,7 @@ height:100vh;">
         <div class="row">
             <div class="col">
                 <div class="row" width="800" height="500">
-                    <img src=resources/img/${session.currentOrder.vehicle.carModel.picture}"  alt="...">
+                    <img src="resources/img/${sessionScope.currentOrder.vehicle.carModel.picture}"  alt="...">
                 </div>
 <!--                ////////////////////////////////////USER//////////////////////////////////////////-->
                 <div class="order-group col-bg-12 col-form-label row">
@@ -68,7 +70,7 @@ height:100vh;">
                         <fmt:message key="user.descr.firstName" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.firstName}
+                        ${sessionScope.currentOrder.user.firstName}
                     </h4>
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
@@ -76,7 +78,7 @@ height:100vh;">
                         <fmt:message key="user.descr.lastName" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.lastName}
+                        ${sessionScope.currentOrder.user.lastName}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -84,7 +86,7 @@ height:100vh;">
                         <fmt:message key="user.descr.email" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.email}
+                        ${sessionScope.currentOrder.user.email}
                     </h4>
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
@@ -92,7 +94,7 @@ height:100vh;">
                         <fmt:message key="user.descr.phone" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.phone}
+                        ${sessionScope.currentOrder.user.phone}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -100,7 +102,7 @@ height:100vh;">
                         <fmt:message key="user.descr.country" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.country}
+                        ${sessionScope.currentOrder.user.country}
                     </h4>
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
@@ -108,7 +110,7 @@ height:100vh;">
                         <fmt:message key="user.descr.passportNumber" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.passportNumb}
+                        ${sessionScope.currentOrder.user.passportNumb}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -116,7 +118,7 @@ height:100vh;">
                         <fmt:message key="user.descr.passDateExp" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7" type="date">
-                       ${session.currentOrder.user.passDateExp}"
+                       ${sessionScope.currentOrder.user.passDateExp}
                     </h4>
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
@@ -124,7 +126,7 @@ height:100vh;">
                         <fmt:message key="user.descr.licenseNumb" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.licenseNumb}
+                        ${sessionScope.currentOrder.user.licenseNumb}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -132,7 +134,7 @@ height:100vh;">
                         <fmt:message key="user.descr.cardNumb" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.user.cardNumb}
+                        ${sessionScope.currentOrder.user.cardNumb}
                     </h4>
                 </div>
                 <br>
@@ -170,7 +172,7 @@ height:100vh;">
                         <fmt:message key="order.descr.vehicle.model.name" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.vehicle.carModel.name}
+                        ${sessionScope.currentOrder.vehicle.carModel.name}
                     </h4>
                 </div>
 
@@ -179,7 +181,7 @@ height:100vh;">
                         <fmt:message key="order.descr.vehicle.issueDate" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7" type="date">
-                        ${session.currentOrder.vehicle.yearIssue}"
+                        ${sessionScope.currentOrder.vehicle.yearIssue}
                     </h4>
                 </div>
 
@@ -188,7 +190,7 @@ height:100vh;">
                         <fmt:message key="order.descr.vehicle.regNumber" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.vehicle.regNumber}
+                        ${sessionScope.currentOrder.vehicle.regNumber}
                     </h4>
                 </div>
                 <br>
@@ -204,24 +206,12 @@ height:100vh;">
                     </a>
                 </div>
 
-<!--                private LocalDateTime realEnd;-->
-<!--                private Vehicle vehicle;-->
-<!--                private Integer discount;-->
-<!--                private User user;-->
-<!--                private Manager manager;-->
-<!--                private StatusOrder status;-->
-<!--                private File qrcode;-->
-<!--                private Double price;-->
-<!--                private Double priceAdd;-->
-<!--                private Double deposit;-->
-<!--                List<Option> options;-->
-
                 <div class="order-group col-bg-12 col-form-label row">
                     <h5 class="order-group col-sm-4">
                         <fmt:message key="order.descr.location" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.location.getAddress()}
+                        ${sessionScope.currentOrder.location.getAddress()}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -229,7 +219,7 @@ height:100vh;">
                         <fmt:message key="order.descr.start" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.start}"
+                        ${sessionScope.currentOrder.start}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -237,7 +227,7 @@ height:100vh;">
                         <fmt:message key="order.descr.end" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.end}"
+                        ${sessionScope.currentOrder.end}
                     </h4>
                 </div>
                 <div class="order-group row">
@@ -245,7 +235,7 @@ height:100vh;">
                         <fmt:message key="order.descr.days" bundle="${rb}"/>
                     </h5>
                     <h4 class="order-group col-sm-7">
-                        ${session.currentOrder.days}
+                        ${sessionScope.currentOrder.days}
                     </h4>
                 </div>
                 <br/>
@@ -260,13 +250,16 @@ height:100vh;">
                         <fmt:message key="btn.edit" bundle="${rb}"/>
                     </a>
                 </div>
-                <c:forEach var="option" items="${options}">
+                <c:forEach var="option" items="${sessionScope.currentOrder.options}">
                     <div class="order-group row">
                         <h5 class="order-group col-sm-4">
                             <fmt:message key="order.option.name" bundle="${rb}"/>
                         </h5>
-                        <h4 class="order-group col-sm-7">
-                            ${session.currentOrder.option.name}
+                        <h4 class="order-group col-sm-6">
+                            ${option.name}
+                        </h4>
+                        <h4 class="order-group col-sm-1">
+                            ${option.price}
                         </h4>
                     </div>
                 </c:forEach>
@@ -284,7 +277,7 @@ height:100vh;">
                     <fmt:message key="order.descr.price_car" bundle="${rb}"/>
                 </h5>
                 <h4 class="order-group col-sm-7">
-                    ${session.currentOrder.pricePeriod}
+                    ${sessionScope.currentOrder.pricePeriod}
                 </h4>
             </div>
             <div class="order-group row">
@@ -292,7 +285,7 @@ height:100vh;">
                     <fmt:message key="order.descr.price_options" bundle="${rb}"/>
                 </h5>
                 <h4 class="order-group col-sm-7">
-                    th:text="${session.currentOrder.priceOptions}
+                    ${sessionScope.currentOrder.priceOptions}
                 </h4>
             </div>
             <div class="order-group row">
@@ -300,7 +293,7 @@ height:100vh;">
                     <fmt:message key="order.descr.price_total" bundle="${rb}"/>
                 </h5>
                 <h4 class="order-group col-sm-7">
-                    ${session.currentOrder.totalPrice}
+                    ${sessionScope.currentOrder.totalPrice}
                 </h4>
             </div>
             <div class="order-group row">
@@ -308,7 +301,7 @@ height:100vh;">
                     <fmt:message key="order.descr.deposit" bundle="${rb}"/>
                 </h5>
                 <h4 class="order-group col-sm-7">
-                    ${session.currentOrder.vehicle.carModel.deposit}"
+                    ${sessionScope.currentOrder.vehicle.carModel.deposit}
                 </h4>
             </div>
            </div>

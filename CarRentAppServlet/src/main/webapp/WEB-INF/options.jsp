@@ -23,7 +23,7 @@ return sdf.format(new Date());
     <title>ConferenceHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -35,8 +35,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="/WEB-INF/parts/navbar.jsp"/>--%>
 <br/>
 <br/>
 <br/>
@@ -44,7 +44,7 @@ return sdf.format(new Date());
 <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
 flex-direction: column;
 height:100vh;">
-<!--    <div class="bg-gradient-info" layout:fragment = "replace_fragment_main">-->
+<%--
     <br/>
         <c:if test="${sessionScope.currentOrder != null}">
             <p>${sessionScope.currentOrder.id}</p>
@@ -55,6 +55,7 @@ height:100vh;">
         <c:if test="${sessionScope.orderStage != null}">
             <p>${sessionScope.orderStage}</p>
         </c:if>
+--%>
     <br/>
     <br/>
         <div id="optionsTable" class="table-responsive-sm  table-hover mt-3">
@@ -84,17 +85,12 @@ height:100vh;">
                 </tr>
                 </thead>
                 <tbody>
-                    <form action="${pageContext.request.contextPath}/controller?command=setOrder" method="post">
+                    <form action="${pageContext.request.contextPath}/controller?command=saveOrderOptions" method="post">
                         <c:forEach var="option" items="${options}">
                             <tr>
                                 <td>
-
-                                    <input type="checkbox" name="checkedOptions" value="${option.id}"/>
-   <%--
-    <!--                                <form th:action="@{/order/} + ${option.id}">-->
-    <!--                                    <input type="checkbox" name="my-checkbox" onclick="submit();" th:checked="${option.isChosen} ? 'checked'">-->
-    <!--                                </form>-->
-     --%>
+                                    <input type="checkbox" value="${option.id}" name="checkedOptions"
+                                    ${sessionScope.currentOrder.options.contains(option) ? 'checked="checked"' : ''}/>
                                 </td>
                                 </td>
                                 <td>
@@ -121,7 +117,7 @@ height:100vh;">
                                                 </a>
                         </c:if>
 
-                      <%-- <input type="hidden" value="${order}" name="order"> --%>
+
                         <button type="submit" class="text-success" to="4">Submit</button>
                     </form>
                 </tbody>

@@ -78,13 +78,37 @@
                             <div class="col-4">
                                 <label for="records" >Records per page:</label>
                             </div>
+
                             <div class="col">
+                                <div class="row">
+                                    <nav aria-label="Navigation for events">
+                                        <ul id="records" class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link "
+                                                   href="controller?command=${endPoint}&currentPage=${currentPage}&&recordsPerPage=3">3
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link "
+                                                   href="controller?command=${endPoint}&currentPage=${currentPage}&&recordsPerPage=6">6
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link "
+                                                   href="controller?command=${endPoint}&currentPage=${currentPage}&&recordsPerPage=9">9
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                        <%--
                                 <select class="form-control bg-transparent" id="records" name="recordsPerPage1">
                                     <option type="hidden" value="" selected>${recordsPerPage}</option>
                                     <option value="3" >3</option>
                                     <option value="6" >6</option>
                                     <option value="9">9</option>
                                 </select>
+                        --%>
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-transparent btn-outline-primary">Submit</button>

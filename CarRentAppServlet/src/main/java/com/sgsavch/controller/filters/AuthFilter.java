@@ -30,18 +30,6 @@ public class AuthFilter implements Filter {
 
        while(req.getAttributeNames().hasMoreElements()){ System.out.println(req.getAttributeNames().nextElement());}
 
-//        if(req.getRequestURL().toString().matches(".*/admin/.*")
-//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.ADMIN)){
-//            System.out.println("ADMIN-1");
-//        }
-//        if(req.getRequestURL().toString().matches(".*/user/.*")
-//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.USER)){
-//            System.out.println("USER-1");
-//        }
-//        if(req.getRequestURL().toString().matches(".*/manager/.*")
-//                && ((Set<Role>) session.getAttribute("userRoles")).contains(Role.SPEAKER)){
-//            System.out.println("MANAGER-1");
-//        }
         System.out.println();
         System.out.println("(AuthFilter)req.Method: " + req.getMethod());
         System.out.println("(AuthFilter)req.AuthType: " + req.getAuthType());

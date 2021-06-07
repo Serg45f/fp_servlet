@@ -24,7 +24,7 @@ return sdf.format(new Date());
     <title>ConferenceHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -47,7 +47,8 @@ height:100vh;">
 
             <form class = "mt-2"   action="${pageContext.request.contextPath}/controller?command=setVehicle" method="post">
                 <h2 class="form-signing-hiding">Period and Location</h2>
-                <c:if test="${sessionScope.currentOrder != null}">
+
+           <%--     <c:if test="${sessionScope.currentOrder != null}">
                     <p>
                         ${sessionScope.currentOrder.start}
                     </p>
@@ -60,6 +61,7 @@ height:100vh;">
                         ${sessionScope.orderStage}
                     </p>
                 </c:if>
+           --%>
                 <br>
                 <br>
                 <div class="form-group row">

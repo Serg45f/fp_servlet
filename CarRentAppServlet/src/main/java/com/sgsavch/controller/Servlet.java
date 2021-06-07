@@ -29,33 +29,14 @@ public class Servlet extends HttpServlet {
                 .setAttribute("loggedUsers", new HashSet<String>());
     }
 
-    //@SneakyThrows
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-           {
-               try {
+    @SneakyThrows
+    public void doGet(HttpServletRequest request, HttpServletResponse response){
                    processRequest(request, response);
-               } catch (ServletException e) {
-                   e.printStackTrace();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               } catch (SQLException throwables) {
-                   throwables.printStackTrace();
-               }
            }
 
-    //@SneakyThrows
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            {
-                try {
+    @SneakyThrows
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
                     processRequest(request, response);
-                } catch (ServletException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
             }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -83,19 +64,6 @@ public class Servlet extends HttpServlet {
             disp.forward(request, response);
         }
 
-//        String path = request.getRequestURI();
-//        path = path.replaceAll(".*/carrent/controller" , "");
-//        Command command = CommandContainer.get(path);
-////        Command command = commands.getOrDefault(path ,
-////                (r)->"/index.jsp");
-//        System.out.println("(Servlet)command.name: " + command.getClass().getName());
-//        String page = command.execute(request);
-//        System.out.println("(Servlet)page: " + page);
-//        if(page.contains("redirect:")){
-//            response.sendRedirect(page.replace("redirect:", "/carrent"));
-//        }else {
-//            request.getRequestDispatcher(page).forward(request, response);
-//        }
     }
 
 }

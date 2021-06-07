@@ -12,6 +12,7 @@ public final class Path {
 	public static final String PAGE__VEHICLES = "/WEB-INF/vehicles.jsp";
 	public static final String PAGE__REGISTRATION = "/registration.jsp";
 	public static final String PAGE__PERIOD = "/WEB-INF/period.jsp";
+	public static final String PAGE__SUCCESS = "/WEB-INF/success.jsp";
 
 	//user
 	public static final String PAGE__ORDER = "/WEB-INF/jsp/user/order.jsp";
@@ -20,6 +21,7 @@ public final class Path {
 
 	//manager
 	public static final String PAGE__ORDERS = "/WEB-INF/jsp/manager/orders.jsp";
+	public static final String PAGE__ORDER_EDIT = "/WEB-INF/jsp/manager/orderEdit.jsp";
 
 	//admin
 	public static final String PAGE__CARMODELS = "/WEB-INF/jsp/admin/carmodels.jsp";
@@ -45,6 +47,7 @@ public final class Path {
 
 	// USER commands
 	public static final String COMMAND__INVOICE = "/controller?command=invoice";
+	public static final String COMMAND__INVOICE_SAVE = "/controller?command=invoice_save";
 	public static final String COMMAND__ORDER = "/controller?command=order";
 	public static final String COMMAND__INVOICE_DAMAGE = "/controller?command=invoiceDamage";
 

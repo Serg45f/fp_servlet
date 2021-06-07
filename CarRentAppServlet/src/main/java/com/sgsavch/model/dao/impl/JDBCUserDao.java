@@ -152,7 +152,7 @@ public class JDBCUserDao implements UserDao {
             if(connection!=null)connection.rollback();
         } finally {
             close();
-//            if(connection!=null)close(connection);
+            if(connection!=null)close(connection);
 //            logger.log(Level.INFO,"Connection is closed");
         }
         return res;

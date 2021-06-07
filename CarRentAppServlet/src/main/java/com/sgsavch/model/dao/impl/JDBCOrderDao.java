@@ -4,14 +4,15 @@ package com.sgsavch.model.dao.impl;
 import com.sgsavch.model.dao.OrderDao;
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.mapper.OrderMapper;
+import com.sgsavch.model.entity.Option;
 import com.sgsavch.model.entity.Order;
+import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Location;
+import com.sgsavch.model.entity.enums.Role;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.util.*;
 
 public class JDBCOrderDao implements OrderDao {
     private Connection connection;
@@ -27,7 +28,7 @@ public class JDBCOrderDao implements OrderDao {
 
         ResultSet rs = null;
 
-        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_CARMODEL, Statement.RETURN_GENERATED_KEYS)) {
+        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_ORDER, Statement.RETURN_GENERATED_KEYS)) {
 
             int k = 1;
             pstmt.setString(k++, entity.getCode());
@@ -38,6 +39,10 @@ public class JDBCOrderDao implements OrderDao {
             pstmt.setInt(k++, entity.getLocation().ordinal());
             pstmt.setLong(k++, entity.getVehicle().getId());
             pstmt.setInt(k++, entity.getStatus().ordinal());
+            pstmt.setInt(k++, entity.getDays());
+            pstmt.setDouble(k++, entity.getPricePeriod());
+            pstmt.setDouble(k++, entity.getPriceOptions());
+            pstmt.setDouble(k++, entity.getTotalPrice());
 
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
@@ -47,16 +52,102 @@ public class JDBCOrderDao implements OrderDao {
                 res = rs.getLong(1);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
 //                logger.log(Level.WARNING,e.toString(),e);
 //                logger.log(Level.INFO,"Cannot insert user ",e);
         } finally {
-            //close(rs);
-            close();
+            if(connection!=null)close();
         }
         return res;
+    }
+
+    @Override
+    public boolean setOrderOptions(Order order, List<Option> options)  {
+        boolean res = false;
+
+        try {
+            Statement st = connection.createStatement();
+            connection.setAutoCommit(false);
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+            for (Option option : options) {
+                addOrderOption(connection, order.getId(), option);
+            }
+            connection.commit();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+//            logger.log(Level.WARNING,e.toString(),e);
+//            logger.log(Level.INFO,"Cannot set teams for user ",e);
+            if(connection!=null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        } finally {
+            if(connection!=null)close();
+//            logger.log(Level.INFO,"Connection is closed");
+        }
+        return res;
+    }
+
+    @Override
+    public boolean resetOrderOptions(Order order, List<Option> options) throws SQLException {
+        boolean res = false;
+
+        try {
+            Statement st = connection.createStatement();
+            connection.setAutoCommit(false);
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+            delete(order.getId());
+
+            for (Option option : options) {
+                addOrderOption(connection, order.getId(), option);
+                System.out.println(connection.toString());
+            }
+            connection.commit();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+//            logger.log(Level.WARNING,e.toString(),e);
+//            logger.log(Level.INFO,"Cannot set teams for user ",e);
+            if(connection!=null)connection.rollback();
+        } finally {
+            if(connection!=null)close();
+//            logger.log(Level.INFO,"Connection is closed");
+        }
+        return res;
+    }
+
+    private void addOrderOption(Connection con, long id, Option option) throws SQLException {
+
+
+        try (PreparedStatement pstmt = con.prepareStatement(SQLConstant.SQL_ADD_OPTION_TO_ORDER)){
+
+            int k = 1;
+            pstmt.setLong(k++, id);
+            pstmt.setLong(k++, option.getId());
+
+            pstmt.executeUpdate();
+        }
 
     }
 
+    public void deleteOrderOptions(Long id){
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_OPTIONS_BY_ORDER_ID)) {
+
+            int k = 1;
+            prst.setLong(k++,id);
+            prst.executeUpdate();
+
+        } catch (SQLException ex) {
+
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public Order findById(long id) {
@@ -121,16 +212,15 @@ public class JDBCOrderDao implements OrderDao {
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
 //            logger.log(Level.WARNING,e.toString(),e);
 //            logger.log(Level.INFO,"Cannot update team ",e);
         }
 
-
     }
 
-
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(Long id) throws SQLException{
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_ORDER_BY_ID);) {
 
         int k = 1;

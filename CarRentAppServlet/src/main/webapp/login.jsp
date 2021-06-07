@@ -11,12 +11,11 @@
 <html lang="${sessionScope.lang}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    <title>Welcome!</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>ConferenceHall</title>
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <title>CarRentApp</title>
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -75,15 +74,7 @@ height:100vh;">
 
         </a>
     </div>
-    <br>
-    <br>
-
-
-    <input type="hidden" name="_csrf" value="${_csrf.token}" />
-
-
-
-  </form>
+     </form>
 
 </div>
 </body>

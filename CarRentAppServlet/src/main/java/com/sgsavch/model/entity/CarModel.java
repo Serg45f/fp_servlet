@@ -3,10 +3,11 @@ package com.sgsavch.model.entity;
 import com.sgsavch.model.entity.enums.StatusCar;
 import com.sgsavch.model.entity.enums.TypeCar;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-public class CarModel {
-    private final Long id;
+public class CarModel extends AbstractEntity{
+    //private final Long id;
     private final String name;
     private final Integer seatsNumb;
     private final Integer doorsNumb;
@@ -28,7 +29,8 @@ public class CarModel {
                     final Double price,
                     final Double deposit,
                     final List<Vehicle> vehicles) {
-        this.id = id;
+        super(id,LocalDateTime.now(),LocalDateTime.now());
+        //this.id = id;
         this.name = name;
         this.seatsNumb = seatsNumb;
         this.doorsNumb = doorsNumb;

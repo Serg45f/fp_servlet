@@ -24,7 +24,7 @@ return sdf.format(new Date());
     <title>CarRentLtd</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -36,8 +36,7 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<c:import url="/WEB-INF/parts/navbar.jsp"/>
     <br>
     <br>
     <br>
@@ -120,10 +119,9 @@ height:100vh;">
                                 </tbody>
                             </table>
                 </div>
-            <!--<c:if test="${orders != null}" >-->
-    <%@ include file="/WEB-INF/parts/pagination.jsp" %>
-    <%--<c:import url="pagination.jsp"/>--%>
-            <!--                    </c:if>-->
+            <c:if test="${orders != null}" >
+                <c:import url="/WEB-INF/parts/pagination.jsp"/>
+            </c:if>
         </div>
     </div>
     </div>

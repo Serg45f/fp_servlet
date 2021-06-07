@@ -2,10 +2,12 @@ package com.sgsavch.controller.сommand.vehiclescommands;
 
 import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
+import com.sgsavch.model.entity.Order;
 import com.sgsavch.model.entity.Vehicle;
 import com.sgsavch.model.service.VehicleService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,20 +27,16 @@ public class VehicleListCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        List<Vehicle> vehicles = null;
         int currentPage = DEFAULT_CURRENT_PAGE;
         int recordsPerPage = DEFAULT_RECORDS_PER_PAGE;
-        LocalDateTime start  = null;
-        LocalDateTime end = null;
 
+        HttpSession session = request.getSession();
+        List<Vehicle> vehicles = null;
 
+        Order order = session.getAttribute("currentOrder")!=null ? (Order) session.getAttribute("currentOrder") : new Order.Builder().build();
+        LocalDateTime start  = order.getStart();
+        LocalDateTime end = order.getEnd();
 
-        if(request.getParameter("start")!=null){
-            start = LocalDateTime.parse(request.getParameter("start"));
-        }
-        if(request.getParameter("end")!=null){
-            end = LocalDateTime.parse(request.getParameter("end"));
-        }
         if(request.getParameter("tPage")!=null){
             currentPage = Integer.parseInt(request.getParameter("tPage"));
         }

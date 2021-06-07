@@ -2,6 +2,7 @@ package com.sgsavch.model.service;
 
 import com.sgsavch.model.dao.DaoFactory;
 import com.sgsavch.model.dao.OrderDao;
+import com.sgsavch.model.entity.Option;
 import com.sgsavch.model.entity.Order;
 
 import java.sql.SQLException;
@@ -32,6 +33,24 @@ public class OrderService {
     public Order getOrder(Long orderId) throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.findById(orderId);
+        }
+    }
+
+    public Long newOrder(Order order) {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.create(order);
+        }
+    }
+
+    public boolean setOrderOptions(Order order, List<Option> options) throws SQLException {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.setOrderOptions(order,options);
+        }
+    }
+
+    public boolean resetOrderOptions(Order order, List<Option> options) throws SQLException {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.resetOrderOptions(order,options);
         }
     }
 }

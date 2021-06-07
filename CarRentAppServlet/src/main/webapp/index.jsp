@@ -20,10 +20,10 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>ConferenceHub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CarRentApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -35,8 +35,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="WEB-INF/parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<%--@ include file="WEB-INF/parts/navbar.jsp" --%>
+<c:import url="WEB-INF/parts/navbar.jsp"/>
 <br/>
 
  <div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
@@ -47,16 +47,26 @@ height:100vh;">
     <h1 class="text-color mt-2"  >
         <fmt:message key="greeting1" bundle="${rb}"/>
     </h1>
+     <br/>
     <h1 class="text-color mt-2"  >
         <fmt:message key="greeting2" bundle="${rb}"/>
     </h1>
-        <br>
-        <br>
+        <br/>
+        <br/>
     <c:if test="${sessionScope.orderStage!=null && sessionScope.orderStage!=-1}">
-        <a class="btn  btn-outline-warning my-8 text-center" to="1" href="${pageContext.request.contextPath}/controller?command=setPeriod">
-            <fmt:message key="btn.startHere" bundle="${rb}"/></a>
+        <a class="btn btn-lg btn-outline-warning" to="1" href="${pageContext.request.contextPath}/controller?command=setPeriod">
+            <h3>
+                <fmt:message key="btn.startHere" bundle="${rb}"/>
+            </h3>
+        </a>
     </c:if>
-    <br>
+    <br/>
+     <br/>
+
+     <h1 class="text-color mt-2" >
+         <fmt:message key="advertising" bundle="${rb}"/>
+     </h1>
+     <br>
 
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -69,11 +79,11 @@ height:100vh;">
                 <div class="carousel-item  active">
                     <img src="resources/img/tr-carousel-Ford-Focus-1.png" class="d-block w-100 h-100 rounded" alt="..." >
                     <div class="carousel-caption mt-8 ml-2" style="text-align: left;">
-                        <h3 class="carousel-item-header">
+                        <h3 class="carousel-item-header" style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.h.1" bundle="${rb}"/>
                         </h3>
                         <h3> </h3>
-                        <h3>
+                        <h3 style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.p.1" bundle="${rb}"/>
                         </h3>
                     </div>
@@ -81,11 +91,11 @@ height:100vh;">
                 <div class="carousel-item">
                     <img src="resources/img/tr-carousel-Hyundai-Accent-2.png" class="d-block w-100 h-100 rounded" alt="..." >
                     <div class="carousel-caption" style="text-align: right;">
-                        <h3 class="carousel-item-header">
+                        <h3 class="carousel-item-header" style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.h.2" bundle="${rb}"/>
                         </h3>
                         <h3> </h3>
-                        <h3>
+                        <h3 style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.p.2" bundle="${rb}"/>
                         </h3>
                     </div>
@@ -93,12 +103,12 @@ height:100vh;">
 
                 <div class="carousel-item" style="text-align: right;">
                     <img src="resources/img/tr-carousel-Kia-Rio-3.png" class="d-block w-100 h-100 rounded" alt="..." >
-                    <div class="carousel-caption" style="text-align: right;">
-                        <h3 class="carousel-item-header">
+                    <div class="carousel-caption" style="color: rgba(51,51,51,51,0.8); text-align: right;">
+                        <h3 class="carousel-item-header" style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.h.3" bundle="${rb}"/>
                         </h3>
                         <h3> </h3>
-                        <h3>
+                        <h3 style="color: rgba(51,51,51,0.8);">
                             <fmt:message key="carousel.p.3" bundle="${rb}"/>
                         </h3>
                     </div>

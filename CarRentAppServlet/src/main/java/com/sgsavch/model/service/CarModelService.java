@@ -49,7 +49,7 @@ public class CarModelService {
         }
     }
 
-    public boolean deleteCarModel(Long carModelId) {
+    public boolean deleteCarModel(Long carModelId) throws SQLException {
         try (CarModelDao dao = daoFactory.createCarModelDao()) {
             return dao.delete(carModelId);
         }

@@ -22,7 +22,7 @@ return sdf.format(new Date());
     <title>ConferenceHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -35,7 +35,7 @@ return sdf.format(new Date());
 </head>
 <body>
 <%@ include file="/WEB-INF/parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<%--<c:import url="/WEB-INF/parts/navbar.jsp"/>--%>
 <br/>
 <%--
     <div class="form-row">
@@ -46,7 +46,7 @@ return sdf.format(new Date());
             </form>
         </div>
     </div>
---%>
+
         <br/>
 
             <c:if test="${sessionScope.currentOrder != null}">
@@ -57,6 +57,7 @@ return sdf.format(new Date());
             <c:if test="${sessionsessionScope.orderStage != null}">
                 <p>${sessionScope.orderStage}</p>
             </c:if>
+--%>
         <br/>
         <div class="container">
             <h2 class="mt-3 " >

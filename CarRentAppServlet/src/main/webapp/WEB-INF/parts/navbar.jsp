@@ -54,7 +54,7 @@
                     </li>
                 </c:if>
 
-                <c:if test="${session.orderStage == -1}">
+                <c:if test="${sessionScope.orderStage == -1}">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=invoice">
                             <fmt:message key="nav.step.5" bundle="${rb}" />
@@ -103,81 +103,30 @@
 
         <a class="navbar-text mr-3">
             ${loggedUserName}
-
         </a>
 
         <c:if test = "${loggedUserName != null}">
             <form action="${pageContext.request.contextPath}/controller?command=logout" method="post">
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                <button class="btn btn-sm mt-1 btn-transparent" type="submit">LogOut</button>
+                <a class = "px-2">
+                    <button class="btn btn-sm mt-1 btn-transparent btn-outline-primary" type="submit">LogOut</button>
+                </a>
             </form>
+
         </c:if>
-
-
-             <span>
-                 <fmt:message key="lang.change" bundle="${rb}" />
-             </span>:
-             <select class="form-control bg-transparent col-sm-1" id="locales"
-             >
-             <option value="${lang}"  selected>${lang}</option>
-                 <option value="en" >
-                     <a href="?sessionLocale=en">
-                         <fmt:message key="lang.eng" bundle="${rb}" /></a>
-                 </option>
-                 <option value="ru" >
-                     <a href="?sessionLocale=ru">
-                         <fmt:message key="lang.ru" bundle="${rb}" /></a>
-                 </option>
-                 <option value="ua" >
-                     <a href="?sessionLocale=ua">
-                         <fmt:message key="lang.ua" bundle="${rb}" /></a>
-                 </option>
-                 ${lang}
-             </select>
-
+        <a>  </a>
+        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=en">
+            <img src="resources/img/flag_US.png" alt="" width="30" height="20" class="d-inline-block align-top">
+        </a>
+        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=ua">
+            <img src="resources/img/flag_UA.png" alt="" width="30" height="20" class="d-inline-block align-top">
+        </a>
+        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=ru">
+            <img src="resources/img/flag_RU.png" alt="" width="30" height="20" class="d-inline-block align-top">
+        </a>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
         </script>
 
-        <script type="text/javascript">
-
-        function insertParam(key, value) {
-            key = encodeURIComponent(key);
-            value = encodeURIComponent(value);
-
-                // kvp looks like ['key1=value1', 'key2=value2', ...]
-                var kvp = document.location.search.substr(1).split('&');
-                let i=0;
-
-                for(; i<kvp.length; i++){
-                    if (kvp[i].startsWith(key + '=')) {
-                        let pair = kvp[i].split('=');
-                        pair[1] = value;
-                        kvp[i] = pair.join('=');
-                        break;
-                    }
-                }
-
-                if(i >= kvp.length){
-                    kvp[kvp.length] = [key,value].join('=');
-                }
-
-                // can return this or...
-                let params = kvp.join('&');
-
-                // reload page with new params
-                document.location.search = params;
-            }
-            $(document).ready(function() {
-                $("#locales").change(function () {
-                    var selectedOption = $('#locales').val();
-                    if (selectedOption != ''){
-                 //   insertParam(sessionLocale, selectedOption);
-                    window.location.replace('?sessionLocale=' + selectedOption);
-                    }
-                });
-            });
-        </script>
 
     </div>
 

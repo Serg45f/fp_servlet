@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CarModelDTO {
+public class CarModelDTO  extends AbstractDto{
     private Long id;
     private String name;
     private Integer seatsNumb;

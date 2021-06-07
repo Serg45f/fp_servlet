@@ -70,23 +70,6 @@ public interface SQLConstant {
 			"SELECT "+TABLE_USERS+".* FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_USER_ID + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
 
 
-	///////////////////////////////////////////////////////////////////////////////////
-	String TABLE_EVENT = "event";
-
-	String EVENT_ID = "event.id";
-	String EVENT_PRICE = "event.price";
-	String EVENT_PLACE = "event.place";
-	String EVENT_LANGUAGE = "event.language";
-	String EVENT_DATE = "event.date";
-	String EVENT_TIME = "event.time";
-	String EVENT_NAME = "event.name";
-	String EVENT_STATUS = "event.status";
-	String EVENT_DESCRIPTION = "event.description";
-	String EVENT_PICTURE = "event.picture";
-
-	String SQL_GET_EVENT_BY_ID =
-			"SELECT * FROM "+TABLE_EVENT+" WHERE "+EVENT_ID+"=?";
-
 
 	//////////////////////////////////////CAR_MODELS/////////////////////////////////////////////
 	String TABLE_CARMODELS = "carmodels";
@@ -184,7 +167,11 @@ public interface SQLConstant {
 			ORDER_USER_ID + ", " +
 			ORDER_LOCATION + ", " +
 			ORDER_VEHICLE_ID + ", " +
-			ORDER_STATUS_ORDER + ") VALUES (?,?,?,?,?,?,?,?);";
+			ORDER_STATUS_ORDER + ", " +
+			ORDER_DAYS + ", " +
+			ORDER_PRICE_PERIOD + ", " +
+			ORDER_PRICE_OPTIONS + ", " +
+			ORDER_TOTAL_PRICE + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
 	String SQL_UPDATE_ORDER =
 			"UPDATE " + TABLE_ORDERS + " SET " +
@@ -240,6 +227,18 @@ public interface SQLConstant {
 
 	String SQL_DELETE_OPTION_BY_ID =
 			"DELETE FROM " + TABLE_OPTIONS + " WHERE "+OPTION_ID+"=?";
+
+	String SQL_ADD_OPTION_TO_ORDER =
+			"INSERT INTO " + TABLE_ORDERS_OPTIONS + " (" +
+					ORDERS_OPTIONS_ORDER_ID + ", " +
+					ORDERS_OPTIONS_OPTIONS_ID + ") VALUES (?, ?)";
+
+	String SQL_DELETE_OPTIONS_BY_ORDER_ID =
+			"DELETE FROM " + TABLE_ORDERS_OPTIONS + " WHERE "+ORDERS_OPTIONS_ORDER_ID+"=?";
+
+	String SQL_FIND_OPTIONS_BY_ORDER =
+			"SELECT "+TABLE_OPTIONS+".* FROM " + TABLE_OPTIONS + ", " + TABLE_ORDERS_OPTIONS  + " WHERE " +
+					ORDERS_OPTIONS_OPTIONS_ID + " = " + OPTION_ID + " AND " + ORDERS_OPTIONS_ORDER_ID + " LIKE ? ESCAPE '!'";
 
 /////////////////////////////////////VEHICLES/////////////////////////////////////////////
 

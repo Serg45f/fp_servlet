@@ -11,20 +11,19 @@ public class Option {
     private final String picture;
     private final String description;
     private final Double price;
-    private final Order currentOrder;
+
 
     public Option(final Long id,
                   final String name,
                   final String picture,
                   final String description,
-                  final Double price,
-                  final Order currentOrder) {
+                  final Double price) {
         this.id = id;
         this.name = name;
         this.picture = picture;
         this.description = description;
         this.price = price;
-        this.currentOrder = currentOrder;
+
     }
 
     public Long getId() {
@@ -47,9 +46,6 @@ public class Option {
         return price;
     }
 
-    public Order getCurrentOrder() {
-        return currentOrder;
-    }
 
     public static class Builder {
 
@@ -58,7 +54,7 @@ public class Option {
         private String picture;
         private String description;
         private Double price;
-        private Order currentOrder;
+
 
         public Builder() {
         }
@@ -69,7 +65,7 @@ public class Option {
             this.picture = option.picture;
             this.description = option.description;
             this.price = option.price;
-            this.currentOrder = option.currentOrder;
+
         }
 
         public Builder setId(Long id) {
@@ -102,11 +98,6 @@ public class Option {
             return this;
         }
 
-        public Builder setOrder(Order currentOrder) {
-            this.currentOrder = currentOrder;
-
-            return this;
-        }
 
         public Option build() {
             return new Option(
@@ -114,9 +105,29 @@ public class Option {
                     name,
                     picture,
                     description,
-                    price,
-                    currentOrder);
+                    price);
         }
 
+    }
+
+    public String toString(){
+        return new StringBuilder()
+                .append("Option(")
+                .append("id=")
+                .append(id)
+                .append(", ")
+                .append("name=")
+                .append(name)
+                .append(", ")
+                .append("picture=")
+                .append(picture)
+                .append(", ")
+                .append("description=")
+                .append(description)
+                .append(", ")
+                .append("price=")
+                .append(price)
+                .append(")")
+                .toString();
     }
 }

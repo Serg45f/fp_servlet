@@ -51,7 +51,7 @@ public class VehicleService {
         }
     }
 
-    public boolean deleteVehicle(Long vehicleId) {
+    public boolean deleteVehicle(Long vehicleId) throws SQLException {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
             return dao.delete(vehicleId);
         }

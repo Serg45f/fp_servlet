@@ -5,7 +5,7 @@ import com.sgsavch.model.entity.Option;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
-public class UserDTO {
+public class UserDTO extends AbstractDto{
 
     public Option extractFromRequest(HttpServletRequest request) throws SQLException {
 //        Option option = new Option();

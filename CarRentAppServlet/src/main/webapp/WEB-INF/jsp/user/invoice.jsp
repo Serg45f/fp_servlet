@@ -21,10 +21,10 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>ConferenceHub</title>
+    <title>CarRentApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="resources/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
@@ -36,160 +36,257 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="parts/navbar.jsp" %>
-<%--<c:import url="parts/navbar.jsp"/>--%>
+<%@ include file="/WEB-INF/parts/navbar.jsp" %>
+<%--<c:import url="/WEB-INF/parts/navbar.jsp"/>--%>
 
+<br/>
+<br/>
+<br/>
+<div class="container mt-6" style="color:#515151; background-color: rgba(255, 255, 255, 0.7); display: flex;
+flex-direction: column;
+height:100vh;">
         <div class="order-group col-bg-12 col-form-label row">
-            <h2 class="order-group ml-3" type="text" th:text="#{order.invoice.head}"/>
-            <h2 class="order-group col-sm-7" type="text" th:text="${session.invoice.order.id}"/>
+            <h2 class="order-group ml-3">
+                <fmt:message key="order.invoice.head" bundle="${rb}"/>
+            </h2>
+            <h3 class="order-group col-sm-7">
+                ${sessionScope.currentOrder.id}
+            </h3>
         </div>
         <i>===================================================================================</i>
 
         <div class="row">
             <div class="col">
                 <div class="row" width="800" height="500">
-                    <img th:src="resources/img/${session.invoice.order.vehicle.carModel.picture}"  alt="...">
+                    <img src="resources/img/${sessionScope.currentOrder.vehicle.carModel.picture}"  alt="...">
                 </div>
 <!--                ////////////////////////////////////USER//////////////////////////////////////////-->
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h4 class="order-group ml-3" type="text" name="description" th:text="#{user.order.head}"/>
+                    <h3>
+                        <fmt:message key="user.order.head" bundle="${rb}"/>
+                    </h3>
 
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-5"  th:text="#{invoice.user.customer}"></p>
-                    <h6 class="order-group col-sm-7" type="text"
-                        th:text="${session.invoice.order.user.firstName+ ' ' + session.invoice.order.user.lastName}"/>
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="invoice.user.customer" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.user.firstName}  ${sessionScope.currentOrder.user.lastName}
+                    </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-5" th:text="#{user.descr.licenseNumb}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="place" th:text="${session.invoice.order.user.licenseNumb}"/>
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="user.descr.licenseNumb" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.user.licenseNumb}
+                    </h4>
                 </div>
                 <br>
 
 <!--      ***********////////////////////////////////CONFIRM AND PAY////////////////////////////////******************-->
                 <div class="order-group col-bg-12 col-form-label">
-                    <h4 class="order-group ml-3" type="text" name="description" th:text="#{order.invoice.pay}"/>
+                    <h3 >
+                        <fmt:message key="order.invoice.pay" bundle="${rb}"/>
+                    </h3>
                 </div>
 
-                <div class="order-group row">
-                    <p class="order-group col-sm-5" th:text="#{payer}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="card"
-                        th:text="${session.invoice.order.user.firstName + ' '+session.invoice.order.user.lastName}"/>
-                </div>
-                <div class="order-group row">
-                    <p class="order-group col-sm-5" th:text="#{user.descr.cardNumb}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="card" th:text="${session.invoice.order.user.cardNumb}"/>
-                </div>
-                <div class="order-group row">
-                    <p class="order-group col-sm-5" th:text="#{reciver}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="card">C-RENT-C ltd</h6>
-                </div>
-                <div class="order-group row">
-                    <p class="order-group col-sm-5" th:text="#{payment.req}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="card" th:text="#{pay.details}"/>
-                </div>
                 <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-5" th:text="#{payment.purpose}"></p>
-                    <h6 class="order-group col-sm-7" type="text" name="card" th:text="${session.invoice.order.id}"/>
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="payer" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.user.firstName} ${sessionScope.currentOrder.user.lastName}
+                    </h4>
                 </div>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="user.descr.cardNumb" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.user.cardNumb}
+                    </h4>
+                </div>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="reciver" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        C-RENT-C ltd
+                    </h4>
+                </div>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="payment.req" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        <fmt:message key="pay.details" bundle="${rb}"/>
+                    </h4>
+                </div>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="payment.purpose" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.id}
+                    </h4>
+                </div>
+
                 <div class="order-group col-bg-12 col-form-label">
-<!--                    <h3 class="order-group ml-3" type="text" name="description" th:text="#{invoice.pay}"/>-->
                     <a class="btn  btn-outline-primary btn-lg btn-block"
-                       th:href="${pageContext.request.contextPath}/controller?command=invoice_pay" th:text="#{btn.order.invoice.pay}">Pay</a>
-                    <!--                       th:href="@{/order/invoice}" th:text="#{btn.order.invoice}">Confirm</a>-->
+                       href="${pageContext.request.contextPath}/success.jsp">
+                        <fmt:message key="btn.order.invoice.pay" bundle="${rb}"/>
+                    </a>
                 </div>
 
             </div>
-
 
             <div class="col">
 
                <!-- ///////////////////////////////////////AUTO//////////////////////////////////////-->
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h4 class="order-group ml-3" type="text" th:text="#{order.head.car}"/>
+                    <h3 >
+                        <fmt:message key="order.head.car" bundle="${rb}"/>
+                    </h3>
                 </div>
 
-                <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-4" th:text="#{order.descr.vehicle.model.name}">About name</p>
-                    <h5 class="order-group col-sm-7" type="text" name="location" th:text="${session.invoice.order.vehicle.carModel.name}"/>
-                </div>
+                    <div class="order-group col-bg-12 col-form-label row">
+                        <h5 class="order-group ml-3">
+                            <fmt:message key="order.descr.vehicle.model.name" bundle="${rb}"/>
+                        </h5>
+                        <h4 class="order-group ml-7">
+                            ${sessionScope.currentOrder.vehicle.carModel.name}
+                        </h4>
+                    </div>
 
-                <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-4" th:text="#{order.descr.vehicle.regNumber}">About name</p>
-                    <h5 class="order-group col-sm-7" type="text" name="location" th:text="${session.invoice.order.vehicle.regNumber}"/>
-                </div>
+
+                    <div class="order-group col-bg-12 col-form-label row">
+                        <h5 class="order-group ml-3">
+                            <fmt:message key="order.descr.vehicle.regNumber" bundle="${rb}"/>
+                        </h5>
+                        <h4 class="order-group ml-7">
+                            ${sessionScope.currentOrder.vehicle.regNumber}
+                        </h4>
+                    </div>
                 <br>
 
 <!--                /////////////////////////////////ORDER PARAMS/////////////////////////////////////////////////////-->
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h4 class="order-group ml-4" type="text" name="description" th:text="#{order.head.dates}"/>
+                    <h3 >
+                        <fmt:message key="order.head.dates" bundle="${rb}"/>
+                    </h3>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <p class="order-group col-sm-4 " th:text="#{order.descr.location}">About palce</p>
-                    <h5 class="order-group col-sm-7" type="text" name="location" th:text="${session.invoice.order.location.getAddress()}"/>
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="order.descr.location" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.location.getAddress()}
+                    </h4>
                 </div>
-                <div class="order-group row">
-                    <p class="event-group col-sm-4 " th:text="#{order.descr.start}">About date</p>
-                    <h5 class="order-group col-sm-7" type="text" name="start"
-                        th:text="${#temporals.format(session.invoice.order.start,'dd.MM.yyyy hh:mm')}"/>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="order.descr.start" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.start}
+                    </h4>
                 </div>
-                <div class="order-group row">
-                    <p class="order-group col-sm-4" th:text="#{order.descr.end}">About time</p>
-                    <h5 class="order-group col-sm-7" type="text" name="end"
-                        th:text="${#temporals.format(session.invoice.order.end,'dd.MM.yyyy hh:mm')}"/>
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="order.descr.end" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.end}
+                    </h4>
                 </div>
-                <div class="order-group row">
-                    <p class="order-group col-sm-4" th:text="#{order.descr.days}">About language</p>
-                    <h5 class="order-group col-sm-7" type="text" name="lang" th:text="${session.invoice.order.days}"/>
+
+
+                <div class="order-group col-bg-12 col-form-label row">
+                    <h5 class="order-group ml-3">
+                        <fmt:message key="order.descr.days" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group ml-7">
+                        ${sessionScope.currentOrder.days}
+                    </h4>
                 </div>
                 <br/>
 
-<!--                /////////////////////////////////////////OPTIONS////////////////////////////////////-->
+ <!--                /////////////////////////////////////////OPTIONS////////////////////////////////////-->
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h4 class="order-group ml-3" type="text" th:text="#{order.head.options}"/>
-
+                    <h3 class="order-group ml-3">
+                        <fmt:message key="order.head.options" bundle="${rb}"/>
+                    </h3>
                 </div>
-            <div th:each = option:${options}>
-                <div class="order-group row">
-                    <p class="order-group col-sm-4" th:text="#{order.option.name}">About language</p>
-                    <h5 class="order-group col-sm-7" type="text"  th:text="${session.invoice.order.option.name}"/>
-                </div>
-            </div>
+                <c:forEach var="option" items="${sessionScope.currentOrder.options}">
+                    <div class="order-group row">
+                        <h5 class="order-group col-sm-4">
+                            <fmt:message key="order.option.name" bundle="${rb}"/>
+                        </h5>
+                        <h4 class="order-group col-sm-6">
+                            ${option.name}
+                        </h4>
+                        <h4 class="order-group col-sm-1">
+                            ${option.price}
+                        </h4>
+                    </div>
+                </c:forEach>
                 <br>
 
 <!--                ///////////////////////////////////////TO PAY/////////////////////////////////////-->
-            <div class="order-group col-bg-12 col-form-label">
-                <h4 class="order-group ml-3" type="text" th:text="#{order.head.toPay}"/>
-            </div>
+                <div class="order-group col-bg-12 col-form-label">
+                    <h3 class="order-group ml-3">
+                        <fmt:message key="order.head.toPay" bundle="${rb}"/>
+                    </h3>
+                </div>
 
-            <div class="order-group row">
-                <p class="order-group col-sm-4" th:text="#{order.descr.price_car}">About price</p>
-                                    <h5 class="order-group col-sm-7" type="text" name="price1"
-                                        th:text="${#numbers.formatDecimal(session.invoice.order.pricePeriod,2,2)}"/>
-            </div>
-            <div class="order-group row">
-                <p class="order-group col-sm-4" th:text="#{order.descr.price_options}">About price</p>
-                                    <h5 class="order-group col-sm-7" type="text" name="price2"
-                                        th:text="${#numbers.formatDecimal(session.invoice.order.priceOptions,2,2)}"/>
-            </div>
-            <div class="order-group row">
-                <p class="order-group col-sm-4" th:text="#{order.descr.price_total}">About price</p>
-                                    <h5 class="order-group col-sm-7" type="text" name="price3"
-                                        th:text="${#numbers.formatDecimal(session.invoice.order.totalPrice,2,2)}"/>
-            </div>
-            <div class="order-group row">
-                <p class="order-group col-sm-4" th:text="#{order.descr.deposit}">About price</p>
-                                    <h5 class="order-group col-sm-7" type="text" name="price4"
-                                        th:text="${#numbers.formatDecimal(session.invoice.order.vehicle.carModel.deposit,2,2)}"/>
-            </div>
-            </div>
+                <div class="order-group row">
+                    <h5 class="order-group col-sm-4">
+                        <fmt:message key="order.descr.price_car" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group col-sm-7">
+                        ${sessionScope.currentOrder.pricePeriod}
+                    </h4>
+                </div>
+                <div class="order-group row">
+                    <h5 class="order-group col-sm-4">
+                        <fmt:message key="order.descr.price_options" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group col-sm-7">
+                        ${sessionScope.currentOrder.priceOptions}
+                    </h4>
+                </div>
+                <div class="order-group row">
+                    <h5 class="order-group col-sm-4">
+                        <fmt:message key="order.descr.price_total" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group col-sm-7">
+                        ${sessionScope.currentOrder.totalPrice}
+                    </h4>
+                </div>
+                <div class="order-group row">
+                    <h5 class="order-group col-sm-4">
+                        <fmt:message key="order.descr.deposit" bundle="${rb}"/>
+                    </h5>
+                    <h4 class="order-group col-sm-7">
+                        ${sessionScope.currentOrder.vehicle.carModel.deposit}
+                    </h4>
+                </div>
         </div>
     </div>
+</div>
 </body>
 
 

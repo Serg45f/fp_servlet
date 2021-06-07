@@ -5,6 +5,7 @@ import com.sgsavch.model.entity.enums.StatusOrder;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -154,7 +155,7 @@ public class Order {
         private Double pricePeriod;
         private Double totalPrice;
         private Double priceOptions;
-        private List<Option> options;
+        private List<Option> options= new ArrayList<>();
         private String damageDescript;
         private Double damagePrice;
         private Boolean damageIsPayed;
@@ -309,7 +310,65 @@ public class Order {
 
     }
 
-
+    public String toString(){
+        return new StringBuilder()
+                .append("Order(")
+                .append("id=")
+                .append(id)
+                .append(", ")
+                .append("code=")
+                .append(code)
+                .append(", ")
+                .append("start=")
+                .append(start)
+                .append(", ")
+                .append("end=")
+                .append(end)
+                .append(", ")
+                .append("realEnd=")
+                .append(realEnd)
+                .append(", ")
+                .append("days=")
+                .append(days)
+                .append(", ")
+                .append("vehicle=")
+                .append(vehicle.toString())
+                .append(", ")
+                .append("user=")
+                .append(user.toString())
+                .append(", ")
+                .append("status=")
+                .append(status)
+                .append(", ")
+                .append("location=")
+                .append(location)
+                .append(", ")
+                .append("qrcode=")
+                .append(qrcode)
+                .append(", ")
+                .append("pricePeriod=")
+                .append(pricePeriod)
+                .append(", ")
+                .append("totalPrice=")
+                .append(totalPrice)
+                .append(", ")
+                .append("priceOptions=")
+                .append(priceOptions)
+                .append(", ")
+                .append("options=")
+                .append(options.toString())
+                .append(", ")
+                .append("damageDescript=")
+                .append(damageDescript)
+                .append(", ")
+                .append("damagePrice=")
+                .append(damagePrice)
+                .append(", ")
+                .append("damageIsPayed=")
+                .append(damageIsPayed)
+                .append(")")
+                .toString();
+    }
 //    public void setCode(){
 //        StringBuilder codeStr = new StringBuilder();
 //        codeStr

@@ -9,6 +9,8 @@ import com.sgsavch.utils.BCrypt;
 import com.sgsavch.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ResourceBundle;
 
 public class LoginCommand implements Command {
 
@@ -23,6 +25,8 @@ public class LoginCommand implements Command {
     public String execute(HttpServletRequest request) {
         String name = request.getParameter("name");
         String pass = request.getParameter("pass");
+
+        HttpSession session = request.getSession();
 
         if( name == null || name.equals("") || pass == null || pass.equals("")  ){
             return "/WEB-INF/login.jsp";
@@ -42,6 +46,9 @@ public class LoginCommand implements Command {
             message = userAuth.getFirstName() + "! Your password incorrect! Try again or register yourself.";
         }
         request.setAttribute("message", message);
+        if(session != null && session.getAttribute("orderStage") != null && (Integer )session.getAttribute("orderStage") == 4){
+            return Path.COMMAND__SET_ORDER;
+        }
 
         return Path.PAGE__LOGIN;
     }
