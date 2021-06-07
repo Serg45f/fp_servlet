@@ -69,7 +69,7 @@
           </init-param>
           <init-param>
               <param-name>user</param-name>
-              <param-value>invoice order_create invoiceDamage setOrder</param-value>
+              <param-value>invoice invoice_save order_create invoiceDamage setOrder</param-value>
           </init-param>
           <init-param>
               <param-name>manager</param-name>

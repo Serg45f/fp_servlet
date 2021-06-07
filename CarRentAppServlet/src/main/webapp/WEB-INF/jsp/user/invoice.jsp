@@ -36,8 +36,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/parts/navbar.jsp" %>
-<%--<c:import url="/WEB-INF/parts/navbar.jsp"/>--%>
+
+<c:import url="/WEB-INF/parts/navbar.jsp"/>
 
 <br/>
 <br/>
@@ -86,7 +86,7 @@ height:100vh;">
                 </div>
                 <br>
 
-<!--      ***********////////////////////////////////CONFIRM AND PAY////////////////////////////////******************-->
+<%--  ***********////////////////////////////////CONFIRM AND PAY////////////////////////////////******************--%>
                 <div class="order-group col-bg-12 col-form-label">
                     <h3 >
                         <fmt:message key="order.invoice.pay" bundle="${rb}"/>
@@ -140,7 +140,7 @@ height:100vh;">
 
                 <div class="order-group col-bg-12 col-form-label">
                     <a class="btn  btn-outline-primary btn-lg btn-block"
-                       href="${pageContext.request.contextPath}/success.jsp">
+                       href="${pageContext.request.contextPath}/controller?command=invoice_save">
                         <fmt:message key="btn.order.invoice.pay" bundle="${rb}"/>
                     </a>
                 </div>

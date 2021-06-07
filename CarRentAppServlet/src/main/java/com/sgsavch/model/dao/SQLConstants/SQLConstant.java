@@ -185,6 +185,43 @@ public interface SQLConstant {
 	String SQL_DELETE_ORDER_BY_ID =
 			"DELETE FROM " + TABLE_ORDERS + " WHERE "+ORDER_ID+"=?";
 
+	//////////////////////////////////INVOICE////////////////////////////////////////////////
+
+	String TABLE_INVOICE = "invoice";
+
+	String INVOICE_ID = "id";
+	String INVOICE_NUMBER = "number";
+	String INVOICE_ORDER_ID = "order_id";
+	String INVOICE_PAYMENT_DATE_TIME = "payment_date_time";
+	String INVOICE_IS_PAYED = "is_payed";
+
+	String SQL_ADD_NEW_INVOICE =  "INSERT INTO " + TABLE_INVOICE + " (" +
+			INVOICE_ORDER_ID + ", " +
+			INVOICE_IS_PAYED + ", " +
+			INVOICE_PAYMENT_DATE_TIME + ", " +
+			INVOICE_NUMBER + ") VALUES (?,?,?,?);";
+
+	String SQL_UPDATE_INVOICE =
+			"UPDATE " + TABLE_INVOICE + " SET " +
+					INVOICE_ORDER_ID  + " = ?, " +
+					INVOICE_IS_PAYED + " = ?, " +
+					INVOICE_PAYMENT_DATE_TIME + " = ?, " +
+					INVOICE_NUMBER + " = ?, " +
+					" = ? WHERE "+INVOICE_ID+" = ?";;
+
+	String GET_ALL_INVOICES = "SELECT * FROM "+ TABLE_INVOICE + ";";
+
+	String SQL_GET_INVOICES_BY_ID =
+			"SELECT * FROM " + TABLE_INVOICE + " WHERE " + INVOICE_ID + "=?";
+
+	String SQL_DELETE_INVOICE_BY_ID =
+			"DELETE FROM " + TABLE_INVOICE + " WHERE "+INVOICE_ID+"=?";
+
+	String SQL_GET_INVOICES_PAGINATED =
+			"SELECT * FROM " + TABLE_INVOICE + " LIMIT ?, ?";
+
+	String SQL_GET_NUMBER_OF_CARDS_INVOICES = "SELECT COUNT(id) as count FROM "+TABLE_INVOICE;
+
 
 	//////////////////////////////////OPTIONS////////////////////////////////////////////////
 

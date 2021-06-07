@@ -1,9 +1,12 @@
 package com.sgsavch.model.dao.impl;
 
 
+import com.sgsavch.model.dao.InvoiceDao;
 import com.sgsavch.model.dao.OrderDao;
 import com.sgsavch.model.dao.SQLConstants.SQLConstant;
+import com.sgsavch.model.dao.mapper.InvoiceMapper;
 import com.sgsavch.model.dao.mapper.OrderMapper;
+import com.sgsavch.model.entity.Invoice;
 import com.sgsavch.model.entity.Option;
 import com.sgsavch.model.entity.Order;
 
@@ -13,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JDBCInvoiceDao implements OrderDao {
+public class JDBCInvoiceDao implements InvoiceDao {
     private Connection connection;
 
 
@@ -22,31 +25,23 @@ public class JDBCInvoiceDao implements OrderDao {
     }
 
     @Override
-    public Long create(Order entity) {
+    public Long create(Invoice entity) {
         Long res = 0L;
 
         ResultSet rs = null;
 
-        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_ORDER, Statement.RETURN_GENERATED_KEYS)) {
+        try(PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_ADD_NEW_INVOICE, Statement.RETURN_GENERATED_KEYS)) {
 
             int k = 1;
-            pstmt.setString(k++, entity.getCode());
-            pstmt.setString(k++, entity.getQrcode());
-            pstmt.setDate(k++,Date.valueOf(entity.getStart().toLocalDate()));
-            pstmt.setDate(k++, Date.valueOf(entity.getEnd().toLocalDate()));
-            pstmt.setLong(k++, entity.getUser().getId());
-            pstmt.setInt(k++, entity.getLocation().ordinal());
-            pstmt.setLong(k++, entity.getVehicle().getId());
-            pstmt.setInt(k++, entity.getStatus().ordinal());
-            pstmt.setInt(k++, entity.getDays());
-            pstmt.setDouble(k++, entity.getPricePeriod());
-            pstmt.setDouble(k++, entity.getPriceOptions());
-            pstmt.setDouble(k++, entity.getTotalPrice());
+            pstmt.setLong(k++, entity.getOrder().getId());
+            pstmt.setBoolean(k++, entity.isPayed());
+            pstmt.setDate(k++,Date.valueOf(entity.getPaymentDate().toLocalDate()));
+            pstmt.setLong(k++, entity.getNumber());
 
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();
                 if (rs.next()) {
-                    entity = new Order.Builder().setId(rs.getLong(1)).build();
+                    entity = new Invoice.Builder().setId(rs.getLong(1)).build();
                 }
                 res = rs.getLong(1);
             }
@@ -61,136 +56,44 @@ public class JDBCInvoiceDao implements OrderDao {
     }
 
     @Override
-    public boolean setOrderOptions(Order order, List<Option> options)  {
-        boolean res = false;
-
-        try {
-            Statement st = connection.createStatement();
-            connection.setAutoCommit(false);
-            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-
-            for (Option option : options) {
-                addOrderOption(connection, order.getId(), option);
-            }
-            connection.commit();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-//            logger.log(Level.WARNING,e.toString(),e);
-//            logger.log(Level.INFO,"Cannot set teams for user ",e);
-            if(connection!=null) {
-                try {
-                    connection.rollback();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        } finally {
-            if(connection!=null)close();
-//            logger.log(Level.INFO,"Connection is closed");
-        }
-        return res;
-    }
-
-    @Override
-    public boolean resetOrderOptions(Order order, List<Option> options) throws SQLException {
-        boolean res = false;
-
-        try {
-            Statement st = connection.createStatement();
-            connection.setAutoCommit(false);
-            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-
-            delete(order.getId());
-
-            for (Option option : options) {
-                addOrderOption(connection, order.getId(), option);
-                System.out.println(connection.toString());
-            }
-            connection.commit();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-//            logger.log(Level.WARNING,e.toString(),e);
-//            logger.log(Level.INFO,"Cannot set teams for user ",e);
-            if(connection!=null)connection.rollback();
-        } finally {
-            if(connection!=null)close();
-//            logger.log(Level.INFO,"Connection is closed");
-        }
-        return res;
-    }
-
-    private void addOrderOption(Connection con, long id, Option option) throws SQLException {
-
-
-        try (PreparedStatement pstmt = con.prepareStatement(SQLConstant.SQL_ADD_OPTION_TO_ORDER)){
-
-            int k = 1;
-            pstmt.setLong(k++, id);
-            pstmt.setLong(k++, option.getId());
-
-            pstmt.executeUpdate();
-        }
-
-    }
-
-    public void deleteOrderOptions(Long id){
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_OPTIONS_BY_ORDER_ID)) {
-
-            int k = 1;
-            prst.setLong(k++,id);
-            prst.executeUpdate();
-
-        } catch (SQLException ex) {
-
-//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public Order findById(long id) {
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_ORDER_BY_ID)) {
+    public Invoice findById(long id) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_INVOICES_BY_ID)) {
 
             int k = 1;
             prst.setLong(k++,id);
             ResultSet rs = prst.executeQuery();
 
-            Order order = new Order.Builder().build();
-            OrderMapper orderMapper = new OrderMapper();
+            Invoice invoice = new Invoice.Builder().build();
+            InvoiceMapper invoiceMapper = new InvoiceMapper();
             if (rs.next()) {
-                order = orderMapper
+                invoice = invoiceMapper
                         .extractFromResultSet(rs);
             }
-            return order;
+            return invoice;
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
 
     @Override
-    public List<Order> findAll() {
-        Map<Long, Order> orders = new HashMap<>();
+    public List<Invoice> findAll() {
+        Map<Long, Invoice> invoices = new HashMap<>();
 
-
-        final String GET_ALL_ORDERS = "select * from event";
+        final String GET_ALL_INVOICES = "select * from invoice";
         try (Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(GET_ALL_ORDERS);
+            ResultSet rs = st.executeQuery(GET_ALL_INVOICES);
 
-            OrderMapper orderMapper = new OrderMapper();
-
-
+            InvoiceMapper invoiceMapper = new InvoiceMapper();
             while (rs.next()) {
-                Order order = orderMapper
+                Invoice invoice = invoiceMapper
                         .extractFromResultSet(rs);
 
-                order = orderMapper
-                        .makeUnique(orders, order);
+                invoice = invoiceMapper
+                        .makeUnique(invoices, invoice);
 
             }
-            return new ArrayList<>(orders.values());
+            return new ArrayList<>(invoices.values());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -198,15 +101,14 @@ public class JDBCInvoiceDao implements OrderDao {
     }
 
     @Override
-    public void update(Order entity) {
-        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_ORDER)) {
+    public void update(Invoice entity) {
+        try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_INVOICE)) {
 
             int k = 1;
-            pstmt.setDate(k++, Date.valueOf(entity.getRealEnd().toLocalDate()));
-            pstmt.setString(k++, entity.getDamageDescript());
-            pstmt.setDouble(k++, entity.getDamagePrice());
-            pstmt.setBoolean(k++, entity.getDamageIsPayed());
-            pstmt.setInt(k++, entity.getStatus().ordinal());
+            pstmt.setLong(k++, entity.getOrder().getId());
+            pstmt.setBoolean(k++, entity.isPayed());
+            pstmt.setDate(k++,Date.valueOf(entity.getPaymentDate().toLocalDate()));
+            pstmt.setLong(k++, entity.getNumber());
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -215,12 +117,11 @@ public class JDBCInvoiceDao implements OrderDao {
 //            logger.log(Level.WARNING,e.toString(),e);
 //            logger.log(Level.INFO,"Cannot update team ",e);
         }
-
     }
 
     @Override
     public boolean delete(Long id) throws SQLException{
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_ORDER_BY_ID);) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_DELETE_INVOICE_BY_ID);) {
 
         int k = 1;
         prst.setLong(k++,id);
@@ -242,23 +143,23 @@ public class JDBCInvoiceDao implements OrderDao {
     }
 
     @Override
-    public List<Order> getOrders(int currentPage, int recordsPerPage) {
-        Map<Long, Order> orders = new HashMap<>();
+    public List<Invoice> getInvoices(int currentPage, int recordsPerPage) {
+        Map<Long, Invoice> invoices = new HashMap<>();
 
         int start = currentPage * recordsPerPage - recordsPerPage;
-        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_ORDERS_PAGINATED)) {
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_INVOICES_PAGINATED)) {
             int k = 1;
             prst.setInt(k++,start);
             prst.setInt(k++,recordsPerPage);
             ResultSet rs = prst.executeQuery();
-            OrderMapper orderMapper = new OrderMapper();
+            InvoiceMapper invoiceMapper = new InvoiceMapper();
             while (rs.next()) {
-                Order order = orderMapper
+                Invoice invoice = invoiceMapper
                         .extractFromResultSet(rs);
-                order = orderMapper
-                        .makeUnique(orders, order);
+                invoice = invoiceMapper
+                        .makeUnique(invoices, invoice);
             }
-            return new ArrayList<>(orders.values());
+            return new ArrayList<>(invoices.values());
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;

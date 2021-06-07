@@ -40,7 +40,7 @@ public class CommandContainer {
 		commands.put("setOrder", new SetOrderCommand( new UserService()));
 		commands.put("order_create", new OrderSaveCommand(new OrderService()));
 		commands.put("invoice", new InvoiceCommand());
-		commands.put("saveInvoice", new InvoiceSaveCommand());
+		commands.put("invoice_save", new InvoiceSaveCommand(new InvoiceService()));
 		//commands.put("invoice_payed", new InvoicePayedCommand(new InvoiceService()));
 
 		//TODO invoiceDamage
