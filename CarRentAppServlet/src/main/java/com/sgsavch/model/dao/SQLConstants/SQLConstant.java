@@ -35,7 +35,10 @@ public interface SQLConstant {
 			"SELECT * FROM " + TABLE_USERS + " WHERE " + USER_ACTIVATION_CODE +	" LIKE ? ESCAPE '!'";
 
 	String SQL_ACTIVATION_UPDATE_USER =
-			"UPDATE " + TABLE_USERS + " SET " + USER_ACTIVATION_CODE + " = ?, "+ USER_STATUS +" = ? WHERE "+USER_ID+" = ?";
+			"UPDATE " + TABLE_USERS + " SET " +
+					USER_ACTIVATION_CODE + " = ?, "+
+					USER_STATUS +" = ? " +
+					" WHERE "+USER_ID+" = ?";
 
 	String SQL_DELETE_USER_BY_USER_ID =
 			"DELETE FROM " + TABLE_USERS + " WHERE "+USER_ID+"=?";

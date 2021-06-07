@@ -70,7 +70,7 @@ public class UserService {
         }
     }
 
-    public boolean activateUser(String code) {
+    public boolean activateUser(String code) throws SQLException {
         try (UserDao dao = daoFactory.createUserDao()) {
             return dao.activateUser(code);
         }

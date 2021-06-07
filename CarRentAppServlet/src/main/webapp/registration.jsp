@@ -50,28 +50,28 @@ height:100vh;">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">First Name: </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control bg-transparent text-white" placeholder="First name"
+                        <input type="text" class="form-control bg-transparent" placeholder="First name"
                                name="firstName">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Second Name: </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control bg-transparent text-white" placeholder="Last name"
+                        <input type="text" class="form-control bg-transparent" placeholder="Last name"
                                name="lastName">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control bg-transparent text-white"  placeholder="some@some.com"
+                        <input type="email" class="form-control bg-transparent"  placeholder="some@some.com"
                                name="email" >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Password: </label>
                     <div class="col-sm-6">
-                        <input  type="password" class="form-control bg-transparent text-white"  placeholder="Password"
+                        <input  type="password" class="form-control bg-transparent"  placeholder="Password"
                                 name="password">
                     </div>
                 </div>
@@ -120,7 +120,6 @@ height:100vh;">
                     </div>
                 </div>
 
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label"></label>
                     <a class="col-sm-4">

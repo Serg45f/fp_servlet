@@ -26,7 +26,7 @@ public class CommandContainer {
 		commands.put("logout", new LogOutCommand());
 		commands.put("login", new LoginCommand(new UserService()));
 		commands.put("activate", new ActivatedCommand(new UserService()));
-		commands.put("registration", new RegisterCommand(new UserService()));
+		commands.put("registration", new RegistrationCommand(new UserService()));
 		commands.put("exception" , new ExceptionCommand());
 		commands.put("setPeriod", new SetPeriodCommand());
 		commands.put("setVehicle", new SetVehicleCommand());

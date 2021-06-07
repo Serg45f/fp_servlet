@@ -2,6 +2,7 @@ package com.sgsavch.controller.сommand.usercommands;
 
 import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
+import com.sgsavch.controller.сommand.CommandUtility;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusUser;
@@ -14,11 +15,11 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
-public class RegisterCommand implements Command {
+public class RegistrationCommand implements Command {
 
     UserService userService;
 
-    public RegisterCommand(UserService userService)
+    public RegistrationCommand(UserService userService)
     {
         this.userService = userService;
     }
@@ -36,10 +37,10 @@ public class RegisterCommand implements Command {
             //System.out.println("Not");
             return "/registration.jsp";
         }
-//        if(CommandUtility.checkUserIsRegistered(name,pass)){
+        if(CommandUtility.checkUserIsRegistered(userName,pass)){
 
-//            return "/WEB-INF/error.jsp";
-//        }
+            return "/WEB-INF/error.jsp";
+        }
 
         User user = new User.Builder()
         .setEmail(userName)
@@ -58,12 +59,12 @@ public class RegisterCommand implements Command {
         if(!StringUtils.isEmpty(user.getEmail())){
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to ConferenceHub#1!" +
-                            "Please, visit next link: http://localhost:8888/carrent/activate?code=%s",
+                            "Welcome to C-RENT-C!" +
+                            "Please, visit next link: http://localhost:8888/carrent/controller?command=activate&code=%s",
                     user.getEmail(),
                     user.getActivationCode()
             );
-            String subject = "Registration on ConferenceHub";
+            String subject = "Registration on C-RENT-C";
 //
             MailSender mailSender = null;
             try {
@@ -77,9 +78,10 @@ public class RegisterCommand implements Command {
         String message = null;
 
         if(res>0){
-            message="Welcome, "+ user.getFirstName() + "! Result is success!";
+            message="Welcome, "+ user.getFirstName() + "! Result is success! Reference has been sent to Your email "+
+            user.getEmail() + "To continue, please go there and click on it.";
         }else{
-            message="Result is NOT success!";
+            message="Result is NOT success! Try again";
         }
 
         request.setAttribute("message", message);

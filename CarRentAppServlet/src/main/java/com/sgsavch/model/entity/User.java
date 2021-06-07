@@ -136,7 +136,7 @@ public class User extends AbstractEntity{
         private String password;
         private String firstName;
         private String lastName;
-        private Set<Role> roles;
+        private Set<Role> roles = new HashSet<>();
         private StatusUser statusUser;
         private String passportNumb;
         private LocalDate passDateExp;

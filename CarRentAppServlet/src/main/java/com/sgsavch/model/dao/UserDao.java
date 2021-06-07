@@ -23,7 +23,7 @@ public interface UserDao extends GenericDao<User> {
 
     User getUserByUsername(String username) throws SQLException;
 
-    boolean activateUser(String code);
+    boolean activateUser(String code) throws SQLException;
 
     List<User> getUsersByRole(String Role) throws SQLException;
 }

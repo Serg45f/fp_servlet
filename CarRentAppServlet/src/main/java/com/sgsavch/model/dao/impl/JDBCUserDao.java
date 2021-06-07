@@ -45,6 +45,7 @@ public class JDBCUserDao implements UserDao {
                     res = rs.getLong(1);
                 }
             } catch (SQLException e) {
+                e.printStackTrace();
 //                logger.log(Level.WARNING,e.toString(),e);
 //                logger.log(Level.INFO,"Cannot insert user ",e);
             } finally {
@@ -151,8 +152,8 @@ public class JDBCUserDao implements UserDao {
 //            logger.log(Level.INFO,"Cannot set teams for user ",e);
             if(connection!=null)connection.rollback();
         } finally {
-            close();
-            if(connection!=null)close(connection);
+//            close();
+//            if(connection!=null)close(connection);
 //            logger.log(Level.INFO,"Connection is closed");
         }
         return res;
@@ -181,7 +182,7 @@ public class JDBCUserDao implements UserDao {
             return null;
         }finally {
             rs.close();
-            close();
+            //close();
         }
     }
 
@@ -266,7 +267,7 @@ public class JDBCUserDao implements UserDao {
 //            logger.log(Level.WARNING,e.toString(),e);
 //            logger.log(Level.INFO,"Cannot update team ",e);
         }finally {
-            close();
+            //close();
         }
     }
 
@@ -294,6 +295,8 @@ public class JDBCUserDao implements UserDao {
 
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (connection != null)close();
         }
         return false;
     }
@@ -326,8 +329,11 @@ public class JDBCUserDao implements UserDao {
             }
             return new ArrayList<>(users.values());
         } catch (SQLException ex) {
+
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }finally {
+            close(connection);
         }
 
     }
@@ -346,6 +352,8 @@ public class JDBCUserDao implements UserDao {
         } catch (SQLException ex) {
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }finally {
+            close(connection);
         }
 
 
@@ -371,10 +379,10 @@ public class JDBCUserDao implements UserDao {
         }
     }
 
-    public boolean activateUser(String code) {
+    public boolean activateUser(String code) throws SQLException {
         User user = new User.Builder().build();
         try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_FIND_USER_BY_ACTIVATION_CODE)) {
-
+            connection.setAutoCommit(false);
             int k = 1;
             prst.setString(k++,code);
             ResultSet rs = prst.executeQuery();
@@ -393,10 +401,15 @@ public class JDBCUserDao implements UserDao {
             deleteUserRoles(user.getId());
             updateActivationCode(user);
             setUserRoles(user,user.getRoles());
+            connection.commit();
             return true;
         } catch (SQLException ex) {
+            if(connection!=null)connection.rollback();
 //            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }finally {
+            if(connection!=null)close(connection);
+
         }
     }
 

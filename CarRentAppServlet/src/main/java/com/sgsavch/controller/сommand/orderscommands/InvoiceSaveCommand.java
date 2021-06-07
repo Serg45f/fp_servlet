@@ -28,7 +28,7 @@ public InvoiceSaveCommand(InvoiceService invoiceService){
                 .setOrder(order)
                 .build();
         Long res = invoiceService.newInvoice(invoice);
-        session.removeAttribute("orderStage");
+        session.setAttribute("orderStage", 0);
         session.removeAttribute("currentOrder");
         return Path.PAGE__SUCCESS;
     }
