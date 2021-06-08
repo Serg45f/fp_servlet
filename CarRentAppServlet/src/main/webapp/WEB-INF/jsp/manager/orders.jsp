@@ -108,7 +108,11 @@ height:100vh;">
                                         <td>${order.status}</td>
                                         <td>${order.damageDescript}</td>
                                         <td>${order.damagePrice}</td>
-                                        <td>${order.damageIsPayed}</td>
+                                        <td>
+                                            <input class="form-control " type="checkbox" name="damageIsPayed"
+                                                  value="${order.damageIsPayed}"
+                                                   ${order.damageIsPayed ? 'checked="checked"' : ''}/>
+                                        </td>
                                         <td>
                                             <a class="btn btn btn-transparent btn-outline-primary" href="${pageContext.request.contextPath}/controller?command=order_edit&orderId=${order.id}">Process</a>
                                             <a>   </a>

@@ -245,8 +245,8 @@ public interface SQLConstant {
 					ORDER_DAMAGE_DESCRIPTION + " = ?, " +
 					ORDER_DAMAGE_PRICE + " = ?, " +
 					ORDER_DAMAGE_PAYED + " = ?, " +
-					ORDER_STATUS_ORDER + " = ?, " +
-					" = ? WHERE "+ORDER_ID+" = ?";
+					ORDER_STATUS_ORDER + " = ? " +
+					" WHERE "+ORDER_ID+" = ?;";
 
 	String SQL_DELETE_ORDER_BY_ID =
 			"DELETE FROM " + TABLE_ORDERS + " WHERE "+ORDER_ID+"=?";

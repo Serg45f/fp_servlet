@@ -51,98 +51,111 @@ height:100vh;">
      <div class="form-group mt-3">
           <form accept-charset="UTF-8" method="post"  action="${pageContext.request.contextPath}/controller?command=order_update" >
 
-              <div class="order-group col-bg-12 col-form-label row">
-                  <h4 >
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h3 >
                       <fmt:message key="order.head.dates" bundle="${rb}"/>
+                  </h3>
+              </div>
+
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h5 class="form-group col-sm-5">
+                      <fmt:message key="order.descr.location" bundle="${rb}"/>
+                  </h5>
+                  <h4 class="form-group col-sm-7">
+                      ${order.location.getAddress()}
                   </h4>
               </div>
 
-              <div class="order-group col-bg-12 col-form-label row">
-                  <p class="order-group ml-3">
-                      <fmt:message key="order.descr.location" bundle="${rb}"/>
-                  </p>
-                  <h6 class="order-group ml-7">
-                      ${order.location.getAddress()}
-                  </h6>
-              </div>
-
-              <div class="order-group col-bg-12 col-form-label row">
-                  <p class="order-group ml-3">
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h5 class="order-group col-sm-5">
                       <fmt:message key="order.descr.start" bundle="${rb}"/>
-                  </p>
-                  <h6 class="order-group ml-7">
+                  </h5>
+                  <h4 class="form-group col-sm-7">
                       ${order.start}
-                  </h6>
+                  </h4>
               </div>
 
-              <div class="order-group col-bg-12 col-form-label row">
-                  <p class="order-group ml-3">
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h5 class="form-group col-sm-5">
                       <fmt:message key="order.descr.end" bundle="${rb}"/>
-                  </p>
-                  <h6 class="order-group ml-7">
+                  </h5>
+                  <h4 class="form-group col-sm-7">
                       ${order.end}
-                  </h6>
+                  </h4>
               </div>
 
 
-              <div class="order-group col-bg-12 col-form-label row">
-                  <p class="order-group ml-3">
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h5 class="form-group col-sm-5">
                       <fmt:message key="order.descr.days" bundle="${rb}"/>
-                  </p>
-                  <h6 class="order-group ml-7">
+                  </h5>
+                  <h4 class="form-group col-sm-7">
                       ${order.days}
-                  </h6>
+                  </h4>
               </div>
               <br/>
 
               <div class="form-group col-bg-12 col-form-label row">
-                   <h5 class="col-sm-4  col-form-label text-success">
+                   <h5 class="col-sm-5  col-form-label text-success">
                        <fmt:message key="order.descr.realEnd" bundle="${rb}"/>
                    </h5>
-                   <input class="col-sm-6 form-control text-success bg-transparent" type="datetime-local"
-                          placeholder="Date/time of car return"
-                          value="${order.realEnd}" name = "realEnd" />
+                  <h4 class="col-sm-7">
+                       <input class="form-control text-success" type="datetime-local"
+                              placeholder="Date/time of car return"
+                              value="${order.realEnd}" name = "realEnd" />
+                  </h4>
               </div>
               <br/>
               <br/>
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning">
+                  <h5 class="col-sm-5  col-form-label text-warning">
                       <fmt:message key="order.descr.damageDescript" bundle="${rb}"/>
                   </h5>
-                  <input class="col-sm-6 form-control text-warning bg-transparent" type="text"  placeholder="Damage description"
-                         value="${order.damageDescript}" name = "damageDescript" />
+                  <h4 class="col-sm-7" >
+                      <input class="form-control" type="text"  placeholder="Damage description"
+                             value="${order.damageDescript}" name = "damageDescript" />
+                  </h4>
               </div>
 
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning">
+                  <h5 class="col-sm-5  col-form-label text-warning">
                       <fmt:message key="order.descr.damagePrice" bundle="${rb}"/>
                   </h5>
-                  <input class="col-sm-6 form-control text-warning bg-transparent" type="number"  placeholder="Damage price"
-                         value="${order.damagePrice}" name = "damagePrice" />
+                  <h4 class="col-sm-7" >
+                      <input class="form-control" type="number"  placeholder="Damage price"
+                             value="${order.damagePrice}" name = "damagePrice" />
+                  </h4>
               </div>
 
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning">
-                      <fmt:message key="order.descr.status" bundle="${rb}"/>
-                  </h5>
-                  <input class="col-sm-6 form-control text-warning" type="checkbox" name="damageIsPayed"
-                                th:checked="${order.damageIsPayed} ? true : false "
-                                th:value="${true}"/>
-              </div>
-              <br/>
-              <br/>
-              <div class="form-group">
-                  <h5 class="col-sm-4  col-form-label text-warning">
+                  <h5 class="col-sm-5  col-form-label text-warning">
                       <fmt:message key="editOrder.isPayed" bundle="${rb}"/>
                   </h5>
-                  <select type="text" class="form-control bg-transparent" placeholder="Status"
-                          name ="status" >
-                      <c:forEach var="status" items="${orderStatuses}">
-                          <option value="${status}"   ${order.status == status ? 'selected="selected"' : ''}>${status.name()}</option>
-                      </c:forEach>
-                  </select>
+                  <h4 class="col-sm-7">
+                      <input class="form-control " type="checkbox" name="damageIsPayed"
+                             value="true"
+                             ${order.damageIsPayed ? 'checked="checked"' : ''}/>
+
+                  </h4>
+
               </div>
 
+              <br/>
+
+              <div class="form-group col-bg-12 col-form-label row">
+                  <h5 class="col-sm-5  col-form-label text-warning">
+                      <fmt:message key="order.descr.status" bundle="${rb}"/>
+                  </h5>
+                  <h4 class="col-sm-7">
+                      <select type="text" class="form-control" placeholder="Status"
+                              name ="statusOrder" >
+                          <c:forEach var="status" items="${orderStatuses}">
+                              <option value="${status.name()}"   ${order.status == status ? 'selected="selected"' : ''}>${status.name()}</option>
+                          </c:forEach>
+                      </select>
+                  </h4>
+
+              </div>
 
                 <input  type="hidden" value="${order.id}" name = "orderId" />
                 <div class="form-group">

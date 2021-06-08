@@ -87,9 +87,8 @@
       </filter>
 
       <filter-mapping>
-          <filter-name>CommandAccessFilter</filter-name>
-<!--          <url-pattern>/*</url-pattern>-->
-        <servlet-name>Servl</servlet-name>
+               <filter-name>CommandAccessFilter</filter-name>
+               <servlet-name>Servl</servlet-name>
       </filter-mapping>
 
 

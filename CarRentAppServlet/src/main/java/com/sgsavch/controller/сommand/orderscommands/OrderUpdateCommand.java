@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 public class OrderUpdateCommand implements Command {
     OrderService orderService;
@@ -23,29 +24,31 @@ public class OrderUpdateCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws SQLException, IOException, ServletException {
 
-        LocalDateTime realEnd =  null;
-        StatusOrder statusOrder =  null;
-        String damageDescript =  null;
-        Double damagePrice =  null;
-        boolean damageIsPayed = false;
-        Order order = null;
+        if(request.getParameter("orderId")==null) {
+            throw new NoSuchElementException("Order Id is null");
+        }
+        Order order = orderService.getOrder(Long.valueOf(request.getParameter("orderId")));
+
+        LocalDateTime realEnd =  order.getRealEnd();
+        StatusOrder statusOrder =  order.getStatus();
+        String damageDescript =  order.getDamageDescript();
+        Double damagePrice =  order.getDamagePrice();
+        boolean damageIsPayed = order.getDamageIsPayed();
+
         if(request.getParameter("realEnd")!=null) {
             realEnd = LocalDateTime.parse(request.getParameter("realEnd"));
         }
         if(request.getParameter("statusOrder")!=null) {
             statusOrder = StatusOrder.valueOf(request.getParameter("statusOrder"));
         }
-        if(request.getParameter("statusOrder")!=null) {
+        if(request.getParameter("damageDescript")!=null) {
             damageDescript = request.getParameter("damageDescript");
         }
-        if(request.getParameter("statusOrder")!=null) {
-            damagePrice = Double.valueOf(request.getParameter("statusOrder"));
+        if(request.getParameter("damagePrice")!=null) {
+            damagePrice = Double.valueOf(request.getParameter("damagePrice"));
         }
         if(request.getParameter("damageIsPayed")!=null) {
-            damageIsPayed = Boolean.getBoolean(request.getParameter("damageIsPayed"));
-        }
-        if(request.getParameter("orderId")!=null) {
-            order = orderService.getOrder(Long.valueOf(request.getParameter("orderId")));
+            damageIsPayed = Boolean.valueOf(request.getParameter("damageIsPayed"));
         }
 
         order = new Order.Builder(order)

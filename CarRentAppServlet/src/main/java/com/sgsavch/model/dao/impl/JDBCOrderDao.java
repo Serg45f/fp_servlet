@@ -199,15 +199,24 @@ public class JDBCOrderDao implements OrderDao {
     }
 
     @Override
-    public void update(Order entity) {
+    public void update(Order entity) throws SQLException{
         try (PreparedStatement pstmt = connection.prepareStatement(SQLConstant.SQL_UPDATE_ORDER)) {
 
             int k = 1;
-            pstmt.setDate(k++, Date.valueOf(entity.getRealEnd().toLocalDate()));
+            if(entity.getRealEnd() != null){
+                pstmt.setDate(k++,Date.valueOf(entity.getRealEnd().toLocalDate()));
+            }else{
+                pstmt.setObject(k++,null);
+            }
             pstmt.setString(k++, entity.getDamageDescript());
             pstmt.setDouble(k++, entity.getDamagePrice());
             pstmt.setBoolean(k++, entity.getDamageIsPayed());
-            pstmt.setInt(k++, entity.getStatus().ordinal());
+            if(entity.getStatus() != null){
+                pstmt.setInt(k++, entity.getStatus().ordinal());
+            }else{
+                pstmt.setObject(k++,null);
+            }
+
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -215,6 +224,8 @@ public class JDBCOrderDao implements OrderDao {
             e.printStackTrace();
 //            logger.log(Level.WARNING,e.toString(),e);
 //            logger.log(Level.INFO,"Cannot update team ",e);
+        }finally {
+            if (connection != null) close();
         }
 
     }
