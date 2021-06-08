@@ -12,7 +12,7 @@ public final class Path {
 	public static final String PAGE__VEHICLES = "/WEB-INF/vehicles.jsp";
 	public static final String PAGE__REGISTRATION = "/registration.jsp";
 	public static final String PAGE__PERIOD = "/WEB-INF/period.jsp";
-	public static final String PAGE__SUCCESS = "/WEB-INF/success.jsp";
+	public static final String PAGE__SUCCESS = "/success.jsp";
 
 	//user
 	public static final String PAGE__ORDER = "/WEB-INF/jsp/user/order.jsp";

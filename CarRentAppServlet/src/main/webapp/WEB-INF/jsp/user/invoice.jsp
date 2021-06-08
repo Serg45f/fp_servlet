@@ -68,19 +68,19 @@ height:100vh;">
 
                 </div>
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="invoice.user.customer" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.user.firstName}  ${sessionScope.currentOrder.user.lastName}
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="user.descr.licenseNumb" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.user.licenseNumb}
                     </h4>
                 </div>
@@ -94,46 +94,46 @@ height:100vh;">
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="payer" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.user.firstName} ${sessionScope.currentOrder.user.lastName}
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="user.descr.cardNumb" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.user.cardNumb}
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="reciver" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         C-RENT-C ltd
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="payment.req" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         <fmt:message key="pay.details" bundle="${rb}"/>
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="payment.purpose" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.id}
                     </h4>
                 </div>
@@ -158,20 +158,20 @@ height:100vh;">
                 </div>
 
                     <div class="order-group col-bg-12 col-form-label row">
-                        <h5 class="order-group ml-3">
+                        <h5 class="order-group col-sm-4">
                             <fmt:message key="order.descr.vehicle.model.name" bundle="${rb}"/>
                         </h5>
-                        <h4 class="order-group ml-7">
+                        <h4 class="order-group col-sm-7">
                             ${sessionScope.currentOrder.vehicle.carModel.name}
                         </h4>
                     </div>
 
 
                     <div class="order-group col-bg-12 col-form-label row">
-                        <h5 class="order-group ml-3">
+                        <h5 class="order-group col-sm-4">
                             <fmt:message key="order.descr.vehicle.regNumber" bundle="${rb}"/>
                         </h5>
-                        <h4 class="order-group ml-7">
+                        <h4 class="order-group col-sm-7">
                             ${sessionScope.currentOrder.vehicle.regNumber}
                         </h4>
                     </div>
@@ -186,38 +186,38 @@ height:100vh;">
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="order.descr.location" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.location.getAddress()}
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="order.descr.start" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.start}
                     </h4>
                 </div>
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="order.descr.end" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.end}
                     </h4>
                 </div>
 
 
                 <div class="order-group col-bg-12 col-form-label row">
-                    <h5 class="order-group ml-3">
+                    <h5 class="order-group col-sm-4">
                         <fmt:message key="order.descr.days" bundle="${rb}"/>
                     </h5>
-                    <h4 class="order-group ml-7">
+                    <h4 class="order-group col-sm-7">
                         ${sessionScope.currentOrder.days}
                     </h4>
                 </div>

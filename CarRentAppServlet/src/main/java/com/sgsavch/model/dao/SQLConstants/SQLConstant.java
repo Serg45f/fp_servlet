@@ -1,8 +1,8 @@
 package com.sgsavch.model.dao.SQLConstants;
 
 public interface SQLConstant {
+	///////////////////////////////*** TABLES ***/////////////////////////////////////////
 	/////////////////////////////////USERS///////////////////////////////////////////////
-
 	String TABLE_USERS = "users";
 
 	String USER_ID = "users.id";
@@ -12,6 +12,87 @@ public interface SQLConstant {
 	String USER_LASTNAME = "users.last_name";
 	String USER_STATUS = "users.status";
 	String USER_ACTIVATION_CODE = "users.activation_code";
+
+	/////////////////////////////////////////ROLES/////////////////////////////////////////
+	String TABLE_USER_ROLE = "user_role";
+
+	String USER_ROLE_USER_ID = "user_role.user_id";
+	String USER_ROLE_ROLES = "user_role.roles";
+
+	//////////////////////////////////////CAR_MODELS/////////////////////////////////////////////
+	String TABLE_CARMODELS = "carmodels";
+
+	String CARMODEL_ID = "carmodels.id";
+	String CARMODEL_NAME = "carmodels.name";
+	String CARMODEL_NUMBER_OF_DOORS = "carmodels.numb_of_doors";
+	String CARMODEL_NUMBER_OF_SEATS = "carmodels.numb_of_seats";
+	String CARMODEL_PICTURE = "carmodels.picture";
+	String CARMODEL_STATUS = "carmodels.status";
+	String CARMODEL_TYPE = "carmodels.type";
+	String CARMODEL_PRICE = "carmodels.price";
+	String CARMODEL_DEPOSIT = "carmodels.deposit";
+
+	////////////////////////////////ORDERS//////////////////////////////////////////////////
+	String TABLE_ORDERS = "orders";
+
+	String ORDER_ID = "orders.id";
+	String ORDER_CODE = "orders.code";
+	String ORDER_QR = "orders.qrcode";
+	String ORDER_START = "orders.start_date_time";
+	String ORDER_END = "orders.end_date_time";
+	String ORDER_REAL_END = "orders.real_date_time";
+	String ORDER_USER_ID = "orders.user_id";
+	String ORDER_LOCATION = "orders.location";
+	String ORDER_VEHICLE_ID = "orders.vehicle_id";
+	String ORDER_DAYS = "orders.days";
+	String ORDER_STATUS_ORDER = "orders.status_order";
+	String ORDER_PRICE_PERIOD = "orders.price_period";
+	String ORDER_PRICE_OPTIONS = "orders.price_options";
+	String ORDER_TOTAL_PRICE = "orders.total_price";
+	String ORDER_DAMAGE_DESCRIPTION = "orders.damage_description";
+	String ORDER_DAMAGE_PRICE = "orders.damage_price";
+	String ORDER_DAMAGE_PAYED= "orders.damage_is_payed";
+
+	//////////////////////////////////INVOICE////////////////////////////////////////////////
+	String TABLE_INVOICE = "invoice";
+
+	String INVOICE_ID = "id";
+	String INVOICE_NUMBER = "number";
+	String INVOICE_ORDER_ID = "order_id";
+	String INVOICE_PAYMENT_DATE_TIME = "payment_date_time";
+	String INVOICE_IS_PAYED = "is_payed";
+
+	//////////////////////////////////OPTIONS////////////////////////////////////////////////
+	String TABLE_OPTIONS = "options";
+
+	String OPTION_ID = "options.id";
+	String OPTION_DESCRIPTION = "options.description";
+	String OPTION_NAME = "options.name";
+	String OPTION_PICTURE = "options.picture";
+	String OPTION_PRICE = "options.price";
+
+	//////////////////////////////////ORDERS_OPTIONS////////////////////////////////////////////////
+	String TABLE_ORDERS_OPTIONS = "orders_options";
+
+	String ORDERS_OPTIONS_ORDER_ID = "orders_options.order_id";
+	String ORDERS_OPTIONS_OPTIONS_ID = "orders_options.options_id";
+
+	/////////////////////////////////////VEHICLES/////////////////////////////////////////////
+	String TABLE_VEHICLES = "vehicles";
+
+	String VEHICLE_ID = "vehicles.id";
+	String VEHICLE_COLOR = "vehicles.color";
+	String VEHICLE_REG_NUMBER = "vehicles.reg_number";
+	String VEHICLE_TRANSMISSION = "vehicles.transmission";
+	String VEHICLE_YEAR_ISSUE = "vehicles.year_issue";
+	String VEHICLE_ORDER_ID = "vehicles.order_id";
+	String VEHICLE_DISCOUNT = "vehicles.discount";
+	String VEHICLE_CARMODEL_ID = "vehicles.carmodel_id";
+	String VEHICLE_USER_ID = "vehicles.user_id";
+
+
+	/////////////////////////////**** SQL ****///////////////////////////////////////////
+	/////////////////////////////////USERS///////////////////////////////////////////////
 
 	String SQL_FIND_USER_BY_LOGIN =
 			"SELECT * FROM " + TABLE_USERS + " WHERE " + USER_EMAIL + " LIKE ?  ESCAPE '!';";
@@ -49,13 +130,7 @@ public interface SQLConstant {
 					USER_FIRSTNAME + " = ?, "+
 					USER_LASTNAME +" = ? WHERE "+USER_ID+" = ?";
 
-
 	/////////////////////////////////////////ROLES/////////////////////////////////////////
-
-	String TABLE_USER_ROLE = "user_role";
-
-	String USER_ROLE_USER_ID = "user_role.user_id";
-	String USER_ROLE_ROLES = "user_role.roles";
 
 	String SQL_ADD_ROLE_FOR_USER =
 			"INSERT INTO " + TABLE_USER_ROLE + " (" +
@@ -73,19 +148,7 @@ public interface SQLConstant {
 			"SELECT "+TABLE_USERS+".* FROM " + TABLE_USERS + ", " + TABLE_USER_ROLE  + " WHERE " + USER_ROLE_USER_ID + " = " + USER_ID + " AND " + USER_ROLE_ROLES + " LIKE ? ESCAPE '!'";
 
 
-
 	//////////////////////////////////////CAR_MODELS/////////////////////////////////////////////
-	String TABLE_CARMODELS = "carmodels";
-
-	String CARMODEL_ID = "carmodels.id";
-	String CARMODEL_NAME = "carmodels.name";
-	String CARMODEL_NUMBER_OF_DOORS = "carmodels.numb_of_doors";
-	String CARMODEL_NUMBER_OF_SEATS = "carmodels.numb_of_seats";
-	String CARMODEL_PICTURE = "carmodels.picture";
-	String CARMODEL_STATUS = "carmodels.status";
-	String CARMODEL_TYPE = "carmodels.type";
-	String CARMODEL_PRICE = "carmodels.price";
-	String CARMODEL_DEPOSIT = "carmodels.deposit";
 
 	String SQL_GET_CARMODEL_BY_ID =
 			"SELECT * FROM " + TABLE_CARMODELS + " WHERE " + CARMODEL_ID + "=?";
@@ -124,31 +187,7 @@ public interface SQLConstant {
 			"DELETE FROM " + TABLE_CARMODELS + " WHERE "+CARMODEL_ID+"=?";
 
 
-
 	////////////////////////////////ORDERS//////////////////////////////////////////////////
-
-	String TABLE_ORDERS = "orders";
-
-
-	String ORDER_ID = "orders.id";
-	String ORDER_CODE = "orders.code";
-	String ORDER_QR = "orders.qrcode";
-	String ORDER_START = "orders.start_date_time";
-	String ORDER_END = "orders.end_date_time";
-	String ORDER_REAL_END = "orders.real_date_time";
-	String ORDER_USER_ID = "orders.user_id";
-	String ORDER_LOCATION = "orders.location";
-	String ORDER_VEHICLE_ID = "orders.vehicle_id";
-	String ORDER_DAYS = "orders.days";
-	String ORDER_STATUS_ORDER = "orders.status_order";
-	String ORDER_PRICE_PERIOD = "orders.price_period";
-	String ORDER_PRICE_OPTIONS = "orders.price_options";
-	String ORDER_TOTAL_PRICE = "orders.total_price";
-	String ORDER_DAMAGE_DESCRIPTION = "orders.damage_description";
-	String ORDER_DAMAGE_PRICE = "orders.damage_price";
-	String ORDER_DAMAGE_PAYED= "orders.damage_is_payed";
-
-
 
 	String SQL_GET_ORDER_BY_ID =
 			"SELECT * FROM " + TABLE_ORDERS + " WHERE " + ORDER_ID + "=?";
@@ -156,10 +195,34 @@ public interface SQLConstant {
 	String SQL_GET_ALL_ORDERS =
 			"SELECT * FROM "+TABLE_ORDERS;
 
+	String SQL_GET_ORDERS_BY_MANAGER_PAGINATED =
+			"SELECT " + TABLE_ORDERS + ".* FROM " +
+					TABLE_ORDERS +", " +
+					TABLE_USERS + ", " +
+					TABLE_USER_ROLE + ", " +
+					TABLE_VEHICLES +
+					" WHERE " + ORDER_VEHICLE_ID + " = " + VEHICLE_ID +
+					" AND " + VEHICLE_USER_ID + " = " + USER_ID +
+					" AND " + USER_ROLE_USER_ID + " = " + USER_ID +
+					" AND " + USER_ROLE_ROLES + " = 'MANAGER'" +
+					" AND " + USER_ID + " = ?  LIMIT ?, ?";
+
 	String SQL_GET_ORDERS_PAGINATED =
 			"SELECT * FROM " + TABLE_ORDERS + " LIMIT ?, ?";
 
 	String SQL_GET_NUMBER_OF_CARDS_ORDERS = "SELECT COUNT(id) as count FROM "+TABLE_ORDERS;
+
+	String SQL_GET_NUMBER_OF_CARDS_ORDERS_BY_MANAGER =
+			"SELECT COUNT(*) as count FROM " +
+					TABLE_ORDERS +", " +
+					TABLE_USERS + ", " +
+					TABLE_USER_ROLE + ", " +
+					TABLE_VEHICLES +
+					" WHERE " + ORDER_VEHICLE_ID + " = " + VEHICLE_ID +
+					" AND " + VEHICLE_USER_ID + " = " + USER_ID +
+					" AND " + USER_ROLE_USER_ID + " = " + USER_ID +
+					" AND " + USER_ROLE_ROLES + " = 'MANAGER'" +
+					" AND " + USER_ID + " = ?";
 
 
 	String SQL_ADD_NEW_ORDER = "INSERT INTO " + TABLE_ORDERS + " (" +
@@ -190,14 +253,6 @@ public interface SQLConstant {
 
 	//////////////////////////////////INVOICE////////////////////////////////////////////////
 
-	String TABLE_INVOICE = "invoice";
-
-	String INVOICE_ID = "id";
-	String INVOICE_NUMBER = "number";
-	String INVOICE_ORDER_ID = "order_id";
-	String INVOICE_PAYMENT_DATE_TIME = "payment_date_time";
-	String INVOICE_IS_PAYED = "is_payed";
-
 	String SQL_ADD_NEW_INVOICE =  "INSERT INTO " + TABLE_INVOICE + " (" +
 			INVOICE_ORDER_ID + ", " +
 			INVOICE_IS_PAYED + ", " +
@@ -227,19 +282,6 @@ public interface SQLConstant {
 
 
 	//////////////////////////////////OPTIONS////////////////////////////////////////////////
-
-	String TABLE_OPTIONS = "options";
-
-	String OPTION_ID = "options.id";
-	String OPTION_DESCRIPTION = "options.description";
-	String OPTION_NAME = "options.name";
-	String OPTION_PICTURE = "options.picture";
-	String OPTION_PRICE = "options.price";
-
-	String TABLE_ORDERS_OPTIONS = "orders_options";
-	String ORDERS_OPTIONS_ORDER_ID = "orders_options.order_id";
-	String ORDERS_OPTIONS_OPTIONS_ID = "orders_options.options_id";
-
 
 	String SQL_GET_OPTION_BY_ID =
 			"SELECT * FROM " + TABLE_OPTIONS + " WHERE " + OPTION_ID + "=?";
@@ -281,18 +323,6 @@ public interface SQLConstant {
 					ORDERS_OPTIONS_OPTIONS_ID + " = " + OPTION_ID + " AND " + ORDERS_OPTIONS_ORDER_ID + " LIKE ? ESCAPE '!'";
 
 /////////////////////////////////////VEHICLES/////////////////////////////////////////////
-
-	String TABLE_VEHICLES = "vehicles";
-
-	String VEHICLE_ID = "vehicles.id";
-	String VEHICLE_COLOR = "vehicles.color";
-	String VEHICLE_REG_NUMBER = "vehicles.reg_number";
-	String VEHICLE_TRANSMISSION = "vehicles.transmission";
-	String VEHICLE_YEAR_ISSUE = "vehicles.year_issue";
-	String VEHICLE_ORDER_ID = "vehicles.order_id";
-	String VEHICLE_DISCOUNT = "vehicles.discount";
-	String VEHICLE_CARMODEL_ID = "vehicles.carmodel_id";
-	String VEHICLE_USER_ID = "vehicles.user_id";
 
 	String SQL_GET_VEHICLE_BY_ID =
 			"SELECT * FROM " + TABLE_VEHICLES + " WHERE " + VEHICLE_ID + "=?";
@@ -337,26 +367,6 @@ public interface SQLConstant {
 	String SQL_DELETE_VEHICLE_BY_ID =
 			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";
 
-
-
 	///////////////////////////////////////////////////////////////////////////////////
-
-	String SQL_FIND_TEAM_BY_NAME = "SELECT * FROM teams WHERE name LIKE ? ESCAPE '!'";
-	String SQL_FIND_TEAMS_BY_USER_ID = "SELECT teams.id, teams.name FROM teams, users_teams " +
-			"WHERE teams.id = users_teams.team_id " +
-			"AND  users_teams.user_id = ?";
-
-	String SQL_UPDATE_TEAM = "UPDATE teams SET teams.name = ? WHERE teams.id = ?";
-
-
-
-	String SQL_ADD_NEW_TEAM =
-			"INSERT INTO teams (name) VALUES (?)";
-
-	String SQL_FIND_ALL_TEAMS = "SELECT * FROM teams";
-
-	String SQL_DELETE_TEAM = "DELETE FROM teams WHERE id=?";
-
-
 
 }

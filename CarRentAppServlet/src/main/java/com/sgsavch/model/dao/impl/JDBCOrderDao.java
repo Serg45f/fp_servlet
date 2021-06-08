@@ -243,6 +243,31 @@ public class JDBCOrderDao implements OrderDao {
     }
 
     @Override
+    public List<Order> getOrdersByManager(Long userId, int currentPage, int recordsPerPage) {
+        Map<Long, Order> orders = new HashMap<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_ORDERS_BY_MANAGER_PAGINATED)) {
+            int k = 1;
+            prst.setLong(k++,userId);
+            prst.setInt(k++,start);
+            prst.setInt(k++,recordsPerPage);
+            ResultSet rs = prst.executeQuery();
+            OrderMapper orderMapper = new OrderMapper();
+            while (rs.next()) {
+                Order order = orderMapper
+                        .extractFromResultSet(rs);
+                order = orderMapper
+                        .makeUnique(orders, order);
+            }
+            return new ArrayList<>(orders.values());
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
     public List<Order> getOrders(int currentPage, int recordsPerPage) {
         Map<Long, Order> orders = new HashMap<>();
 
@@ -266,11 +291,31 @@ public class JDBCOrderDao implements OrderDao {
         }
     }
 
+
     @Override
     public Integer getNumberOfCards() {
         Integer numOfCards = 0;
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_ORDERS);
+            while (rs.next()) {
+                numOfCards = rs.getInt("count");
+            }
+            return numOfCards;
+
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    @Override
+    public Integer getNumberOfRowsByManager(Long userId) {
+        Integer numOfCards = 0;
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_GET_NUMBER_OF_CARDS_ORDERS_BY_MANAGER)) {
+            int k = 1;
+            prst.setLong(k++,userId);
+            ResultSet rs = prst.executeQuery();
             while (rs.next()) {
                 numOfCards = rs.getInt("count");
             }

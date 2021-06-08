@@ -18,6 +18,12 @@ public class OrderService {
         }
     }
 
+    public List<Order> getOrdersByManager(Long userId, int currentPage, int recordsPerPage) {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.getOrdersByManager(userId,currentPage,recordsPerPage);
+        }
+    }
+
     public List<Order> getOrders(int currentPage, int recordsPerPage) {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.getOrders(currentPage,recordsPerPage);
@@ -42,6 +48,12 @@ public class OrderService {
         }
     }
 
+    public void updateOrder(Order order) throws SQLException {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            dao.update(order);
+        }
+    }
+
     public boolean setOrderOptions(Order order, List<Option> options) throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.setOrderOptions(order,options);
@@ -51,6 +63,12 @@ public class OrderService {
     public boolean resetOrderOptions(Order order, List<Option> options) throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.resetOrderOptions(order,options);
+        }
+    }
+
+    public int getNumberOfRowsByManager(Long userId) {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.getNumberOfRowsByManager(userId);
         }
     }
 }

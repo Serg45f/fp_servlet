@@ -49,9 +49,10 @@ public class CommandContainer {
 		// MANGER commands
 
 		commands.put("order_edit", new OrderEditCommand(new OrderService()));
+		commands.put("order_update", new OrderUpdateCommand(new OrderService()));
 		//TODO order_delete
 		//commands.put("order_delete", new OrderDeleteCommand(new OrderService()));
-		//TODO orders
+
 		commands.put("orders", new OrderListCommand(new OrderService()));
 
 		// ADMIN commands

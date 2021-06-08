@@ -49,7 +49,7 @@ height:100vh;">
         </h2>
         <br>
      <div class="form-group mt-3">
-          <form accept-charset="UTF-8" method="post"  action="${pageContext.request.contextPath}/controller?command=order_save" >
+          <form accept-charset="UTF-8" method="post"  action="${pageContext.request.contextPath}/controller?command=order_update" >
 
               <div class="order-group col-bg-12 col-form-label row">
                   <h4 >
@@ -94,47 +94,57 @@ height:100vh;">
                   </h6>
               </div>
               <br/>
-<%--
+
               <div class="form-group col-bg-12 col-form-label row">
-                   <h5 class="col-sm-4  col-form-label text-success" th:text="#{order.descr.realEnd}">real end</h5>
+                   <h5 class="col-sm-4  col-form-label text-success">
+                       <fmt:message key="order.descr.realEnd" bundle="${rb}"/>
+                   </h5>
                    <input class="col-sm-6 form-control text-success bg-transparent" type="datetime-local"
                           placeholder="Date/time of car return"
-                          th:field ="*{realEnd}" />
+                          value="${order.realEnd}" name = "realEnd" />
               </div>
               <br/>
               <br/>
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning" th:text="#{order.descr.damageDescript}">Damage descript</h5>
+                  <h5 class="col-sm-4  col-form-label text-warning">
+                      <fmt:message key="order.descr.damageDescript" bundle="${rb}"/>
+                  </h5>
                   <input class="col-sm-6 form-control text-warning bg-transparent" type="text"  placeholder="Damage description"
-                              th:field ="*{damageDescript}" />
+                         value="${order.damageDescript}" name = "damageDescript" />
               </div>
 
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning" th:text="#{order.descr.damagePrice}">Damage price</h5>
+                  <h5 class="col-sm-4  col-form-label text-warning">
+                      <fmt:message key="order.descr.damagePrice" bundle="${rb}"/>
+                  </h5>
                   <input class="col-sm-6 form-control text-warning bg-transparent" type="number"  placeholder="Damage price"
-                              th:field ="*{damagePrice}" />
+                         value="${order.damagePrice}" name = "damagePrice" />
               </div>
 
               <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-warning" th:text = "#{editOrder.isPayed}">Damage isPayed</h5>
+                  <h5 class="col-sm-4  col-form-label text-warning">
+                      <fmt:message key="order.descr.status" bundle="${rb}"/>
+                  </h5>
                   <input class="col-sm-6 form-control text-warning" type="checkbox" name="damageIsPayed"
                                 th:checked="${order.damageIsPayed} ? true : false "
                                 th:value="${true}"/>
               </div>
               <br/>
               <br/>
-              <div class="form-group col-bg-12 col-form-label row">
-                  <h5 class="col-sm-4  col-form-label text-danger" th:text="#{order.descr.status}">Status</h5>
-                  <select class="col-sm-6 form-control text-danger bg-transparent"  type="text" placeholder="Status"
-                          th:field ="*{status}">
-                      <div th:each ="status:${statuses}">
-                          <option class="form-control bg-transparent"
-                                  th:value="${{status}}" th:text="${status.name()}">Status</option>
-                      </div>
+              <div class="form-group">
+                  <h5 class="col-sm-4  col-form-label text-warning">
+                      <fmt:message key="editOrder.isPayed" bundle="${rb}"/>
+                  </h5>
+                  <select type="text" class="form-control bg-transparent" placeholder="Status"
+                          name ="status" >
+                      <c:forEach var="status" items="${orderStatuses}">
+                          <option value="${status}"   ${order.status == status ? 'selected="selected"' : ''}>${status.name()}</option>
+                      </c:forEach>
                   </select>
               </div>
---%>
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+
+
+                <input  type="hidden" value="${order.id}" name = "orderId" />
                 <div class="form-group">
                     <button type="submit" class="btn btn-transparent btn-outline-primary" >Save</button>
                 </div>

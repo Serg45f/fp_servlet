@@ -73,7 +73,7 @@
           </init-param>
           <init-param>
               <param-name>manager</param-name>
-              <param-value>order_edit order_delete orders</param-value>
+              <param-value>order_edit order_update order_delete orders</param-value>
           </init-param>
           <init-param>
               <param-name>common</param-name>
