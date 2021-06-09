@@ -3,8 +3,7 @@ package com.sgsavch.controller;
 import com.sgsavch.controller.filters.CommandAccessFilter;
 import com.sgsavch.controller.сommand.*;
 import lombok.SneakyThrows;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -22,7 +21,7 @@ import java.util.HashSet;
 @MultipartConfig
 public class Servlet extends HttpServlet {
 
-   private static final Logger log = (Logger) LogManager.getLogger(Servlet.class);
+    private static final Logger log = Logger.getLogger(Servlet.class);
 
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext()

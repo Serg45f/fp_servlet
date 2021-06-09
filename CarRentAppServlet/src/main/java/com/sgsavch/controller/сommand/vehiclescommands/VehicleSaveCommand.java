@@ -33,18 +33,8 @@ public class VehicleSaveCommand implements Command {
     UserService userService;
     CarModelService carModelService;
 
-
-
     @Override
     public String execute(HttpServletRequest request)  {
-        System.out.println("(VehicleSaveCommand).execute");
-        System.out.println(request.getParameter("regNumber"));
-        System.out.println(request.getParameter("carModel"));
-        System.out.println(request.getParameter("yearIssue"));
-        System.out.println(request.getParameter("color"));
-        System.out.println(request.getParameter("transmission"));
-        System.out.println(request.getParameter("discount"));
-        System.out.println(request.getParameter("manager"));
 
             Vehicle vehicle = new Vehicle.Builder()
                     .setRegNumber(request.getParameter("regNumber"))
@@ -57,8 +47,10 @@ public class VehicleSaveCommand implements Command {
                     .build();
             if(request.getParameter("id")!=null) {
                 vehicle = new Vehicle.Builder(vehicle).setId(Long.valueOf(request.getParameter("id"))).build();
+            }else{
+                vehicle = new Vehicle.Builder(vehicle).setIsNew(true).build();
             }
-        System.out.println(vehicle);
+
                     Long res = vehicleService.addVehicle(vehicle);
 
 

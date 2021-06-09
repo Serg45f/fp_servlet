@@ -1,9 +1,14 @@
 package com.sgsavch.controller.config;
 
+import com.sgsavch.controller.Servlet;
+import org.apache.log4j.Logger;
+
 import java.util.Properties;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 public class MailSessionCreator {
+    private static final Logger log = Logger.getLogger(MailSessionCreator.class);
+
     private String smtpHost;
     private String smtpPort;
     private String userName;
@@ -14,7 +19,8 @@ public class MailSessionCreator {
         smtpPort = configProperties.getProperty("mail.smtp.port");
         userName = configProperties.getProperty("mail.user.name");
         userPassword = configProperties.getProperty("mail.user.password");
-// загрузка параметров почтового сервера в свойства почтовой сессии
+
+        //loading of post server parameters to post session properties
         sessionProperties = new Properties();
         sessionProperties.setProperty("mail.transport.protocol", "smtp");
         sessionProperties.setProperty("mail.host", smtpHost);
@@ -30,6 +36,7 @@ public class MailSessionCreator {
         return Session.getDefaultInstance(sessionProperties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
+
                         return new PasswordAuthentication(userName, userPassword);
                     }
                 });

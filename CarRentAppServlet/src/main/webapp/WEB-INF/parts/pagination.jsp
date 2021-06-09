@@ -108,12 +108,13 @@
                                     <option value="6" >6</option>
                                     <option value="9">9</option>
                                 </select>
-                        --%>
+
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-transparent btn-outline-primary">Submit</button>
 
                             </div>
+                        --%>
                         </div>
                    </div>
             </form>

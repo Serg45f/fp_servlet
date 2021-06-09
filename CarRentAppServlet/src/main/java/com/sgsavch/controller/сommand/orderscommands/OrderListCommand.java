@@ -9,14 +9,20 @@ import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.service.CarModelService;
 import com.sgsavch.model.service.OrderService;
 import com.sgsavch.model.service.UserService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 public class OrderListCommand implements Command {
+
+    private static final Logger log = Logger.getLogger(OrderListCommand.class);
+
     private static final Integer DEFAULT_CURRENT_PAGE = 1;
     private static final Integer DEFAULT_RECORDS_PER_PAGE = 9;
 
@@ -60,6 +66,7 @@ public class OrderListCommand implements Command {
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
+        request.setAttribute("localDateTimeFormat", new SimpleDateFormat("yyyy-MM-dd'T'hh:mm"));
         request.setAttribute("orders" , orders);
 
         return Path.PAGE__ORDERS;

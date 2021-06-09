@@ -7,12 +7,15 @@ import com.sgsavch.model.entity.enums.StatusOrder;
 import com.sgsavch.model.entity.enums.TypeCar;
 import com.sgsavch.model.service.CarModelService;
 import com.sgsavch.model.service.OrderService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.Arrays;
 
 public class OrderEditCommand implements Command {
+
+    private static final Logger log = Logger.getLogger(OrderEditCommand.class);
 
     OrderService orderService;
 

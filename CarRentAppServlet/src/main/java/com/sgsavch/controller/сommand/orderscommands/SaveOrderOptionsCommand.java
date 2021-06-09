@@ -8,6 +8,7 @@ import com.sgsavch.model.entity.User;
 import com.sgsavch.model.entity.enums.StatusOrder;
 import com.sgsavch.model.service.OptionService;
 import com.sgsavch.model.service.UserService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SaveOrderOptionsCommand implements Command {
-    OptionService optionService;
+    private static final Logger log = Logger.getLogger(SaveOrderOptionsCommand.class);
 
+    OptionService optionService;
 
     public SaveOrderOptionsCommand(OptionService optionService){
         this.optionService = optionService;

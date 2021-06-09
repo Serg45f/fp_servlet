@@ -12,5 +12,6 @@ public interface VehicleDao extends GenericDao<Vehicle> {
     List<Vehicle> getVehicles(int currentPage, int numOfRecords);
     Integer getNumberOfCards();
     List<Vehicle> getVehiclesByPeriod(LocalDateTime start, LocalDateTime end, int currentPage, int recordsPerPage);
+    Integer getNumberOfCardsPeriod();
 }
 

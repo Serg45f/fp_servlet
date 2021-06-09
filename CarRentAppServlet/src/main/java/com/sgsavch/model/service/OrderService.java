@@ -71,4 +71,10 @@ public class OrderService {
             return dao.getNumberOfRowsByManager(userId);
         }
     }
+
+    public boolean deleteOrder(Long orderId) throws SQLException {
+        try (OrderDao dao = daoFactory.createOrderDao()) {
+            return dao.setToArcive(orderId);
+        }
+    }
 }

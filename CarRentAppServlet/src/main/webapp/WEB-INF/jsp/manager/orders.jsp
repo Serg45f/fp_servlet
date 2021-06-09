@@ -3,17 +3,12 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false"%>
 <%@ page session="true" %>
 
-<%!
-String getFormattedDate(){
-SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-return sdf.format(new Date());
-}
-%>
 
 <fmt:setLocale value = "${sessionScope.lang}"  scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
@@ -102,12 +97,26 @@ height:100vh;">
                                         <td>${order.vehicle.carModel.name}</td>
                                         <td>${order.vehicle.id}</td>
                                         <td>${order.vehicle.regNumber}</td>
-                                        <td>${order.start}</td>
-                                        <td>${order.end}</td>
-                                        <td>${order.realEnd}</td>
+                                        <td>
+                                            <c:if test="${order.start != null}">
+                                                ${order.start.format(DateTimeFormatter.ofPattern('dd.MM.yyyy'))}
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <c:if test="${order.end != null}">
+                                                ${order.end.format(DateTimeFormatter.ofPattern('dd.MM.yyyy'))}
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <c:if test="${order.realEnd != null}">
+                                                ${order.realEnd.format(DateTimeFormatter.ofPattern('dd.MM.yyyy'))}
+                                            </c:if>
+                                        </td>
                                         <td>${order.status}</td>
                                         <td>${order.damageDescript}</td>
-                                        <td>${order.damagePrice}</td>
+                                        <td>
+                                            ${order.damagePrice}
+                                        </td>
                                         <td>
                                             <input class="form-control " type="checkbox" name="damageIsPayed"
                                                   value="${order.damageIsPayed}"

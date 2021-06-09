@@ -18,6 +18,7 @@ public class Vehicle {
     private final String transmission;
     private final Double discount;
     private final User manager;
+    private final boolean isNew;
 
     public Vehicle(final Long id,
                    final CarModel carModel,
@@ -27,7 +28,8 @@ public class Vehicle {
                    final Color color,
                    final String transmission,
                    final Double discount,
-                   final User manager) {
+                   final User manager,
+                   final boolean isNew) {
         this.id = id;
         this.carModel = carModel;
         this.regNumber = regNumber;
@@ -37,6 +39,7 @@ public class Vehicle {
         this.transmission = transmission;
         this.discount = discount;
         this.manager = manager;
+        this.isNew = isNew;
     }
 
 
@@ -76,6 +79,10 @@ public class Vehicle {
         return manager;
     }
 
+    public boolean isNew() {
+        return isNew;
+    }
+
     public static class Builder {
 
         private Long id;
@@ -87,6 +94,7 @@ public class Vehicle {
         private String transmission;
         private Double discount = 0D;
         private User manager;
+        private boolean isNew;
 
         public Builder() {
         }
@@ -101,6 +109,7 @@ public class Vehicle {
             this.transmission = vehicle.transmission;
             this.discount = vehicle.discount;
             this.manager = vehicle.manager;
+            this.isNew = vehicle.isNew;
         }
 
 
@@ -158,6 +167,12 @@ public class Vehicle {
             return this;
         }
 
+        public Builder setIsNew(boolean isNew) {
+            this.isNew = isNew;
+
+            return this;
+        }
+
         public Vehicle build() {
             return new Vehicle(
                     id,
@@ -168,7 +183,8 @@ public class Vehicle {
                     color,
                     transmission,
                     discount,
-                    manager);
+                    manager,
+                    isNew);
         }
 
     }
@@ -198,6 +214,9 @@ public class Vehicle {
                 .append(", ")
                 .append("manager=")
                 .append(manager)
+                .append(", ")
+                .append("isNew=")
+                .append(isNew)
                 .append(")").toString();
 
     }

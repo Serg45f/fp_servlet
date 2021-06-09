@@ -4,6 +4,7 @@ import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandContainer;
 import com.sgsavch.model.entity.Order;
 import com.sgsavch.model.entity.enums.Location;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class SetVehicleCommand implements Command {
-
+    private static final Logger log = Logger.getLogger(SetVehicleCommand.class);
     @Override
     public String execute(HttpServletRequest request) throws SQLException, IOException, ServletException {
         Order order = new Order.Builder()

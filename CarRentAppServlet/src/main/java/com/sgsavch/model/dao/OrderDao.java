@@ -16,5 +16,6 @@ public interface OrderDao extends GenericDao<Order> {
 
     boolean resetOrderOptions(Order order, List<Option> options) throws SQLException;
 
+    boolean setToArcive(Long orderId) throws SQLException;
 }
 

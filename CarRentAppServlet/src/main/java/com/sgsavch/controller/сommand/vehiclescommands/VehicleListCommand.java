@@ -44,17 +44,15 @@ public class VehicleListCommand implements Command {
             recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         }
 
-
+        int rows;
 
         if (start!=null && end!=null) {
             vehicles = vehicleService.getVehiclesPaginatedFilteredByPeriod(start, end, currentPage, recordsPerPage);
+            rows = vehicleService.getNumberOfCardsPeriod();
         } else {
             vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
+            rows = vehicleService.getNumberOfCards();
         }
-
-//        vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
-
-        int rows = vehicleService.getNumberOfCards();
 
         int nOfPages = rows / recordsPerPage;
 

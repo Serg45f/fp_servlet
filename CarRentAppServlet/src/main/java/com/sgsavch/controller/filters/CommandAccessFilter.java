@@ -2,9 +2,9 @@ package com.sgsavch.controller.filters;
 
 
 import com.sgsavch.Path;
+import com.sgsavch.controller.Servlet;
 import com.sgsavch.model.entity.enums.Role;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.log4j.Logger;
 
 
 import javax.servlet.*;
@@ -22,8 +22,8 @@ import java.util.*;
  * 
  */
 public class CommandAccessFilter implements Filter {
-	
-	private static final Logger log = (Logger) LogManager.getLogger(CommandAccessFilter.class);
+
+	private static final Logger log = Logger.getLogger(CommandAccessFilter.class);
 
 	// commands access	
 	private static Map<Role, List<String>> accessMap = new HashMap<Role, List<String>>();
@@ -51,8 +51,8 @@ public class CommandAccessFilter implements Filter {
 			request.getRequestDispatcher(Path.PAGE__LOGIN)
 					.forward(request, response);
 
-//			request.getRequestDispatcher(Path.PAGE__ERROR_PAGE)
-//					.forward(request, response);
+			request.getRequestDispatcher(Path.PAGE__ERROR_PAGE)
+					.forward(request, response);
 		}
 	}
 	

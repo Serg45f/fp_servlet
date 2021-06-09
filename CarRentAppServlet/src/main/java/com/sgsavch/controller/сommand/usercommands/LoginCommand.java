@@ -3,16 +3,17 @@ package com.sgsavch.controller.сommand.usercommands;
 import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandUtility;
-import com.sgsavch.controller.сommand.orderscommands.PeriodCommand;
 import com.sgsavch.model.entity.User;
 import com.sgsavch.utils.BCrypt;
 import com.sgsavch.model.service.UserService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ResourceBundle;
+
 
 public class LoginCommand implements Command {
+    private static final Logger log = Logger.getLogger(LoginCommand.class);
 
     UserService userService;
 
@@ -32,20 +33,23 @@ public class LoginCommand implements Command {
             return "/WEB-INF/login.jsp";
         }
         if(CommandUtility.checkUserIsLogged(request, name)){
+
             return "/WEB-INF/error.jsp";
         }
-        System.out.println("(loginCommand)name+pass: " + name + " " + pass);
+
         User user = userService.getUserByUsername(name);
         User userAuth = null;
         String message;
-        if(BCrypt.checkpw(pass,user.getPassword())) {
+
+        if(BCrypt.checkpw(pass,user.getPassword()) && user != null) {
             userAuth = user;
             CommandUtility.setUserRole(request, userAuth.getRoles(), userAuth.getEmail(),userAuth.getId());
             message = "Welcome, " + userAuth.getFirstName() + "! You have successfully logged in!";
         }else{
-            message = userAuth.getFirstName() + "! Your password incorrect! Try again or register yourself.";
+            message = userAuth.getFirstName() + "! Your name or password incorrect! Try again or register yourself.";
         }
         request.setAttribute("message", message);
+
         if(session != null && session.getAttribute("orderStage") != null && (Integer )session.getAttribute("orderStage") == 4){
             return Path.COMMAND__SET_ORDER;
         }

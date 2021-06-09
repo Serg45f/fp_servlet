@@ -31,6 +31,12 @@ public class VehicleService {
         }
     }
 
+    public int getNumberOfCardsPeriod() {
+        try (VehicleDao dao = daoFactory.createVehicleDao()) {
+            return dao.getNumberOfCardsPeriod();
+        }
+    }
+
     public Vehicle getVehicleById(Long vehicleId) throws SQLException {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
             return dao.findById(vehicleId);
@@ -43,7 +49,7 @@ public class VehicleService {
         }
     }
 
-    public void editVehicle(Vehicle vehicle) {
+    public void updateVehicle(Vehicle vehicle) {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
             dao.update(vehicle);
         } catch (SQLException throwables) {

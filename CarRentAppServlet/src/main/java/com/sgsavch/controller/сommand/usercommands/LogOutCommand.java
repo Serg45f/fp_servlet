@@ -4,11 +4,14 @@ import com.sgsavch.Path;
 import com.sgsavch.controller.сommand.Command;
 import com.sgsavch.controller.сommand.CommandUtility;
 import com.sgsavch.model.entity.enums.Role;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
 public class LogOutCommand implements Command {
+    private static final Logger log = Logger.getLogger(LogOutCommand.class);
+
     @Override
     public String execute(HttpServletRequest request) {
 

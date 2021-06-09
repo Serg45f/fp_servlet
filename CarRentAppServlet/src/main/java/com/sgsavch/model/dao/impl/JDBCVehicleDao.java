@@ -36,6 +36,7 @@ public class JDBCVehicleDao implements VehicleDao {
             pstmt.setDouble(k++, entity.getDiscount());
             pstmt.setLong(k++, entity.getCarModel().getId());
             pstmt.setLong(k++, entity.getManager().getId());
+            pstmt.setBoolean(k++, entity.isNew());
 
 
             if (pstmt.executeUpdate() > 0) {
@@ -108,6 +109,7 @@ public class JDBCVehicleDao implements VehicleDao {
             pstmt.setDate(k++, Date.valueOf(entity.getYearIssue().toLocalDate()));
             pstmt.setDouble(k++, entity.getDiscount());
             pstmt.setLong(k++, entity.getManager().getId());
+            pstmt.setBoolean(k++, entity.isNew());
             pstmt.setLong(k++,entity.getId());
 
             pstmt.executeUpdate();
@@ -196,6 +198,24 @@ public class JDBCVehicleDao implements VehicleDao {
         Integer numOfCards = 0;
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_VEHICLES);
+            while (rs.next()) {
+                numOfCards = rs.getInt("count");
+            }
+            return numOfCards;
+
+        } catch (SQLException ex) {
+//            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+
+    }
+
+    @Override
+    public Integer getNumberOfCardsPeriod() {
+        Integer numOfCards = 0;
+        try (Statement st = connection.createStatement()) {
+            ResultSet rs = st.executeQuery(SQLConstant.SQL_GET_NUMBER_OF_CARDS_VEHICLES_PERIOD);
             while (rs.next()) {
                 numOfCards = rs.getInt("count");
             }

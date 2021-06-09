@@ -9,6 +9,7 @@ import com.sgsavch.model.entity.enums.StatusUser;
 import com.sgsavch.utils.BCrypt;
 import com.sgsavch.utils.MailSender;
 import com.sgsavch.model.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.util.StringUtils;
 
 import javax.mail.MessagingException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 public class RegistrationCommand implements Command {
+    private static final Logger log = Logger.getLogger(RegistrationCommand.class);
 
     UserService userService;
 
@@ -34,7 +36,7 @@ public class RegistrationCommand implements Command {
 
         if( userName == null || userName.equals("") || pass == null || pass.equals("") ||
         lastName == null || lastName.equals("") || firstName == null || firstName.equals("")){
-            //System.out.println("Not");
+
             return "/registration.jsp";
         }
         if(CommandUtility.checkUserIsRegistered(userName,pass)){

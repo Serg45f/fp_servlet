@@ -89,6 +89,7 @@ public interface SQLConstant {
 	String VEHICLE_DISCOUNT = "vehicles.discount";
 	String VEHICLE_CARMODEL_ID = "vehicles.carmodel_id";
 	String VEHICLE_USER_ID = "vehicles.user_id";
+	String VEHICLE_IS_NEW = "vehicles.isNew";
 
 
 	/////////////////////////////**** SQL ****///////////////////////////////////////////
@@ -251,6 +252,11 @@ public interface SQLConstant {
 	String SQL_DELETE_ORDER_BY_ID =
 			"DELETE FROM " + TABLE_ORDERS + " WHERE "+ORDER_ID+"=?";
 
+	String SQL_SET_TO_ARCHIVE_ORDER_BY_ID =
+			"UPDATE " + TABLE_ORDERS + " SET " +
+					ORDER_STATUS_ORDER + " = ? " +
+					" WHERE "+ORDER_ID+" = ?;";
+
 	//////////////////////////////////INVOICE////////////////////////////////////////////////
 
 	String SQL_ADD_NEW_INVOICE =  "INSERT INTO " + TABLE_INVOICE + " (" +
@@ -345,6 +351,11 @@ public interface SQLConstant {
 
 	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
 
+	String SQL_GET_NUMBER_OF_CARDS_VEHICLES_PERIOD = "SELECT COUNT(id) as count FROM "+ TABLE_VEHICLES + ", " + TABLE_ORDERS +
+			" WHERE ( " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
+			" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0 )" +
+			" OR " + VEHICLE_IS_NEW + " =  TRUE;";
+
 	String SQL_ADD_NEW_VEHICLE = "INSERT INTO " + TABLE_VEHICLES + " (" +
 			VEHICLE_COLOR + ", " +
 			VEHICLE_REG_NUMBER + ", " +
@@ -352,21 +363,24 @@ public interface SQLConstant {
 			VEHICLE_YEAR_ISSUE + ", " +
 			VEHICLE_DISCOUNT + ", " +
 			VEHICLE_CARMODEL_ID + ", " +
-			VEHICLE_USER_ID + ") VALUES (?,?,?,?,?,?,?);";
+			VEHICLE_USER_ID + ", " +
+			VEHICLE_IS_NEW + ") VALUES (?,?,?,?,?,?,?);";
 
 	String SQL_UPDATE_VEHICLE =
 			"UPDATE " + TABLE_VEHICLES + " SET " +
 					VEHICLE_COLOR + " = ?, " +
 					VEHICLE_REG_NUMBER + " = ?, " +
 					VEHICLE_TRANSMISSION + " = ?, " +
-					VEHICLE_CARMODEL_ID + " = ?, "+
 					VEHICLE_YEAR_ISSUE + " = ?, " +
 					VEHICLE_DISCOUNT + " = ?, "+
-					VEHICLE_USER_ID + " = ?" + " = ? WHERE "+VEHICLE_ID+" = ?";
+					VEHICLE_CARMODEL_ID + " = ?, "+
+					VEHICLE_USER_ID + " = ?, "+
+					VEHICLE_IS_NEW + " = ?" + " = ? WHERE "+VEHICLE_ID+" = ?";
 
 	String SQL_DELETE_VEHICLE_BY_ID =
 			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";
 
-	///////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////////
 
 }

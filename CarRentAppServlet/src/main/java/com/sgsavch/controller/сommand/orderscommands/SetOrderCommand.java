@@ -9,6 +9,7 @@ import com.sgsavch.model.entity.enums.Role;
 import com.sgsavch.model.entity.enums.StatusOrder;
 import com.sgsavch.model.service.OptionService;
 import com.sgsavch.model.service.UserService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +23,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SetOrderCommand implements Command {
+    private static final Logger log = Logger.getLogger(SetOrderCommand.class);
 
     UserService userService;
 
     public  SetOrderCommand(UserService userService){
-
         this.userService = userService;
     }
 

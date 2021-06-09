@@ -15,12 +15,6 @@ public class CommandUtility {
             roles.put(role.getRole(),role);
         }
 
-        if(userRoles.contains(roles.get("USER"))) System.out.println("(CommandUtility::setUserRole)USER");
-        if(userRoles.contains(roles.get("ADMIN"))) System.out.println("(CommandUtility::setUserRole)ADMIN");
-        if(userRoles.contains(roles.get("SPEAKER"))) System.out.println("(CommandUtility::setUserRole)SPEAKER");
-        if(userRoles.contains(roles.get("CANDIDATE"))) System.out.println("(CommandUtility::setUserRole)CANDIDATE");
-        if(userRoles.contains(roles.get("UNCONFIRMED"))) System.out.println("(CommandUtility::setUserRole)UNCONFIRMED");
-        if(userRoles.contains(roles.get("UNKNOWN"))) System.out.println("(CommandUtility::setUserRole)UNKNOWN");
         HttpSession session = request.getSession();
         ServletContext context = request.getServletContext();
 
@@ -46,7 +40,6 @@ public class CommandUtility {
     public static boolean deleteLoggedUser(HttpServletRequest request, String userName){
         HashSet<String> loggedUsers = (HashSet<String>) request.getSession().getServletContext()
                 .getAttribute("loggedUsers");
-        loggedUsers.stream().forEach(e-> System.out.println("(CommandUtility::deleteLoggedUser)loggedUsers: " + e));
 
         if(loggedUsers.stream().anyMatch(userName::equals)){
             loggedUsers.remove(userName);

@@ -6,15 +6,15 @@ import com.sgsavch.model.dao.SQLConstants.SQLConstant;
 import com.sgsavch.model.dao.mapper.OrderMapper;
 import com.sgsavch.model.entity.Option;
 import com.sgsavch.model.entity.Order;
-import com.sgsavch.model.entity.User;
-import com.sgsavch.model.entity.enums.Location;
-import com.sgsavch.model.entity.enums.Role;
+import com.sgsavch.model.entity.enums.StatusOrder;
 
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
 public class JDBCOrderDao implements OrderDao {
+
+
     private Connection connection;
 
 
@@ -227,6 +227,24 @@ public class JDBCOrderDao implements OrderDao {
         }finally {
             if (connection != null) close();
         }
+
+    }
+
+    @Override
+    public boolean setToArcive(Long id) throws SQLException{
+        try (PreparedStatement prst = connection.prepareStatement(SQLConstant.SQL_SET_TO_ARCHIVE_ORDER_BY_ID)) {
+
+            int k = 1;
+            prst.setInt(k++, StatusOrder.ARCHIVE.ordinal());
+            prst.setLong(k++,id);
+
+            prst.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+           // log.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            if (connection != null) close();
+            return false;
 
     }
 

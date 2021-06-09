@@ -1,6 +1,8 @@
 package com.sgsavch.controller.filters;
 
+import com.sgsavch.controller.Servlet;
 import com.sgsavch.model.entity.enums.Role;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +14,9 @@ import java.util.Set;
 import java.util.function.IntPredicate;
 
 public class AuthFilter implements Filter {
+    private static final Logger log = Logger.getLogger(AuthFilter.class);
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -28,24 +30,10 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession();
         ServletContext context = request.getServletContext();
 
-       while(req.getAttributeNames().hasMoreElements()){ System.out.println(req.getAttributeNames().nextElement());}
-
-        System.out.println();
-        System.out.println("(AuthFilter)req.Method: " + req.getMethod());
-        System.out.println("(AuthFilter)req.AuthType: " + req.getAuthType());
-        System.out.println("(AuthFilter)req.URl: " + req.getRequestURL().toString());
-        System.out.println("(AuthFilter)session: " + session);
-        System.out.println("(AuthFilter)session.loggedUsers: " + context.getAttribute("loggedUsers"));
-        System.out.print("(AuthFilter)session ROLES: ");
         if(session.getAttribute("loggedUserRoles")!=null) {
             for (Role role : (Set<Role>) session.getAttribute("loggedUserRoles")) {
-                System.out.print(", " + role);
             }
         }
-        System.out.println();
-        System.out.println("(AuthFilter)servletContext LoggedUsers: " + context.getAttribute("loggedUsers"));
-
-
 
         filterChain.doFilter(request,response);
     }

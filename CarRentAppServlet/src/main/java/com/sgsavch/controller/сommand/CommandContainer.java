@@ -1,13 +1,16 @@
 package com.sgsavch.controller.сommand;
 
+import com.sgsavch.controller.Servlet;
 import com.sgsavch.controller.сommand.carmodelcommands.*;
+import com.sgsavch.controller.сommand.optionscommands.OptionAddCommand;
+import com.sgsavch.controller.сommand.optionscommands.OptionEditCommand;
 import com.sgsavch.controller.сommand.optionscommands.OptionListCommand;
+import com.sgsavch.controller.сommand.optionscommands.OptionSaveCommand;
 import com.sgsavch.controller.сommand.orderscommands.*;
 import com.sgsavch.controller.сommand.usercommands.*;
 import com.sgsavch.controller.сommand.vehiclescommands.*;
 import com.sgsavch.model.service.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 
 
 import java.util.Map;
@@ -15,8 +18,8 @@ import java.util.TreeMap;
 
 
 public class CommandContainer {
-	
-	private static final Logger log = LogManager.getLogger(CommandContainer.class);
+
+	private static final Logger log = Logger.getLogger(CommandContainer.class);
 	
 	private static Map<String, Command> commands = new TreeMap<String, Command>();
 	
@@ -30,7 +33,7 @@ public class CommandContainer {
 		commands.put("exception" , new ExceptionCommand());
 		commands.put("setPeriod", new SetPeriodCommand());
 		commands.put("setVehicle", new SetVehicleCommand());
-		commands.put("setOptions", new SetOptionsCommand());
+		commands.put("setOptions", new SetOptionsCommand(new VehicleService()));
 		commands.put("saveOrderOptions", new SaveOrderOptionsCommand(new OptionService()));
 		commands.put("options", new OptionListCommand(new OptionService()));
 		commands.put("vehicles", new VehicleListCommand(new VehicleService()));
@@ -38,10 +41,9 @@ public class CommandContainer {
 		// USER commands
 
 		commands.put("setOrder", new SetOrderCommand( new UserService()));
-		commands.put("order_create", new OrderSaveCommand(new OrderService()));
+		commands.put("order_create", new OrderSaveCommand(new OrderService(), new VehicleService()));
 		commands.put("invoice", new InvoiceCommand());
 		commands.put("invoice_save", new InvoiceSaveCommand(new InvoiceService()));
-		//commands.put("invoice_payed", new InvoicePayedCommand(new InvoiceService()));
 
 		//TODO invoiceDamage
 		//commands.put("invoiceDamage", new InvoiceDamageCommand(new InvoiceService()));
@@ -52,7 +54,6 @@ public class CommandContainer {
 		commands.put("order_update", new OrderUpdateCommand(new OrderService()));
 		//TODO order_delete
 		//commands.put("order_delete", new OrderDeleteCommand(new OrderService()));
-
 		commands.put("orders", new OrderListCommand(new OrderService()));
 
 		// ADMIN commands
@@ -64,12 +65,10 @@ public class CommandContainer {
 		//commands.put("user_delete", new UserDeleteCommand(new UserService()));
 		//TODO option_delete
 		//commands.put("option_delete", new OptionDeleteCommand(new OptionService()));
-		//TODO option_edit
-		//commands.put("option_edit", new OptionEditCommand(new OptionService()));
-		//TODO option_add
-		//commands.put("option_add", new OptionAddCommand(new OptionService()));
-		//TODO option_save
-		//commands.put("option_save", new OptionSaveCommand(new OptionService()));
+		commands.put("option_edit", new OptionEditCommand(new OptionService()));
+		commands.put("option_add", new OptionAddCommand(new OptionService()));
+		commands.put("option_save", new OptionSaveCommand(new OptionService()));
+
 		commands.put("carModels", new CarModelListCommand(new CarModelService()));
 		commands.put("carModel_add", new CarModelAddCommand(new CarModelService()));
 		commands.put("carModel_edit", new CarModelEditCommand(new CarModelService()));

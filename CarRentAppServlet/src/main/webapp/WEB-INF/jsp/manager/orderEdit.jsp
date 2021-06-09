@@ -3,17 +3,12 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false"%>
 <%@ page session="true" %>
 
-<%!
-String getFormattedDate(){
-SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-return sdf.format(new Date());
-}
-%>
 
 <fmt:setLocale value="${sessionScope.lang}" scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
@@ -71,7 +66,9 @@ height:100vh;">
                       <fmt:message key="order.descr.start" bundle="${rb}"/>
                   </h5>
                   <h4 class="form-group col-sm-7">
-                      ${order.start}
+                      <c:if test="${order.start != null}">
+                          ${order.start.format(DateTimeFormatter.ofPattern('dd.MM.yyyy'))}
+                      </c:if>
                   </h4>
               </div>
 
@@ -80,7 +77,9 @@ height:100vh;">
                       <fmt:message key="order.descr.end" bundle="${rb}"/>
                   </h5>
                   <h4 class="form-group col-sm-7">
-                      ${order.end}
+                      <c:if test="${order.start != null}">
+                          ${order.end.format(DateTimeFormatter.ofPattern('dd.MM.yyyy'))}
+                      </c:if>
                   </h4>
               </div>
 
