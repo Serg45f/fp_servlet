@@ -46,12 +46,17 @@ flex-direction: column;
 height:100vh;">
 
             <form class = "mt-2"   action="${pageContext.request.contextPath}/controller?command=setVehicle" method="post">
-                <h2 class="form-signing-hiding">Period and Location</h2>
+                <h2 class="form-signing-hiding">
+                    <fmt:message key="period.header" bundle="${rb}"/>
+                    Period and Location
+                </h2>
 
                 <br>
                 <br>
                 <div class="form-group row">
-                    <label class="col-sm-2  col-form-label">Location :</label>
+                    <label class="col-sm-2  col-form-label">
+                        <fmt:message key="period.location" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6 px-0">
                         <select type="text" class="form-control bg-transparent  is-valid"  placeholder="Location"
                                  name ="location">
@@ -65,14 +70,18 @@ height:100vh;">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2  col-form-label">Start: </label>
+                    <label class="col-sm-2  col-form-label">
+                        <fmt:message key="period.start" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6 px-0">
                         <input type="datetime-local" name="start" class="form-control is-valid" placeholder="Start date"
                                value="${order.start}"/>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2  col-form-label">End: </label>
+                    <label class="col-sm-2  col-form-label">
+                        <fmt:message key="period.end" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6 px-0">
                         <input type="datetime-local" name="end" class="form-control is-valid" placeholder="End date"
                                value = "${order.end}"/>

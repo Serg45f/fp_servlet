@@ -745,3 +745,17 @@ java.sql.SQLException: Parameter index out of range (8 > number of parameters, w
 2021-06-10 14:34 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.vehiclescommands.VehicleListCommand@3d1137aa
 2021-06-10 14:34 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/vehicles.jsp
 2021-06-10 14:34 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/vehicles.jsp
+2021-06-10 15:00 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-10 15:00 [TRACE]                   Servlet:    64 - Request parameter: command --> setPeriod
+2021-06-10 15:00 [DEBUG]          CommandContainer:    86 - Command container was successfully initialized
+2021-06-10 15:00 [TRACE]          CommandContainer:    87 - Number of commands --> 35
+2021-06-10 15:00 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.SetPeriodCommand@296e4bf9
+2021-06-10 15:00 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/period.jsp
+2021-06-10 15:00 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/period.jsp
+2021-06-10 15:06 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-10 15:06 [TRACE]                   Servlet:    64 - Request parameter: command --> setPeriod
+2021-06-10 15:06 [DEBUG]          CommandContainer:    86 - Command container was successfully initialized
+2021-06-10 15:06 [TRACE]          CommandContainer:    87 - Number of commands --> 35
+2021-06-10 15:06 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.SetPeriodCommand@4f8ecd63
+2021-06-10 15:06 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/period.jsp
+2021-06-10 15:06 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/period.jsp
