@@ -26,6 +26,7 @@ public class CommandContainer {
 	static {
 		// common commands
 
+		commands.put("index", new StartCommand());
 		commands.put("logout", new LogOutCommand());
 		commands.put("login", new LoginCommand(new UserService()));
 		commands.put("activate", new ActivatedCommand(new UserService()));
@@ -35,6 +36,7 @@ public class CommandContainer {
 		commands.put("setVehicle", new SetVehicleCommand());
 		commands.put("setOptions", new SetOptionsCommand(new VehicleService()));
 		commands.put("saveOrderOptions", new SaveOrderOptionsCommand(new OptionService()));
+		commands.put("period", new PeriodCommand());
 		commands.put("options", new OptionListCommand(new OptionService()));
 		commands.put("vehicles", new VehicleListCommand(new VehicleService()));
 

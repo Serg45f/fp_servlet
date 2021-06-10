@@ -48,7 +48,7 @@ public class VehicleListCommand implements Command {
 
         if (start!=null && end!=null) {
             vehicles = vehicleService.getVehiclesPaginatedFilteredByPeriod(start, end, currentPage, recordsPerPage);
-            rows = vehicleService.getNumberOfCardsPeriod();
+            rows = vehicleService.getNumberOfCardsPeriod(start, end);
         } else {
             vehicles = vehicleService.getVehiclesPaginated(currentPage, recordsPerPage);
             rows = vehicleService.getNumberOfCards();

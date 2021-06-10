@@ -49,13 +49,13 @@ public class UserService {
         }
     }
 
-    public Long create(User user) {
+    public Long create(User user) throws SQLException {
         try (UserDao dao = daoFactory.createUserDao()) {
             return dao.create(user);
         }
     }
 
-    public Long deleteUserRoles(User user) {
+    public Long deleteUserRoles(User user) throws SQLException {
         try (UserDao dao = daoFactory.createUserDao()) {
             return dao.create(user);
         }

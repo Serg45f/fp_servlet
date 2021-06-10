@@ -35,7 +35,7 @@ height:100vh;">
     <br>
     <br>
     <br>
-<form class = "mt-2"   method="post" action="${pageContext.request.contextPath}/controller?command=login">
+<form class = "mt-2 needs-validation" novalidate method="post" action="${pageContext.request.contextPath}/controller?command=login">
     <h2 class="form-signing-hiding">
         <fmt:message key="login.head" bundle="${rb}"/>
     </h2>
@@ -51,7 +51,11 @@ height:100vh;">
             <fmt:message key="login.name" bundle="${rb}"/>
         </label>
         <div class="col-sm-6 px-0">
-            <input type="text" name="name" class="form-control bg-transparent" placeholder="some@some.com"/>
+            <input type="email" name="name" class="form-control bg-transparent" placeholder="some@some.com"
+                   pattern="([.[^@\s]]+)@([.[^@\s]]+)\.([a-z]+)" required/>
+            <div class="invalid-feedback">
+                Please provide a valid username.
+            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -59,7 +63,11 @@ height:100vh;">
             <fmt:message key="login.pass" bundle="${rb}"/>
         </label>
         <div class="col-sm-6 px-0">
-            <input type="password" name="pass" class="form-control bg-transparent" placeholder="Password"/>
+            <input type="password" name="pass" class="form-control bg-transparent" placeholder="Password"
+                   pattern="\d+" required/>
+            <div class="invalid-feedback">
+                Please provide a valid password.
+            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -75,6 +83,28 @@ height:100vh;">
         </a>
     </div>
      </form>
+    <script>
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 
 </div>
 </body>

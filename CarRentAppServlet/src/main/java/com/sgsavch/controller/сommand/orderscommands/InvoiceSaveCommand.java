@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class InvoiceSaveCommand implements Command {
@@ -21,7 +22,7 @@ public class InvoiceSaveCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws SQLException {
         HttpSession session = request.getSession();
         Order order = (Order) session.getAttribute("currentOrder");
 

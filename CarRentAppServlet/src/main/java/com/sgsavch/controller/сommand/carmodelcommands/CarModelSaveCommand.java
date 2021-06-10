@@ -51,9 +51,12 @@ public class CarModelSaveCommand implements Command {
         File targetFile = new File(bundle.getString("upload.path")+carModel.getPicture());
         FileUtils.copyInputStreamToFile(fileContent, targetFile);
 
-        if(request.getParameter("id")!=null)
+        if(request.getParameter("id")!=null) {
             carModel = new CarModel.Builder(carModel).setId(Long.valueOf(request.getParameter("id"))).build();
-        Long res = carModelService.addCarModel(carModel);
+            carModelService.editCarModel(carModel);
+        }else{
+            Long res = carModelService.addCarModel(carModel);
+        }
 
         return Path.COMMAND__CARMODELS;
     }

@@ -21,6 +21,7 @@ public class VehicleDTO {
     private String transmission;
     private Double discount = 0D;
     private Long managerId;
+    private Boolean isNew;
 
     public VehicleDTO() {
     }
@@ -33,7 +34,8 @@ public class VehicleDTO {
                    Integer colorId,
                    String transmission,
                    Double discount,
-                   Long managerId) {
+                   Long managerId,
+                   Boolean isNew) {
 
         this.id = id;
         this.carModelId = carModelId;
@@ -44,6 +46,7 @@ public class VehicleDTO {
         this.transmission = transmission;
         this.discount = discount;
         this.managerId = managerId;
+        this.isNew = isNew;
     }
 
     public Long getId() {
@@ -118,6 +121,14 @@ public class VehicleDTO {
         this.managerId = managerId;
     }
 
+    public Boolean getNew() {
+        return isNew;
+    }
+
+    public void setNew(Boolean aNew) {
+        isNew = aNew;
+    }
+
     public VehicleDTO extractFromRequest(HttpServletRequest request) throws SQLException {
         VehicleDTO vehicleDTO = new VehicleDTO();
         if(request.getParameter("id")!=null) vehicleDTO.setId(Long.valueOf(request.getParameter("id")));
@@ -127,6 +138,7 @@ public class VehicleDTO {
         if(request.getParameter("transmission")!=null) vehicleDTO.setTransmission(request.getParameter("transmission"));
         if(request.getParameter("discount")!=null) vehicleDTO.setDiscount(Double.valueOf(request.getParameter("discount")));
         if(request.getParameter("manager")!=null) vehicleDTO.setManagerId(Long.valueOf(request.getParameter("manager")));
+        if(request.getParameter("isNew")!=null) vehicleDTO.setNew(Boolean.valueOf(request.getParameter("isNew")));
 
         return vehicleDTO;
     }

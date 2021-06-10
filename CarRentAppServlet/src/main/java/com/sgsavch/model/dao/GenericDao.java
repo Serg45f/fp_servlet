@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface GenericDao<T> extends AutoCloseable {
-    Long create (T entity);
+    Long create (T entity) throws SQLException;
     T findById(long id) throws SQLException;
     List<T> findAll() throws SQLException;
     void update(T entity) throws SQLException;

@@ -33,7 +33,7 @@ public class OptionService {
         }
     }
 
-    public Long addOption(Option option) {
+    public Long addOption(Option option) throws SQLException {
         try (OptionDao dao = daoFactory.createOptionDao()) {
             return dao.create(option);
         }

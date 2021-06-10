@@ -7,12 +7,6 @@
 <%@ page isELIgnored="false"%>
 <%@ page session="true" %>
 
-<%!
-String getFormattedDate(){
-SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-return sdf.format(new Date());
-}
-%>
 
 <fmt:setLocale value = "${sessionScope.lang}"  scope="session"/>
 <fmt:setBundle basename="messages" var="rb"/>
@@ -20,7 +14,7 @@ return sdf.format(new Date());
 <html lang="${sessionScope.lang}">
 <head>
 
-    <title>ConferenceHub</title>
+    <title>CarRentApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="resources/css/style.css" type="text/css">
@@ -44,79 +38,101 @@ return sdf.format(new Date());
 
 height:100vh;">
         <div class= "mx-auto my-auto">
-            <h2 class="form-signing-hiding" >Registration</h2>
+            <h2 class="form-signing-hiding" >
+                <fmt:message key="registration.order.head" bundle="${rb}"/>
+            </h2>
 
-            <form accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/controller?command=registration" >
+            <form class = "mt-2 needs-validation" novalidate accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/controller?command=registration" >
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">First Name: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.firstName" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control bg-transparent" placeholder="First name"
-                               name="firstName">
+                               name="firstName" pattern="[.[^@\s:;,]]+" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Second Name: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.lastName" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control bg-transparent" placeholder="Last name"
-                               name="lastName">
+                               name="lastName" pattern="[.[^@\s:;,]]+" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.email" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control bg-transparent"  placeholder="some@some.com"
-                               name="email" >
+                               pattern="([.[^@\s]]+)@([.[^@\s]]+)\.([a-z]+)" name="email" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Password: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.password" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input  type="password" class="form-control bg-transparent"  placeholder="Password"
-                                name="password">
+                                pattern="\d+" name="password" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Phone: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.phone" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
-                        <input type="tel" class="form-control "  placeholder="Digits"
-                               name="phone" >
+                        <input type="tel" class="form-control "  placeholder="+380*********"
+                               name="phone" pattern="\+380\d{9}" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Country: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.country" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input  type="text" class="form-control "  placeholder="Country"
-                                name="country">
+                                name="country" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Passport #: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.passport" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input  type="text" class="form-control "  placeholder="Passport #"
-                                name="passportNumb">
+                                name="passportNumb" pattern=".*" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Date of expire: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.expireDate" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input  type="date" class="form-control "  placeholder="Date of expire"
-                                name="passDateExp">
+                                name="passDateExp" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Driver license: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.license" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
                         <input  type="text" class="form-control "  placeholder="Driver license #"
-                                name="licenseNumb">
+                                name="licenseNumb" pattern=".*" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Bank card #: </label>
+                    <label class="col-sm-2 col-form-label">
+                        <fmt:message key="registration.card" bundle="${rb}"/>
+                    </label>
                     <div class="col-sm-6">
-                        <input  type="text" class="form-control "  placeholder="________________"
-                                name="cardNumb">
+                        <input  type="text" class="form-control "  placeholder="****************"
+                                name="cardNumb" pattern="\d{16}" required>
                     </div>
                 </div>
 
@@ -124,12 +140,38 @@ height:100vh;">
                     <label class="col-sm-3 col-form-label"></label>
                     <a class="col-sm-4">
                         <button class="btn btn-lg btn-transparent btn-outline-primary btn-lg btn-block"
-                                type="submit">Submit</button>
+                                type="submit">
+                            <fmt:message key="btn.registration.submit" bundle="${rb}"/>
+                        </button>
 
                     </a>
                 </div>
 
             </form>
+
+            <script>
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
         </div>
     </div>
 

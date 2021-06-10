@@ -31,9 +31,9 @@ public class VehicleService {
         }
     }
 
-    public int getNumberOfCardsPeriod() {
+    public int getNumberOfCardsPeriod(LocalDateTime start, LocalDateTime end) {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
-            return dao.getNumberOfCardsPeriod();
+            return dao.getNumberOfCardsPeriod(start, end);
         }
     }
 
@@ -43,7 +43,7 @@ public class VehicleService {
         }
     }
 
-    public Long addVehicle(Vehicle vehicle) {
+    public Long addVehicle(Vehicle vehicle) throws SQLException {
         try (VehicleDao dao = daoFactory.createVehicleDao()) {
             return dao.create(vehicle);
         }

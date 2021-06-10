@@ -42,7 +42,7 @@ public class OrderService {
         }
     }
 
-    public Long newOrder(Order order) {
+    public Long newOrder(Order order) throws SQLException {
         try (OrderDao dao = daoFactory.createOrderDao()) {
             return dao.create(order);
         }

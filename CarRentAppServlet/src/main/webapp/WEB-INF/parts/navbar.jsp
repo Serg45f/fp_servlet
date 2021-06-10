@@ -114,13 +114,13 @@
 
         </c:if>
         <a>  </a>
-        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=en">
+        <a class="navbar-text mr-3" href="${pageContext.request.contextPath}/controller?command=index&sessionLocale=en">
             <img src="resources/img/flag_US.png" alt="" width="30" height="20" class="d-inline-block align-top">
         </a>
-        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=ua">
+        <a class="navbar-text mr-3" href="${pageContext.request.contextPath}/controller?command=index&sessionLocale=ua">
             <img src="resources/img/flag_UA.png" alt="" width="30" height="20" class="d-inline-block align-top">
         </a>
-        <a class="navbar-text mr-3" href="${pageContext.request.requestURL}?sessionLocale=ru">
+        <a class="navbar-text mr-3" href="${pageContext.request.contextPath}/controller?command=index&sessionLocale=ru">
             <img src="resources/img/flag_RU.png" alt="" width="30" height="20" class="d-inline-block align-top">
         </a>
 

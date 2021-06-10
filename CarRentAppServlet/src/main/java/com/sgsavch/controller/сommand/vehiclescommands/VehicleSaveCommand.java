@@ -34,7 +34,7 @@ public class VehicleSaveCommand implements Command {
     CarModelService carModelService;
 
     @Override
-    public String execute(HttpServletRequest request)  {
+    public String execute(HttpServletRequest request) throws SQLException {
 
             Vehicle vehicle = new Vehicle.Builder()
                     .setRegNumber(request.getParameter("regNumber"))
@@ -47,11 +47,12 @@ public class VehicleSaveCommand implements Command {
                     .build();
             if(request.getParameter("id")!=null) {
                 vehicle = new Vehicle.Builder(vehicle).setId(Long.valueOf(request.getParameter("id"))).build();
+                vehicleService.updateVehicle(vehicle);
             }else{
                 vehicle = new Vehicle.Builder(vehicle).setIsNew(true).build();
+                Long res = vehicleService.addVehicle(vehicle);
             }
 
-                    Long res = vehicleService.addVehicle(vehicle);
 
 
         //vehicleDTO.setId(res);

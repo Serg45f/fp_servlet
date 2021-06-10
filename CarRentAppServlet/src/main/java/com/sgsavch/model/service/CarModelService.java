@@ -35,17 +35,15 @@ public class CarModelService {
         }
     }
 
-    public Long addCarModel(CarModel carModelId) {
+    public Long addCarModel(CarModel carModelId) throws SQLException {
         try (CarModelDao dao = daoFactory.createCarModelDao()) {
             return dao.create(carModelId);
         }
     }
 
-    public void editCarModel(CarModel carModelId) {
+    public void editCarModel(CarModel carModelId) throws SQLException{
         try (CarModelDao dao = daoFactory.createCarModelDao()) {
             dao.update(carModelId);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
     }
 

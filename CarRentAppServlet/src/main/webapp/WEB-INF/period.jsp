@@ -48,26 +48,12 @@ height:100vh;">
             <form class = "mt-2"   action="${pageContext.request.contextPath}/controller?command=setVehicle" method="post">
                 <h2 class="form-signing-hiding">Period and Location</h2>
 
-           <%--     <c:if test="${sessionScope.currentOrder != null}">
-                    <p>
-                        ${sessionScope.currentOrder.start}
-                    </p>
-                    <p>
-                        ${sessionScope.currentOrder.end}
-                    </p>
-                </c:if>
-                <c:if test="${sessionScope.orderStage != null}">
-                    <p>
-                        ${sessionScope.orderStage}
-                    </p>
-                </c:if>
-           --%>
                 <br>
                 <br>
                 <div class="form-group row">
                     <label class="col-sm-2  col-form-label">Location :</label>
                     <div class="col-sm-6 px-0">
-                        <select type="text" class="form-control bg-transparent"  placeholder="Location"
+                        <select type="text" class="form-control bg-transparent  is-valid"  placeholder="Location"
                                  name ="location">
                             <c:forEach var="location" items="${locations}" >
                                 <option class="form-control bg-transparent"
@@ -81,14 +67,14 @@ height:100vh;">
                 <div class="form-group row">
                     <label class="col-sm-2  col-form-label">Start: </label>
                     <div class="col-sm-6 px-0">
-                        <input type="datetime-local" name="start" class="form-control" placeholder="Start date"
+                        <input type="datetime-local" name="start" class="form-control is-valid" placeholder="Start date"
                                value="${order.start}"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2  col-form-label">End: </label>
                     <div class="col-sm-6 px-0">
-                        <input type="datetime-local" name="end" class="form-control" placeholder="End date"
+                        <input type="datetime-local" name="end" class="form-control is-valid" placeholder="End date"
                                value = "${order.end}"/>
                     </div>
                 </div>

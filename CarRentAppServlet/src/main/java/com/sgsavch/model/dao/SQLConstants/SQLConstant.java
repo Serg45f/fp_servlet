@@ -347,14 +347,15 @@ public interface SQLConstant {
 			"SELECT DISTINCTROW " + TABLE_VEHICLES + ".* FROM " + TABLE_VEHICLES + ", " + TABLE_ORDERS +
 					" WHERE ( " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
 					" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0 )" +
-					" OR " + VEHICLE_ID + " != " + ORDER_VEHICLE_ID + " LIMIT ?, ?";
+					" OR " + VEHICLE_IS_NEW + " =  TRUE LIMIT ?, ?";
 
 	String SQL_GET_NUMBER_OF_CARDS_VEHICLES = "SELECT COUNT(id) as count FROM "+TABLE_VEHICLES;
 
-	String SQL_GET_NUMBER_OF_CARDS_VEHICLES_PERIOD = "SELECT COUNT(id) as count FROM "+ TABLE_VEHICLES + ", " + TABLE_ORDERS +
+	String SQL_GET_NUMBER_OF_CARDS_VEHICLES_PERIOD = "SELECT COUNT(*) as count FROM (SELECT DISTINCTROW " + TABLE_VEHICLES +
+			".* FROM " +TABLE_VEHICLES + ", " + TABLE_ORDERS +
 			" WHERE ( " + ORDER_VEHICLE_ID+" = " + VEHICLE_ID +
 			" AND DATEDIFF(?," + ORDER_END +") > 0  OR DATEDIFF(" + ORDER_START +",?) > 0 )" +
-			" OR " + VEHICLE_IS_NEW + " =  TRUE;";
+			" OR " + VEHICLE_IS_NEW + " =  TRUE) as set1;";
 
 	String SQL_ADD_NEW_VEHICLE = "INSERT INTO " + TABLE_VEHICLES + " (" +
 			VEHICLE_COLOR + ", " +
@@ -364,7 +365,7 @@ public interface SQLConstant {
 			VEHICLE_DISCOUNT + ", " +
 			VEHICLE_CARMODEL_ID + ", " +
 			VEHICLE_USER_ID + ", " +
-			VEHICLE_IS_NEW + ") VALUES (?,?,?,?,?,?,?);";
+			VEHICLE_IS_NEW + ") VALUES (?,?,?,?,?,?,?,?);";
 
 	String SQL_UPDATE_VEHICLE =
 			"UPDATE " + TABLE_VEHICLES + " SET " +
@@ -375,7 +376,7 @@ public interface SQLConstant {
 					VEHICLE_DISCOUNT + " = ?, "+
 					VEHICLE_CARMODEL_ID + " = ?, "+
 					VEHICLE_USER_ID + " = ?, "+
-					VEHICLE_IS_NEW + " = ?" + " = ? WHERE "+VEHICLE_ID+" = ?";
+					VEHICLE_IS_NEW +  " = ? WHERE "+VEHICLE_ID+" = ?";
 
 	String SQL_DELETE_VEHICLE_BY_ID =
 			"DELETE FROM " + TABLE_VEHICLES + " WHERE "+VEHICLE_ID+"=?";

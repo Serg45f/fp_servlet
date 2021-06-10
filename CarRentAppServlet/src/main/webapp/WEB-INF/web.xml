@@ -81,7 +81,7 @@
           </init-param>
           <init-param>
               <param-name>out-of-control</param-name>
-              <param-value>login activate registration exception
+              <param-value>login activate registration exception index
               setPeriod setVehicle setOptions saveOrderOptions options period vehicles</param-value>
           </init-param>
       </filter>

@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.UUID;
 
 public class RegistrationCommand implements Command {
@@ -27,7 +28,7 @@ public class RegistrationCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws SQLException {
         System.out.println("(RegisterCommand.execute");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");

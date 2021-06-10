@@ -1,0 +1,439 @@
+2021-06-09 16:09 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 16:09 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 16:09 [DEBUG]          CommandContainer:    85 - Command container was successfully initialized
+2021-06-09 16:09 [TRACE]          CommandContainer:    86 - Number of commands --> 30
+2021-06-09 16:09 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@1f6a22de
+2021-06-09 16:09 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 16:09 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 16:09 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 16:09 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 16:09 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@88cf6ff
+2021-06-09 16:09 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 16:09 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:29 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:29 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:29 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:29 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:29 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@4fff4ac4
+2021-06-09 22:29 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:29 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:29 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:29 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:29 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@52620586
+2021-06-09 22:29 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:29 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:31 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:31 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:31 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:31 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:31 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@6a4c2e53
+2021-06-09 22:31 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:31 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:31 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:31 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:31 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@10f5cab9
+2021-06-09 22:31 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:31 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:33 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:33 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:33 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:33 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:33 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@3fa65ae6
+2021-06-09 22:33 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:33 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:33 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:33 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:33 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@492db6ae
+2021-06-09 22:33 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:33 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:36 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:36 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:36 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:36 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:36 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@43522467
+2021-06-09 22:36 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:36 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:36 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:36 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:36 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@68593e6
+2021-06-09 22:36 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:36 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:47 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:47 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:47 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:47 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:47 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@5aec45f4
+2021-06-09 22:47 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:47 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:47 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:47 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:47 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@16959089
+2021-06-09 22:47 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:47 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:52 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:52 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:52 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:52 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:52 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@4ecdab8e
+2021-06-09 22:52 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:52 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:52 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:52 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:52 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@5271a7d0
+2021-06-09 22:52 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:52 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:59 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:59 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 22:59 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 22:59 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 22:59 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@3fb1a0cb
+2021-06-09 22:59 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 22:59 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 22:59 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 22:59 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 22:59 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@17e1656f
+2021-06-09 22:59 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 22:59 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:00 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:00 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:00 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@17e1656f
+2021-06-09 23:00 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:00 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:01 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:01 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:01 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:01 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 23:01 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@2ffccf72
+2021-06-09 23:01 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:01 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:01 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:01 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:01 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@2e83bc2a
+2021-06-09 23:01 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:01 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:04 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:04 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:04 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:04 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 23:04 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@79e1faac
+2021-06-09 23:04 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:04 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:04 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:04 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:04 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@3bc795b2
+2021-06-09 23:04 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:04 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:08 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:08 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:08 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:08 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 23:08 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@197e6e77
+2021-06-09 23:08 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:08 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:08 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:08 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:08 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@5cf673ad
+2021-06-09 23:08 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:08 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:09 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:09 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@5cf673ad
+2021-06-09 23:09 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:09 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:09 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@5cf673ad
+2021-06-09 23:09 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:09 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:09 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@5cf673ad
+2021-06-09 23:09 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:09 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:12 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:12 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:12 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 23:12 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@5e282235
+2021-06-09 23:12 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:12 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:12 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@406832b
+2021-06-09 23:12 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:12 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:12 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@27705b42
+2021-06-09 23:12 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:12 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:15 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:15 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:15 [TRACE]          CommandContainer:    85 - Number of commands --> 30
+2021-06-09 23:15 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@111ccdd8
+2021-06-09 23:15 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:15 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:15 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@111ccdd8
+2021-06-09 23:15 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:15 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:15 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@111ccdd8
+2021-06-09 23:15 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:15 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:15 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:15 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:15 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:15 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@19e7fe5b
+2021-06-09 23:15 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:15 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@3ecaf866
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@19e7fe5b
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@3ecaf866
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:18 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:18 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@19e7fe5b
+2021-06-09 23:18 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:18 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@3ecaf866
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@19e7fe5b
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@3ecaf866
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:19 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:19 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:19 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:19 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:20 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:20 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:20 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:20 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:20 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:20 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:20 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:20 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:20 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:20 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:21 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:21 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:21 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:21 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:21 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:21 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:21 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:21 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:21 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:21 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:22 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:22 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@19e7fe5b
+2021-06-09 23:22 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:22 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:23 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:23 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:23 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@3ecaf866
+2021-06-09 23:23 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:23 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:23 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:23 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:23 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@32873596
+2021-06-09 23:23 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:23 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:40 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:40 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:40 [TRACE]          CommandContainer:    85 - Number of commands --> 33
+2021-06-09 23:40 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@4b12ddbf
+2021-06-09 23:40 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:40 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:40 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@7e39297d
+2021-06-09 23:40 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:40 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:40 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@6f87c49c
+2021-06-09 23:40 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:40 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:40 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@1ed20ea3
+2021-06-09 23:40 [TRACE]        OrderUpdateCommand:    43 - OrderUpdate parameter --> realEnd:2021-05-19T00:00
+2021-06-09 23:40 [TRACE]        OrderUpdateCommand:    47 - OrderUpdate parameter --> statusOrder:DAMAGED
+2021-06-09 23:40 [TRACE]        OrderUpdateCommand:    51 - OrderUpdate parameter --> damageDescript:Передний бампер царапина
+2021-06-09 23:40 [TRACE]        OrderUpdateCommand:    55 - OrderUpdate parameter --> damagePrice:50.0
+2021-06-09 23:40 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:40 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:40 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:40 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:40 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@7e39297d
+2021-06-09 23:40 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:40 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> login
+2021-06-09 23:48 [DEBUG]          CommandContainer:    84 - Command container was successfully initialized
+2021-06-09 23:48 [TRACE]          CommandContainer:    85 - Number of commands --> 33
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.usercommands.LoginCommand@3cafd9d6
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /login.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /login.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@330deaaf
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@492db6ae
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@226d8ac0
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    43 - OrderUpdate parameter --> realEnd:2021-05-19T00:00
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    47 - OrderUpdate parameter --> statusOrder:DAMAGED
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    51 - OrderUpdate parameter --> damageDescript:Передний бампер царапина
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    55 - OrderUpdate parameter --> damagePrice:50.0
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    59 - OrderUpdate parameter --> damageIsPayed:false
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@330deaaf
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@492db6ae
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@226d8ac0
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    43 - OrderUpdate parameter --> realEnd:2021-05-19T00:00
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    47 - OrderUpdate parameter --> statusOrder:DAMAGED
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    51 - OrderUpdate parameter --> damageDescript:Передний бампер царапина
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    55 - OrderUpdate parameter --> damagePrice:50.0
+2021-06-09 23:48 [TRACE]        OrderUpdateCommand:    59 - OrderUpdate parameter --> damageIsPayed:true
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@330deaaf
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:48 [TRACE]                   Servlet:    64 - Request parameter: command --> order_edit
+2021-06-09 23:48 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderEditCommand@492db6ae
+2021-06-09 23:48 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:48 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orderEdit.jsp
+2021-06-09 23:49 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:49 [TRACE]                   Servlet:    64 - Request parameter: command --> order_update
+2021-06-09 23:49 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderUpdateCommand@226d8ac0
+2021-06-09 23:49 [TRACE]        OrderUpdateCommand:    43 - OrderUpdate parameter --> realEnd:2021-05-19T00:00
+2021-06-09 23:49 [TRACE]        OrderUpdateCommand:    47 - OrderUpdate parameter --> statusOrder:DAMAGED
+2021-06-09 23:49 [TRACE]        OrderUpdateCommand:    51 - OrderUpdate parameter --> damageDescript:Передний бампер царапина
+2021-06-09 23:49 [TRACE]        OrderUpdateCommand:    55 - OrderUpdate parameter --> damagePrice:50.0
+2021-06-09 23:49 [TRACE]        OrderUpdateCommand:    59 - OrderUpdate parameter --> damageIsPayed:false
+2021-06-09 23:49 [TRACE]                   Servlet:    72 - Forward address --> /controller?command=orders
+2021-06-09 23:49 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /controller?command=orders
+2021-06-09 23:49 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:49 [TRACE]                   Servlet:    64 - Request parameter: command --> orders
+2021-06-09 23:49 [TRACE]                   Servlet:    68 - Obtained command --> com.sgsavch.controller.сommand.orderscommands.OrderListCommand@330deaaf
+2021-06-09 23:49 [TRACE]                   Servlet:    72 - Forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:49 [DEBUG]                   Servlet:    74 - Controller finished, now go to forward address --> /WEB-INF/jsp/manager/orders.jsp
+2021-06-09 23:55 [DEBUG]                   Servlet:    60 - Controller starts
+2021-06-09 23:55 [TRACE]                   Servlet:    64 - Request parameter: command --> order_delete
+2021-06-09 23:55 [TRACE]          CommandContainer:    97 - Command not found, name --> order_delete
+2021-06-09 23:55 [TRACE]                   Servlet:    68 - Obtained command --> null

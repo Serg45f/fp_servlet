@@ -34,8 +34,8 @@ return sdf.format(new Date());
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/parts/navbar.jsp" %>
-<%--<c:import url="/WEB-INF/parts/navbar.jsp"/>--%>
+
+<c:import url="/WEB-INF/parts/navbar.jsp"/>
 <br/>
 <%--
     <div class="form-row">
@@ -49,14 +49,6 @@ return sdf.format(new Date());
 
         <br/>
 
-            <c:if test="${sessionScope.currentOrder != null}">
-                <p>${sessionScope.currentOrder.id}</p>
-                <p>${sessionScope.currentOrder.start}</p>
-                <p>${sessionScope.currentOrder.end}</p>
-            </c:if>
-            <c:if test="${sessionsessionScope.orderStage != null}">
-                <p>${sessionScope.orderStage}</p>
-            </c:if>
 --%>
         <br/>
         <div class="container">
@@ -66,7 +58,9 @@ return sdf.format(new Date());
 
             <c:if test = "${loggedUserRoles.contains(roles['ADMIN'])}">
                 <p>
-                    <a href="${pageContext.request.contextPath}/vehicle_add" class="btn btn-transparent btn-outline-success col-sm-12 px-0" >New</a>
+                    <a href="${pageContext.request.contextPath}/controller?command=vehicle_add" class="btn btn-transparent btn-outline-success col-sm-12 px-0">
+                        <fmt:message key="btn.new" bundle="${rb}"/>
+                    </a>
                 </p>
             </c:if>
 

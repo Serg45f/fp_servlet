@@ -38,7 +38,7 @@ public class InvoiceService {
         }
     }
 
-    public Long newInvoice(Invoice invoice) {
+    public Long newInvoice(Invoice invoice) throws SQLException {
         try (InvoiceDao dao = daoFactory.createInvoiceDao()) {
             return dao.create(invoice);
         }
